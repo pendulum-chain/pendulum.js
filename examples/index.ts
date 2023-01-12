@@ -2,7 +2,7 @@ import { ApiPromise } from '@polkadot/api';
 import { WsProvider } from '@polkadot/rpc-provider';
 import { options } from '@pendulum-chain/pendulum-api';
 
-async function connectToShiden() {
+async function connectToAmplitude() {
   const provider = new WsProvider('wss://shiden.api.onfinality.io/public-ws');
   const api = new ApiPromise(options({ provider }));
   await api.isReady;
@@ -52,7 +52,7 @@ async function extrinsics(blockNumber: number) {
 
 
 (async () => {
-  await connectToShiden();
+  await connectToAmplitude();
   await connectToPendulum();
   await extrinsics(2297834);
   process.exit(0);

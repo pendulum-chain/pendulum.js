@@ -3,7 +3,7 @@
   "version": "0.1.12",
   "description": "Pendulum JS API",
   "main": "index.js",
-  "author": "Pendulum Network <info@pendulum.network>",
+  "author": "Pendulum",
   "license": "Apache-2.0",
   "publishConfig": {
     "access": "public",

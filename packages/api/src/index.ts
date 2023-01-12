@@ -39,14 +39,10 @@ export const options = ({ types = {},
         ...pendulumTypesBundle?.spec?.pendulum,
         ...typesBundle?.spec?.pendulum
       },
-      shiden: {
-        ...pendulumTypesBundle?.spec?.shiden,
+      amplitude: {
+        ...pendulumTypesBundle?.spec?.amplitude,
         ...typesBundle?.spec?.shiden
       },
-      shibuya: {
-        ...pendulumTypesBundle?.spec?.shibuya,
-        ...typesBundle?.spec?.shibuya
-      }
     }
   },
   ...otherOptions

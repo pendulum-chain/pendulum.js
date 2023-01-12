@@ -1,7 +1,7 @@
 import BN from 'bn.js';
 
-export const ASTAR_SS58_FORMAT = 5;
-export const ASTAR_DECIMALS = 18;
+export const AMPLITUDE_SS58_FORMAT = 57;
+export const AMPLITUDE_DECIMALS = 12;
 
 /**
  * A helper function to convert the given node balance value into the given chain token decimal point as a string.

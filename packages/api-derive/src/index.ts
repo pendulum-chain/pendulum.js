@@ -1,7 +1,4 @@
 import '@pendulum-chain/pendulum-api-derive/augmentDerives';
-import type { DeriveCustom } from '@polkadot/api-base/types';
-import * as dappsStaking from './dappsStaking';
+import type {DeriveCustom} from '@polkadot/api-base/types';
 
-export const derive: DeriveCustom = {
-  dappStaking: dappsStaking as unknown as DeriveCustom[string]
-};
+export const derive: DeriveCustom = {};

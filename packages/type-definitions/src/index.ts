@@ -7,7 +7,7 @@ import pendulumVersioned from './specs/pendulum';
 import amplitudeVersioned from './specs/amplitude';
 
 // FIXME: currently we cannot override this in runtime definitions because the code generation script cannot handle overrides
-// This will make it behave correctly in runtime, but wrong types in TS defination.
+// This will make it behave correctly in runtime, but wrong types in TS definition.
 const additionalOverride = {
   Address: 'AccountId',
   LookupSource: 'AccountId',
