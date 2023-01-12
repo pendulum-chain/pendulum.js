@@ -13,6 +13,7 @@
     "module": "commonjs",
     "baseUrl": ".",
     "allowJs": true,
+    "noUnusedLocals": false,
     "paths": {
       "@pendulum-chain/pendulum-api": [
         "packages/api/src"

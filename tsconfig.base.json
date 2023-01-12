@@ -34,7 +34,7 @@
       ],
       "@pendulum-chain/pendulum-sdk-core/*": [
         "sdk-core/src/*"
-      ],
+      ]
     },
     "skipLibCheck": true
   }
