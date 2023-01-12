@@ -27,7 +27,8 @@
     "postinstall": "polkadot-dev-yarn-only",
     "run-example": "ts-node -r tsconfig-paths/register examples/index.ts",
     "test": "polkadot-dev-run-test --coverage --passWithNoTests",
-    "update-metadata": "ts-node --project ./tsconfig.json packages/types/scripts/updateMetadata.ts"
+    "update-metadata": "ts-node --project ./tsconfig.json packages/types/scripts/updateMetadata.ts",
+    "update-metadata-local": "ENDPOINT=ws://127.0.0.1:9944 ts-node --project ./tsconfig.json packages/types/scripts/updateMetadata.ts"
   },
   "dependencies": {
     "ts-proto": "^1.82.2"

@@ -1,7 +1,9 @@
 ![license](https://img.shields.io/badge/License-Apache%202.0-blue?logo=apache&style=flat-square)
+
 # pendulum.js
 
-This library provides additional typing information for user to access Pendulum's modules by using [polkadot.js](https://github.com/polkadot-js/api)
+This library provides additional typing information for user to access Pendulum's modules by
+using [polkadot.js](https://github.com/polkadot-js/api)
 
 # Getting Started
 
@@ -16,22 +18,22 @@ yarn add @polkadot/api @pendulum-chain/pendulum-api
 - Create API instance
 
 ```ts
-import { ApiPromise } from '@polkadot/api';
-import { WsProvider } from '@polkadot/rpc-provider';
-import { options } from '@pendulum-chain/pendulum-api';
+import {ApiPromise} from '@polkadot/api';
+import {WsProvider} from '@polkadot/rpc-provider';
+import {options} from '@pendulum-chain/pendulum-api';
 
 async function main() {
-    const provider = new WsProvider('ws://localhost:9944');
-    // OR
-    // const provider = new WsProvider('wss://shiden.api.onfinality.io/public-ws');
-    const api = new ApiPromise(options({ provider }));
-    await api.isReady;
+  const provider = new WsProvider('ws://localhost:9944');
+  // OR
+  // const provider = new WsProvider('wss://shiden.api.onfinality.io/public-ws');
+  const api = new ApiPromise(options({provider}));
+  await api.isReady;
 
-    // Use the api
-    // For example:
-    console.log((await api.rpc.system.properties()).toHuman());
+  // Use the api
+  // For example:
+  console.log((await api.rpc.system.properties()).toHuman());
 
-    process.exit(0);
+  process.exit(0);
 }
 
 main()
@@ -66,4 +68,21 @@ console.log(data.toHuman())
 
 ```shell
 yarn up @polkadot/api @polkadot/api-augment @polkadot/api-derive @polkadot/rpc-core @polkadot/types @polkadot/types-codec
+```
+
+### Update the type definitions of this package
+
+To update the type definitions of this package, you need to first fetch the metadata from your target chain:
+
+```shell
+# To use the metadata from a live-chain use
+yarn update-metadata
+# To use the metadata from a local node use
+yarn update-metadata-local
+```
+
+and then run the following command to build the type definitions based on that metadata:
+
+```shell
+yarn build
 ```
