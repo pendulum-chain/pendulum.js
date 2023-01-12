@@ -1,0 +1,27 @@
+{
+  "name": "@astar-network/astar-api-derive",
+  "version": "0.1.12",
+  "description": "Astar JS API",
+  "main": "index.js",
+  "author": "Astar Network <info@astar.network>",
+  "license": "Apache-2.0",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "repository": {
+    "directory": "packages/api-derive",
+    "type": "git",
+    "url": "https://github.com/AstarNetwork/astar.js"
+  },
+  "bugs": {
+    "url": "https://github.com/AstarNetwork/astar.js/issues"
+  },
+  "homepage": "https://github.com/AstarNetwork/astar.js",
+  "dependencies": {
+    "@astar-network/astar-types": "0.1.12",
+    "@babel/runtime": "^7.10.2",
+    "@open-web3/orml-types": "^1.0.2-0",
+    "@polkadot/api-derive": "^9.2.4"
+  }
+}

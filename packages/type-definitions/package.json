@@ -1,0 +1,25 @@
+{
+  "name": "@astar-network/astar-type-definitions",
+  "version": "0.1.12",
+  "description": "Polkadot.js type definations for astar Network",
+  "main": "index.js",
+  "author": "Astar Network <info@astar.network>",
+  "license": "Apache-2.0",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "repository": {
+    "directory": "packages/type-definitions",
+    "type": "git",
+    "url": "https://github.com/AstarNetwork/astar.js"
+  },
+  "bugs": {
+    "url": "https://github.com/AstarNetwork/astar.js/issues"
+  },
+  "homepage": "https://github.com/AstarNetwork/astar.js",
+  "dependencies": {
+    "@babel/runtime": "^7.10.2",
+    "@open-web3/orml-type-definitions": "^1.0.2-0"
+  }
+}

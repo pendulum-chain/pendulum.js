@@ -1,0 +1,55 @@
+{
+  "extends": "@open-web3/dev-config/config/tsconfig.json",
+  "exclude": [
+    "build/**/*",
+    "**/build/**/*",
+    "examples/**",
+    "scripts/**",
+    "coverage/**"
+  ],
+  "compilerOptions": {
+    "declaration": true,
+    "target": "ES2020",
+    "module": "commonjs",
+    "baseUrl": ".",
+    "allowJs": true,
+    "paths": {
+      "@astar-network/astar-api": [
+        "packages/api/src"
+      ],
+      "@astar-network/astar-api/*": [
+        "packages/api/src/*"
+      ],
+      "@astar-network/astar-api-derive": [
+        "packages/api-derive/src"
+      ],
+      "@astar-network/astar-api-derive/*": [
+        "packages/api-derive/src/*"
+      ],
+      "@astar-network/astar-types": [
+        "packages/types/src"
+      ],
+      "@astar-network/astar-types/*": [
+        "packages/types/src/*"
+      ],
+      "@astar-network/astar-type-definitions": [
+        "packages/type-definitions/src"
+      ],
+      "@astar-network/astar-type-definitions/*": [
+        "packages/type-definitions/src/*"
+      ],
+      "@astar-network/astar-sdk-core":[
+        "packages/sdk-core/src"
+      ],
+      "@astar-network/astar-sdk-core/*": [
+        "packages/sdk-core/src/*"
+      ],
+    },
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "typeRoots": [
+      "./node_modules/@polkadot/ts",
+      "./node_modules/@types"
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "@astar-network/astar-sdk-core",
+  "version": "0.1.12",
+  "description": "the core for astar SDK",
+  "main": "index.js",
+  "author": "Astar Network <info@astar.network>",
+  "license": "Apache-2.0",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "repository": {
+    "directory": "packages/sdk-core",
+    "type": "git",
+    "url": "https://github.com/AstarNetwork/astar.js"
+  },
+  "bugs": {
+    "url": "https://github.com/AstarNetwork/astar.js/issues"
+  },
+  "homepage": "https://github.com/AstarNetwork/astar.js",
+  "dependencies": {
+    "@ethersproject/bignumber": "^5.6.2",
+    "@polkadot/keyring": "^10.1.7",
+    "@polkadot/util": "^10.1.4",
+    "@polkadot/util-crypto": "^10.1.4",
+    "bn.js": "^5.2.1",
+    "ethers": "^5.6.9"
+  }
+}
