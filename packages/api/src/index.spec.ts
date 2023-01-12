@@ -1,6 +1,6 @@
 import { ApiPromise, WsProvider } from '@polkadot/api';
-import { options } from '@astar-network/astar-api';
-import { PalletDappsStakingEraStakingPoints } from '@astar-network/astar-types/interfaces';
+import { options } from '@pendulum-chain/pendulum-api';
+import { PalletDappsStakingEraStakingPoints } from '@pendulum-chain/pendulum-types/interfaces';
 import { Option, StorageKey } from '@polkadot/types';
 
 const getAddressEnum = (address: string) => ({ Evm: address });
@@ -8,7 +8,7 @@ const getAddressEnum = (address: string) => ({ Evm: address });
 const endpoint = 'wss://shiden.api.onfinality.io/public-ws';
 const provider = new WsProvider(endpoint);
 
-describe('astar-api', () => {
+describe('pendulum-api', () => {
   const api = new ApiPromise(options({ provider }));
   beforeAll(async () => {
     await api.isReadyOrError;

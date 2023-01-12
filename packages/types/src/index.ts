@@ -1,14 +1,14 @@
-import { typesBundle as astarTypesBundle, types as astarTypes, typesAlias as astarTypeAlias, rpc as astarRpc } from '@astar-network/astar-type-definitions';
+import { typesBundle as pendulumTypesBundle, types as pendulumTypes, typesAlias as pendulumTypeAlias, rpc as pendulumRpc } from '@pendulum-chain/pendulum-type-definitions';
 import { OverrideBundleType, OverrideModuleType, RegistryTypes, DefinitionRpc, DefinitionRpcSub } from '@polkadot/types/types';
 import './interfaces/augment-fixes';
 import './interfaces/augment-api-query';
 import './interfaces/augment-api-consts';
 import './interfaces/augment-types';
 
-export const types: RegistryTypes = astarTypes;
+export const types: RegistryTypes = pendulumTypes;
 
-export const rpc: Record<string, Record<string, DefinitionRpc | DefinitionRpcSub>> = astarRpc;
+export const rpc: Record<string, Record<string, DefinitionRpc | DefinitionRpcSub>> = pendulumRpc;
 
-export const typesAlias: Record<string, OverrideModuleType> = astarTypeAlias;
+export const typesAlias: Record<string, OverrideModuleType> = pendulumTypeAlias;
 
-export const typesBundle = astarTypesBundle as OverrideBundleType;
+export const typesBundle = pendulumTypesBundle as OverrideBundleType;

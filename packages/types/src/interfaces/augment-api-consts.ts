@@ -5,7 +5,7 @@
 // this is required to allow for ambient/previous definitions
 import '@polkadot/api-base/types/consts';
 
-import type { Perbill } from '@astar-network/astar-types/interfaces/runtime';
+import type { Perbill } from '@pendulum-chain/pendulum-types/interfaces/runtime';
 import type { ApiTypes, AugmentedConst } from '@polkadot/api-base/types';
 import type { u128, u16, u32 } from '@polkadot/types-codec';
 import type { Codec } from '@polkadot/types-codec/types';

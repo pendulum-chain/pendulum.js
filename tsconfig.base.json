@@ -5,34 +5,34 @@
     "module": "CommonJS",
     "target": "es2019",
     "paths": {
-      "@astar-network/astar-api": [
+      "@pendulum-chain/pendulum-api": [
         "api/src"
       ],
-      "@astar-network/astar-api/*": [
+      "@pendulum-chain/pendulum-api/*": [
         "api/src/*"
       ],
-      "@astar-network/astar-api-derive": [
+      "@pendulum-chain/pendulum-api-derive": [
         "api-derive/src"
       ],
-      "@astar-network/astar-api-derive/*": [
+      "@pendulum-chain/pendulum-api-derive/*": [
         "api-derive/src/*"
       ],
-      "@astar-network/astar-types": [
+      "@pendulum-chain/pendulum-types": [
         "types/src"
       ],
-      "@astar-network/astar-types/*": [
+      "@pendulum-chain/pendulum-types/*": [
         "types/src/*"
       ],
-      "@astar-network/astar-type-definitions": [
+      "@pendulum-chain/pendulum-type-definitions": [
         "type-definitions/src"
       ],
-      "@astar-network/astar-type-definitions/*": [
+      "@pendulum-chain/pendulum-type-definitions/*": [
         "type-definitions/src/*"
       ],
-      "@astar-network/astar-sdk-core":[
+      "@pendulum-chain/pendulum-sdk-core":[
         "sdk-core/src"
       ],
-      "@astar-network/astar-sdk-core/*": [
+      "@pendulum-chain/pendulum-sdk-core/*": [
         "sdk-core/src/*"
       ],
     },

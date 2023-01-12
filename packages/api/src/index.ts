@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { derive as astarDerive } from '@astar-network/astar-api-derive';
-import { rpc as astarRpc, types as astarTypes, typesAlias as astarTypesAlias, typesBundle as astarTypesBundle } from '@astar-network/astar-types';
+import { derive as pendulumDerive } from '@pendulum-chain/pendulum-api-derive';
+import { rpc as pendulumRpc, types as pendulumTypes, typesAlias as pendulumTypesAlias, typesBundle as pendulumTypesBundle } from '@pendulum-chain/pendulum-types';
 import { derive as ormlDerive } from '@open-web3/orml-api-derive';
 
 import { ApiOptions } from '@polkadot/api/types';
 
 export const defaultOptions: ApiOptions = {
-  types: astarTypes,
-  rpc: astarRpc
+  types: pendulumTypes,
+  rpc: pendulumRpc
 };
 
 export const options = ({ types = {},
@@ -16,35 +16,35 @@ export const options = ({ types = {},
   typesBundle = {},
   ...otherOptions }: ApiOptions = {}): ApiOptions => ({
   types: {
-    ...astarTypes,
+    ...pendulumTypes,
     ...types
   },
   rpc: {
-    ...astarRpc,
+    ...pendulumRpc,
     ...rpc
   },
   typesAlias: {
-    ...astarTypesAlias,
+    ...pendulumTypesAlias,
     ...typesAlias
   },
   derives: {
     ...ormlDerive,
-    ...astarDerive
+    ...pendulumDerive
   },
   typesBundle: {
     ...typesBundle,
     spec: {
       ...typesBundle.spec,
-      astar: {
-        ...astarTypesBundle?.spec?.astar,
-        ...typesBundle?.spec?.astar
+      pendulum: {
+        ...pendulumTypesBundle?.spec?.pendulum,
+        ...typesBundle?.spec?.pendulum
       },
       shiden: {
-        ...astarTypesBundle?.spec?.shiden,
+        ...pendulumTypesBundle?.spec?.shiden,
         ...typesBundle?.spec?.shiden
       },
       shibuya: {
-        ...astarTypesBundle?.spec?.shibuya,
+        ...pendulumTypesBundle?.spec?.shibuya,
         ...typesBundle?.spec?.shibuya
       }
     }

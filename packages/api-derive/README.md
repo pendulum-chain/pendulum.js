@@ -1,15 +1,15 @@
 ![license](https://img.shields.io/badge/License-Apache%202.0-blue?logo=apache&style=flat-square)
 
-# @astar-network/api-derive
+# @pendulum-chain/api-derive
 
-Derived API calls that combine several queries to provide convinient results. This package is part of the Astar SDK.
+Derived API calls that combine several queries to provide convinient results. This package is part of the Pendulum SDK.
 
 ## Example
 
 ```ts
 import { ApiPromise, WsProvider } from '@polkadot/api';
-import { options } from '@astar-network/astar-api';
-import '@astar-network/astar-api-derive/augmentDerives';
+import { options } from '@pendulum-chain/pendulum-api';
+import '@pendulum-chain/pendulum-api-derive/augmentDerives';
 
 const getAddressEnum = (address: string) => ({ Evm: address });
 

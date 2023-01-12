@@ -15,74 +15,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@astar-network/astar-api-derive@0.1.12, @astar-network/astar-api-derive@workspace:packages/api-derive":
-  version: 0.0.0-use.local
-  resolution: "@astar-network/astar-api-derive@workspace:packages/api-derive"
-  dependencies:
-    "@astar-network/astar-types": 0.1.12
-    "@babel/runtime": ^7.10.2
-    "@open-web3/orml-types": ^1.0.2-0
-    "@polkadot/api-derive": ^9.2.4
-  languageName: unknown
-  linkType: soft
-
-"@astar-network/astar-api@workspace:packages/api":
-  version: 0.0.0-use.local
-  resolution: "@astar-network/astar-api@workspace:packages/api"
-  dependencies:
-    "@astar-network/astar-api-derive": 0.1.12
-    "@astar-network/astar-types": 0.1.12
-    "@babel/runtime": ^7.10.2
-    "@open-web3/orml-api-derive": ^1.0.2-0
-    "@polkadot/api": ^9.2.4
-  peerDependencies:
-    "@polkadot/api": ^7.11.1
-    "@polkadot/types": ^7.11.1
-  languageName: unknown
-  linkType: soft
-
-"@astar-network/astar-sdk-core@workspace:packages/sdk-core":
-  version: 0.0.0-use.local
-  resolution: "@astar-network/astar-sdk-core@workspace:packages/sdk-core"
-  dependencies:
-    "@ethersproject/bignumber": ^5.6.2
-    "@polkadot/keyring": ^10.1.7
-    "@polkadot/util": ^10.1.4
-    "@polkadot/util-crypto": ^10.1.4
-    bn.js: ^5.2.1
-    ethers: ^5.6.9
-  languageName: unknown
-  linkType: soft
-
-"@astar-network/astar-type-definitions@0.1.12, @astar-network/astar-type-definitions@workspace:packages/type-definitions":
-  version: 0.0.0-use.local
-  resolution: "@astar-network/astar-type-definitions@workspace:packages/type-definitions"
-  dependencies:
-    "@babel/runtime": ^7.10.2
-    "@open-web3/orml-type-definitions": ^1.0.2-0
-  languageName: unknown
-  linkType: soft
-
-"@astar-network/astar-types@0.1.12, @astar-network/astar-types@workspace:packages/types":
-  version: 0.0.0-use.local
-  resolution: "@astar-network/astar-types@workspace:packages/types"
-  dependencies:
-    "@astar-network/astar-type-definitions": 0.1.12
-    "@babel/runtime": ^7.10.2
-    "@open-web3/api-mobx": ^1.0.2-0
-    "@open-web3/orml-types": ^1.0.2-0
-    "@polkadot/api": ^9.2.4
-    "@polkadot/typegen": ^9.2.4
-    "@polkadot/types": ^9.2.4
-    "@types/websocket": ^1.0.0
-    websocket: ^1.0.31
-  peerDependencies:
-    "@polkadot/api": ^9.2.4
-    "@polkadot/typegen": ^9.2.4
-    "@polkadot/types": ^9.2.4
-  languageName: unknown
-  linkType: soft
-
 "@babel/cli@npm:^7.12.1, @babel/cli@npm:^7.17.6":
   version: 7.18.10
   resolution: "@babel/cli@npm:7.18.10"
@@ -2899,6 +2831,74 @@ __metadata:
   checksum: c077e030a1ff912f469c4d8e955037a819e781b9319308668703a01ceea748606613f71139c4b18951baa31856532b0e398a9c94589322ef824a76e85a78dac8
   languageName: node
   linkType: hard
+
+"@pendulum-chain/pendulum-api-derive@0.1.12, @pendulum-chain/pendulum-api-derive@workspace:packages/api-derive":
+  version: 0.0.0-use.local
+  resolution: "@pendulum-chain/pendulum-api-derive@workspace:packages/api-derive"
+  dependencies:
+    "@babel/runtime": ^7.10.2
+    "@open-web3/orml-types": ^1.0.2-0
+    "@pendulum-chain/pendulum-types": 0.1.12
+    "@polkadot/api-derive": ^9.2.4
+  languageName: unknown
+  linkType: soft
+
+"@pendulum-chain/pendulum-api@workspace:packages/api":
+  version: 0.0.0-use.local
+  resolution: "@pendulum-chain/pendulum-api@workspace:packages/api"
+  dependencies:
+    "@babel/runtime": ^7.10.2
+    "@open-web3/orml-api-derive": ^1.0.2-0
+    "@pendulum-chain/pendulum-api-derive": 0.1.12
+    "@pendulum-chain/pendulum-types": 0.1.12
+    "@polkadot/api": ^9.2.4
+  peerDependencies:
+    "@polkadot/api": ^7.11.1
+    "@polkadot/types": ^7.11.1
+  languageName: unknown
+  linkType: soft
+
+"@pendulum-chain/pendulum-sdk-core@workspace:packages/sdk-core":
+  version: 0.0.0-use.local
+  resolution: "@pendulum-chain/pendulum-sdk-core@workspace:packages/sdk-core"
+  dependencies:
+    "@ethersproject/bignumber": ^5.6.2
+    "@polkadot/keyring": ^10.1.7
+    "@polkadot/util": ^10.1.4
+    "@polkadot/util-crypto": ^10.1.4
+    bn.js: ^5.2.1
+    ethers: ^5.6.9
+  languageName: unknown
+  linkType: soft
+
+"@pendulum-chain/pendulum-type-definitions@0.1.12, @pendulum-chain/pendulum-type-definitions@workspace:packages/type-definitions":
+  version: 0.0.0-use.local
+  resolution: "@pendulum-chain/pendulum-type-definitions@workspace:packages/type-definitions"
+  dependencies:
+    "@babel/runtime": ^7.10.2
+    "@open-web3/orml-type-definitions": ^1.0.2-0
+  languageName: unknown
+  linkType: soft
+
+"@pendulum-chain/pendulum-types@0.1.12, @pendulum-chain/pendulum-types@workspace:packages/types":
+  version: 0.0.0-use.local
+  resolution: "@pendulum-chain/pendulum-types@workspace:packages/types"
+  dependencies:
+    "@babel/runtime": ^7.10.2
+    "@open-web3/api-mobx": ^1.0.2-0
+    "@open-web3/orml-types": ^1.0.2-0
+    "@pendulum-chain/pendulum-type-definitions": 0.1.12
+    "@polkadot/api": ^9.2.4
+    "@polkadot/typegen": ^9.2.4
+    "@polkadot/types": ^9.2.4
+    "@types/websocket": ^1.0.0
+    websocket: ^1.0.31
+  peerDependencies:
+    "@polkadot/api": ^9.2.4
+    "@polkadot/typegen": ^9.2.4
+    "@polkadot/types": ^9.2.4
+  languageName: unknown
+  linkType: soft
 
 "@polkadot/api-augment@npm:9.3.3, @polkadot/api-augment@npm:^9.2.4":
   version: 9.3.3

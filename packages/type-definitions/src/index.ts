@@ -3,9 +3,8 @@ import type { OverrideVersionedType } from '@polkadot/types/types';
 import { jsonrpcFromDefs, typesAliasFromDefs, typesFromDefs } from '@open-web3/orml-type-definitions/utils';
 import pallets from './pallets';
 
-import astarVersioned from './specs/astar';
-import shidenVersioned from './specs/shiden';
-import shibuyaVersioned from './specs/shibuya';
+import pendulumVersioned from './specs/pendulum';
+import amplitudeVersioned from './specs/amplitude';
 
 // FIXME: currently we cannot override this in runtime definitions because the code generation script cannot handle overrides
 // This will make it behave correctly in runtime, but wrong types in TS defination.
@@ -41,17 +40,17 @@ const additionalOverride = {
   }
 };
 
-const astarDefs = {
+const pendulumDefs = {
   pallets
 };
 
 export const types = {
-  ...typesFromDefs(astarDefs),
+  ...typesFromDefs(pendulumDefs),
   ...additionalOverride
 };
 
-export const rpc = jsonrpcFromDefs(astarDefs, {});
-export const typesAlias = typesAliasFromDefs(astarDefs, {});
+export const rpc = jsonrpcFromDefs(pendulumDefs, {});
+export const typesAlias = typesAliasFromDefs(pendulumDefs, {});
 
 function getBundle(versioned: OverrideVersionedType[]) {
   return {
@@ -74,17 +73,15 @@ function getBundle(versioned: OverrideVersionedType[]) {
 
 export const typesBundle = {
   spec: {
-    astar: getBundle(astarVersioned),
-    shiden: getBundle(shidenVersioned),
-    shibuya: getBundle(shibuyaVersioned)
+    pendulum: getBundle(pendulumVersioned),
+    shibuya: getBundle(amplitudeVersioned)
   }
 };
 
 // Type overrides have priority issues
 export const typesBundleForPolkadot = {
   spec: {
-    astar: getBundle(astarVersioned),
-    shiden: getBundle(shidenVersioned),
-    shibuya: getBundle(shibuyaVersioned)
+    pendulum: getBundle(pendulumVersioned),
+    shibuya: getBundle(amplitudeVersioned)
   }
 };

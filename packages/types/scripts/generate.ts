@@ -21,7 +21,7 @@ import * as defaultDefinitions from '@polkadot/types/interfaces/definitions';
 
 import * as ormlDefinitions from '@open-web3/orml-types/interfaces/definitions';
 
-import * as astarDefinitions from '../src/interfaces/definitions';
+import * as pendulumDefinitions from '../src/interfaces/definitions';
 
 // Only keep our own modules to avoid confllicts with the one provided by polkadot.js
 // TODO: make an issue on polkadot.js
@@ -51,7 +51,7 @@ const { runtime: _runtime, ...ormlModulesDefinitions } = ormlDefinitions;
 const definitions = {
   '@polkadot/types/interfaces': substrateDefinitions,
   // '@open-web3/orml-types/interfaces': ormlModulesDefinitions,
-  '@astar-network/astar-types/interfaces': astarDefinitions
+  '@pendulum-chain/pendulum-types/interfaces': pendulumDefinitions
 } as any;
 
 const metadata = filterModules(
@@ -63,7 +63,7 @@ const metadata = filterModules(
   definitions
 );
 
-generateTsDef(definitions, 'packages/types/src/interfaces', '@astar-network/astar-types/interfaces');
+generateTsDef(definitions, 'packages/types/src/interfaces', '@pendulum-chain/pendulum-types/interfaces');
 generateInterfaceTypes(definitions, 'packages/types/src/interfaces/augment-types.ts');
 generateDefaultConsts('packages/types/src/interfaces/augment-api-consts.ts', metadata, definitions);
 

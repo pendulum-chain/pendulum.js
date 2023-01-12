@@ -1,3 +1,3 @@
-# @astar-network/astar-types
+# @pendulum-chain/pendulum-types
 
-Polkadot.js type definations for Astar Network
+Polkadot.js type definations for Pendulum Network

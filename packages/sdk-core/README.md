@@ -1,1 +1,1 @@
-# @astar-network/astar-sdk-core
+# @pendulum-chain/pendulum-sdk-core

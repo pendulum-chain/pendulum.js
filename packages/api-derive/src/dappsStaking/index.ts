@@ -1,5 +1,5 @@
 import { ApiInterfaceRx } from '@polkadot/api/types';
-import { PalletDappsStakingEraStakingPoints } from '@astar-network/astar-types/interfaces';
+import { PalletDappsStakingEraStakingPoints } from '@pendulum-chain/pendulum-types/interfaces';
 import { Observable, map } from 'rxjs';
 import { memo } from '@polkadot/api-derive/util';
 import { Option } from '@polkadot/types';

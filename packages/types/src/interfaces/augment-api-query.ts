@@ -5,7 +5,7 @@
 // this is required to allow for ambient/previous definitions
 import '@polkadot/api-base/types/storage';
 
-import type { AccountId32, PalletDappsStakingEraRewardAndStake, PalletDappsStakingEraStakingPoints, PalletDappsStakingForcing, ShidenRuntimeSmartContract } from '@astar-network/astar-types/interfaces/runtime';
+import type { AccountId32, PalletDappsStakingEraRewardAndStake, PalletDappsStakingEraStakingPoints, PalletDappsStakingForcing, ShidenRuntimeSmartContract } from '@pendulum-chain/pendulum-types/interfaces/runtime';
 import type { ApiTypes, AugmentedQuery, QueryableStorageEntry } from '@polkadot/api-base/types';
 import type { Null, Option, bool, u128, u32 } from '@polkadot/types-codec';
 import type { AnyNumber } from '@polkadot/types-codec/types';

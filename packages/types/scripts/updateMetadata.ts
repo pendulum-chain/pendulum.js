@@ -4,7 +4,7 @@ import fs from 'fs';
 import { w3cwebsocket as WebSocket } from 'websocket';
 
 const main = (): void => {
-  const endpoint = 'wss://rpc.shiden.astar.network';
+  const endpoint = 'wss://rpc.shiden.pendulum.network';
   console.log('Connecting to ', endpoint);
   const ws = new WebSocket(endpoint);
   ws.onopen = (): void => {

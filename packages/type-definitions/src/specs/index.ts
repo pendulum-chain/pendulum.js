@@ -1,3 +1,2 @@
-export * as astarDefinitions from './astar';
-export * as shibuyaDefinitions from './shibuya';
-export * as shidenDefinitions from './shiden';
+export * as pendulumDefinitions from './pendulum';
+export * as amplitudeDefinitions from './amplitude';
