@@ -1,3 +1,3 @@
-# @pendulum-chain/pendulum-types
+# @pendulum-chain/types
 
 Polkadot.js type definitions for Pendulum Network

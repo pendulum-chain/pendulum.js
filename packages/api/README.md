@@ -11,7 +11,7 @@ More documentation and examples on [wiki](https://github.com/pendulumNetwork/pen
 - Install dependencies
 
 ```bash
-yarn add @polkadot/api @pendulum-chain/pendulum-api@beta
+yarn add @polkadot/api @pendulum-chain/api@beta
 ```
 
 - Create API instance
@@ -19,7 +19,7 @@ yarn add @polkadot/api @pendulum-chain/pendulum-api@beta
 ```ts
 import { ApiPromise } from '@polkadot/api';
 import { WsProvider } from '@polkadot/rpc-provider';
-import { options } from '@pendulum-chain/pendulum-api';
+import { options } from '@pendulum-chain/api';
 
 async function main() {
     const provider = new WsProvider('wss://localhost:9944');

@@ -5,34 +5,34 @@
     "module": "CommonJS",
     "target": "es2019",
     "paths": {
-      "@pendulum-chain/pendulum-api": [
+      "@pendulum-chain/api": [
         "api/src"
       ],
-      "@pendulum-chain/pendulum-api/*": [
+      "@pendulum-chain/api/*": [
         "api/src/*"
       ],
-      "@pendulum-chain/pendulum-api-derive": [
+      "@pendulum-chain/api-derive": [
         "api-derive/src"
       ],
-      "@pendulum-chain/pendulum-api-derive/*": [
+      "@pendulum-chain/api-derive/*": [
         "api-derive/src/*"
       ],
-      "@pendulum-chain/pendulum-types": [
+      "@pendulum-chain/types": [
         "types/src"
       ],
-      "@pendulum-chain/pendulum-types/*": [
+      "@pendulum-chain/types/*": [
         "types/src/*"
       ],
-      "@pendulum-chain/pendulum-type-definitions": [
+      "@pendulum-chain/type-definitions": [
         "type-definitions/src"
       ],
-      "@pendulum-chain/pendulum-type-definitions/*": [
+      "@pendulum-chain/type-definitions/*": [
         "type-definitions/src/*"
       ],
-      "@pendulum-chain/pendulum-sdk-core":[
+      "@pendulum-chain/sdk-core":[
         "sdk-core/src"
       ],
-      "@pendulum-chain/pendulum-sdk-core/*": [
+      "@pendulum-chain/sdk-core/*": [
         "sdk-core/src/*"
       ]
     },

@@ -1,5 +1,5 @@
 {
-  "name": "@pendulum-chain/pendulum-types",
+  "name": "@pendulum-chain/types",
   "version": "0.1.12",
   "description": "Polkadot.js type definitions for Pendulum Network",
   "main": "index.js",
@@ -22,7 +22,7 @@
     "@babel/runtime": "^7.10.2",
     "@open-web3/api-mobx": "^1.0.2-0",
     "@open-web3/orml-types": "^1.0.2-0",
-    "@pendulum-chain/pendulum-type-definitions": "0.1.12",
+    "@pendulum-chain/type-definitions": "0.1.12",
     "@polkadot/api": "^9.2.4",
     "@polkadot/typegen": "^9.2.4",
     "@polkadot/types": "^9.2.4"

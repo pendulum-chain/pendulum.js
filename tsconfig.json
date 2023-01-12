@@ -15,34 +15,34 @@
     "allowJs": true,
     "noUnusedLocals": false,
     "paths": {
-      "@pendulum-chain/pendulum-api": [
+      "@pendulum-chain/api": [
         "packages/api/src"
       ],
-      "@pendulum-chain/pendulum-api/*": [
+      "@pendulum-chain/api/*": [
         "packages/api/src/*"
       ],
-      "@pendulum-chain/pendulum-api-derive": [
+      "@pendulum-chain/api-derive": [
         "packages/api-derive/src"
       ],
-      "@pendulum-chain/pendulum-api-derive/*": [
+      "@pendulum-chain/api-derive/*": [
         "packages/api-derive/src/*"
       ],
-      "@pendulum-chain/pendulum-types": [
+      "@pendulum-chain/types": [
         "packages/types/src"
       ],
-      "@pendulum-chain/pendulum-types/*": [
+      "@pendulum-chain/types/*": [
         "packages/types/src/*"
       ],
-      "@pendulum-chain/pendulum-type-definitions": [
+      "@pendulum-chain/type-definitions": [
         "packages/type-definitions/src"
       ],
-      "@pendulum-chain/pendulum-type-definitions/*": [
+      "@pendulum-chain/type-definitions/*": [
         "packages/type-definitions/src/*"
       ],
-      "@pendulum-chain/pendulum-sdk-core":[
+      "@pendulum-chain/sdk-core":[
         "packages/sdk-core/src"
       ],
-      "@pendulum-chain/pendulum-sdk-core/*": [
+      "@pendulum-chain/sdk-core/*": [
         "packages/sdk-core/src/*"
       ],
     },

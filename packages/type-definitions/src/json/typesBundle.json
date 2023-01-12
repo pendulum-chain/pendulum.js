@@ -14,58 +14,15 @@
                         null
                     ],
                     "types": {
-                        "Address": "AccountId",
-                        "LookupSource": "AccountId",
-                        "PalletsOrigin": {
-                            "_enum": {
-                                "System": "SystemOrigin",
-                                "Timestamp": "Null",
-                                "RandomnessCollectiveFlip": "Null",
-                                "Balances": "Null",
-                                "Utility": "Null",
-                                "Indices": "Null",
-                                "Authorship": "Null",
-                                "Aura": "Null",
-                                "Grandpa": "Null",
-                                "Staking": "Null",
-                                "Session": "Null",
-                                "Historical": "Null",
-                                "Sudo": "Null",
-                                "TransactionPayment": "Null"
-                            }
-                        },
-                        "Keys": "AccountId",
-                        "ShidenRuntimeSmartContract": {
-                            "_enum": {
-                                "Evm": "H160",
-                                "Wasm": "AccountId"
-                            }
-                        },
-                        "PalletDappsStakingEraIndex": "u32",
-                        "PalletDappsStakingEraStakingPoints": {
-                            "total": "Balance",
-                            "stakers": "BTreeMap<AccountId, Balance>",
-                            "_formerStakedEra": "EraIndex",
-                            "claimedRewards": "Balance"
-                        },
-                        "PalletDappsStakingEraRewardAndStake": {
-                            "rewards": "Balance",
-                            "staked": "Balance"
-                        },
-                        "PalletDappsStakingForcing": {
-                            "_enum": [
-                                "NotForcing",
-                                "ForceNew",
-                                "ForceNone",
-                                "ForceAlways"
-                            ]
-                        }
+                        "OracleKey": {},
+                        "CurrencyId": {},
+                        "NumberOrHex": "u128"
                     }
                 }
             ],
             "alias": {}
         },
-        "shibuya": {
+        "amplitude": {
             "rpc": {},
             "instances": {
                 "council": [
@@ -79,52 +36,9 @@
                         null
                     ],
                     "types": {
-                        "Address": "AccountId",
-                        "LookupSource": "AccountId",
-                        "PalletsOrigin": {
-                            "_enum": {
-                                "System": "SystemOrigin",
-                                "Timestamp": "Null",
-                                "RandomnessCollectiveFlip": "Null",
-                                "Balances": "Null",
-                                "Utility": "Null",
-                                "Indices": "Null",
-                                "Authorship": "Null",
-                                "Aura": "Null",
-                                "Grandpa": "Null",
-                                "Staking": "Null",
-                                "Session": "Null",
-                                "Historical": "Null",
-                                "Sudo": "Null",
-                                "TransactionPayment": "Null"
-                            }
-                        },
-                        "Keys": "AccountId",
-                        "ShidenRuntimeSmartContract": {
-                            "_enum": {
-                                "Evm": "H160",
-                                "Wasm": "AccountId"
-                            }
-                        },
-                        "PalletDappsStakingEraIndex": "u32",
-                        "PalletDappsStakingEraStakingPoints": {
-                            "total": "Balance",
-                            "stakers": "BTreeMap<AccountId, Balance>",
-                            "_formerStakedEra": "EraIndex",
-                            "claimedRewards": "Balance"
-                        },
-                        "PalletDappsStakingEraRewardAndStake": {
-                            "rewards": "Balance",
-                            "staked": "Balance"
-                        },
-                        "PalletDappsStakingForcing": {
-                            "_enum": [
-                                "NotForcing",
-                                "ForceNew",
-                                "ForceNone",
-                                "ForceAlways"
-                            ]
-                        }
+                        "OracleKey": {},
+                        "CurrencyId": {},
+                        "NumberOrHex": "u128"
                     }
                 }
             ],

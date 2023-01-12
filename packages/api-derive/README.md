@@ -8,8 +8,8 @@ Derived API calls that combine several queries to provide convinient results. Th
 
 ```ts
 import { ApiPromise, WsProvider } from '@polkadot/api';
-import { options } from '@pendulum-chain/pendulum-api';
-import '@pendulum-chain/pendulum-api-derive/augmentDerives';
+import { options } from '@pendulum-chain/api';
+import '@pendulum-chain/api-derive/augmentDerives';
 
 const getAddressEnum = (address: string) => ({ Evm: address });
 

@@ -1,5 +1,5 @@
 {
-  "name": "@pendulum-chain/pendulum-sdk-core",
+  "name": "@pendulum-chain/sdk-core",
   "version": "0.1.12",
   "description": "the core for pendulum SDK",
   "main": "index.js",

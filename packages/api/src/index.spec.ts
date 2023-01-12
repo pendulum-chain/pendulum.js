@@ -1,6 +1,6 @@
 import { ApiPromise, WsProvider } from '@polkadot/api';
-import { options } from '@pendulum-chain/pendulum-api';
-import { PalletDappsStakingEraStakingPoints } from '@pendulum-chain/pendulum-types/interfaces';
+import { options } from '@pendulum-chain/api';
+import { PalletDappsStakingEraStakingPoints } from '@pendulum-chain/types/interfaces';
 import { Option, StorageKey } from '@polkadot/types';
 
 const getAddressEnum = (address: string) => ({ Evm: address });
@@ -20,7 +20,7 @@ describe('pendulum-api', () => {
       fail('API is not initialized');
     }
     const stakingByEra = await api.query.dappsStaking.contractEraStake.entries<
-    Option<PalletDappsStakingEraStakingPoints>
+      Option<PalletDappsStakingEraStakingPoints>
     >(getAddressEnum(address));
     stakingByEra.forEach(([era, stakeInfo]) => {
       // console.log({

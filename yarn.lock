@@ -2818,25 +2818,25 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pendulum-chain/pendulum-api-derive@0.1.12, @pendulum-chain/pendulum-api-derive@workspace:packages/api-derive":
+"@pendulum-chain/api-derive@0.1.12, @pendulum-chain/api-derive@workspace:packages/api-derive":
   version: 0.0.0-use.local
-  resolution: "@pendulum-chain/pendulum-api-derive@workspace:packages/api-derive"
+  resolution: "@pendulum-chain/api-derive@workspace:packages/api-derive"
   dependencies:
     "@babel/runtime": ^7.10.2
     "@open-web3/orml-types": ^1.0.2-0
-    "@pendulum-chain/pendulum-types": 0.1.12
+    "@pendulum-chain/types": 0.1.12
     "@polkadot/api-derive": ^9.2.4
   languageName: unknown
   linkType: soft
 
-"@pendulum-chain/pendulum-api@workspace:packages/api":
+"@pendulum-chain/api@workspace:packages/api":
   version: 0.0.0-use.local
-  resolution: "@pendulum-chain/pendulum-api@workspace:packages/api"
+  resolution: "@pendulum-chain/api@workspace:packages/api"
   dependencies:
     "@babel/runtime": ^7.10.2
     "@open-web3/orml-api-derive": ^1.0.2-0
-    "@pendulum-chain/pendulum-api-derive": 0.1.12
-    "@pendulum-chain/pendulum-types": 0.1.12
+    "@pendulum-chain/api-derive": 0.1.12
+    "@pendulum-chain/types": 0.1.12
     "@polkadot/api": ^9.2.4
   peerDependencies:
     "@polkadot/api": ^7.11.1
@@ -2844,9 +2844,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pendulum-chain/pendulum-sdk-core@workspace:packages/sdk-core":
+"@pendulum-chain/sdk-core@workspace:packages/sdk-core":
   version: 0.0.0-use.local
-  resolution: "@pendulum-chain/pendulum-sdk-core@workspace:packages/sdk-core"
+  resolution: "@pendulum-chain/sdk-core@workspace:packages/sdk-core"
   dependencies:
     "@ethersproject/bignumber": ^5.6.2
     "@polkadot/keyring": ^10.1.7
@@ -2857,23 +2857,23 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pendulum-chain/pendulum-type-definitions@0.1.12, @pendulum-chain/pendulum-type-definitions@workspace:packages/type-definitions":
+"@pendulum-chain/type-definitions@0.1.12, @pendulum-chain/type-definitions@workspace:packages/type-definitions":
   version: 0.0.0-use.local
-  resolution: "@pendulum-chain/pendulum-type-definitions@workspace:packages/type-definitions"
+  resolution: "@pendulum-chain/type-definitions@workspace:packages/type-definitions"
   dependencies:
     "@babel/runtime": ^7.10.2
     "@open-web3/orml-type-definitions": ^1.0.2-0
   languageName: unknown
   linkType: soft
 
-"@pendulum-chain/pendulum-types@0.1.12, @pendulum-chain/pendulum-types@workspace:packages/types":
+"@pendulum-chain/types@0.1.12, @pendulum-chain/types@workspace:packages/types":
   version: 0.0.0-use.local
-  resolution: "@pendulum-chain/pendulum-types@workspace:packages/types"
+  resolution: "@pendulum-chain/types@workspace:packages/types"
   dependencies:
     "@babel/runtime": ^7.10.2
     "@open-web3/api-mobx": ^1.0.2-0
     "@open-web3/orml-types": ^1.0.2-0
-    "@pendulum-chain/pendulum-type-definitions": 0.1.12
+    "@pendulum-chain/type-definitions": 0.1.12
     "@polkadot/api": ^9.2.4
     "@polkadot/typegen": ^9.2.4
     "@polkadot/types": ^9.2.4

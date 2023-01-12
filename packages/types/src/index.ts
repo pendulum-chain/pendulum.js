@@ -1,5 +1,16 @@
-import { typesBundle as pendulumTypesBundle, types as pendulumTypes, typesAlias as pendulumTypeAlias, rpc as pendulumRpc } from '@pendulum-chain/pendulum-type-definitions';
-import { OverrideBundleType, OverrideModuleType, RegistryTypes, DefinitionRpc, DefinitionRpcSub } from '@polkadot/types/types';
+import {
+  typesBundle as pendulumTypesBundle,
+  types as pendulumTypes,
+  typesAlias as pendulumTypeAlias,
+  rpc as pendulumRpc
+} from '@pendulum-chain/type-definitions';
+import {
+  OverrideBundleType,
+  OverrideModuleType,
+  RegistryTypes,
+  DefinitionRpc,
+  DefinitionRpcSub
+} from '@polkadot/types/types';
 import './interfaces/augment-fixes';
 import './interfaces/augment-api-query';
 import './interfaces/augment-api-consts';

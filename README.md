@@ -12,7 +12,7 @@ using [polkadot.js](https://github.com/polkadot-js/api)
 **📝NOTE: @polkadot/api version is pinned**
 
 ```bash
-yarn add @polkadot/api @pendulum-chain/pendulum-api
+yarn add @polkadot/api @pendulum-chain/api
 ```
 
 - Create API instance
@@ -20,7 +20,7 @@ yarn add @polkadot/api @pendulum-chain/pendulum-api
 ```ts
 import {ApiPromise} from '@polkadot/api';
 import {WsProvider} from '@polkadot/rpc-provider';
-import {options} from '@pendulum-chain/pendulum-api';
+import {options} from '@pendulum-chain/api';
 
 async function main() {
   const provider = new WsProvider('ws://localhost:9944');

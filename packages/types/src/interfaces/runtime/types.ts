@@ -2,11 +2,10 @@
 /* eslint-disable */
 
 import type { GenericAccountId32, GenericAccountId33, GenericAccountIndex, GenericBlock, GenericCall, GenericConsensusEngineId, GenericEthereumAccountId, GenericLookupSource, GenericMultiAddress, StorageKey } from '@polkadot/types';
-import type { BTreeMap, Bytes, Compact, DoNotConstruct, Enum, Int, Null, Option, Struct, U8aFixed, UInt, Vec, u16, u32, u64, u8 } from '@polkadot/types-codec';
+import type { Bytes, Compact, DoNotConstruct, Enum, Int, Null, Option, Struct, U8aFixed, UInt, Vec, u16, u32, u64, u8 } from '@polkadot/types-codec';
 import type { ITuple } from '@polkadot/types-codec/types';
 import type { AuthorityId } from '@polkadot/types/interfaces/consensus';
 import type { Signature } from '@polkadot/types/interfaces/extrinsics';
-import type { EraIndex } from '@polkadot/types/interfaces/staking';
 import type { SystemOrigin } from '@polkadot/types/interfaces/system';
 
 /** @name AccountId */
@@ -118,9 +117,6 @@ export interface DigestItem extends Enum {
 
 /** @name EncodedJustification */
 export interface EncodedJustification extends Bytes {}
-
-/** @name Evm */
-export interface Evm extends H160 {}
 
 /** @name ExtrinsicsWeight */
 export interface ExtrinsicsWeight extends Struct {
@@ -251,29 +247,6 @@ export interface OriginCaller extends Enum {
   readonly type: 'System';
 }
 
-/** @name PalletDappsStakingEraRewardAndStake */
-export interface PalletDappsStakingEraRewardAndStake extends Struct {
-  readonly rewards: Balance;
-  readonly staked: Balance;
-}
-
-/** @name PalletDappsStakingEraStakingPoints */
-export interface PalletDappsStakingEraStakingPoints extends Struct {
-  readonly total: Balance;
-  readonly stakers: BTreeMap<AccountId, Balance>;
-  readonly _formerStakedEra: EraIndex;
-  readonly claimedRewards: Balance;
-}
-
-/** @name PalletDappsStakingForcing */
-export interface PalletDappsStakingForcing extends Enum {
-  readonly isNotForcing: boolean;
-  readonly isForceNew: boolean;
-  readonly isForceNone: boolean;
-  readonly isForceAlways: boolean;
-  readonly type: 'NotForcing' | 'ForceNew' | 'ForceNone' | 'ForceAlways';
-}
-
 /** @name PalletId */
 export interface PalletId extends LockIdentifier {}
 
@@ -345,13 +318,6 @@ export interface Seal extends ITuple<[ConsensusEngineId, Bytes]> {}
 /** @name SealV0 */
 export interface SealV0 extends ITuple<[u64, Signature]> {}
 
-/** @name ShidenRuntimeSmartContract */
-export interface ShidenRuntimeSmartContract extends Enum {
-  readonly isEvm: boolean;
-  readonly isWasm: boolean;
-  readonly type: 'Evm' | 'Wasm';
-}
-
 /** @name SignedBlock */
 export interface SignedBlock extends SignedBlockWithJustifications {}
 
@@ -421,9 +387,6 @@ export interface ValidatorId extends AccountId {}
 
 /** @name ValidatorIdOf */
 export interface ValidatorIdOf extends ValidatorId {}
-
-/** @name Wasm */
-export interface Wasm extends AccountId {}
 
 /** @name Weight */
 export interface Weight extends WeightV1 {}

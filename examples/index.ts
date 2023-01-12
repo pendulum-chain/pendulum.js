@@ -1,6 +1,6 @@
 import { ApiPromise } from '@polkadot/api';
 import { WsProvider } from '@polkadot/rpc-provider';
-import { options } from '@pendulum-chain/pendulum-api';
+import { options } from '@pendulum-chain/api';
 
 async function connectToAmplitude() {
   const provider = new WsProvider('wss://shiden.api.onfinality.io/public-ws');
@@ -34,8 +34,11 @@ async function extrinsics(blockNumber: number) {
   signedBlock.block.extrinsics.forEach((ex, index) => {
     console.log(index, ex.hash.toHex());
 
-
-    const { isSigned, meta, method: { args, method, section } } = ex;
+    const {
+      isSigned,
+      meta,
+      method: { args, method, section }
+    } = ex;
 
     // explicit display of name, args & documentation
     console.log(`${section}.${method}(${args.map((a) => a.toString()).join(', ')})`);
@@ -48,13 +51,9 @@ async function extrinsics(blockNumber: number) {
   });
 }
 
-
-
-
 (async () => {
   await connectToAmplitude();
   await connectToPendulum();
   await extrinsics(2297834);
   process.exit(0);
 })();
-

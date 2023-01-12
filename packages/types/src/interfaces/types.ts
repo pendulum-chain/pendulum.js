@@ -3,3 +3,4 @@
 
 export * from './runtime/types';
 export * from './pallets/types';
+export * from './primitives/types';

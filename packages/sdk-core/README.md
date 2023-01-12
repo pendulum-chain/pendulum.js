@@ -1,1 +1,1 @@
-# @pendulum-chain/pendulum-sdk-core
+# @pendulum-chain/sdk-core

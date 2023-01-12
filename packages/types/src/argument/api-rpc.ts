@@ -5,11 +5,13 @@
 // this is required to allow for ambient/previous definitions
 import '@polkadot/rpc-core/types/jsonrpc';
 
-import type { AccountId, BlockNumber, H160, H256, H64, Hash, Header, Index, Justification, KeyValue, SignedBlock, StorageData } from '@pendulum-chain/pendulum-types/interfaces/runtime';
+import type { RpcDataProviderId, TimestampedValue } from '@open-web3/orml-types/interfaces/oracle';
+import type { CurrencyId, NumberOrHex, OracleKey } from '@pendulum-chain/types/interfaces/primitives';
+import type { AccountId, BlockNumber, H160, H256, H64, Hash, Header, Index, Justification, KeyValue, SignedBlock, StorageData } from '@pendulum-chain/types/interfaces/runtime';
 import type { AugmentedRpc } from '@polkadot/rpc-core/types';
 import type { Metadata, StorageKey } from '@polkadot/types';
 import type { Bytes, HashMap, Json, Null, Option, Text, U256, U64, Vec, bool, f64, u32, u64 } from '@polkadot/types-codec';
-import type { AnyNumber, Codec } from '@polkadot/types-codec/types';
+import type { AnyNumber, Codec, ITuple } from '@polkadot/types-codec/types';
 import type { ExtrinsicOrHash, ExtrinsicStatus } from '@polkadot/types/interfaces/author';
 import type { EpochAuthorship } from '@polkadot/types/interfaces/babe';
 import type { BeefySignedCommitment } from '@polkadot/types/interfaces/beefy';
@@ -405,6 +407,16 @@ declare module '@polkadot/rpc-core/types/jsonrpc' {
        **/
       localStorageSet: AugmentedRpc<(kind: StorageKind | 'PERSISTENT' | 'LOCAL' | number | Uint8Array, key: Bytes | string | Uint8Array, value: Bytes | string | Uint8Array) => Observable<Null>>;
     };
+    oracle: {
+      /**
+       * Retrieves all oracle values.
+       **/
+      getAllValues: AugmentedRpc<(providerId: RpcDataProviderId | string, at?: BlockHash | string | Uint8Array) => Observable<Vec<ITuple<[OracleKey, Option<TimestampedValue>]>>>>;
+      /**
+       * Retrieves the oracle value for a given key.
+       **/
+      getValue: AugmentedRpc<(providerId: RpcDataProviderId | string, key: OracleKey | {  } | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<Option<TimestampedValue>>>;
+    };
     payment: {
       /**
        * @deprecated Use `api.call.transactionPaymentApi.queryFeeDetails` instead
@@ -594,6 +606,12 @@ declare module '@polkadot/rpc-core/types/jsonrpc' {
        * Retrieves the version of the node
        **/
       version: AugmentedRpc<() => Observable<Text>>;
+    };
+    tokens: {
+      /**
+       * Query Existential Deposit for a given currency.
+       **/
+      queryExistentialDeposit: AugmentedRpc<(currencyId: CurrencyId | {  } | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<NumberOrHex>>;
     };
     web3: {
       /**

@@ -1,5 +1,5 @@
 {
-  "name": "@pendulum-chain/pendulum-type-definitions",
+  "name": "@pendulum-chain/type-definitions",
   "version": "0.1.12",
   "description": "Polkadot.js type definitions for pendulum Network",
   "main": "index.js",

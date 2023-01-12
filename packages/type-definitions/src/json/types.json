@@ -1,22 +1,5 @@
 {
-    "Address": "AccountId",
-    "LookupSource": "AccountId",
-    "PalletsOrigin": {
-        "_enum": {
-            "System": "SystemOrigin",
-            "Timestamp": "Null",
-            "RandomnessCollectiveFlip": "Null",
-            "Balances": "Null",
-            "Utility": "Null",
-            "Indices": "Null",
-            "Authorship": "Null",
-            "Aura": "Null",
-            "Grandpa": "Null",
-            "Staking": "Null",
-            "Session": "Null",
-            "Historical": "Null",
-            "Sudo": "Null",
-            "TransactionPayment": "Null"
-        }
-    }
+    "OracleKey": {},
+    "CurrencyId": {},
+    "NumberOrHex": "u128"
 }
