@@ -11,10 +11,13 @@ import {
   DefinitionRpc,
   DefinitionRpcSub
 } from '@polkadot/types/types';
-import './interfaces/augment-fixes';
-import './interfaces/augment-api-query';
-import './interfaces/augment-api-consts';
-import './interfaces/augment-types';
+
+import './argument/api';
+import './lookup/types';
+
+export * as lookupTypes from './lookup';
+
+// export * from './interfaces/augment-api-mobx';
 
 export const types: RegistryTypes = pendulumTypes;
 
@@ -22,4 +25,4 @@ export const rpc: Record<string, Record<string, DefinitionRpc | DefinitionRpcSub
 
 export const typesAlias: Record<string, OverrideModuleType> = pendulumTypeAlias;
 
-export const typesBundle = pendulumTypesBundle as OverrideBundleType;
+export const typesBundle = pendulumTypesBundle as unknown as OverrideBundleType;
