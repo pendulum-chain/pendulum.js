@@ -10,10 +10,7 @@ const strToBig = (str: string): BigNumber => BigNumber.from(str.toString());
  * @param decimal eg: 18
  * @returns '12.999999999999'
  */
-export const defaultAmountWithDecimals = (
-  value: BN | BigNumber | string,
-  decimal: number
-): string => {
+export const defaultAmountWithDecimals = (value: BN | BigNumber | string, decimal: number): string => {
   if (isString(value)) {
     const hexValue = strToBig(value);
     return formatFixed(hexValue, decimal);

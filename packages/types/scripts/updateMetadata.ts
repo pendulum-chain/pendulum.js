@@ -10,7 +10,7 @@ const main = (): void => {
   ws.onopen = (): void => {
     ws.send('{"id":"1","jsonrpc":"2.0","method":"state_getMetadata","params":[]}');
   };
-  ws.onerror = (err: any): void => {
+  ws.onerror = (): void => {
     console.log('Failed to connect to ', endpoint);
     process.exit(1);
   };

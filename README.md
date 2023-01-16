@@ -86,3 +86,24 @@ and then run the following command to build the type definitions based on that m
 ```shell
 yarn build
 ```
+
+## Publishing package updates to npm
+
+This project uses yarn for package management. To publish a new version of the package, you can follow these steps.
+
+```shell
+yarn npm login --publish
+```
+
+Next, for every new update you have to create a new version tag. You can do this by running the following command:
+
+```shell
+yarn version {major/minor/patch}
+```
+
+Finally, you can publish the new version to npm by running the following command:
+
+```shell
+# Then, run the following command to publish the package
+yarn npm publish --access public
+```

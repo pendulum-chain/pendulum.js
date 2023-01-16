@@ -72,7 +72,7 @@ function npmPublish() {
 
   while (true) {
     try {
-      execSync(`npm publish --access public ${tag}`);
+      execSync(`yarn npm publish --access public ${tag}`);
 
       break;
     } catch (error) {

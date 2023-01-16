@@ -1,6 +1,6 @@
 {
   "name": "@pendulum-chain/api-derive",
-  "version": "0.1.0",
+  "version": "0.1.4",
   "description": "Pendulum JS API",
   "main": "index.js",
   "author": "Pendulum",
@@ -21,7 +21,7 @@
   "dependencies": {
     "@babel/runtime": "^7.10.2",
     "@open-web3/orml-types": "^1.1.4",
-    "@pendulum-chain/types": "0.1.0",
+    "@pendulum-chain/types": "0.1.4",
     "@polkadot/api-derive": "^9.9.1"
   }
 }

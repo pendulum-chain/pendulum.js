@@ -148,12 +148,13 @@ function gitPush() {
   }
 
   // add the skip checks for GitHub ...
-  execSync(`git commit --no-status --quiet -m "[CI Skip] release/${version.includes('-') ? 'beta' : 'stable'} ${version}
+  execSync(
+    `git commit --no-status --quiet -m "[CI Skip] release/${
+      version.includes('-') ? 'beta' : 'stable'
+    } ${version} skip-checks: true"`
+  );
 
-
-skip-checks: true"`);
-
-  execSync(`git push ${repo} HEAD:${process.env.GITHUB_REF}`, true);
+  // execSync(`git push ${repo} HEAD:${process.env.GITHUB_REF}`, true);
 
   if (doGHRelease) {
     const files = process.env.GH_RELEASE_FILES ? `--assets ${process.env.GH_RELEASE_FILES}` : '';

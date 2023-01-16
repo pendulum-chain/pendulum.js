@@ -2,18 +2,14 @@
   "extends": "@open-web3/dev-config/config/tsconfig.json",
   "exclude": [
     "build/**/*",
-    "**/build/**/*",
-    "examples/**",
-    "scripts/**",
-    "coverage/**"
+    "**/build/**/*"
   ],
   "compilerOptions": {
-    "declaration": true,
-    "target": "ES2020",
+    "target": "ES2019",
     "module": "commonjs",
     "baseUrl": ".",
-    "allowJs": true,
-    "noUnusedLocals": false,
+    "declaration": true,
+
     "paths": {
       "@pendulum-chain/api": [
         "packages/api/src"
@@ -39,15 +35,20 @@
       "@pendulum-chain/type-definitions/*": [
         "packages/type-definitions/src/*"
       ],
-      "@pendulum-chain/sdk-core":[
+      "@pendulum-chain/sdk-core": [
         "packages/sdk-core/src"
       ],
       "@pendulum-chain/sdk-core/*": [
         "packages/sdk-core/src/*"
       ],
+      "@pendulum-chain/typegen": [
+        "packages/typegen/src"
+      ],
+      "@pendulum-chain/typegen/*": [
+        "packages/typegen/src/*"
+      ]
     },
     "skipLibCheck": true,
-    "allowSyntheticDefaultImports": true,
     "typeRoots": [
       "./node_modules/@polkadot/ts",
       "./node_modules/@types"
