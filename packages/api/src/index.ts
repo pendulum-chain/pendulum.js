@@ -1,14 +1,15 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { derive as pendulumDerive } from '@pendulum-chain/api-derive';
+import { derive as ormlDerives } from '@open-web3/orml-api-derive';
+import { derive as pendulumDerives } from '@pendulum-chain/api-derive';
 import {
   rpc as pendulumRpc,
   types as pendulumTypes,
   typesAlias as pendulumTypesAlias,
-  typesBundle as pendulumTypesBundle
+  typesBundle as pendulumTypesBundle,
+  lookupTypes as pendulumLookupTypes
 } from '@pendulum-chain/types';
-import { derive as ormlDerive } from '@open-web3/orml-api-derive';
-
 import { ApiOptions } from '@polkadot/api/types';
+import { RegistryTypes } from '@polkadot/types/types';
+import { runtime as pendulumRuntime } from './runtime';
 
 export const defaultOptions: ApiOptions = {
   types: pendulumTypes,
@@ -20,10 +21,13 @@ export const options = ({
   rpc = {},
   typesAlias = {},
   typesBundle = {},
+  runtime = {},
+  signedExtensions,
   ...otherOptions
 }: ApiOptions = {}): ApiOptions => ({
   types: {
     ...pendulumTypes,
+    ...(pendulumLookupTypes as unknown as RegistryTypes), // TODO: RegistryTypes's own issue?
     ...types
   },
   rpc: {
@@ -34,9 +38,10 @@ export const options = ({
     ...pendulumTypesAlias,
     ...typesAlias
   },
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   derives: {
-    ...ormlDerive,
-    ...pendulumDerive
+    ...pendulumDerives,
+    ...ormlDerives
   },
   typesBundle: {
     ...typesBundle,
@@ -48,9 +53,16 @@ export const options = ({
       },
       amplitude: {
         ...pendulumTypesBundle?.spec?.amplitude,
-        ...typesBundle?.spec?.shiden
+        ...typesBundle?.spec?.amplitude
       }
     }
+  },
+  signedExtensions: {
+    ...signedExtensions
+  },
+  runtime: {
+    ...pendulumRuntime,
+    ...runtime
   },
   ...otherOptions
 });
