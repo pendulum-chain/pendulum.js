@@ -20,7 +20,7 @@
   "homepage": "https://github.com/pendulum-chain/pendulum.js",
   "dependencies": {
     "@babel/runtime": "^7.10.2",
-    "@open-web3/orml-types": "^1.0.2-0",
+    "@open-web3/orml-types": "^1.1.4",
     "@pendulum-chain/types": "0.1.0",
     "@polkadot/api-derive": "^9.2.4"
   }

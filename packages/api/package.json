@@ -20,13 +20,13 @@
   "homepage": "https://github.com/pendulum-chain/pendulum.js",
   "dependencies": {
     "@babel/runtime": "^7.10.2",
-    "@open-web3/orml-api-derive": "^1.0.2-0",
+    "@open-web3/orml-api-derive": "^1.1.4",
     "@pendulum-chain/api-derive": "0.1.0",
     "@pendulum-chain/types": "0.1.0",
-    "@polkadot/api": "^9.2.4"
+    "@polkadot/api": "^9.9.1"
   },
   "peerDependencies": {
-    "@polkadot/api": "^7.11.1",
-    "@polkadot/types": "^7.11.1"
+    "@polkadot/api": ">=9",
+    "@polkadot/types": ">=9"
   }
 }

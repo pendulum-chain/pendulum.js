@@ -20,20 +20,18 @@
   "homepage": "https://github.com/pendulum-chain/pendulum.js",
   "dependencies": {
     "@babel/runtime": "^7.10.2",
-    "@open-web3/api-mobx": "^1.0.2-0",
-    "@open-web3/orml-types": "^1.0.2-0",
-    "@pendulum-chain/type-definitions": "0.1.0",
-    "@polkadot/api": "^9.2.4",
-    "@polkadot/typegen": "^9.2.4",
-    "@polkadot/types": "^9.2.4"
+    "@open-web3/api-mobx": "^1.1.4",
+    "@open-web3/orml-types": "^1.1.4",
+    "@pendulum-chain/type-definitions": "0.1.0"
   },
   "devDependencies": {
+    "@polkadot/api": "^9.9.1",
+    "@polkadot/typegen": "^9.9.1",
+    "@polkadot/types": "^9.9.1",
     "@types/websocket": "^1.0.0",
     "websocket": "^1.0.31"
   },
   "peerDependencies": {
-    "@polkadot/api": "^9.2.4",
-    "@polkadot/typegen": "^9.2.4",
-    "@polkadot/types": "^9.2.4"
+    "@polkadot/api": ">=8"
   }
 }
