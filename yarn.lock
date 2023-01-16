@@ -2818,13 +2818,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pendulum-chain/api-derive@0.1.12, @pendulum-chain/api-derive@workspace:packages/api-derive":
+"@pendulum-chain/api-derive@0.1.0, @pendulum-chain/api-derive@workspace:packages/api-derive":
   version: 0.0.0-use.local
   resolution: "@pendulum-chain/api-derive@workspace:packages/api-derive"
   dependencies:
     "@babel/runtime": ^7.10.2
     "@open-web3/orml-types": ^1.0.2-0
-    "@pendulum-chain/types": 0.1.12
+    "@pendulum-chain/types": 0.1.0
     "@polkadot/api-derive": ^9.2.4
   languageName: unknown
   linkType: soft
@@ -2835,8 +2835,8 @@ __metadata:
   dependencies:
     "@babel/runtime": ^7.10.2
     "@open-web3/orml-api-derive": ^1.0.2-0
-    "@pendulum-chain/api-derive": 0.1.12
-    "@pendulum-chain/types": 0.1.12
+    "@pendulum-chain/api-derive": 0.1.0
+    "@pendulum-chain/types": 0.1.0
     "@polkadot/api": ^9.2.4
   peerDependencies:
     "@polkadot/api": ^7.11.1
@@ -2857,7 +2857,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pendulum-chain/type-definitions@0.1.12, @pendulum-chain/type-definitions@workspace:packages/type-definitions":
+"@pendulum-chain/type-definitions@0.1.0, @pendulum-chain/type-definitions@workspace:packages/type-definitions":
   version: 0.0.0-use.local
   resolution: "@pendulum-chain/type-definitions@workspace:packages/type-definitions"
   dependencies:
@@ -2866,14 +2866,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pendulum-chain/types@0.1.12, @pendulum-chain/types@workspace:packages/types":
+"@pendulum-chain/types@0.1.0, @pendulum-chain/types@workspace:packages/types":
   version: 0.0.0-use.local
   resolution: "@pendulum-chain/types@workspace:packages/types"
   dependencies:
     "@babel/runtime": ^7.10.2
     "@open-web3/api-mobx": ^1.0.2-0
     "@open-web3/orml-types": ^1.0.2-0
-    "@pendulum-chain/type-definitions": 0.1.12
+    "@pendulum-chain/type-definitions": 0.1.0
     "@polkadot/api": ^9.2.4
     "@polkadot/typegen": ^9.2.4
     "@polkadot/types": ^9.2.4
