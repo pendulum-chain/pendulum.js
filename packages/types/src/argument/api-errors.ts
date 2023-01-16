@@ -339,6 +339,7 @@ declare module '@polkadot/api-base/types/errors' {
       NoValidatorsRegistered: AugmentedError<ApiType>;
       NoValidatorsRegisteredForNetwork: AugmentedError<ApiType>;
       OrganizationLimitExceeded: AugmentedError<ApiType>;
+      TransactionMemoDoesNotMatch: AugmentedError<ApiType>;
       TransactionNotInTransactionSet: AugmentedError<ApiType>;
       TransactionSetHashCreationFailed: AugmentedError<ApiType>;
       TransactionSetHashMismatch: AugmentedError<ApiType>;
