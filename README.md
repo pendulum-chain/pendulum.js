@@ -91,19 +91,30 @@ yarn build
 
 This project uses yarn for package management. To publish a new version of the package, you can follow these steps.
 
+After you have made the changes you want to publish, you need to bump the version of the package. You can do this by
+running:
+
 ```shell
-yarn npm login --publish
+# For a major version bump
+yarn update-version-major
+# For a minor version bump
+yarn update-version-minor
+# For a patch version bump
+yarn update-version-patch
 ```
 
-Next, for every new update you have to create a new version tag. You can do this by running the following command:
+Next, you need to build the package and publish it to npm.
+To be able to publish the package, you need to be a member of the `@pendulum-chain` organization on npm.
+You also need to generate and add an access token on npmjs.com.
+Then, change the `publish` script in `package.json` and replace the value of `NPM_TOKEN` with the token you generated on npmjs.com.
+Afterwards, you can run the following command to publish the package:
 
 ```shell
-yarn version {major/minor/patch}
+yarn publish
 ```
 
-Finally, you can publish the new version to npm by running the following command:
+Finally, you should push the changes to the remote repository. You can do this by running:
 
 ```shell
-# Then, run the following command to publish the package
-yarn npm publish --access public
+git push
 ```

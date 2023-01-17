@@ -21,20 +21,16 @@
     "build": "yarn build:interfaces && polkadot-dev-build-ts",
     "build:interfaces": "node -r ts-node/register -r tsconfig-paths/register packages/types/scripts/generateTypes.ts && node -r ts-node/register -r tsconfig-paths/register packages/type-definitions/scripts/generate.ts",
     "build:release": "node ./scripts/build-release.js",
-    "check-deps": "./node_modules/@open-web3/util/scripts/check-deps.js yarn.lock @polkadot/ @open-web3/",
     "clean": "polkadot-dev-clean-build",
     "lint": "polkadot-dev-run-lint",
     "postinstall": "polkadot-dev-yarn-only",
-    "run-example": "ts-node -r tsconfig-paths/register examples/index.ts",
     "test": "polkadot-dev-run-test --coverage --passWithNoTests",
     "update-metadata": "ts-node --project ./tsconfig.json packages/types/scripts/updateMetadata.ts",
     "update-metadata-local": "ENDPOINT=ws://127.0.0.1:9944 ts-node --project ./tsconfig.json packages/types/scripts/updateMetadata.ts",
-    "generate:defs": "ts-node -r tsconfig-paths/register node_modules/.bin/polkadot-types-from-defs --package @pendulum-chain/types/interfaces --input packages/types/src/interfaces --endpoint packages/types/src/metadata/static-latest.json",
-    "generate:meta": "ts-node -r tsconfig-paths/register node_modules/.bin/polkadot-types-from-chain --package @pendulum-chain/types/interfaces --output packages/types/src/interfaces --endpoint packages/types/src/metadata/static-latest.json",
-    "update-types": "yarn update-metadata-local && yarn generate:defs && yarn generate:meta",
-    "publish-types": "cd ./packages/types && node ./scripts/publishTypes.js",
-    "update-version": "node scripts/update-version.js patch",
-    "publish": "GITHUB_REPOSITORY=pendulum-chain/pendulum.js GITHUB_REF=main NPM_TOKEN=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 node ./scripts/build-release.js"
+    "update-version-major": "node scripts/update-version.js major",
+    "update-version-minor": "node scripts/update-version.js minor",
+    "update-version-patch": "node scripts/update-version.js patch",
+    "publish": "NPM_TOKEN=REPLACE_ME node ./scripts/build-release.js"
   },
   "dependencies": {
     "ts-proto": "^1.82.2"
