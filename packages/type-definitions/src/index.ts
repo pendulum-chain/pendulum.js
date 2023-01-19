@@ -1,7 +1,10 @@
 import type { OverrideVersionedType } from '@polkadot/types/types';
 
 import { jsonrpcFromDefs, typesAliasFromDefs, typesFromDefs } from '@open-web3/orml-type-definitions/utils';
-import pallets from './pallets';
+import issue from './issue';
+import redeem from './redeem';
+import replace from './replace';
+import vaultRegistry from './vaultRegistry';
 import primitives from './primitives';
 
 import pendulumVersioned from './specs/pendulum';
@@ -11,7 +14,10 @@ const additionalOverride = {};
 
 const pendulumDefs = {
   primitives,
-  pallets
+  issue,
+  redeem,
+  replace,
+  vaultRegistry
 };
 
 export const types = {

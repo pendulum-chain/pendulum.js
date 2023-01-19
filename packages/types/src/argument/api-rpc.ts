@@ -6,8 +6,9 @@
 import '@polkadot/rpc-core/types/jsonrpc';
 
 import type { RpcDataProviderId, TimestampedValue } from '@open-web3/orml-types/interfaces/oracle';
+import type { SpacewalkPrimitivesVaultId } from '@pendulum-chain/types/interfaces/issue';
 import type { CurrencyId, NumberOrHex, OracleKey } from '@pendulum-chain/types/interfaces/primitives';
-import type { AccountId, BlockNumber, H160, H256, H64, Hash, Header, Index, Justification, KeyValue, SignedBlock, StorageData } from '@pendulum-chain/types/interfaces/runtime';
+import type { AccountId, Balance, BlockNumber, FixedU128, H160, H256, H64, Hash, Header, Index, Justification, KeyValue, SignedBlock, StorageData } from '@pendulum-chain/types/interfaces/runtime';
 import type { AugmentedRpc } from '@polkadot/rpc-core/types';
 import type { Metadata, StorageKey } from '@polkadot/types';
 import type { Bytes, HashMap, Json, Null, Option, Text, U256, U64, Vec, bool, f64, u32, u64 } from '@polkadot/types-codec';
@@ -373,6 +374,52 @@ declare module '@polkadot/rpc-core/types/jsonrpc' {
        **/
       subscribeJustifications: AugmentedRpc<() => Observable<JustificationNotification>>;
     };
+    issue: {
+      /**
+       * Get the collateralization rate of a vault
+       **/
+      getCollateralizationFromVault: AugmentedRpc<(vaultId: SpacewalkPrimitivesVaultId | { accountId?: any; currencies?: any } | string | Uint8Array, onlyIssued: bool | boolean | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<FixedU128>>;
+      /**
+       * Get the collateralization rate of a vault and collateral
+       **/
+      getCollateralizationFromVaultAndCollateral: AugmentedRpc<(vaultId: SpacewalkPrimitivesVaultId | { accountId?: any; currencies?: any } | string | Uint8Array, collateral: Balance | AnyNumber | Uint8Array, onlyIssued: bool | boolean | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<FixedU128>>;
+      /**
+       * Get the amount of tokens a vault can issue
+       **/
+      getIssuableTokensFromVault: AugmentedRpc<(vaultId: SpacewalkPrimitivesVaultId | { accountId?: any; currencies?: any } | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<Balance>>;
+      /**
+       * Get all vaults below the premium redeem threshold, ordered in descending order of this amount
+       **/
+      getPremiumRedeemVaults: AugmentedRpc<(at?: BlockHash | string | Uint8Array) => Observable<Vec<ITuple<[SpacewalkPrimitivesVaultId, Balance]>>>>;
+      /**
+       * Get the amount of collateral required for the given vault to be at the current SecureCollateralThreshold with the current exchange rate
+       **/
+      getRequiredCollateralForVault: AugmentedRpc<(vaultId: SpacewalkPrimitivesVaultId | { accountId?: any; currencies?: any } | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<Balance>>;
+      /**
+       * Get the minimum amount of collateral required for the given amount of token with the current threshold and exchange rate
+       **/
+      getRequiredCollateralForWrapped: AugmentedRpc<(amount: Balance | AnyNumber | Uint8Array, currencyId: CurrencyId | {  } | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<Balance>>;
+      /**
+       * Get the vault's collateral (excluding nomination)
+       **/
+      getVaultCollateral: AugmentedRpc<(vaultId: SpacewalkPrimitivesVaultId | { accountId?: any; currencies?: any } | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<Balance>>;
+      /**
+       * Get the vault's collateral (including nomination)
+       **/
+      getVaultTotalCollateral: AugmentedRpc<(vaultId: SpacewalkPrimitivesVaultId | { accountId?: any; currencies?: any } | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<Balance>>;
+      /**
+       * Get all the vaultIds registered by a vault's accountId
+       **/
+      getVaultsByAccountId: AugmentedRpc<(accountId: AccountId | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<Vec<SpacewalkPrimitivesVaultId>>>;
+      /**
+       * Get all vaults with non-zero issuable tokens, ordered in descending order of this amount
+       **/
+      getVaultsWithIssuableTokens: AugmentedRpc<(at?: BlockHash | string | Uint8Array) => Observable<Vec<ITuple<[SpacewalkPrimitivesVaultId, Balance]>>>>;
+      /**
+       * Get all vaults with non-zero redeemable tokens, ordered in descending order of this amount
+       **/
+      getVaultsWithRedeemableTokens: AugmentedRpc<(at?: BlockHash | string | Uint8Array) => Observable<Vec<ITuple<[SpacewalkPrimitivesVaultId, Balance]>>>>;
+    };
     mmr: {
       /**
        * Generate MMR proof for the given leaf indices.
@@ -428,6 +475,26 @@ declare module '@polkadot/rpc-core/types/jsonrpc' {
        * Retrieves the fee information for an encoded extrinsic
        **/
       queryInfo: AugmentedRpc<(extrinsic: Bytes | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<RuntimeDispatchInfoV1>>;
+    };
+    redeem: {
+      /**
+       * Get all redeem requests for a particular account
+       **/
+      getRedeemRequests: AugmentedRpc<(accountId: AccountId | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<Vec<H256>>>;
+      /**
+       * Get all redeem requests for a particular vault
+       **/
+      getVaultRedeemRequests: AugmentedRpc<(vaultId: AccountId | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<Vec<H256>>>;
+    };
+    replace: {
+      /**
+       * Get all replace requests to a particular vault
+       **/
+      getNewVaultRedeemRequests: AugmentedRpc<(vaultId: AccountId | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<Vec<H256>>>;
+      /**
+       * Get all replace requests from a particular vault
+       **/
+      getOldVaultReplaceRequests: AugmentedRpc<(accountId: AccountId | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<Vec<H256>>>;
     };
     rpc: {
       /**
@@ -612,6 +679,16 @@ declare module '@polkadot/rpc-core/types/jsonrpc' {
        * Query Existential Deposit for a given currency.
        **/
       queryExistentialDeposit: AugmentedRpc<(currencyId: CurrencyId | {  } | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<NumberOrHex>>;
+    };
+    vaultRegistry: {
+      /**
+       * Get all replace requests to a particular vault
+       **/
+      getNewVaultRedeemRequests: AugmentedRpc<(vaultId: AccountId | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<Vec<H256>>>;
+      /**
+       * Get all replace requests from a particular vault
+       **/
+      getOldVaultReplaceRequests: AugmentedRpc<(accountId: AccountId | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<Vec<H256>>>;
     };
     web3: {
       /**
