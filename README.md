@@ -106,11 +106,10 @@ yarn update-version-patch
 Next, you need to build the package and publish it to npm.
 To be able to publish the package, you need to be a member of the `@pendulum-chain` organization on npm.
 You also need to generate and add an access token on npmjs.com.
-Then, change the `publish` script in `package.json` and replace the value of `NPM_TOKEN` with the token you generated on npmjs.com.
-Afterwards, you can run the following command to publish the package:
+Then, provide the token you generated to yarn and publish the packages by running:
 
 ```shell
-yarn publish
+NPM_TOKEN=YOUR_NPM_TOKEN yarn publish
 ```
 
 Finally, you should push the changes to the remote repository. You can do this by running:
