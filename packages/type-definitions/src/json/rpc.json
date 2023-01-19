@@ -1,1 +1,354 @@
-{}
+{
+    "issue": {
+        "getIssueRequests": {
+            "description": "Get all issue requests for a particular account",
+            "params": [
+                {
+                    "name": "accountId",
+                    "type": "AccountId"
+                },
+                {
+                    "name": "at",
+                    "type": "BlockHash",
+                    "isHistoric": true,
+                    "isOptional": true
+                }
+            ],
+            "type": "Vec<H256>",
+            "isSubscription": false,
+            "jsonrpc": "issue_getIssueRequests",
+            "method": "getIssueRequests",
+            "section": "issue"
+        },
+        "getVaultIssueRequests": {
+            "description": "Get all issue requests for a particular vault",
+            "params": [
+                {
+                    "name": "vaultId",
+                    "type": "AccountId"
+                },
+                {
+                    "name": "at",
+                    "type": "BlockHash",
+                    "isHistoric": true,
+                    "isOptional": true
+                }
+            ],
+            "type": "Vec<H256>",
+            "isSubscription": false,
+            "jsonrpc": "issue_getVaultIssueRequests",
+            "method": "getVaultIssueRequests",
+            "section": "issue"
+        }
+    },
+    "redeem": {
+        "getRedeemRequests": {
+            "description": "Get all redeem requests for a particular account",
+            "params": [
+                {
+                    "name": "accountId",
+                    "type": "AccountId"
+                },
+                {
+                    "name": "at",
+                    "type": "BlockHash",
+                    "isHistoric": true,
+                    "isOptional": true
+                }
+            ],
+            "type": "Vec<H256>",
+            "isSubscription": false,
+            "jsonrpc": "redeem_getRedeemRequests",
+            "method": "getRedeemRequests",
+            "section": "redeem"
+        },
+        "getVaultRedeemRequests": {
+            "description": "Get all redeem requests for a particular vault",
+            "params": [
+                {
+                    "name": "vaultId",
+                    "type": "AccountId"
+                },
+                {
+                    "name": "at",
+                    "type": "BlockHash",
+                    "isHistoric": true,
+                    "isOptional": true
+                }
+            ],
+            "type": "Vec<H256>",
+            "isSubscription": false,
+            "jsonrpc": "redeem_getVaultRedeemRequests",
+            "method": "getVaultRedeemRequests",
+            "section": "redeem"
+        }
+    },
+    "replace": {
+        "getOldVaultReplaceRequests": {
+            "description": "Get all replace requests from a particular vault",
+            "params": [
+                {
+                    "name": "accountId",
+                    "type": "AccountId"
+                },
+                {
+                    "name": "at",
+                    "type": "BlockHash",
+                    "isHistoric": true,
+                    "isOptional": true
+                }
+            ],
+            "type": "Vec<H256>",
+            "isSubscription": false,
+            "jsonrpc": "replace_getOldVaultReplaceRequests",
+            "method": "getOldVaultReplaceRequests",
+            "section": "replace"
+        },
+        "getNewVaultRedeemRequests": {
+            "description": "Get all replace requests to a particular vault",
+            "params": [
+                {
+                    "name": "vaultId",
+                    "type": "AccountId"
+                },
+                {
+                    "name": "at",
+                    "type": "BlockHash",
+                    "isHistoric": true,
+                    "isOptional": true
+                }
+            ],
+            "type": "Vec<H256>",
+            "isSubscription": false,
+            "jsonrpc": "replace_getNewVaultRedeemRequests",
+            "method": "getNewVaultRedeemRequests",
+            "section": "replace"
+        }
+    },
+    "vaultRegistry": {
+        "getVaultCollateral": {
+            "description": "Get the vault's collateral (excluding nomination)",
+            "params": [
+                {
+                    "name": "vaultId",
+                    "type": "SpacewalkPrimitivesVaultId"
+                },
+                {
+                    "name": "at",
+                    "type": "BlockHash",
+                    "isHistoric": true,
+                    "isOptional": true
+                }
+            ],
+            "type": "Balance",
+            "isSubscription": false,
+            "jsonrpc": "vaultRegistry_getVaultCollateral",
+            "method": "getVaultCollateral",
+            "section": "vaultRegistry"
+        },
+        "getVaultsByAccountId": {
+            "description": "Get all the vaultIds registered by a vault's accountId",
+            "params": [
+                {
+                    "name": "accountId",
+                    "type": "AccountId"
+                },
+                {
+                    "name": "at",
+                    "type": "BlockHash",
+                    "isHistoric": true,
+                    "isOptional": true
+                }
+            ],
+            "type": "Vec<SpacewalkPrimitivesVaultId>",
+            "isSubscription": false,
+            "jsonrpc": "vaultRegistry_getVaultsByAccountId",
+            "method": "getVaultsByAccountId",
+            "section": "vaultRegistry"
+        },
+        "getVaultTotalCollateral": {
+            "description": "Get the vault's collateral (including nomination)",
+            "params": [
+                {
+                    "name": "vaultId",
+                    "type": "SpacewalkPrimitivesVaultId"
+                },
+                {
+                    "name": "at",
+                    "type": "BlockHash",
+                    "isHistoric": true,
+                    "isOptional": true
+                }
+            ],
+            "type": "Balance",
+            "isSubscription": false,
+            "jsonrpc": "vaultRegistry_getVaultTotalCollateral",
+            "method": "getVaultTotalCollateral",
+            "section": "vaultRegistry"
+        },
+        "getPremiumRedeemVaults": {
+            "description": "Get all vaults below the premium redeem threshold, ordered in descending order of this amount",
+            "params": [
+                {
+                    "name": "at",
+                    "type": "BlockHash",
+                    "isHistoric": true,
+                    "isOptional": true
+                }
+            ],
+            "type": "Vec<(SpacewalkPrimitivesVaultId, Balance)>",
+            "isSubscription": false,
+            "jsonrpc": "vaultRegistry_getPremiumRedeemVaults",
+            "method": "getPremiumRedeemVaults",
+            "section": "vaultRegistry"
+        },
+        "getVaultsWithIssuableTokens": {
+            "description": "Get all vaults with non-zero issuable tokens, ordered in descending order of this amount",
+            "params": [
+                {
+                    "name": "at",
+                    "type": "BlockHash",
+                    "isHistoric": true,
+                    "isOptional": true
+                }
+            ],
+            "type": "Vec<(SpacewalkPrimitivesVaultId, Balance)>",
+            "isSubscription": false,
+            "jsonrpc": "vaultRegistry_getVaultsWithIssuableTokens",
+            "method": "getVaultsWithIssuableTokens",
+            "section": "vaultRegistry"
+        },
+        "getVaultsWithRedeemableTokens": {
+            "description": "Get all vaults with non-zero redeemable tokens, ordered in descending order of this amount",
+            "params": [
+                {
+                    "name": "at",
+                    "type": "BlockHash",
+                    "isHistoric": true,
+                    "isOptional": true
+                }
+            ],
+            "type": "Vec<(SpacewalkPrimitivesVaultId, Balance)>",
+            "isSubscription": false,
+            "jsonrpc": "vaultRegistry_getVaultsWithRedeemableTokens",
+            "method": "getVaultsWithRedeemableTokens",
+            "section": "vaultRegistry"
+        },
+        "getIssuableTokensFromVault": {
+            "description": "Get the amount of tokens a vault can issue",
+            "params": [
+                {
+                    "name": "vaultId",
+                    "type": "SpacewalkPrimitivesVaultId"
+                },
+                {
+                    "name": "at",
+                    "type": "BlockHash",
+                    "isHistoric": true,
+                    "isOptional": true
+                }
+            ],
+            "type": "Balance",
+            "isSubscription": false,
+            "jsonrpc": "vaultRegistry_getIssuableTokensFromVault",
+            "method": "getIssuableTokensFromVault",
+            "section": "vaultRegistry"
+        },
+        "getCollateralizationFromVault": {
+            "description": "Get the collateralization rate of a vault",
+            "params": [
+                {
+                    "name": "vaultId",
+                    "type": "SpacewalkPrimitivesVaultId"
+                },
+                {
+                    "name": "onlyIssued",
+                    "type": "bool"
+                },
+                {
+                    "name": "at",
+                    "type": "BlockHash",
+                    "isHistoric": true,
+                    "isOptional": true
+                }
+            ],
+            "type": "FixedU128",
+            "isSubscription": false,
+            "jsonrpc": "vaultRegistry_getCollateralizationFromVault",
+            "method": "getCollateralizationFromVault",
+            "section": "vaultRegistry"
+        },
+        "getCollateralizationFromVaultAndCollateral": {
+            "description": "Get the collateralization rate of a vault and collateral",
+            "params": [
+                {
+                    "name": "vaultId",
+                    "type": "SpacewalkPrimitivesVaultId"
+                },
+                {
+                    "name": "collateral",
+                    "type": "Balance"
+                },
+                {
+                    "name": "onlyIssued",
+                    "type": "bool"
+                },
+                {
+                    "name": "at",
+                    "type": "BlockHash",
+                    "isHistoric": true,
+                    "isOptional": true
+                }
+            ],
+            "type": "FixedU128",
+            "isSubscription": false,
+            "jsonrpc": "vaultRegistry_getCollateralizationFromVaultAndCollateral",
+            "method": "getCollateralizationFromVaultAndCollateral",
+            "section": "vaultRegistry"
+        },
+        "getRequiredCollateralForWrapped": {
+            "description": "Get the minimum amount of collateral required for the given amount of token with the current threshold and exchange rate",
+            "params": [
+                {
+                    "name": "amount",
+                    "type": "Balance"
+                },
+                {
+                    "name": "currencyId",
+                    "type": "CurrencyId"
+                },
+                {
+                    "name": "at",
+                    "type": "BlockHash",
+                    "isHistoric": true,
+                    "isOptional": true
+                }
+            ],
+            "type": "Balance",
+            "isSubscription": false,
+            "jsonrpc": "vaultRegistry_getRequiredCollateralForWrapped",
+            "method": "getRequiredCollateralForWrapped",
+            "section": "vaultRegistry"
+        },
+        "getRequiredCollateralForVault": {
+            "description": "Get the amount of collateral required for the given vault to be at the current SecureCollateralThreshold with the current exchange rate",
+            "params": [
+                {
+                    "name": "vaultId",
+                    "type": "SpacewalkPrimitivesVaultId"
+                },
+                {
+                    "name": "at",
+                    "type": "BlockHash",
+                    "isHistoric": true,
+                    "isOptional": true
+                }
+            ],
+            "type": "Balance",
+            "isSubscription": false,
+            "jsonrpc": "vaultRegistry_getRequiredCollateralForVault",
+            "method": "getRequiredCollateralForVault",
+            "section": "vaultRegistry"
+        }
+    }
+}
