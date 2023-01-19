@@ -5,7 +5,7 @@ export default {
       params: [
         {
           name: 'vaultId',
-          type: 'VaultId'
+          type: 'SpacewalkPrimitivesVaultId'
         },
         {
           name: 'at',
@@ -14,7 +14,7 @@ export default {
           isOptional: true
         }
       ],
-      type: 'BalanceWrapper<Balance>'
+      type: 'Balance'
     },
     getVaultsByAccountId: {
       description: "Get all the vaultIds registered by a vault's accountId",
@@ -30,14 +30,14 @@ export default {
           isOptional: true
         }
       ],
-      type: 'Vec<VaultId>'
+      type: 'Vec<SpacewalkPrimitivesVaultId>'
     },
     getVaultTotalCollateral: {
       description: "Get the vault's collateral (including nomination)",
       params: [
         {
           name: 'vaultId',
-          type: 'VaultId'
+          type: 'SpacewalkPrimitivesVaultId'
         },
         {
           name: 'at',
@@ -46,7 +46,7 @@ export default {
           isOptional: true
         }
       ],
-      type: 'BalanceWrapper<Balance>'
+      type: 'Balance'
     },
     getPremiumRedeemVaults: {
       description: 'Get all vaults below the premium redeem threshold, ordered in descending order of this amount',
@@ -58,7 +58,7 @@ export default {
           isOptional: true
         }
       ],
-      type: 'Vec<(VaultId, BalanceWrapper<Balance>)>'
+      type: 'Vec<(SpacewalkPrimitivesVaultId, Balance)>'
     },
     getVaultsWithIssuableTokens: {
       description: 'Get all vaults with non-zero issuable tokens, ordered in descending order of this amount',
@@ -70,7 +70,7 @@ export default {
           isOptional: true
         }
       ],
-      type: 'Vec<(VaultId, BalanceWrapper<Balance>)>'
+      type: 'Vec<(SpacewalkPrimitivesVaultId, Balance)>'
     },
     getVaultsWithRedeemableTokens: {
       description: 'Get all vaults with non-zero redeemable tokens, ordered in descending order of this amount',
@@ -82,14 +82,14 @@ export default {
           isOptional: true
         }
       ],
-      type: 'Vec<(VaultId, BalanceWrapper<Balance>)>'
+      type: 'Vec<(SpacewalkPrimitivesVaultId, Balance)>'
     },
     getIssuableTokensFromVault: {
       description: 'Get the amount of tokens a vault can issue',
       params: [
         {
           name: 'vaultId',
-          type: 'VaultId'
+          type: 'SpacewalkPrimitivesVaultId'
         },
         {
           name: 'at',
@@ -98,14 +98,14 @@ export default {
           isOptional: true
         }
       ],
-      type: 'BalanceWrapper<Balance>'
+      type: 'Balance'
     },
     getCollateralizationFromVault: {
       description: 'Get the collateralization rate of a vault',
       params: [
         {
           name: 'vaultId',
-          type: 'VaultId'
+          type: 'SpacewalkPrimitivesVaultId'
         },
         {
           name: 'onlyIssued',
@@ -118,18 +118,18 @@ export default {
           isOptional: true
         }
       ],
-      type: 'UnsignedFixedPoint'
+      type: 'FixedU128'
     },
     getCollateralizationFromVaultAndCollateral: {
       description: 'Get the collateralization rate of a vault and collateral',
       params: [
         {
           name: 'vaultId',
-          type: 'VaultId'
+          type: 'SpacewalkPrimitivesVaultId'
         },
         {
           name: 'collateral',
-          type: 'BalanceWrapper<Balance>'
+          type: 'Balance'
         },
         {
           name: 'onlyIssued',
@@ -142,7 +142,7 @@ export default {
           isOptional: true
         }
       ],
-      type: 'UnsignedFixedPoint'
+      type: 'FixedU128'
     },
     getRequiredCollateralForWrapped: {
       description:
@@ -150,7 +150,7 @@ export default {
       params: [
         {
           name: 'amount',
-          type: 'BalanceWrapper<Balance>'
+          type: 'Balance'
         },
         {
           name: 'currencyId',
@@ -163,7 +163,7 @@ export default {
           isOptional: true
         }
       ],
-      type: 'BalanceWrapper<Balance>'
+      type: 'Balance'
     },
     getRequiredCollateralForVault: {
       description:
@@ -171,7 +171,7 @@ export default {
       params: [
         {
           name: 'vaultId',
-          type: 'VaultId'
+          type: 'SpacewalkPrimitivesVaultId'
         },
         {
           name: 'at',
@@ -180,14 +180,10 @@ export default {
           isOptional: true
         }
       ],
-      type: 'BalanceWrapper<Balance>'
+      type: 'Balance'
     }
   },
   types: {
-    VaultId: {
-      accountId: 'AccountId32',
-      currencies: 'SpacewalkPrimitivesVaultCurrencyPair'
-    },
     /**
      * Lookup39: spacewalk_primitives::CurrencyId
      **/
@@ -252,18 +248,19 @@ export default {
       ]
     },
     /**
+     * Lookup49: spacewalk_primitives::VaultId<sp_core::crypto::AccountId32, spacewalk_primitives::CurrencyId>
+     **/
+    SpacewalkPrimitivesVaultId: {
+      accountId: 'AccountId32',
+      currencies: 'SpacewalkPrimitivesVaultCurrencyPair'
+    },
+    /**
      * Lookup50: spacewalk_primitives::VaultCurrencyPair<spacewalk_primitives::CurrencyId>
      **/
     SpacewalkPrimitivesVaultCurrencyPair: {
       collateral: 'SpacewalkPrimitivesCurrencyId',
       wrapped: 'SpacewalkPrimitivesCurrencyId'
     }
-    // UnsignedFixedPoint: {}
-    // CurrencyId: {}
   },
-  typesAlias: {
-    BalanceWrapper: 'Balance',
-    CurrencyId: 'SpacewalkPrimitivesCurrencyId',
-    UnsignedFixedPoint: 'FixedU128'
-  }
+  typesAlias: {}
 };
