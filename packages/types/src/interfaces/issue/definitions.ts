@@ -1,4 +1,4 @@
 import { Definitions } from '@polkadot/types/types';
-import vaultRegistry from '@pendulum-chain/type-definitions/vaultRegistry';
+import issue from '@pendulum-chain/type-definitions/issue';
 
-export default vaultRegistry as Definitions;
+export default issue as Definitions;

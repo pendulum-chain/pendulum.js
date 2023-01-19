@@ -1,4 +1,4 @@
 import { Definitions } from '@polkadot/types/types';
-import replace from '@pendulum-chain/type-definitions/replace';
+import vaultRegistry from '@pendulum-chain/type-definitions/vaultRegistry';
 
-export default replace as Definitions;
+export default vaultRegistry as Definitions;
