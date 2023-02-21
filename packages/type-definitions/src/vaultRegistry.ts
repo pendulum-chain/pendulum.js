@@ -185,17 +185,16 @@ export default {
   },
   types: {
     /**
-     * Lookup39: spacewalk_primitives::CurrencyId
+     * Lookup104: spacewalk_primitives::CurrencyId
      **/
     SpacewalkPrimitivesCurrencyId: {
       _enum: {
-        Token: 'SpacewalkPrimitivesTokenSymbol',
         XCM: 'SpacewalkPrimitivesForeignCurrencyId',
         Native: 'Null',
         StellarNative: 'Null',
         AlphaNum4: {
           code: '[u8;4]',
-          issuer: '[u8;32]'
+          issuer: '[u8;32]',
         },
         AlphaNum12: {
           code: '[u8;12]',
@@ -204,48 +203,10 @@ export default {
       }
     },
     /**
-     * Lookup40: spacewalk_primitives::TokenSymbol
-     **/
-    SpacewalkPrimitivesTokenSymbol: {
-      _enum: [
-        'DOT',
-        'PEN',
-        '__Unused2',
-        '__Unused3',
-        '__Unused4',
-        '__Unused5',
-        '__Unused6',
-        '__Unused7',
-        '__Unused8',
-        '__Unused9',
-        'KSM',
-        '__Unused11',
-        'AMPE'
-      ]
-    },
-    /**
-     * Lookup41: spacewalk_primitives::ForeignCurrencyId
+     * Lookup105: spacewalk_primitives::ForeignCurrencyId
      **/
     SpacewalkPrimitivesForeignCurrencyId: {
-      _enum: [
-        'KSM',
-        'KAR',
-        'AUSD',
-        'BNC',
-        'VsKSM',
-        'HKO',
-        'MOVR',
-        'SDN',
-        'KINT',
-        'KBTC',
-        'GENS',
-        'XOR',
-        'TEER',
-        'KILT',
-        'PHA',
-        'ZTG',
-        'USD'
-      ]
+      _enum: ['KSM', 'KAR', 'AUSD', 'BNC', 'VsKSM', 'HKO', 'MOVR', 'SDN', 'KINT', 'KBTC', 'GENS', 'XOR', 'TEER', 'KILT', 'PHA', 'ZTG', 'USD', '__Unused17', '__Unused18', '__Unused19', 'DOT']
     },
     /**
      * Lookup49: spacewalk_primitives::VaultId<sp_core::crypto::AccountId32, spacewalk_primitives::CurrencyId>
