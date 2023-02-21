@@ -4,7 +4,6 @@
     "NumberOrHex": "u128",
     "SpacewalkPrimitivesCurrencyId": {
         "_enum": {
-            "Token": "SpacewalkPrimitivesTokenSymbol",
             "XCM": "SpacewalkPrimitivesForeignCurrencyId",
             "Native": "Null",
             "StellarNative": "Null",
@@ -17,23 +16,6 @@
                 "issuer": "[u8;32]"
             }
         }
-    },
-    "SpacewalkPrimitivesTokenSymbol": {
-        "_enum": [
-            "DOT",
-            "PEN",
-            "__Unused2",
-            "__Unused3",
-            "__Unused4",
-            "__Unused5",
-            "__Unused6",
-            "__Unused7",
-            "__Unused8",
-            "__Unused9",
-            "KSM",
-            "__Unused11",
-            "AMPE"
-        ]
     },
     "SpacewalkPrimitivesForeignCurrencyId": {
         "_enum": [
@@ -53,7 +35,11 @@
             "KILT",
             "PHA",
             "ZTG",
-            "USD"
+            "USD",
+            "__Unused17",
+            "__Unused18",
+            "__Unused19",
+            "DOT"
         ]
     },
     "SpacewalkPrimitivesVaultId": {

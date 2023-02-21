@@ -5,16 +5,16 @@
 // this is required to allow for ambient/previous definitions
 import '@polkadot/api-base/types/calls';
 
-import type { AccountId, Block, Header, Index, KeyTypeId, SlotDuration } from '@pendulum-chain/types/interfaces/runtime';
+import type { AccountId, Balance, Block, Header, Index, KeyTypeId, SlotDuration, WeightV2 } from '@pendulum-chain/types/interfaces/runtime';
 import type { ApiTypes, AugmentedCall, DecoratedCallBase } from '@polkadot/api-base/types';
 import type { Bytes, Null, Option, Vec, u32 } from '@polkadot/types-codec';
 import type { AnyNumber, ITuple } from '@polkadot/types-codec/types';
-import type { OpaqueKeyOwnershipProof } from '@polkadot/types/interfaces/babe';
 import type { CheckInherentsResult, InherentData } from '@polkadot/types/interfaces/blockbuilder';
 import type { BlockHash } from '@polkadot/types/interfaces/chain';
 import type { AuthorityId } from '@polkadot/types/interfaces/consensus';
+import type { CodeSource, CodeUploadResult, ContractExecResult, ContractInstantiateResult } from '@polkadot/types/interfaces/contracts';
+import type { CollationInfo } from '@polkadot/types/interfaces/cumulus';
 import type { Extrinsic } from '@polkadot/types/interfaces/extrinsics';
-import type { AuthorityList, GrandpaEquivocationProof, SetId } from '@polkadot/types/interfaces/grandpa';
 import type { OpaqueMetadata } from '@polkadot/types/interfaces/metadata';
 import type { FeeDetails, RuntimeDispatchInfo } from '@polkadot/types/interfaces/payment';
 import type { ApplyExtrinsicResult } from '@polkadot/types/interfaces/system';
@@ -75,24 +75,35 @@ declare module '@polkadot/api-base/types/calls' {
        **/
       [key: string]: DecoratedCallBase<ApiType>;
     };
-    /** 0xed99c5acb25eedf5/3 */
-    grandpaApi: {
+    /** 0xea93e3f16f3d6962/2 */
+    collectCollationInfo: {
       /**
-       * Get current GRANDPA authority set id.
+       * Collect information about a collation.
        **/
-      currentSetId: AugmentedCall<ApiType, () => Observable<SetId>>;
+      collectCollationInfo: AugmentedCall<ApiType, (header: Header | { parentHash?: any; number?: any; stateRoot?: any; extrinsicsRoot?: any; digest?: any } | string | Uint8Array) => Observable<CollationInfo>>;
       /**
-       * Generates a proof of key ownership for the given authority in the given set.
+       * Generic call
        **/
-      generateKeyOwnershipProof: AugmentedCall<ApiType, (setId: SetId | AnyNumber | Uint8Array, authorityId: AuthorityId | string | Uint8Array) => Observable<Option<OpaqueKeyOwnershipProof>>>;
+      [key: string]: DecoratedCallBase<ApiType>;
+    };
+    /** 0x68b66ba122c93fa7/2 */
+    contractsApi: {
       /**
-       * Get the current GRANDPA authorities and weights. This should not change except for when changes are scheduled and the corresponding delay has passed.
+       * Perform a call from a specified account to a given contract.
        **/
-      grandpaAuthorities: AugmentedCall<ApiType, () => Observable<AuthorityList>>;
+      call: AugmentedCall<ApiType, (origin: AccountId | string | Uint8Array, dest: AccountId | string | Uint8Array, value: Balance | AnyNumber | Uint8Array, gasLimit: Option<WeightV2> | null | Uint8Array | WeightV2 | { refTime?: any; proofSize?: any } | string, storageDepositLimit: Option<Balance> | null | Uint8Array | Balance | AnyNumber, inputData: Bytes | string | Uint8Array) => Observable<ContractExecResult>>;
       /**
-       * Submits an unsigned extrinsic to report an equivocation.
+       * Query a given storage key in a given contract.
        **/
-      submitReportEquivocationUnsignedExtrinsic: AugmentedCall<ApiType, (equivocationProof: GrandpaEquivocationProof | { setId?: any; equivocation?: any } | string | Uint8Array, keyOwnerProof: OpaqueKeyOwnershipProof | string | Uint8Array) => Observable<Option<Null>>>;
+      getStorage: AugmentedCall<ApiType, (address: AccountId | string | Uint8Array, key: Bytes | string | Uint8Array) => Observable<Option<Bytes>>>;
+      /**
+       * Instantiate a new contract.
+       **/
+      instantiate: AugmentedCall<ApiType, (origin: AccountId | string | Uint8Array, value: Balance | AnyNumber | Uint8Array, gasLimit: Option<WeightV2> | null | Uint8Array | WeightV2 | { refTime?: any; proofSize?: any } | string, storageDepositLimit: Option<Balance> | null | Uint8Array | Balance | AnyNumber, code: CodeSource | { Upload: any } | { Existing: any } | string | Uint8Array, data: Bytes | string | Uint8Array, salt: Bytes | string | Uint8Array) => Observable<ContractInstantiateResult>>;
+      /**
+       * Upload new code without instantiating a contract from it.
+       **/
+      uploadCode: AugmentedCall<ApiType, (origin: AccountId | string | Uint8Array, code: Bytes | string | Uint8Array, storageDepositLimit: Option<Balance> | null | Uint8Array | Balance | AnyNumber) => Observable<CodeUploadResult>>;
       /**
        * Generic call
        **/

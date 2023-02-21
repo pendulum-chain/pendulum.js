@@ -6,8 +6,6 @@ import type { Enum, Struct, U8aFixed } from '@polkadot/types-codec';
 
 /** @name SpacewalkPrimitivesCurrencyId */
 export interface SpacewalkPrimitivesCurrencyId extends Enum {
-  readonly isToken: boolean;
-  readonly asToken: SpacewalkPrimitivesTokenSymbol;
   readonly isXcm: boolean;
   readonly asXcm: SpacewalkPrimitivesForeignCurrencyId;
   readonly isNative: boolean;
@@ -22,7 +20,7 @@ export interface SpacewalkPrimitivesCurrencyId extends Enum {
     readonly code: U8aFixed;
     readonly issuer: U8aFixed;
   } & Struct;
-  readonly type: 'Token' | 'Xcm' | 'Native' | 'StellarNative' | 'AlphaNum4' | 'AlphaNum12';
+  readonly type: 'Xcm' | 'Native' | 'StellarNative' | 'AlphaNum4' | 'AlphaNum12';
 }
 
 /** @name SpacewalkPrimitivesForeignCurrencyId */
@@ -44,16 +42,8 @@ export interface SpacewalkPrimitivesForeignCurrencyId extends Enum {
   readonly isPha: boolean;
   readonly isZtg: boolean;
   readonly isUsd: boolean;
-  readonly type: 'Ksm' | 'Kar' | 'Ausd' | 'Bnc' | 'VsKSM' | 'Hko' | 'Movr' | 'Sdn' | 'Kint' | 'Kbtc' | 'Gens' | 'Xor' | 'Teer' | 'Kilt' | 'Pha' | 'Ztg' | 'Usd';
-}
-
-/** @name SpacewalkPrimitivesTokenSymbol */
-export interface SpacewalkPrimitivesTokenSymbol extends Enum {
   readonly isDot: boolean;
-  readonly isPen: boolean;
-  readonly isKsm: boolean;
-  readonly isAmpe: boolean;
-  readonly type: 'Dot' | 'Pen' | 'Ksm' | 'Ampe';
+  readonly type: 'Ksm' | 'Kar' | 'Ausd' | 'Bnc' | 'VsKSM' | 'Hko' | 'Movr' | 'Sdn' | 'Kint' | 'Kbtc' | 'Gens' | 'Xor' | 'Teer' | 'Kilt' | 'Pha' | 'Ztg' | 'Usd' | 'Dot';
 }
 
 /** @name SpacewalkPrimitivesVaultCurrencyPair */
