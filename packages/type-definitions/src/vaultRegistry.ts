@@ -194,7 +194,7 @@ export default {
         StellarNative: 'Null',
         AlphaNum4: {
           code: '[u8;4]',
-          issuer: '[u8;32]',
+          issuer: '[u8;32]'
         },
         AlphaNum12: {
           code: '[u8;12]',
@@ -206,7 +206,29 @@ export default {
      * Lookup105: spacewalk_primitives::ForeignCurrencyId
      **/
     SpacewalkPrimitivesForeignCurrencyId: {
-      _enum: ['KSM', 'KAR', 'AUSD', 'BNC', 'VsKSM', 'HKO', 'MOVR', 'SDN', 'KINT', 'KBTC', 'GENS', 'XOR', 'TEER', 'KILT', 'PHA', 'ZTG', 'USD', '__Unused17', '__Unused18', '__Unused19', 'DOT']
+      _enum: [
+        'KSM',
+        'KAR',
+        'AUSD',
+        'BNC',
+        'VsKSM',
+        'HKO',
+        'MOVR',
+        'SDN',
+        'KINT',
+        'KBTC',
+        'GENS',
+        'XOR',
+        'TEER',
+        'KILT',
+        'PHA',
+        'ZTG',
+        'USD',
+        '__Unused17',
+        '__Unused18',
+        '__Unused19',
+        'DOT'
+      ]
     },
     /**
      * Lookup49: spacewalk_primitives::VaultId<sp_core::crypto::AccountId32, spacewalk_primitives::CurrencyId>
