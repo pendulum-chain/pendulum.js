@@ -9,7 +9,7 @@
     "module": "commonjs",
     "baseUrl": ".",
     "declaration": true,
-
+    "noUnusedLocals": false,
     "paths": {
       "@pendulum-chain/api": [
         "packages/api/src"
