@@ -191,15 +191,7 @@ export default {
       _enum: {
         XCM: 'SpacewalkPrimitivesForeignCurrencyId',
         Native: 'Null',
-        StellarNative: 'Null',
-        AlphaNum4: {
-          code: '[u8;4]',
-          issuer: '[u8;32]'
-        },
-        AlphaNum12: {
-          code: '[u8;12]',
-          issuer: '[u8;32]'
-        }
+        Stellar: 'SpacewalkPrimitivesAsset'
       }
     },
     /**
@@ -229,6 +221,22 @@ export default {
         '__Unused19',
         'DOT'
       ]
+    },
+    /**
+     * Lookup106: spacewalk_primitives::Asset
+     **/
+    SpacewalkPrimitivesAsset: {
+      _enum: {
+        StellarNative: 'Null',
+        AlphaNum4: {
+          code: '[u8;4]',
+          issuer: '[u8;32]'
+        },
+        AlphaNum12: {
+          code: '[u8;12]',
+          issuer: '[u8;32]'
+        }
+      }
     },
     /**
      * Lookup49: spacewalk_primitives::VaultId<sp_core::crypto::AccountId32, spacewalk_primitives::CurrencyId>

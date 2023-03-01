@@ -4,11 +4,8 @@
 import type { AccountId32 } from '@pendulum-chain/types/interfaces/runtime';
 import type { Enum, Struct, U8aFixed } from '@polkadot/types-codec';
 
-/** @name SpacewalkPrimitivesCurrencyId */
-export interface SpacewalkPrimitivesCurrencyId extends Enum {
-  readonly isXcm: boolean;
-  readonly asXcm: SpacewalkPrimitivesForeignCurrencyId;
-  readonly isNative: boolean;
+/** @name SpacewalkPrimitivesAsset */
+export interface SpacewalkPrimitivesAsset extends Enum {
   readonly isStellarNative: boolean;
   readonly isAlphaNum4: boolean;
   readonly asAlphaNum4: {
@@ -20,7 +17,17 @@ export interface SpacewalkPrimitivesCurrencyId extends Enum {
     readonly code: U8aFixed;
     readonly issuer: U8aFixed;
   } & Struct;
-  readonly type: 'Xcm' | 'Native' | 'StellarNative' | 'AlphaNum4' | 'AlphaNum12';
+  readonly type: 'StellarNative' | 'AlphaNum4' | 'AlphaNum12';
+}
+
+/** @name SpacewalkPrimitivesCurrencyId */
+export interface SpacewalkPrimitivesCurrencyId extends Enum {
+  readonly isXcm: boolean;
+  readonly asXcm: SpacewalkPrimitivesForeignCurrencyId;
+  readonly isNative: boolean;
+  readonly isStellar: boolean;
+  readonly asStellar: SpacewalkPrimitivesAsset;
+  readonly type: 'Xcm' | 'Native' | 'Stellar';
 }
 
 /** @name SpacewalkPrimitivesForeignCurrencyId */

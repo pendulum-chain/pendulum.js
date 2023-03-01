@@ -374,15 +374,7 @@
                             "_enum": {
                                 "XCM": "SpacewalkPrimitivesForeignCurrencyId",
                                 "Native": "Null",
-                                "StellarNative": "Null",
-                                "AlphaNum4": {
-                                    "code": "[u8;4]",
-                                    "issuer": "[u8;32]"
-                                },
-                                "AlphaNum12": {
-                                    "code": "[u8;12]",
-                                    "issuer": "[u8;32]"
-                                }
+                                "Stellar": "SpacewalkPrimitivesAsset"
                             }
                         },
                         "SpacewalkPrimitivesForeignCurrencyId": {
@@ -409,6 +401,19 @@
                                 "__Unused19",
                                 "DOT"
                             ]
+                        },
+                        "SpacewalkPrimitivesAsset": {
+                            "_enum": {
+                                "StellarNative": "Null",
+                                "AlphaNum4": {
+                                    "code": "[u8;4]",
+                                    "issuer": "[u8;32]"
+                                },
+                                "AlphaNum12": {
+                                    "code": "[u8;12]",
+                                    "issuer": "[u8;32]"
+                                }
+                            }
                         },
                         "SpacewalkPrimitivesVaultId": {
                             "accountId": "AccountId32",
@@ -797,15 +802,7 @@
                             "_enum": {
                                 "XCM": "SpacewalkPrimitivesForeignCurrencyId",
                                 "Native": "Null",
-                                "StellarNative": "Null",
-                                "AlphaNum4": {
-                                    "code": "[u8;4]",
-                                    "issuer": "[u8;32]"
-                                },
-                                "AlphaNum12": {
-                                    "code": "[u8;12]",
-                                    "issuer": "[u8;32]"
-                                }
+                                "Stellar": "SpacewalkPrimitivesAsset"
                             }
                         },
                         "SpacewalkPrimitivesForeignCurrencyId": {
@@ -832,6 +829,19 @@
                                 "__Unused19",
                                 "DOT"
                             ]
+                        },
+                        "SpacewalkPrimitivesAsset": {
+                            "_enum": {
+                                "StellarNative": "Null",
+                                "AlphaNum4": {
+                                    "code": "[u8;4]",
+                                    "issuer": "[u8;32]"
+                                },
+                                "AlphaNum12": {
+                                    "code": "[u8;12]",
+                                    "issuer": "[u8;32]"
+                                }
+                            }
                         },
                         "SpacewalkPrimitivesVaultId": {
                             "accountId": "AccountId32",

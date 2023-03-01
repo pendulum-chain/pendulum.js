@@ -8,9 +8,9 @@ import '@polkadot/api-base/types/storage';
 import type { AccountId32, Call, H256 } from '@pendulum-chain/types/interfaces/runtime';
 import type { ApiTypes, AugmentedQuery, QueryableStorageEntry } from '@polkadot/api-base/types';
 import type { Data } from '@polkadot/types';
-import type { BTreeMap, Bytes, Null, Option, U256, U8aFixed, Vec, bool, u128, u16, u32, u64, u8 } from '@polkadot/types-codec';
+import type { BTreeMap, BTreeSet, Bytes, Null, Option, U256, U8aFixed, Vec, bool, i128, u128, u16, u32, u64, u8 } from '@polkadot/types-codec';
 import type { AnyNumber, ITuple } from '@polkadot/types-codec/types';
-import type { AmplitudeRuntimeCurrencyCurrencyId, AmplitudeRuntimeSessionKeys, CumulusPalletDmpQueueConfigData, CumulusPalletDmpQueuePageIndexData, CumulusPalletParachainSystemRelayStateSnapshotMessagingStateSnapshot, CumulusPalletXcmpQueueInboundChannelDetails, CumulusPalletXcmpQueueOutboundChannelDetails, CumulusPalletXcmpQueueQueueConfigData, DiaOracleDiaAssetId, DiaOracleDiaCoinInfo, FrameSupportDispatchPerDispatchClassWeight, FrameSupportPreimagesBounded, FrameSystemAccountInfo, FrameSystemEventRecord, FrameSystemLastRuntimeUpgradeInfo, FrameSystemPhase, OrmlTokensAccountData, OrmlTokensBalanceLock, OrmlTokensReserveData, PalletAuthorshipUncleEntryItem, PalletBalancesAccountData, PalletBalancesBalanceLock, PalletBalancesReserveData, PalletBountiesBounty, PalletChildBountiesChildBounty, PalletCollectiveVotes, PalletContractsStorageContractInfo, PalletContractsStorageDeletedContract, PalletContractsWasmOwnerInfo, PalletContractsWasmPrefabWasmModule, PalletDemocracyReferendumInfo, PalletDemocracyVoteThreshold, PalletDemocracyVoteVoting, PalletIdentityRegistrarInfo, PalletIdentityRegistration, PalletMultisigMultisig, PalletPreimageRequestStatus, PalletSchedulerScheduled, PalletTransactionPaymentReleases, PalletTreasuryProposal, PalletVestingReleases, PalletVestingVestingInfo, ParachainStakingCandidate, ParachainStakingDelegationCounter, ParachainStakingInflationInflationInfo, ParachainStakingRoundInfo, ParachainStakingSetOrderedSet, ParachainStakingStakeAccountId32, ParachainStakingStakeOption, ParachainStakingTotalStake, PolkadotCorePrimitivesOutboundHrmpMessage, PolkadotPrimitivesV2AbridgedHostConfiguration, PolkadotPrimitivesV2PersistedValidationData, PolkadotPrimitivesV2UpgradeRestriction, SpConsensusAuraSr25519AppSr25519Public, SpCoreCryptoKeyTypeId, SpRuntimeDigest, SpTrieStorageProof, SpWeightsWeightV2Weight, ZenlinkProtocolPrimitivesAssetId, ZenlinkProtocolPrimitivesPairStatus } from '@polkadot/types/lookup';
+import type { CumulusPalletDmpQueueConfigData, CumulusPalletDmpQueuePageIndexData, CumulusPalletParachainSystemRelayStateSnapshotMessagingStateSnapshot, CumulusPalletXcmpQueueInboundChannelDetails, CumulusPalletXcmpQueueOutboundChannelDetails, CumulusPalletXcmpQueueQueueConfigData, DiaOracleDiaAssetId, DiaOracleDiaCoinInfo, FoucocoRuntimeSessionKeys, FrameSupportDispatchPerDispatchClassWeight, FrameSupportPreimagesBounded, FrameSystemAccountInfo, FrameSystemEventRecord, FrameSystemLastRuntimeUpgradeInfo, FrameSystemPhase, OracleVersion, OrmlTokensAccountData, OrmlTokensBalanceLock, OrmlTokensReserveData, PalletAuthorshipUncleEntryItem, PalletBalancesAccountData, PalletBalancesBalanceLock, PalletBalancesReserveData, PalletBountiesBounty, PalletChildBountiesChildBounty, PalletCollectiveVotes, PalletContractsStorageContractInfo, PalletContractsStorageDeletedContract, PalletContractsWasmOwnerInfo, PalletContractsWasmPrefabWasmModule, PalletDemocracyReferendumInfo, PalletDemocracyVoteThreshold, PalletDemocracyVoteVoting, PalletIdentityRegistrarInfo, PalletIdentityRegistration, PalletMultisigMultisig, PalletPreimageRequestStatus, PalletSchedulerScheduled, PalletTransactionPaymentReleases, PalletTreasuryProposal, PalletVestingReleases, PalletVestingVestingInfo, ParachainStakingCandidate, ParachainStakingDelegationCounter, ParachainStakingInflationInflationInfo, ParachainStakingRoundInfo, ParachainStakingSetOrderedSet, ParachainStakingStakeAccountId32, ParachainStakingStakeOption, ParachainStakingTotalStake, PolkadotCorePrimitivesOutboundHrmpMessage, PolkadotPrimitivesV2AbridgedHostConfiguration, PolkadotPrimitivesV2PersistedValidationData, PolkadotPrimitivesV2UpgradeRestriction, SecurityErrorCode, SecurityStatusCode, SpConsensusAuraSr25519AppSr25519Public, SpCoreCryptoKeyTypeId, SpRuntimeDigest, SpTrieStorageProof, SpWeightsWeightV2Weight, SpacewalkPrimitivesCurrencyId, SpacewalkPrimitivesIssueIssueRequest, SpacewalkPrimitivesOracleKey, SpacewalkPrimitivesRedeemRedeemRequest, SpacewalkPrimitivesReplaceReplaceRequest, SpacewalkPrimitivesVaultCurrencyPair, SpacewalkPrimitivesVaultId, StellarRelayOrganization, StellarRelayValidator, VaultRegistrySystemVault, VaultRegistryVault, ZenlinkProtocolPrimitivesAssetId, ZenlinkProtocolPrimitivesPairStatus } from '@polkadot/types/lookup';
 import type { Observable } from '@polkadot/types/types';
 
 export type __AugmentedQuery<ApiType extends ApiTypes> = AugmentedQuery<ApiType, () => unknown>;
@@ -361,6 +361,46 @@ declare module '@polkadot/api-base/types/storage' {
        **/
       [key: string]: QueryableStorageEntry<ApiType>;
     };
+    fee: {
+      /**
+       * # Issue
+       * Fee share that users need to pay to issue tokens.
+       **/
+      issueFee: AugmentedQuery<ApiType, () => Observable<u128>, []> & QueryableStorageEntry<ApiType, []>;
+      /**
+       * Default griefing collateral (e.g. DOT/KSM) as a percentage of the locked
+       * collateral of a Vault a user has to lock to issue tokens.
+       **/
+      issueGriefingCollateral: AugmentedQuery<ApiType, () => Observable<u128>, []> & QueryableStorageEntry<ApiType, []>;
+      /**
+       * # Vault Registry
+       * If users execute a redeem with a Vault flagged for premium redeem,
+       * they can earn a collateral premium, slashed from the Vault.
+       **/
+      premiumRedeemFee: AugmentedQuery<ApiType, () => Observable<u128>, []> & QueryableStorageEntry<ApiType, []>;
+      /**
+       * Fee that a Vault has to pay if it fails to execute redeem or replace requests
+       * (for redeem, on top of the slashed value of the request). The fee is
+       * paid in collateral based on the token amount at the current exchange rate.
+       **/
+      punishmentFee: AugmentedQuery<ApiType, () => Observable<u128>, []> & QueryableStorageEntry<ApiType, []>;
+      /**
+       * # Redeem
+       * Fee share that users need to pay to redeem tokens.
+       **/
+      redeemFee: AugmentedQuery<ApiType, () => Observable<u128>, []> & QueryableStorageEntry<ApiType, []>;
+      /**
+       * # Replace
+       * Default griefing collateral (e.g. DOT/KSM) as a percentage of the to-be-locked collateral
+       * of the new Vault. This collateral will be slashed and allocated to the replacing Vault
+       * if the to-be-replaced Vault does not transfer the Stellar assets on time.
+       **/
+      replaceGriefingCollateral: AugmentedQuery<ApiType, () => Observable<u128>, []> & QueryableStorageEntry<ApiType, []>;
+      /**
+       * Generic query
+       **/
+      [key: string]: QueryableStorageEntry<ApiType>;
+    };
     identity: {
       /**
        * Information that is pertinent to identify the entity behind an account.
@@ -393,11 +433,76 @@ declare module '@polkadot/api-base/types/storage' {
        **/
       [key: string]: QueryableStorageEntry<ApiType>;
     };
+    issue: {
+      currentVolumeAmount: AugmentedQuery<ApiType, () => Observable<u128>, []> & QueryableStorageEntry<ApiType, []>;
+      /**
+       * Represent interval define regular 24 hour intervals (every 24 * 3600 / 12 blocks)
+       **/
+      intervalLength: AugmentedQuery<ApiType, () => Observable<u32>, []> & QueryableStorageEntry<ApiType, []>;
+      /**
+       * The minimum amount of wrapped assets that is required for issue requests
+       **/
+      issueMinimumTransferAmount: AugmentedQuery<ApiType, () => Observable<u128>, []> & QueryableStorageEntry<ApiType, []>;
+      /**
+       * The time difference in number of blocks between an issue request is created
+       * and required completion time by a user. The issue period has an upper limit
+       * to prevent griefing of vault collateral.
+       **/
+      issuePeriod: AugmentedQuery<ApiType, () => Observable<u32>, []> & QueryableStorageEntry<ApiType, []>;
+      /**
+       * Users create issue requests to issue tokens. This mapping provides access
+       * from a unique hash `IssueId` to an `IssueRequest` struct.
+       **/
+      issueRequests: AugmentedQuery<ApiType, (arg: H256 | string | Uint8Array) => Observable<Option<SpacewalkPrimitivesIssueIssueRequest>>, [H256]> & QueryableStorageEntry<ApiType, [H256]>;
+      /**
+       * Represent current interval current_block_number / IntervalLength
+       **/
+      lastIntervalIndex: AugmentedQuery<ApiType, () => Observable<u32>, []> & QueryableStorageEntry<ApiType, []>;
+      limitVolumeAmount: AugmentedQuery<ApiType, () => Observable<Option<u128>>, []> & QueryableStorageEntry<ApiType, []>;
+      /**
+       * CurrencyID that represents the currency in which the volume limit is measured, eg DOT, USDC
+       * or PEN
+       **/
+      limitVolumeCurrencyId: AugmentedQuery<ApiType, () => Observable<SpacewalkPrimitivesCurrencyId>, []> & QueryableStorageEntry<ApiType, []>;
+      /**
+       * Generic query
+       **/
+      [key: string]: QueryableStorageEntry<ApiType>;
+    };
     multisig: {
       /**
        * The set of open multisig operations.
        **/
       multisigs: AugmentedQuery<ApiType, (arg1: AccountId32 | string | Uint8Array, arg2: U8aFixed | string | Uint8Array) => Observable<Option<PalletMultisigMultisig>>, [AccountId32, U8aFixed]> & QueryableStorageEntry<ApiType, [AccountId32, U8aFixed]>;
+      /**
+       * Generic query
+       **/
+      [key: string]: QueryableStorageEntry<ApiType>;
+    };
+    nomination: {
+      /**
+       * Flag indicating whether this feature is enabled
+       **/
+      nominationEnabled: AugmentedQuery<ApiType, () => Observable<bool>, []> & QueryableStorageEntry<ApiType, []>;
+      /**
+       * Map of Vaults who have enabled nomination
+       **/
+      vaults: AugmentedQuery<ApiType, (arg: SpacewalkPrimitivesVaultId | { accountId?: any; currencies?: any } | string | Uint8Array) => Observable<bool>, [SpacewalkPrimitivesVaultId]> & QueryableStorageEntry<ApiType, [SpacewalkPrimitivesVaultId]>;
+      /**
+       * Generic query
+       **/
+      [key: string]: QueryableStorageEntry<ApiType>;
+    };
+    oracle: {
+      /**
+       * Maximum delay (milliseconds) for a reported value to be used
+       **/
+      maxDelay: AugmentedQuery<ApiType, () => Observable<u64>, []> & QueryableStorageEntry<ApiType, []>;
+      oracleKeys: AugmentedQuery<ApiType, () => Observable<Vec<SpacewalkPrimitivesOracleKey>>, []> & QueryableStorageEntry<ApiType, []>;
+      /**
+       * Build storage at V1 (requires default 0).
+       **/
+      storageVersion: AugmentedQuery<ApiType, () => Observable<OracleVersion>, []> & QueryableStorageEntry<ApiType, []>;
       /**
        * Generic query
        **/
@@ -679,6 +784,64 @@ declare module '@polkadot/api-base/types/storage' {
        **/
       [key: string]: QueryableStorageEntry<ApiType>;
     };
+    redeem: {
+      currentVolumeAmount: AugmentedQuery<ApiType, () => Observable<u128>, []> & QueryableStorageEntry<ApiType, []>;
+      /**
+       * Represent interval define regular 24 hour intervals (every 24 * 3600 / 12 blocks)
+       **/
+      intervalLength: AugmentedQuery<ApiType, () => Observable<u32>, []> & QueryableStorageEntry<ApiType, []>;
+      /**
+       * Represent current interval current_block_number / IntervalLength
+       **/
+      lastIntervalIndex: AugmentedQuery<ApiType, () => Observable<u32>, []> & QueryableStorageEntry<ApiType, []>;
+      limitVolumeAmount: AugmentedQuery<ApiType, () => Observable<Option<u128>>, []> & QueryableStorageEntry<ApiType, []>;
+      /**
+       * CurrencyID that represents the currency in which the volume limit is measured, eg DOT, USDC
+       * or PEN
+       **/
+      limitVolumeCurrencyId: AugmentedQuery<ApiType, () => Observable<SpacewalkPrimitivesCurrencyId>, []> & QueryableStorageEntry<ApiType, []>;
+      /**
+       * The minimum amount of wrapped assets that is accepted for redeem requests
+       **/
+      redeemMinimumTransferAmount: AugmentedQuery<ApiType, () => Observable<u128>, []> & QueryableStorageEntry<ApiType, []>;
+      /**
+       * The time difference in number of blocks between a redeem request is created and required
+       * completion time by a vault. The redeem period has an upper limit to ensure the user gets
+       * their Stellar assets in time and to potentially punish a vault for inactivity or stealing
+       * Stellar assets.
+       **/
+      redeemPeriod: AugmentedQuery<ApiType, () => Observable<u32>, []> & QueryableStorageEntry<ApiType, []>;
+      /**
+       * Users create redeem requests to receive stellar assets in return for their previously issued
+       * tokens. This mapping provides access from a unique hash redeemId to a Redeem struct.
+       **/
+      redeemRequests: AugmentedQuery<ApiType, (arg: H256 | string | Uint8Array) => Observable<Option<SpacewalkPrimitivesRedeemRedeemRequest>>, [H256]> & QueryableStorageEntry<ApiType, [H256]>;
+      /**
+       * Generic query
+       **/
+      [key: string]: QueryableStorageEntry<ApiType>;
+    };
+    replace: {
+      /**
+       * The minimum amount of wrapped assets that is accepted for replace requests
+       **/
+      replaceMinimumTransferAmount: AugmentedQuery<ApiType, () => Observable<u128>, []> & QueryableStorageEntry<ApiType, []>;
+      /**
+       * The time difference in number of blocks between when a replace request is created
+       * and required completion time by a vault. The replace period has an upper limit
+       * to prevent griefing of vault collateral.
+       **/
+      replacePeriod: AugmentedQuery<ApiType, () => Observable<u32>, []> & QueryableStorageEntry<ApiType, []>;
+      /**
+       * Vaults create replace requests to transfer locked collateral.
+       * This mapping provides access from a unique hash to a `ReplaceRequest`.
+       **/
+      replaceRequests: AugmentedQuery<ApiType, (arg: H256 | string | Uint8Array) => Observable<Option<SpacewalkPrimitivesReplaceReplaceRequest>>, [H256]> & QueryableStorageEntry<ApiType, [H256]>;
+      /**
+       * Generic query
+       **/
+      [key: string]: QueryableStorageEntry<ApiType>;
+    };
     scheduler: {
       /**
        * Items to be executed, indexed by the block number that they should be executed on.
@@ -692,6 +855,33 @@ declare module '@polkadot/api-base/types/storage' {
        * identities.
        **/
       lookup: AugmentedQuery<ApiType, (arg: U8aFixed | string | Uint8Array) => Observable<Option<ITuple<[u32, u32]>>>, [U8aFixed]> & QueryableStorageEntry<ApiType, [U8aFixed]>;
+      /**
+       * Generic query
+       **/
+      [key: string]: QueryableStorageEntry<ApiType>;
+    };
+    security: {
+      /**
+       * Like frame_system::block_number, but this one only increments if the parachain status is
+       * RUNNING. This variable is used to keep track of durations, such as the issue/redeem/replace
+       * expiry. If the parachain is not RUNNING, no payment proofs can be submitted, and it wouldn't
+       * be fair to punish the user/vault. By using this variable we ensure that they have sufficient
+       * time to submit their proof.
+       **/
+      activeBlockCount: AugmentedQuery<ApiType, () => Observable<u32>, []> & QueryableStorageEntry<ApiType, []>;
+      /**
+       * Set of ErrorCodes, indicating the reason for an "Error" ParachainStatus.
+       **/
+      errors: AugmentedQuery<ApiType, () => Observable<BTreeSet<SecurityErrorCode>>, []> & QueryableStorageEntry<ApiType, []>;
+      /**
+       * Integer increment-only counter, used to prevent collisions when generating identifiers
+       * for e.g. issue, redeem or replace requests.
+       **/
+      nonce: AugmentedQuery<ApiType, () => Observable<U256>, []> & QueryableStorageEntry<ApiType, []>;
+      /**
+       * Integer/Enum defining the current state of the Spacewalk-Parachain.
+       **/
+      parachainStatus: AugmentedQuery<ApiType, () => Observable<SecurityStatusCode>, []> & QueryableStorageEntry<ApiType, []>;
       /**
        * Generic query
        **/
@@ -717,7 +907,7 @@ declare module '@polkadot/api-base/types/storage' {
       /**
        * The next session keys for a validator.
        **/
-      nextKeys: AugmentedQuery<ApiType, (arg: AccountId32 | string | Uint8Array) => Observable<Option<AmplitudeRuntimeSessionKeys>>, [AccountId32]> & QueryableStorageEntry<ApiType, [AccountId32]>;
+      nextKeys: AugmentedQuery<ApiType, (arg: AccountId32 | string | Uint8Array) => Observable<Option<FoucocoRuntimeSessionKeys>>, [AccountId32]> & QueryableStorageEntry<ApiType, [AccountId32]>;
       /**
        * True if the underlying economic identities or weighting behind the validators
        * has changed in the queued validator set.
@@ -727,11 +917,33 @@ declare module '@polkadot/api-base/types/storage' {
        * The queued keys for the next session. When the next session begins, these keys
        * will be used to determine the validator's session keys.
        **/
-      queuedKeys: AugmentedQuery<ApiType, () => Observable<Vec<ITuple<[AccountId32, AmplitudeRuntimeSessionKeys]>>>, []> & QueryableStorageEntry<ApiType, []>;
+      queuedKeys: AugmentedQuery<ApiType, () => Observable<Vec<ITuple<[AccountId32, FoucocoRuntimeSessionKeys]>>>, []> & QueryableStorageEntry<ApiType, []>;
       /**
        * The current set of validators.
        **/
       validators: AugmentedQuery<ApiType, () => Observable<Vec<AccountId32>>, []> & QueryableStorageEntry<ApiType, []>;
+      /**
+       * Generic query
+       **/
+      [key: string]: QueryableStorageEntry<ApiType>;
+    };
+    stellarRelay: {
+      isPublicNetwork: AugmentedQuery<ApiType, () => Observable<bool>, []> & QueryableStorageEntry<ApiType, []>;
+      newValidatorsEnactmentBlockHeight: AugmentedQuery<ApiType, () => Observable<u32>, []> & QueryableStorageEntry<ApiType, []>;
+      oldOrganizations: AugmentedQuery<ApiType, () => Observable<Vec<StellarRelayOrganization>>, []> & QueryableStorageEntry<ApiType, []>;
+      oldValidators: AugmentedQuery<ApiType, () => Observable<Vec<StellarRelayValidator>>, []> & QueryableStorageEntry<ApiType, []>;
+      organizations: AugmentedQuery<ApiType, () => Observable<Vec<StellarRelayOrganization>>, []> & QueryableStorageEntry<ApiType, []>;
+      validators: AugmentedQuery<ApiType, () => Observable<Vec<StellarRelayValidator>>, []> & QueryableStorageEntry<ApiType, []>;
+      /**
+       * Generic query
+       **/
+      [key: string]: QueryableStorageEntry<ApiType>;
+    };
+    sudo: {
+      /**
+       * The `AccountId` of the sudo key.
+       **/
+      key: AugmentedQuery<ApiType, () => Observable<Option<AccountId32>>, []> & QueryableStorageEntry<ApiType, []>;
       /**
        * Generic query
        **/
@@ -867,6 +1079,21 @@ declare module '@polkadot/api-base/types/storage' {
        **/
       [key: string]: QueryableStorageEntry<ApiType>;
     };
+    tokenAllowance: {
+      /**
+       * Currencies that can be used in chain extension
+       **/
+      allowedCurrencies: AugmentedQuery<ApiType, (arg: SpacewalkPrimitivesCurrencyId | { XCM: any } | { Native: any } | { Stellar: any } | string | Uint8Array) => Observable<Option<Null>>, [SpacewalkPrimitivesCurrencyId]> & QueryableStorageEntry<ApiType, [SpacewalkPrimitivesCurrencyId]>;
+      /**
+       * Approved balance transfers. Balance is the amount approved for transfer.
+       * First key is the currency ID, second key is the owner and third key is the delegate.
+       **/
+      approvals: AugmentedQuery<ApiType, (arg1: SpacewalkPrimitivesCurrencyId | { XCM: any } | { Native: any } | { Stellar: any } | string | Uint8Array, arg2: AccountId32 | string | Uint8Array, arg3: AccountId32 | string | Uint8Array) => Observable<Option<u128>>, [SpacewalkPrimitivesCurrencyId, AccountId32, AccountId32]> & QueryableStorageEntry<ApiType, [SpacewalkPrimitivesCurrencyId, AccountId32, AccountId32]>;
+      /**
+       * Generic query
+       **/
+      [key: string]: QueryableStorageEntry<ApiType>;
+    };
     tokens: {
       /**
        * The balance of a token type under an account.
@@ -876,20 +1103,20 @@ declare module '@polkadot/api-base/types/storage' {
        * NOTE: This is only used in the case that this module is used to store
        * balances.
        **/
-      accounts: AugmentedQuery<ApiType, (arg1: AccountId32 | string | Uint8Array, arg2: AmplitudeRuntimeCurrencyCurrencyId | { Native: any } | { XCM: any } | string | Uint8Array) => Observable<OrmlTokensAccountData>, [AccountId32, AmplitudeRuntimeCurrencyCurrencyId]> & QueryableStorageEntry<ApiType, [AccountId32, AmplitudeRuntimeCurrencyCurrencyId]>;
+      accounts: AugmentedQuery<ApiType, (arg1: AccountId32 | string | Uint8Array, arg2: SpacewalkPrimitivesCurrencyId | { XCM: any } | { Native: any } | { Stellar: any } | string | Uint8Array) => Observable<OrmlTokensAccountData>, [AccountId32, SpacewalkPrimitivesCurrencyId]> & QueryableStorageEntry<ApiType, [AccountId32, SpacewalkPrimitivesCurrencyId]>;
       /**
        * Any liquidity locks of a token type under an account.
        * NOTE: Should only be accessed when setting, changing and freeing a lock.
        **/
-      locks: AugmentedQuery<ApiType, (arg1: AccountId32 | string | Uint8Array, arg2: AmplitudeRuntimeCurrencyCurrencyId | { Native: any } | { XCM: any } | string | Uint8Array) => Observable<Vec<OrmlTokensBalanceLock>>, [AccountId32, AmplitudeRuntimeCurrencyCurrencyId]> & QueryableStorageEntry<ApiType, [AccountId32, AmplitudeRuntimeCurrencyCurrencyId]>;
+      locks: AugmentedQuery<ApiType, (arg1: AccountId32 | string | Uint8Array, arg2: SpacewalkPrimitivesCurrencyId | { XCM: any } | { Native: any } | { Stellar: any } | string | Uint8Array) => Observable<Vec<OrmlTokensBalanceLock>>, [AccountId32, SpacewalkPrimitivesCurrencyId]> & QueryableStorageEntry<ApiType, [AccountId32, SpacewalkPrimitivesCurrencyId]>;
       /**
        * Named reserves on some account balances.
        **/
-      reserves: AugmentedQuery<ApiType, (arg1: AccountId32 | string | Uint8Array, arg2: AmplitudeRuntimeCurrencyCurrencyId | { Native: any } | { XCM: any } | string | Uint8Array) => Observable<Vec<OrmlTokensReserveData>>, [AccountId32, AmplitudeRuntimeCurrencyCurrencyId]> & QueryableStorageEntry<ApiType, [AccountId32, AmplitudeRuntimeCurrencyCurrencyId]>;
+      reserves: AugmentedQuery<ApiType, (arg1: AccountId32 | string | Uint8Array, arg2: SpacewalkPrimitivesCurrencyId | { XCM: any } | { Native: any } | { Stellar: any } | string | Uint8Array) => Observable<Vec<OrmlTokensReserveData>>, [AccountId32, SpacewalkPrimitivesCurrencyId]> & QueryableStorageEntry<ApiType, [AccountId32, SpacewalkPrimitivesCurrencyId]>;
       /**
        * The total issuance of a token type.
        **/
-      totalIssuance: AugmentedQuery<ApiType, (arg: AmplitudeRuntimeCurrencyCurrencyId | { Native: any } | { XCM: any } | string | Uint8Array) => Observable<u128>, [AmplitudeRuntimeCurrencyCurrencyId]> & QueryableStorageEntry<ApiType, [AmplitudeRuntimeCurrencyCurrencyId]>;
+      totalIssuance: AugmentedQuery<ApiType, (arg: SpacewalkPrimitivesCurrencyId | { XCM: any } | { Native: any } | { Stellar: any } | string | Uint8Array) => Observable<u128>, [SpacewalkPrimitivesCurrencyId]> & QueryableStorageEntry<ApiType, [SpacewalkPrimitivesCurrencyId]>;
       /**
        * Generic query
        **/
@@ -920,6 +1147,132 @@ declare module '@polkadot/api-base/types/storage' {
        * Proposals that have been made.
        **/
       proposals: AugmentedQuery<ApiType, (arg: u32 | AnyNumber | Uint8Array) => Observable<Option<PalletTreasuryProposal>>, [u32]> & QueryableStorageEntry<ApiType, [u32]>;
+      /**
+       * Generic query
+       **/
+      [key: string]: QueryableStorageEntry<ApiType>;
+    };
+    vaultRegistry: {
+      /**
+       * Determines the lower bound for the collateral rate in issued tokens. If a Vault’s
+       * collateral rate drops below this, automatic liquidation (forced Redeem) is triggered.
+       **/
+      liquidationCollateralThreshold: AugmentedQuery<ApiType, (arg: SpacewalkPrimitivesVaultCurrencyPair | { collateral?: any; wrapped?: any } | string | Uint8Array) => Observable<Option<u128>>, [SpacewalkPrimitivesVaultCurrencyPair]> & QueryableStorageEntry<ApiType, [SpacewalkPrimitivesVaultCurrencyPair]>;
+      liquidationVault: AugmentedQuery<ApiType, (arg: SpacewalkPrimitivesVaultCurrencyPair | { collateral?: any; wrapped?: any } | string | Uint8Array) => Observable<Option<VaultRegistrySystemVault>>, [SpacewalkPrimitivesVaultCurrencyPair]> & QueryableStorageEntry<ApiType, [SpacewalkPrimitivesVaultCurrencyPair]>;
+      /**
+       * The minimum collateral (e.g. DOT/KSM) a Vault needs to provide to register.
+       **/
+      minimumCollateralVault: AugmentedQuery<ApiType, (arg: SpacewalkPrimitivesCurrencyId | { XCM: any } | { Native: any } | { Stellar: any } | string | Uint8Array) => Observable<u128>, [SpacewalkPrimitivesCurrencyId]> & QueryableStorageEntry<ApiType, [SpacewalkPrimitivesCurrencyId]>;
+      /**
+       * Determines the rate for the collateral rate of Vaults, at which users receive a premium,
+       * allocated from the Vault's collateral, when performing a redeem with this Vault. This
+       * threshold should be greater than the LiquidationCollateralThreshold.
+       **/
+      premiumRedeemThreshold: AugmentedQuery<ApiType, (arg: SpacewalkPrimitivesVaultCurrencyPair | { collateral?: any; wrapped?: any } | string | Uint8Array) => Observable<Option<u128>>, [SpacewalkPrimitivesVaultCurrencyPair]> & QueryableStorageEntry<ApiType, [SpacewalkPrimitivesVaultCurrencyPair]>;
+      /**
+       * If a Vault fails to execute a correct redeem or replace, it is temporarily banned
+       * from further issue, redeem or replace requests. This value configures the duration
+       * of this ban (in number of blocks) .
+       **/
+      punishmentDelay: AugmentedQuery<ApiType, () => Observable<u32>, []> & QueryableStorageEntry<ApiType, []>;
+      /**
+       * Mapping of reserved Stellar addresses to the registered account
+       **/
+      reservedAddresses: AugmentedQuery<ApiType, (arg: U8aFixed | string | Uint8Array) => Observable<Option<SpacewalkPrimitivesVaultId>>, [U8aFixed]> & QueryableStorageEntry<ApiType, [U8aFixed]>;
+      /**
+       * Determines the over-collateralization rate for collateral locked by Vaults, necessary for
+       * wrapped tokens. This threshold should be greater than the LiquidationCollateralThreshold.
+       **/
+      secureCollateralThreshold: AugmentedQuery<ApiType, (arg: SpacewalkPrimitivesVaultCurrencyPair | { collateral?: any; wrapped?: any } | string | Uint8Array) => Observable<Option<u128>>, [SpacewalkPrimitivesVaultCurrencyPair]> & QueryableStorageEntry<ApiType, [SpacewalkPrimitivesVaultCurrencyPair]>;
+      /**
+       * Determines the over-collateralization rate for collateral locked by Vaults, necessary for
+       * wrapped tokens. This threshold should be greater than the LiquidationCollateralThreshold.
+       **/
+      systemCollateralCeiling: AugmentedQuery<ApiType, (arg: SpacewalkPrimitivesVaultCurrencyPair | { collateral?: any; wrapped?: any } | string | Uint8Array) => Observable<Option<u128>>, [SpacewalkPrimitivesVaultCurrencyPair]> & QueryableStorageEntry<ApiType, [SpacewalkPrimitivesVaultCurrencyPair]>;
+      /**
+       * Total collateral used for collateral tokens issued by active vaults, excluding the
+       * liquidation vault
+       **/
+      totalUserVaultCollateral: AugmentedQuery<ApiType, (arg: SpacewalkPrimitivesVaultCurrencyPair | { collateral?: any; wrapped?: any } | string | Uint8Array) => Observable<u128>, [SpacewalkPrimitivesVaultCurrencyPair]> & QueryableStorageEntry<ApiType, [SpacewalkPrimitivesVaultCurrencyPair]>;
+      /**
+       * Mapping of Vaults, using the respective Vault account identifier as key.
+       **/
+      vaults: AugmentedQuery<ApiType, (arg: SpacewalkPrimitivesVaultId | { accountId?: any; currencies?: any } | string | Uint8Array) => Observable<Option<VaultRegistryVault>>, [SpacewalkPrimitivesVaultId]> & QueryableStorageEntry<ApiType, [SpacewalkPrimitivesVaultId]>;
+      /**
+       * Mapping of Vaults, using the respective Vault account identifier as key.
+       **/
+      vaultStellarPublicKey: AugmentedQuery<ApiType, (arg: AccountId32 | string | Uint8Array) => Observable<Option<U8aFixed>>, [AccountId32]> & QueryableStorageEntry<ApiType, [AccountId32]>;
+      /**
+       * Generic query
+       **/
+      [key: string]: QueryableStorageEntry<ApiType>;
+    };
+    vaultRewards: {
+      /**
+       * Used to compute the rewards for a participant's stake.
+       **/
+      rewardPerToken: AugmentedQuery<ApiType, (arg: SpacewalkPrimitivesCurrencyId | { XCM: any } | { Native: any } | { Stellar: any } | string | Uint8Array) => Observable<i128>, [SpacewalkPrimitivesCurrencyId]> & QueryableStorageEntry<ApiType, [SpacewalkPrimitivesCurrencyId]>;
+      /**
+       * Accounts for previous changes in stake size.
+       **/
+      rewardTally: AugmentedQuery<ApiType, (arg1: SpacewalkPrimitivesCurrencyId | { XCM: any } | { Native: any } | { Stellar: any } | string | Uint8Array, arg2: SpacewalkPrimitivesVaultId | { accountId?: any; currencies?: any } | string | Uint8Array) => Observable<i128>, [SpacewalkPrimitivesCurrencyId, SpacewalkPrimitivesVaultId]> & QueryableStorageEntry<ApiType, [SpacewalkPrimitivesCurrencyId, SpacewalkPrimitivesVaultId]>;
+      /**
+       * The stake of a participant in this reward pool.
+       **/
+      stake: AugmentedQuery<ApiType, (arg: SpacewalkPrimitivesVaultId | { accountId?: any; currencies?: any } | string | Uint8Array) => Observable<i128>, [SpacewalkPrimitivesVaultId]> & QueryableStorageEntry<ApiType, [SpacewalkPrimitivesVaultId]>;
+      /**
+       * The total unclaimed rewards distributed to this reward pool.
+       * NOTE: this is currently only used for integration tests.
+       **/
+      totalRewards: AugmentedQuery<ApiType, (arg: SpacewalkPrimitivesCurrencyId | { XCM: any } | { Native: any } | { Stellar: any } | string | Uint8Array) => Observable<i128>, [SpacewalkPrimitivesCurrencyId]> & QueryableStorageEntry<ApiType, [SpacewalkPrimitivesCurrencyId]>;
+      /**
+       * The total stake deposited to this reward pool.
+       **/
+      totalStake: AugmentedQuery<ApiType, () => Observable<i128>, []> & QueryableStorageEntry<ApiType, []>;
+      /**
+       * Generic query
+       **/
+      [key: string]: QueryableStorageEntry<ApiType>;
+    };
+    vaultStaking: {
+      /**
+       * The nonce of the current staking pool, used in force refunds.
+       * This is a strictly increasing value.
+       **/
+      nonce: AugmentedQuery<ApiType, (arg: SpacewalkPrimitivesVaultId | { accountId?: any; currencies?: any } | string | Uint8Array) => Observable<u32>, [SpacewalkPrimitivesVaultId]> & QueryableStorageEntry<ApiType, [SpacewalkPrimitivesVaultId]>;
+      /**
+       * Used to compute the rewards for a participant's stake.
+       **/
+      rewardPerToken: AugmentedQuery<ApiType, (arg1: SpacewalkPrimitivesCurrencyId | { XCM: any } | { Native: any } | { Stellar: any } | string | Uint8Array, arg2: ITuple<[u32, SpacewalkPrimitivesVaultId]> | [u32 | AnyNumber | Uint8Array, SpacewalkPrimitivesVaultId | { accountId?: any; currencies?: any } | string | Uint8Array]) => Observable<i128>, [SpacewalkPrimitivesCurrencyId, ITuple<[u32, SpacewalkPrimitivesVaultId]>]> & QueryableStorageEntry<ApiType, [SpacewalkPrimitivesCurrencyId, ITuple<[u32, SpacewalkPrimitivesVaultId]>]>;
+      /**
+       * Accounts for previous changes in stake size.
+       **/
+      rewardTally: AugmentedQuery<ApiType, (arg1: SpacewalkPrimitivesCurrencyId | { XCM: any } | { Native: any } | { Stellar: any } | string | Uint8Array, arg2: ITuple<[u32, SpacewalkPrimitivesVaultId, AccountId32]> | [u32 | AnyNumber | Uint8Array, SpacewalkPrimitivesVaultId | { accountId?: any; currencies?: any } | string | Uint8Array, AccountId32 | string | Uint8Array]) => Observable<i128>, [SpacewalkPrimitivesCurrencyId, ITuple<[u32, SpacewalkPrimitivesVaultId, AccountId32]>]> & QueryableStorageEntry<ApiType, [SpacewalkPrimitivesCurrencyId, ITuple<[u32, SpacewalkPrimitivesVaultId, AccountId32]>]>;
+      /**
+       * Used to compute the amount to slash from a participant's stake.
+       **/
+      slashPerToken: AugmentedQuery<ApiType, (arg1: u32 | AnyNumber | Uint8Array, arg2: SpacewalkPrimitivesVaultId | { accountId?: any; currencies?: any } | string | Uint8Array) => Observable<i128>, [u32, SpacewalkPrimitivesVaultId]> & QueryableStorageEntry<ApiType, [u32, SpacewalkPrimitivesVaultId]>;
+      /**
+       * Accounts for previous changes in stake size.
+       **/
+      slashTally: AugmentedQuery<ApiType, (arg1: u32 | AnyNumber | Uint8Array, arg2: ITuple<[SpacewalkPrimitivesVaultId, AccountId32]> | [SpacewalkPrimitivesVaultId | { accountId?: any; currencies?: any } | string | Uint8Array, AccountId32 | string | Uint8Array]) => Observable<i128>, [u32, ITuple<[SpacewalkPrimitivesVaultId, AccountId32]>]> & QueryableStorageEntry<ApiType, [u32, ITuple<[SpacewalkPrimitivesVaultId, AccountId32]>]>;
+      /**
+       * The stake of a participant in this reward pool.
+       **/
+      stake: AugmentedQuery<ApiType, (arg1: u32 | AnyNumber | Uint8Array, arg2: ITuple<[SpacewalkPrimitivesVaultId, AccountId32]> | [SpacewalkPrimitivesVaultId | { accountId?: any; currencies?: any } | string | Uint8Array, AccountId32 | string | Uint8Array]) => Observable<i128>, [u32, ITuple<[SpacewalkPrimitivesVaultId, AccountId32]>]> & QueryableStorageEntry<ApiType, [u32, ITuple<[SpacewalkPrimitivesVaultId, AccountId32]>]>;
+      /**
+       * The total stake - this will increase on deposit and decrease on withdrawal or slashing.
+       **/
+      totalCurrentStake: AugmentedQuery<ApiType, (arg1: u32 | AnyNumber | Uint8Array, arg2: SpacewalkPrimitivesVaultId | { accountId?: any; currencies?: any } | string | Uint8Array) => Observable<i128>, [u32, SpacewalkPrimitivesVaultId]> & QueryableStorageEntry<ApiType, [u32, SpacewalkPrimitivesVaultId]>;
+      /**
+       * The total unclaimed rewards distributed to this reward pool.
+       * NOTE: this is currently only used for integration tests.
+       **/
+      totalRewards: AugmentedQuery<ApiType, (arg1: SpacewalkPrimitivesCurrencyId | { XCM: any } | { Native: any } | { Stellar: any } | string | Uint8Array, arg2: ITuple<[u32, SpacewalkPrimitivesVaultId]> | [u32 | AnyNumber | Uint8Array, SpacewalkPrimitivesVaultId | { accountId?: any; currencies?: any } | string | Uint8Array]) => Observable<i128>, [SpacewalkPrimitivesCurrencyId, ITuple<[u32, SpacewalkPrimitivesVaultId]>]> & QueryableStorageEntry<ApiType, [SpacewalkPrimitivesCurrencyId, ITuple<[u32, SpacewalkPrimitivesVaultId]>]>;
+      /**
+       * The total stake - this will increase on deposit and decrease on withdrawal.
+       **/
+      totalStake: AugmentedQuery<ApiType, (arg1: u32 | AnyNumber | Uint8Array, arg2: SpacewalkPrimitivesVaultId | { accountId?: any; currencies?: any } | string | Uint8Array) => Observable<i128>, [u32, SpacewalkPrimitivesVaultId]> & QueryableStorageEntry<ApiType, [u32, SpacewalkPrimitivesVaultId]>;
       /**
        * Generic query
        **/

@@ -4,7 +4,7 @@ import fs from 'fs';
 import { w3cwebsocket as WebSocket } from 'websocket';
 
 const main = (): void => {
-  const endpoint = process.env.ENDPOINT || 'wss://rpc-amplitude.pendulumchain.tech';
+  const endpoint = process.env.ENDPOINT || 'wss://rpc-foucoco.pendulumchain.tech';
   console.log('Connecting to ', endpoint);
   const ws = new WebSocket(endpoint);
   ws.onopen = (): void => {
