@@ -2659,13 +2659,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pendulum-chain/api-derive@0.2.2, @pendulum-chain/api-derive@workspace:packages/api-derive":
+"@pendulum-chain/api-derive@0.2.3, @pendulum-chain/api-derive@workspace:packages/api-derive":
   version: 0.0.0-use.local
   resolution: "@pendulum-chain/api-derive@workspace:packages/api-derive"
   dependencies:
     "@babel/runtime": ^7.10.2
     "@open-web3/orml-types": ^1.1.4
-    "@pendulum-chain/types": 0.2.2
+    "@pendulum-chain/types": 0.2.3
     "@polkadot/api-derive": ^9.9.1
   languageName: unknown
   linkType: soft
@@ -2676,8 +2676,8 @@ __metadata:
   dependencies:
     "@babel/runtime": ^7.10.2
     "@open-web3/orml-api-derive": ^1.1.4
-    "@pendulum-chain/api-derive": 0.2.2
-    "@pendulum-chain/types": ^0.2.2
+    "@pendulum-chain/api-derive": 0.2.3
+    "@pendulum-chain/types": ^0.2.3
     "@polkadot/api": ^9.9.1
   peerDependencies:
     "@polkadot/api": ">=9"
@@ -2698,7 +2698,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pendulum-chain/type-definitions@0.2.2, @pendulum-chain/type-definitions@workspace:packages/type-definitions":
+"@pendulum-chain/type-definitions@0.2.3, @pendulum-chain/type-definitions@workspace:packages/type-definitions":
   version: 0.0.0-use.local
   resolution: "@pendulum-chain/type-definitions@workspace:packages/type-definitions"
   dependencies:
@@ -2707,14 +2707,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pendulum-chain/types@0.2.2, @pendulum-chain/types@^0.2.2, @pendulum-chain/types@workspace:packages/types":
+"@pendulum-chain/types@0.2.3, @pendulum-chain/types@^0.2.3, @pendulum-chain/types@workspace:packages/types":
   version: 0.0.0-use.local
   resolution: "@pendulum-chain/types@workspace:packages/types"
   dependencies:
     "@babel/runtime": ^7.10.2
     "@open-web3/api-mobx": ^1.1.4
     "@open-web3/orml-types": ^1.1.4
-    "@pendulum-chain/type-definitions": 0.2.2
+    "@pendulum-chain/type-definitions": 0.2.3
     "@polkadot/api": ^9.9.1
     "@polkadot/typegen": ^9.9.1
     "@polkadot/types": ^9.9.1
