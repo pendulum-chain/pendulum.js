@@ -9,7 +9,7 @@ import type { Permill, Perquintill } from '@pendulum-chain/types/interfaces/runt
 import type { ApiTypes, AugmentedConst } from '@polkadot/api-base/types';
 import type { Option, bool, u128, u16, u32, u64, u8 } from '@polkadot/types-codec';
 import type { Codec } from '@polkadot/types-codec/types';
-import type { FrameSupportPalletId, FrameSystemLimitsBlockLength, FrameSystemLimitsBlockWeights, PalletContractsSchedule, SpVersionRuntimeVersion, SpWeightsRuntimeDbWeight, SpWeightsWeightV2Weight, SpacewalkPrimitivesCurrencyId, XcmV1MultiLocation } from '@polkadot/types/lookup';
+import type { AmplitudeRuntimeCurrencyCurrencyId, FrameSupportPalletId, FrameSystemLimitsBlockLength, FrameSystemLimitsBlockWeights, PalletContractsSchedule, SpVersionRuntimeVersion, SpWeightsRuntimeDbWeight, SpWeightsWeightV2Weight, XcmV1MultiLocation } from '@polkadot/types/lookup';
 
 export type __AugmentedConst<ApiType extends ApiTypes> = AugmentedConst<ApiType>;
 
@@ -187,21 +187,7 @@ declare module '@polkadot/api-base/types/consts' {
       [key: string]: Codec;
     };
     currencies: {
-      getNativeCurrencyId: SpacewalkPrimitivesCurrencyId & AugmentedConst<ApiType>;
-      /**
-       * Generic const
-       **/
-      [key: string]: Codec;
-    };
-    currency: {
-      /**
-       * Native currency e.g. PEN/AMPE
-       **/
-      getNativeCurrencyId: SpacewalkPrimitivesCurrencyId & AugmentedConst<ApiType>;
-      /**
-       * Relay chain currency e.g. DOT/KSM
-       **/
-      getRelayChainCurrencyId: SpacewalkPrimitivesCurrencyId & AugmentedConst<ApiType>;
+      getNativeCurrencyId: AmplitudeRuntimeCurrencyCurrencyId & AugmentedConst<ApiType>;
       /**
        * Generic const
        **/
@@ -268,20 +254,6 @@ declare module '@polkadot/api-base/types/consts' {
        * How often (in blocks) to check for new votes.
        **/
       votingPeriod: u32 & AugmentedConst<ApiType>;
-      /**
-       * Generic const
-       **/
-      [key: string]: Codec;
-    };
-    fee: {
-      /**
-       * The fee module id, used for deriving its sovereign account ID.
-       **/
-      feePalletId: FrameSupportPalletId & AugmentedConst<ApiType>;
-      /**
-       * Maximum expected value to set the storage fields to.
-       **/
-      maxExpectedValue: u128 & AugmentedConst<ApiType>;
       /**
        * Generic const
        **/
@@ -455,14 +427,6 @@ declare module '@polkadot/api-base/types/consts' {
        **/
       [key: string]: Codec;
     };
-    stellarRelay: {
-      organizationLimit: u32 & AugmentedConst<ApiType>;
-      validatorLimit: u32 & AugmentedConst<ApiType>;
-      /**
-       * Generic const
-       **/
-      [key: string]: Codec;
-    };
     system: {
       /**
        * Maximum number of block number to block hash mappings to keep (oldest pruned first).
@@ -593,34 +557,6 @@ declare module '@polkadot/api-base/types/consts' {
        * The limit on the number of batched calls.
        **/
       batchedCallsLimit: u32 & AugmentedConst<ApiType>;
-      /**
-       * Generic const
-       **/
-      [key: string]: Codec;
-    };
-    vaultRegistry: {
-      /**
-       * Currency used for griefing collateral, e.g. DOT.
-       **/
-      getGriefingCollateralCurrencyId: SpacewalkPrimitivesCurrencyId & AugmentedConst<ApiType>;
-      /**
-       * The vault module id, used for deriving its sovereign account ID.
-       **/
-      palletId: FrameSupportPalletId & AugmentedConst<ApiType>;
-      /**
-       * Generic const
-       **/
-      [key: string]: Codec;
-    };
-    vaultRewards: {
-      getNativeCurrencyId: SpacewalkPrimitivesCurrencyId & AugmentedConst<ApiType>;
-      /**
-       * Generic const
-       **/
-      [key: string]: Codec;
-    };
-    vaultStaking: {
-      getNativeCurrencyId: SpacewalkPrimitivesCurrencyId & AugmentedConst<ApiType>;
       /**
        * Generic const
        **/

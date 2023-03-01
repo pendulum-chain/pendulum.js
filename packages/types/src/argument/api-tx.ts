@@ -10,7 +10,7 @@ import type { ApiTypes, AugmentedSubmittable, SubmittableExtrinsic, SubmittableE
 import type { Data } from '@polkadot/types';
 import type { Bytes, Compact, Option, U8aFixed, Vec, bool, i128, u128, u16, u32, u64, u8 } from '@polkadot/types-codec';
 import type { AnyNumber, IMethod, ITuple } from '@polkadot/types-codec/types';
-import type { CumulusPrimitivesParachainInherentParachainInherentData, DiaOracleDiaCoinInfo, FoucocoRuntimeOriginCaller, FoucocoRuntimeSessionKeys, FrameSupportPreimagesBounded, PalletContractsWasmDeterminism, PalletDemocracyConviction, PalletDemocracyVoteAccountVote, PalletIdentityBitFlags, PalletIdentityIdentityInfo, PalletIdentityJudgement, PalletMultisigTimepoint, PalletVestingVestingInfo, SecurityErrorCode, SecurityStatusCode, SpRuntimeHeader, SpWeightsWeightV2Weight, SpacewalkPrimitivesCurrencyId, SpacewalkPrimitivesOracleKey, SpacewalkPrimitivesVaultCurrencyPair, SpacewalkPrimitivesVaultId, StellarRelayOrganization, StellarRelayValidator, XcmV1MultiLocation, XcmV2WeightLimit, XcmVersionedMultiAsset, XcmVersionedMultiAssets, XcmVersionedMultiLocation, XcmVersionedXcm, ZenlinkProtocolPrimitivesAssetId } from '@polkadot/types/lookup';
+import type { AmplitudeRuntimeCurrencyCurrencyId, AmplitudeRuntimeOriginCaller, AmplitudeRuntimeSessionKeys, CumulusPrimitivesParachainInherentParachainInherentData, DiaOracleDiaCoinInfo, FrameSupportPreimagesBounded, PalletContractsWasmDeterminism, PalletDemocracyConviction, PalletDemocracyVoteAccountVote, PalletIdentityBitFlags, PalletIdentityIdentityInfo, PalletIdentityJudgement, PalletMultisigTimepoint, PalletVestingVestingInfo, SpRuntimeHeader, SpWeightsWeightV2Weight, XcmV1MultiLocation, XcmV2WeightLimit, XcmVersionedMultiAsset, XcmVersionedMultiAssets, XcmVersionedMultiLocation, XcmVersionedXcm, ZenlinkProtocolPrimitivesAssetId } from '@polkadot/types/lookup';
 
 export type __AugmentedSubmittable = AugmentedSubmittable<() => unknown>;
 export type __SubmittableExtrinsic<ApiType extends ApiTypes> = SubmittableExtrinsic<ApiType>;
@@ -726,7 +726,7 @@ declare module '@polkadot/api-base/types/submittable' {
        * The dispatch origin for this call must be `Signed` by the
        * transactor.
        **/
-      transfer: AugmentedSubmittable<(dest: MultiAddress | { Id: any } | { Index: any } | { Raw: any } | { Address32: any } | { Address20: any } | string | Uint8Array, currencyId: SpacewalkPrimitivesCurrencyId | { XCM: any } | { Native: any } | { StellarNative: any } | { AlphaNum4: any } | { AlphaNum12: any } | string | Uint8Array, amount: Compact<u128> | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [MultiAddress, SpacewalkPrimitivesCurrencyId, Compact<u128>]>;
+      transfer: AugmentedSubmittable<(dest: MultiAddress | { Id: any } | { Index: any } | { Raw: any } | { Address32: any } | { Address20: any } | string | Uint8Array, currencyId: AmplitudeRuntimeCurrencyCurrencyId | { Native: any } | { XCM: any } | string | Uint8Array, amount: Compact<u128> | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [MultiAddress, AmplitudeRuntimeCurrencyCurrencyId, Compact<u128>]>;
       /**
        * Transfer some native currency to another account.
        * 
@@ -739,7 +739,7 @@ declare module '@polkadot/api-base/types/submittable' {
        * 
        * The dispatch origin of this call must be _Root_.
        **/
-      updateBalance: AugmentedSubmittable<(who: MultiAddress | { Id: any } | { Index: any } | { Raw: any } | { Address32: any } | { Address20: any } | string | Uint8Array, currencyId: SpacewalkPrimitivesCurrencyId | { XCM: any } | { Native: any } | { StellarNative: any } | { AlphaNum4: any } | { AlphaNum12: any } | string | Uint8Array, amount: i128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [MultiAddress, SpacewalkPrimitivesCurrencyId, i128]>;
+      updateBalance: AugmentedSubmittable<(who: MultiAddress | { Id: any } | { Index: any } | { Raw: any } | { Address32: any } | { Address20: any } | string | Uint8Array, currencyId: AmplitudeRuntimeCurrencyCurrencyId | { Native: any } | { XCM: any } | string | Uint8Array, amount: i128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [MultiAddress, AmplitudeRuntimeCurrencyCurrencyId, i128]>;
       /**
        * Generic tx
        **/
@@ -1036,74 +1036,6 @@ declare module '@polkadot/api-base/types/submittable' {
        **/
       [key: string]: SubmittableExtrinsicFunction<ApiType>;
     };
-    fee: {
-      /**
-       * Changes the issue fee percentage (only executable by the Root account)
-       * 
-       * # Arguments
-       * 
-       * * `origin` - signing account
-       * * `fee` - the new fee
-       **/
-      setIssueFee: AugmentedSubmittable<(fee: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u128]>;
-      /**
-       * Changes the issue griefing collateral percentage (only executable by the Root account)
-       * 
-       * # Arguments
-       * 
-       * * `origin` - signing account
-       * * `griefing_collateral` - the new griefing collateral
-       **/
-      setIssueGriefingCollateral: AugmentedSubmittable<(griefingCollateral: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u128]>;
-      /**
-       * Changes the premium redeem fee percentage (only executable by the Root account)
-       * 
-       * # Arguments
-       * 
-       * * `origin` - signing account
-       * * `fee` - the new fee
-       **/
-      setPremiumRedeemFee: AugmentedSubmittable<(fee: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u128]>;
-      /**
-       * Changes the punishment fee percentage (only executable by the Root account)
-       * 
-       * # Arguments
-       * 
-       * * `origin` - signing account
-       * * `fee` - the new fee
-       **/
-      setPunishmentFee: AugmentedSubmittable<(fee: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u128]>;
-      /**
-       * Changes the redeem fee percentage (only executable by the Root account)
-       * 
-       * # Arguments
-       * 
-       * * `origin` - signing account
-       * * `fee` - the new fee
-       **/
-      setRedeemFee: AugmentedSubmittable<(fee: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u128]>;
-      /**
-       * Changes the replace griefing collateral percentage (only executable by the Root account)
-       * 
-       * # Arguments
-       * 
-       * * `origin` - signing account
-       * * `griefing_collateral` - the new griefing collateral
-       **/
-      setReplaceGriefingCollateral: AugmentedSubmittable<(griefingCollateral: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u128]>;
-      /**
-       * Withdraw all rewards from the `origin` account in the `vault_id` staking pool.
-       * 
-       * # Arguments
-       * 
-       * * `origin` - signing account
-       **/
-      withdrawRewards: AugmentedSubmittable<(vaultId: SpacewalkPrimitivesVaultId | { accountId?: any; currencies?: any } | string | Uint8Array, index: Option<u32> | null | Uint8Array | u32 | AnyNumber) => SubmittableExtrinsic<ApiType>, [SpacewalkPrimitivesVaultId, Option<u32>]>;
-      /**
-       * Generic tx
-       **/
-      [key: string]: SubmittableExtrinsicFunction<ApiType>;
-    };
     identity: {
       /**
        * Add a registrar to the system.
@@ -1372,59 +1304,6 @@ declare module '@polkadot/api-base/types/submittable' {
        **/
       [key: string]: SubmittableExtrinsicFunction<ApiType>;
     };
-    issue: {
-      /**
-       * Cancel the issuance of tokens if expired
-       * 
-       * # Arguments
-       * 
-       * * `origin` - sender of the transaction
-       * * `issue_id` - identifier of issue request as output from request_issue
-       **/
-      cancelIssue: AugmentedSubmittable<(issueId: H256 | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [H256]>;
-      /**
-       * Finalize the issuance of tokens
-       * 
-       * # Arguments
-       * 
-       * * `origin` - sender of the transaction
-       * * `issue_id` - identifier of issue request as output from request_issue
-       * * `transaction_envelope_xdr_encoded` - the XDR representation of the transaction
-       * envelope
-       * * `externalized_envelopes_encoded` - the XDR representation of the externalized
-       * envelopes
-       * * `transaction_set_encoded` - the XDR representation of the transaction set
-       **/
-      executeIssue: AugmentedSubmittable<(issueId: H256 | string | Uint8Array, transactionEnvelopeXdrEncoded: Bytes | string | Uint8Array, externalizedEnvelopesEncoded: Bytes | string | Uint8Array, transactionSetEncoded: Bytes | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [H256, Bytes, Bytes, Bytes]>;
-      rateLimitUpdate: AugmentedSubmittable<(limitVolumeAmount: Option<u128> | null | Uint8Array | u128 | AnyNumber, limitVolumeCurrencyId: SpacewalkPrimitivesCurrencyId | { XCM: any } | { Native: any } | { StellarNative: any } | { AlphaNum4: any } | { AlphaNum12: any } | string | Uint8Array, intervalLength: u32 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [Option<u128>, SpacewalkPrimitivesCurrencyId, u32]>;
-      /**
-       * Request the issuance of tokens
-       * 
-       * # Arguments
-       * 
-       * * `origin` - sender of the transaction
-       * * `amount` - amount of a stellar asset the user wants to convert to issued tokens. Note
-       * that the
-       * amount of issued tokens received will be less, because a fee is subtracted.
-       * * `asset` - the currency id of the stellar asset the user wants to convert to issued
-       * tokens
-       * * `vault` - address of the vault
-       **/
-      requestIssue: AugmentedSubmittable<(amount: Compact<u128> | AnyNumber | Uint8Array, vaultId: SpacewalkPrimitivesVaultId | { accountId?: any; currencies?: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [Compact<u128>, SpacewalkPrimitivesVaultId]>;
-      /**
-       * Set the default issue period for tx verification.
-       * 
-       * # Arguments
-       * 
-       * * `origin` - the dispatch origin of this call (must be _Root_)
-       * * `period` - default period for new requests
-       **/
-      setIssuePeriod: AugmentedSubmittable<(period: u32 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u32]>;
-      /**
-       * Generic tx
-       **/
-      [key: string]: SubmittableExtrinsicFunction<ApiType>;
-    };
     multisig: {
       /**
        * Register approval for a dispatch to be made from a deterministic composite account if
@@ -1560,36 +1439,6 @@ declare module '@polkadot/api-base/types/submittable' {
        * # </weight>
        **/
       cancelAsMulti: AugmentedSubmittable<(threshold: u16 | AnyNumber | Uint8Array, otherSignatories: Vec<AccountId32> | (AccountId32 | string | Uint8Array)[], timepoint: PalletMultisigTimepoint | { height?: any; index?: any } | string | Uint8Array, callHash: U8aFixed | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [u16, Vec<AccountId32>, PalletMultisigTimepoint, U8aFixed]>;
-      /**
-       * Generic tx
-       **/
-      [key: string]: SubmittableExtrinsicFunction<ApiType>;
-    };
-    nomination: {
-      depositCollateral: AugmentedSubmittable<(vaultId: SpacewalkPrimitivesVaultId | { accountId?: any; currencies?: any } | string | Uint8Array, amount: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [SpacewalkPrimitivesVaultId, u128]>;
-      /**
-       * Allow nomination for this vault
-       **/
-      optInToNomination: AugmentedSubmittable<(currencyPair: SpacewalkPrimitivesVaultCurrencyPair | { collateral?: any; wrapped?: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [SpacewalkPrimitivesVaultCurrencyPair]>;
-      /**
-       * Disallow nomination for this vault
-       **/
-      optOutOfNomination: AugmentedSubmittable<(currencyPair: SpacewalkPrimitivesVaultCurrencyPair | { collateral?: any; wrapped?: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [SpacewalkPrimitivesVaultCurrencyPair]>;
-      setNominationEnabled: AugmentedSubmittable<(enabled: bool | boolean | Uint8Array) => SubmittableExtrinsic<ApiType>, [bool]>;
-      withdrawCollateral: AugmentedSubmittable<(vaultId: SpacewalkPrimitivesVaultId | { accountId?: any; currencies?: any } | string | Uint8Array, amount: u128 | AnyNumber | Uint8Array, index: Option<u32> | null | Uint8Array | u32 | AnyNumber) => SubmittableExtrinsic<ApiType>, [SpacewalkPrimitivesVaultId, u128, Option<u32>]>;
-      /**
-       * Generic tx
-       **/
-      [key: string]: SubmittableExtrinsicFunction<ApiType>;
-    };
-    oracle: {
-      /**
-       * set oracle keys
-       * 
-       * # Arguments
-       * * `oracle_key` - list of oracle keys
-       **/
-      updateOracleKeys: AugmentedSubmittable<(oracleKeys: Vec<SpacewalkPrimitivesOracleKey> | (SpacewalkPrimitivesOracleKey | { ExchangeRate: any } | string | Uint8Array)[]) => SubmittableExtrinsic<ApiType>, [Vec<SpacewalkPrimitivesOracleKey>]>;
       /**
        * Generic tx
        **/
@@ -2112,159 +1961,6 @@ declare module '@polkadot/api-base/types/submittable' {
        **/
       [key: string]: SubmittableExtrinsicFunction<ApiType>;
     };
-    redeem: {
-      /**
-       * If a redeem request is not completed on time, the redeem request can be cancelled.
-       * The user that initially requested the redeem process calls this function to obtain
-       * the Vault’s collateral as compensation for not transferring the Stellar assets back to
-       * their address.
-       * 
-       * # Arguments
-       * 
-       * * `origin` - sender of the transaction
-       * * `redeem_id` - identifier of redeem request as output from request_redeem
-       * * `reimburse` - specifying if the user wishes to be reimbursed in collateral
-       * and slash the Vault, or wishes to keep the tokens (and retry
-       * Redeem with another Vault)
-       **/
-      cancelRedeem: AugmentedSubmittable<(redeemId: H256 | string | Uint8Array, reimburse: bool | boolean | Uint8Array) => SubmittableExtrinsic<ApiType>, [H256, bool]>;
-      /**
-       * A Vault calls this function after receiving an RequestRedeem event with their public
-       * key. Before calling the function, the Vault transfers the specific amount of Stellar
-       * assets to the Stellar address given in the original redeem request. The Vault completes
-       * the redeem with this function.
-       * 
-       * # Arguments
-       * 
-       * * `origin` - anyone executing this redeem request
-       * * `redeem_id` - identifier of redeem request as output from request_redeem
-       * * `transaction_envelope_xdr_encoded` - the XDR representation of the transaction
-       * envelope
-       * * `externalized_envelopes_encoded` - the XDR representation of the externalized
-       * envelopes
-       * * `transaction_set_encoded` - the XDR representation of the transaction set
-       **/
-      executeRedeem: AugmentedSubmittable<(redeemId: H256 | string | Uint8Array, transactionEnvelopeXdrEncoded: Bytes | string | Uint8Array, externalizedEnvelopesEncoded: Bytes | string | Uint8Array, transactionSetEncoded: Bytes | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [H256, Bytes, Bytes, Bytes]>;
-      /**
-       * When a Vault is liquidated, its collateral is slashed up to 150% of the liquidated
-       * value. To re-establish the physical 1:1 peg, the bridge allows users to burn issued
-       * tokens in return for collateral at a premium rate.
-       * 
-       * # Arguments
-       * 
-       * * `origin` - sender of the transaction
-       * * `collateral_currency` - currency to be received
-       * * `wrapped_currency` - currency of the wrapped token to burn
-       * * `amount_wrapped` - amount of issued tokens to burn
-       **/
-      liquidationRedeem: AugmentedSubmittable<(currencies: SpacewalkPrimitivesVaultCurrencyPair | { collateral?: any; wrapped?: any } | string | Uint8Array, amountWrapped: Compact<u128> | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [SpacewalkPrimitivesVaultCurrencyPair, Compact<u128>]>;
-      /**
-       * Mint tokens for a redeem that was cancelled with reimburse=true. This is
-       * only possible if at the time of the cancel_redeem, the vault did not have
-       * sufficient collateral after being slashed to back the tokens that the user
-       * used to hold.
-       * 
-       * # Arguments
-       * 
-       * * `origin` - the dispatch origin of this call (must be _Root_)
-       * * `redeem_id` - identifier of redeem request as output from request_redeem
-       **/
-      mintTokensForReimbursedRedeem: AugmentedSubmittable<(currencyPair: SpacewalkPrimitivesVaultCurrencyPair | { collateral?: any; wrapped?: any } | string | Uint8Array, redeemId: H256 | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [SpacewalkPrimitivesVaultCurrencyPair, H256]>;
-      rateLimitUpdate: AugmentedSubmittable<(limitVolumeAmount: Option<u128> | null | Uint8Array | u128 | AnyNumber, limitVolumeCurrencyId: SpacewalkPrimitivesCurrencyId | { XCM: any } | { Native: any } | { StellarNative: any } | { AlphaNum4: any } | { AlphaNum12: any } | string | Uint8Array, intervalLength: u32 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [Option<u128>, SpacewalkPrimitivesCurrencyId, u32]>;
-      /**
-       * Initializes a request to burn issued tokens against a Vault with sufficient tokens. It
-       * will also ensure that the Parachain status is RUNNING.
-       * 
-       * # Arguments
-       * 
-       * * `origin` - sender of the transaction
-       * * `amount_wrapped` - amount of tokens to redeem
-       * * `asset` - the asset to redeem
-       * * `stellar_address` - the address to receive assets on Stellar
-       * * `vault_id` - address of the vault
-       **/
-      requestRedeem: AugmentedSubmittable<(amountWrapped: Compact<u128> | AnyNumber | Uint8Array, stellarAddress: U8aFixed | string | Uint8Array, vaultId: SpacewalkPrimitivesVaultId | { accountId?: any; currencies?: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [Compact<u128>, U8aFixed, SpacewalkPrimitivesVaultId]>;
-      selfRedeem: AugmentedSubmittable<(currencyPair: SpacewalkPrimitivesVaultCurrencyPair | { collateral?: any; wrapped?: any } | string | Uint8Array, amountWrapped: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [SpacewalkPrimitivesVaultCurrencyPair, u128]>;
-      /**
-       * Set the default redeem period for tx verification.
-       * 
-       * # Arguments
-       * 
-       * * `origin` - the dispatch origin of this call (must be _Root_)
-       * * `period` - default period for new requests
-       **/
-      setRedeemPeriod: AugmentedSubmittable<(period: u32 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u32]>;
-      /**
-       * Generic tx
-       **/
-      [key: string]: SubmittableExtrinsicFunction<ApiType>;
-    };
-    replace: {
-      /**
-       * Accept request of vault replacement
-       * 
-       * # Arguments
-       * 
-       * * `origin` - the initiator of the transaction: the new vault
-       * * `currency_pair` - currency_pair of the new vault
-       * * `amount` - amount of tokens to be replaced
-       * * `collateral` - the collateral provided by the new vault to match the replace request
-       * (for backing the transferred tokens)
-       * * `stellar_address` - the address that old-vault should transfer the wrapped asset to
-       **/
-      acceptReplace: AugmentedSubmittable<(currencyPair: SpacewalkPrimitivesVaultCurrencyPair | { collateral?: any; wrapped?: any } | string | Uint8Array, oldVault: SpacewalkPrimitivesVaultId | { accountId?: any; currencies?: any } | string | Uint8Array, amount: Compact<u128> | AnyNumber | Uint8Array, collateral: Compact<u128> | AnyNumber | Uint8Array, stellarAddress: U8aFixed | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [SpacewalkPrimitivesVaultCurrencyPair, SpacewalkPrimitivesVaultId, Compact<u128>, Compact<u128>, U8aFixed]>;
-      /**
-       * Cancel vault replacement
-       * 
-       * # Arguments
-       * 
-       * * `origin` - sender of the transaction: anyone
-       * * `replace_id` - the ID of the replacement request
-       **/
-      cancelReplace: AugmentedSubmittable<(replaceId: H256 | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [H256]>;
-      /**
-       * Execute vault replacement
-       * 
-       * # Arguments
-       * 
-       * * `origin` - sender of the transaction: the new vault
-       * * `replace_id` - the ID of the replacement request
-       **/
-      executeReplace: AugmentedSubmittable<(replaceId: H256 | string | Uint8Array, transactionEnvelopeXdrEncoded: Bytes | string | Uint8Array, externalizedEnvelopesXdrEncoded: Bytes | string | Uint8Array, transactionSetXdrEncoded: Bytes | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [H256, Bytes, Bytes, Bytes]>;
-      /**
-       * Request the replacement of a new vault ownership
-       * 
-       * # Arguments
-       * 
-       * * `origin` - sender of the transaction
-       * * `amount` - amount of issued tokens
-       **/
-      requestReplace: AugmentedSubmittable<(currencyPair: SpacewalkPrimitivesVaultCurrencyPair | { collateral?: any; wrapped?: any } | string | Uint8Array, amount: Compact<u128> | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [SpacewalkPrimitivesVaultCurrencyPair, Compact<u128>]>;
-      /**
-       * Set the default replace period for tx verification.
-       * 
-       * # Arguments
-       * 
-       * * `origin` - the dispatch origin of this call (must be _Root_)
-       * * `period` - default period for new requests
-       * 
-       * # Weight: `O(1)`
-       **/
-      setReplacePeriod: AugmentedSubmittable<(period: u32 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [u32]>;
-      /**
-       * Withdraw a request of vault replacement
-       * 
-       * # Arguments
-       * 
-       * * `origin` - sender of the transaction: the old vault
-       * * `amount` - amount of tokens to be withdrawn from being replaced
-       **/
-      withdrawReplace: AugmentedSubmittable<(currencyPair: SpacewalkPrimitivesVaultCurrencyPair | { collateral?: any; wrapped?: any } | string | Uint8Array, amount: Compact<u128> | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [SpacewalkPrimitivesVaultCurrencyPair, Compact<u128>]>;
-      /**
-       * Generic tx
-       **/
-      [key: string]: SubmittableExtrinsicFunction<ApiType>;
-    };
     scheduler: {
       /**
        * Cancel an anonymously scheduled task.
@@ -2298,45 +1994,6 @@ declare module '@polkadot/api-base/types/submittable' {
        * # </weight>
        **/
       scheduleNamedAfter: AugmentedSubmittable<(id: U8aFixed | string | Uint8Array, after: u32 | AnyNumber | Uint8Array, maybePeriodic: Option<ITuple<[u32, u32]>> | null | Uint8Array | ITuple<[u32, u32]> | [u32 | AnyNumber | Uint8Array, u32 | AnyNumber | Uint8Array], priority: u8 | AnyNumber | Uint8Array, call: Call | IMethod | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [U8aFixed, u32, Option<ITuple<[u32, u32]>>, u8, Call]>;
-      /**
-       * Generic tx
-       **/
-      [key: string]: SubmittableExtrinsicFunction<ApiType>;
-    };
-    security: {
-      /**
-       * Insert a new parachain error.
-       * 
-       * # Arguments
-       * 
-       * * `origin` - the dispatch origin of this call (must be _Root_)
-       * * `error_code` - the error code to insert
-       * 
-       * # Weight: `O(1)`
-       **/
-      insertParachainError: AugmentedSubmittable<(errorCode: SecurityErrorCode | 'None' | 'OracleOffline' | number | Uint8Array) => SubmittableExtrinsic<ApiType>, [SecurityErrorCode]>;
-      /**
-       * Remove a parachain error.
-       * 
-       * # Arguments
-       * 
-       * * `origin` - the dispatch origin of this call (must be _Root_)
-       * * `error_code` - the error code to remove
-       * 
-       * # Weight: `O(1)`
-       **/
-      removeParachainError: AugmentedSubmittable<(errorCode: SecurityErrorCode | 'None' | 'OracleOffline' | number | Uint8Array) => SubmittableExtrinsic<ApiType>, [SecurityErrorCode]>;
-      /**
-       * Set the parachain status code.
-       * 
-       * # Arguments
-       * 
-       * * `origin` - the dispatch origin of this call (must be _Root_)
-       * * `status_code` - the status code to set
-       * 
-       * # Weight: `O(1)`
-       **/
-      setParachainStatus: AugmentedSubmittable<(statusCode: SecurityStatusCode | 'Running' | 'Error' | 'Shutdown' | number | Uint8Array) => SubmittableExtrinsic<ApiType>, [SecurityStatusCode]>;
       /**
        * Generic tx
        **/
@@ -2378,84 +2035,7 @@ declare module '@polkadot/api-base/types/submittable' {
        * - DbWrites per key id: `KeyOwner`
        * # </weight>
        **/
-      setKeys: AugmentedSubmittable<(keys: FoucocoRuntimeSessionKeys | { aura?: any } | string | Uint8Array, proof: Bytes | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [FoucocoRuntimeSessionKeys, Bytes]>;
-      /**
-       * Generic tx
-       **/
-      [key: string]: SubmittableExtrinsicFunction<ApiType>;
-    };
-    stellarRelay: {
-      /**
-       * This extrinsic is used to update the current sets of validators and
-       * organizations. The current values of validators and organizations are moved to the
-       * OldValidators and OldOrganizations respectively, and the function arguments are stored
-       * as new/current values. The `enactment_block_height` parameter is used by the
-       * `validate_stellar_transaction` function to determine if it should use the 'old' or
-       * updated sets for validation. This makes a seamless transition between old and new
-       * validators possible.
-       * 
-       * It can only be called by the root origin.
-       **/
-      updateTier1ValidatorSet: AugmentedSubmittable<(validators: Vec<StellarRelayValidator> | (StellarRelayValidator | { name?: any; publicKey?: any; organizationId?: any } | string | Uint8Array)[], organizations: Vec<StellarRelayOrganization> | (StellarRelayOrganization | { id?: any; name?: any } | string | Uint8Array)[], enactmentBlockHeight: u32 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [Vec<StellarRelayValidator>, Vec<StellarRelayOrganization>, u32]>;
-      /**
-       * Generic tx
-       **/
-      [key: string]: SubmittableExtrinsicFunction<ApiType>;
-    };
-    sudo: {
-      /**
-       * Authenticates the current sudo key and sets the given AccountId (`new`) as the new sudo
-       * key.
-       * 
-       * The dispatch origin for this call must be _Signed_.
-       * 
-       * # <weight>
-       * - O(1).
-       * - Limited storage reads.
-       * - One DB change.
-       * # </weight>
-       **/
-      setKey: AugmentedSubmittable<(updated: MultiAddress | { Id: any } | { Index: any } | { Raw: any } | { Address32: any } | { Address20: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [MultiAddress]>;
-      /**
-       * Authenticates the sudo key and dispatches a function call with `Root` origin.
-       * 
-       * The dispatch origin for this call must be _Signed_.
-       * 
-       * # <weight>
-       * - O(1).
-       * - Limited storage reads.
-       * - One DB write (event).
-       * - Weight of derivative `call` execution + 10,000.
-       * # </weight>
-       **/
-      sudo: AugmentedSubmittable<(call: Call | IMethod | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [Call]>;
-      /**
-       * Authenticates the sudo key and dispatches a function call with `Signed` origin from
-       * a given account.
-       * 
-       * The dispatch origin for this call must be _Signed_.
-       * 
-       * # <weight>
-       * - O(1).
-       * - Limited storage reads.
-       * - One DB write (event).
-       * - Weight of derivative `call` execution + 10,000.
-       * # </weight>
-       **/
-      sudoAs: AugmentedSubmittable<(who: MultiAddress | { Id: any } | { Index: any } | { Raw: any } | { Address32: any } | { Address20: any } | string | Uint8Array, call: Call | IMethod | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [MultiAddress, Call]>;
-      /**
-       * Authenticates the sudo key and dispatches a function call with `Root` origin.
-       * This function does not check the weight of the call, and instead allows the
-       * Sudo user to specify the weight of the call.
-       * 
-       * The dispatch origin for this call must be _Signed_.
-       * 
-       * # <weight>
-       * - O(1).
-       * - The weight of this call is defined by the caller.
-       * # </weight>
-       **/
-      sudoUncheckedWeight: AugmentedSubmittable<(call: Call | IMethod | string | Uint8Array, weight: SpWeightsWeightV2Weight | { refTime?: any; proofSize?: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [Call, SpWeightsWeightV2Weight]>;
+      setKeys: AugmentedSubmittable<(keys: AmplitudeRuntimeSessionKeys | { aura?: any } | string | Uint8Array, proof: Bytes | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [AmplitudeRuntimeSessionKeys, Bytes]>;
       /**
        * Generic tx
        **/
@@ -2740,12 +2320,6 @@ declare module '@polkadot/api-base/types/submittable' {
        **/
       [key: string]: SubmittableExtrinsicFunction<ApiType>;
     };
-    tokenAllowance: {
-      /**
-       * Generic tx
-       **/
-      [key: string]: SubmittableExtrinsicFunction<ApiType>;
-    };
     tokens: {
       /**
        * Exactly as `transfer`, except the origin must be root and the source
@@ -2758,7 +2332,7 @@ declare module '@polkadot/api-base/types/submittable' {
        * - `currency_id`: currency type.
        * - `amount`: free balance amount to tranfer.
        **/
-      forceTransfer: AugmentedSubmittable<(source: MultiAddress | { Id: any } | { Index: any } | { Raw: any } | { Address32: any } | { Address20: any } | string | Uint8Array, dest: MultiAddress | { Id: any } | { Index: any } | { Raw: any } | { Address32: any } | { Address20: any } | string | Uint8Array, currencyId: SpacewalkPrimitivesCurrencyId | { XCM: any } | { Native: any } | { StellarNative: any } | { AlphaNum4: any } | { AlphaNum12: any } | string | Uint8Array, amount: Compact<u128> | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [MultiAddress, MultiAddress, SpacewalkPrimitivesCurrencyId, Compact<u128>]>;
+      forceTransfer: AugmentedSubmittable<(source: MultiAddress | { Id: any } | { Index: any } | { Raw: any } | { Address32: any } | { Address20: any } | string | Uint8Array, dest: MultiAddress | { Id: any } | { Index: any } | { Raw: any } | { Address32: any } | { Address20: any } | string | Uint8Array, currencyId: AmplitudeRuntimeCurrencyCurrencyId | { Native: any } | { XCM: any } | string | Uint8Array, amount: Compact<u128> | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [MultiAddress, MultiAddress, AmplitudeRuntimeCurrencyCurrencyId, Compact<u128>]>;
       /**
        * Set the balances of a given account.
        * 
@@ -2769,7 +2343,7 @@ declare module '@polkadot/api-base/types/submittable' {
        * 
        * The dispatch origin for this call is `root`.
        **/
-      setBalance: AugmentedSubmittable<(who: MultiAddress | { Id: any } | { Index: any } | { Raw: any } | { Address32: any } | { Address20: any } | string | Uint8Array, currencyId: SpacewalkPrimitivesCurrencyId | { XCM: any } | { Native: any } | { StellarNative: any } | { AlphaNum4: any } | { AlphaNum12: any } | string | Uint8Array, newFree: Compact<u128> | AnyNumber | Uint8Array, newReserved: Compact<u128> | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [MultiAddress, SpacewalkPrimitivesCurrencyId, Compact<u128>, Compact<u128>]>;
+      setBalance: AugmentedSubmittable<(who: MultiAddress | { Id: any } | { Index: any } | { Raw: any } | { Address32: any } | { Address20: any } | string | Uint8Array, currencyId: AmplitudeRuntimeCurrencyCurrencyId | { Native: any } | { XCM: any } | string | Uint8Array, newFree: Compact<u128> | AnyNumber | Uint8Array, newReserved: Compact<u128> | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [MultiAddress, AmplitudeRuntimeCurrencyCurrencyId, Compact<u128>, Compact<u128>]>;
       /**
        * Transfer some liquid free balance to another account.
        * 
@@ -2785,7 +2359,7 @@ declare module '@polkadot/api-base/types/submittable' {
        * - `currency_id`: currency type.
        * - `amount`: free balance amount to tranfer.
        **/
-      transfer: AugmentedSubmittable<(dest: MultiAddress | { Id: any } | { Index: any } | { Raw: any } | { Address32: any } | { Address20: any } | string | Uint8Array, currencyId: SpacewalkPrimitivesCurrencyId | { XCM: any } | { Native: any } | { StellarNative: any } | { AlphaNum4: any } | { AlphaNum12: any } | string | Uint8Array, amount: Compact<u128> | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [MultiAddress, SpacewalkPrimitivesCurrencyId, Compact<u128>]>;
+      transfer: AugmentedSubmittable<(dest: MultiAddress | { Id: any } | { Index: any } | { Raw: any } | { Address32: any } | { Address20: any } | string | Uint8Array, currencyId: AmplitudeRuntimeCurrencyCurrencyId | { Native: any } | { XCM: any } | string | Uint8Array, amount: Compact<u128> | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [MultiAddress, AmplitudeRuntimeCurrencyCurrencyId, Compact<u128>]>;
       /**
        * Transfer all remaining balance to the given account.
        * 
@@ -2807,7 +2381,7 @@ declare module '@polkadot/api-base/types/submittable' {
        * except at least the existential deposit, which will guarantee to
        * keep the sender account alive (true).
        **/
-      transferAll: AugmentedSubmittable<(dest: MultiAddress | { Id: any } | { Index: any } | { Raw: any } | { Address32: any } | { Address20: any } | string | Uint8Array, currencyId: SpacewalkPrimitivesCurrencyId | { XCM: any } | { Native: any } | { StellarNative: any } | { AlphaNum4: any } | { AlphaNum12: any } | string | Uint8Array, keepAlive: bool | boolean | Uint8Array) => SubmittableExtrinsic<ApiType>, [MultiAddress, SpacewalkPrimitivesCurrencyId, bool]>;
+      transferAll: AugmentedSubmittable<(dest: MultiAddress | { Id: any } | { Index: any } | { Raw: any } | { Address32: any } | { Address20: any } | string | Uint8Array, currencyId: AmplitudeRuntimeCurrencyCurrencyId | { Native: any } | { XCM: any } | string | Uint8Array, keepAlive: bool | boolean | Uint8Array) => SubmittableExtrinsic<ApiType>, [MultiAddress, AmplitudeRuntimeCurrencyCurrencyId, bool]>;
       /**
        * Same as the [`transfer`] call, but with a check that the transfer
        * will not kill the origin account.
@@ -2821,7 +2395,7 @@ declare module '@polkadot/api-base/types/submittable' {
        * - `currency_id`: currency type.
        * - `amount`: free balance amount to tranfer.
        **/
-      transferKeepAlive: AugmentedSubmittable<(dest: MultiAddress | { Id: any } | { Index: any } | { Raw: any } | { Address32: any } | { Address20: any } | string | Uint8Array, currencyId: SpacewalkPrimitivesCurrencyId | { XCM: any } | { Native: any } | { StellarNative: any } | { AlphaNum4: any } | { AlphaNum12: any } | string | Uint8Array, amount: Compact<u128> | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [MultiAddress, SpacewalkPrimitivesCurrencyId, Compact<u128>]>;
+      transferKeepAlive: AugmentedSubmittable<(dest: MultiAddress | { Id: any } | { Index: any } | { Raw: any } | { Address32: any } | { Address20: any } | string | Uint8Array, currencyId: AmplitudeRuntimeCurrencyCurrencyId | { Native: any } | { XCM: any } | string | Uint8Array, amount: Compact<u128> | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [MultiAddress, AmplitudeRuntimeCurrencyCurrencyId, Compact<u128>]>;
       /**
        * Generic tx
        **/
@@ -2967,7 +2541,7 @@ declare module '@polkadot/api-base/types/submittable' {
        * - Weight of derivative `call` execution + T::WeightInfo::dispatch_as().
        * # </weight>
        **/
-      dispatchAs: AugmentedSubmittable<(asOrigin: FoucocoRuntimeOriginCaller | { system: any } | { Void: any } | { Council: any } | { TechnicalCommittee: any } | { PolkadotXcm: any } | { CumulusXcm: any } | string | Uint8Array, call: Call | IMethod | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [FoucocoRuntimeOriginCaller, Call]>;
+      dispatchAs: AugmentedSubmittable<(asOrigin: AmplitudeRuntimeOriginCaller | { system: any } | { Void: any } | { Council: any } | { TechnicalCommittee: any } | { PolkadotXcm: any } | { CumulusXcm: any } | string | Uint8Array, call: Call | IMethod | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [AmplitudeRuntimeOriginCaller, Call]>;
       /**
        * Send a batch of dispatch calls.
        * Unlike `batch`, it allows errors and won't interrupt.
@@ -2994,134 +2568,6 @@ declare module '@polkadot/api-base/types/submittable' {
        * The dispatch origin for this call must be _Root_.
        **/
       withWeight: AugmentedSubmittable<(call: Call | IMethod | string | Uint8Array, weight: SpWeightsWeightV2Weight | { refTime?: any; proofSize?: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [Call, SpWeightsWeightV2Weight]>;
-      /**
-       * Generic tx
-       **/
-      [key: string]: SubmittableExtrinsicFunction<ApiType>;
-    };
-    vaultRegistry: {
-      /**
-       * Configures whether or not the vault accepts new issues.
-       * 
-       * # Arguments
-       * 
-       * * `origin` - sender of the transaction (i.e. the vault)
-       * * `accept_new_issues` - true indicates that the vault accepts new issues
-       * 
-       * # Weight: `O(1)`
-       **/
-      acceptNewIssues: AugmentedSubmittable<(currencyPair: SpacewalkPrimitivesVaultCurrencyPair | { collateral?: any; wrapped?: any } | string | Uint8Array, acceptNewIssues: bool | boolean | Uint8Array) => SubmittableExtrinsic<ApiType>, [SpacewalkPrimitivesVaultCurrencyPair, bool]>;
-      /**
-       * Deposit collateral as a security against stealing the
-       * Stellar assets locked with the caller.
-       * 
-       * # Arguments
-       * * `amount` - the amount of extra collateral to lock
-       **/
-      depositCollateral: AugmentedSubmittable<(currencyPair: SpacewalkPrimitivesVaultCurrencyPair | { collateral?: any; wrapped?: any } | string | Uint8Array, amount: Compact<u128> | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [SpacewalkPrimitivesVaultCurrencyPair, Compact<u128>]>;
-      /**
-       * Recover vault ID from a liquidated status.
-       * 
-       * # Arguments
-       * * `currency_pair` - the currency pair to change
-       **/
-      recoverVaultId: AugmentedSubmittable<(currencyPair: SpacewalkPrimitivesVaultCurrencyPair | { collateral?: any; wrapped?: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [SpacewalkPrimitivesVaultCurrencyPair]>;
-      /**
-       * Registers a new Stellar address for the vault.
-       * 
-       * # Arguments
-       * * `public_key` - the Stellar public key of the vault to update
-       **/
-      registerPublicKey: AugmentedSubmittable<(publicKey: U8aFixed | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [U8aFixed]>;
-      /**
-       * Initiates the registration procedure for a new Vault.
-       * The Vault locks up collateral, which is to be used in the issuing process.
-       * 
-       * 
-       * # Errors
-       * * `InsufficientVaultCollateralAmount` - if the collateral is below the minimum threshold
-       * * `VaultAlreadyRegistered` - if a vault is already registered for the origin account
-       * * `InsufficientCollateralAvailable` - if the vault does not own enough collateral
-       **/
-      registerVault: AugmentedSubmittable<(currencyPair: SpacewalkPrimitivesVaultCurrencyPair | { collateral?: any; wrapped?: any } | string | Uint8Array, collateral: Compact<u128> | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [SpacewalkPrimitivesVaultCurrencyPair, Compact<u128>]>;
-      reportUndercollateralizedVault: AugmentedSubmittable<(vaultId: SpacewalkPrimitivesVaultId | { accountId?: any; currencies?: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [SpacewalkPrimitivesVaultId]>;
-      /**
-       * Configures a custom, higher secure collateral threshold for the vault.
-       * 
-       * # Arguments
-       * 
-       * * `origin` - sender of the transaction (i.e. the vault)
-       * * `custom_threshold` - either the threshold, or None to use the systemwide default
-       * 
-       * # Weight: `O(1)`
-       **/
-      setCustomSecureThreshold: AugmentedSubmittable<(currencyPair: SpacewalkPrimitivesVaultCurrencyPair | { collateral?: any; wrapped?: any } | string | Uint8Array, customThreshold: Option<u128> | null | Uint8Array | u128 | AnyNumber) => SubmittableExtrinsic<ApiType>, [SpacewalkPrimitivesVaultCurrencyPair, Option<u128>]>;
-      /**
-       * Changes the collateral liquidation threshold for a currency (only executable by the Root
-       * account)
-       * 
-       * # Arguments
-       * * `currency_pair` - the currency pair to change
-       * * `ceiling` - the new collateral ceiling
-       **/
-      setLiquidationCollateralThreshold: AugmentedSubmittable<(currencyPair: SpacewalkPrimitivesVaultCurrencyPair | { collateral?: any; wrapped?: any } | string | Uint8Array, threshold: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [SpacewalkPrimitivesVaultCurrencyPair, u128]>;
-      /**
-       * Changes the minimum amount of collateral required for registration
-       * (only executable by the Root account)
-       * 
-       * # Arguments
-       * * `currency_id` - the collateral's currency id
-       * * `minimum` - the new minimum collateral
-       **/
-      setMinimumCollateral: AugmentedSubmittable<(currencyId: SpacewalkPrimitivesCurrencyId | { XCM: any } | { Native: any } | { StellarNative: any } | { AlphaNum4: any } | { AlphaNum12: any } | string | Uint8Array, minimum: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [SpacewalkPrimitivesCurrencyId, u128]>;
-      /**
-       * Changes the collateral premium redeem threshold for a currency (only executable by the
-       * Root account)
-       * 
-       * # Arguments
-       * * `currency_pair` - the currency pair to change
-       * * `ceiling` - the new collateral ceiling
-       **/
-      setPremiumRedeemThreshold: AugmentedSubmittable<(currencyPair: SpacewalkPrimitivesVaultCurrencyPair | { collateral?: any; wrapped?: any } | string | Uint8Array, threshold: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [SpacewalkPrimitivesVaultCurrencyPair, u128]>;
-      /**
-       * Changes the secure threshold for a currency (only executable by the Root account)
-       * 
-       * # Arguments
-       * * `currency_pair` - the currency pair to change
-       * * `threshold` - the new secure threshold
-       **/
-      setSecureCollateralThreshold: AugmentedSubmittable<(currencyPair: SpacewalkPrimitivesVaultCurrencyPair | { collateral?: any; wrapped?: any } | string | Uint8Array, threshold: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [SpacewalkPrimitivesVaultCurrencyPair, u128]>;
-      /**
-       * Changes the collateral ceiling for a currency (only executable by the Root account)
-       * 
-       * # Arguments
-       * * `currency_pair` - the currency pair to change
-       * * `ceiling` - the new collateral ceiling
-       **/
-      setSystemCollateralCeiling: AugmentedSubmittable<(currencyPair: SpacewalkPrimitivesVaultCurrencyPair | { collateral?: any; wrapped?: any } | string | Uint8Array, ceiling: u128 | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [SpacewalkPrimitivesVaultCurrencyPair, u128]>;
-      /**
-       * Withdraws `amount` of the collateral from the amount locked by
-       * the vault corresponding to the origin account
-       * The collateral left after withdrawal must be more
-       * (free or used in collateral issued tokens) than MinimumCollateralVault
-       * and above the SecureCollateralThreshold. Collateral that is currently
-       * being used to back issued tokens remains locked until the Vault
-       * is used for a redeem request (full release can take multiple redeem requests).
-       * 
-       * # Arguments
-       * * `amount` - the amount of collateral to withdraw
-       * 
-       * # Errors
-       * * `VaultNotFound` - if no vault exists for the origin account
-       * * `InsufficientCollateralAvailable` - if the vault does not own enough collateral
-       **/
-      withdrawCollateral: AugmentedSubmittable<(currencyPair: SpacewalkPrimitivesVaultCurrencyPair | { collateral?: any; wrapped?: any } | string | Uint8Array, amount: Compact<u128> | AnyNumber | Uint8Array) => SubmittableExtrinsic<ApiType>, [SpacewalkPrimitivesVaultCurrencyPair, Compact<u128>]>;
-      /**
-       * Generic tx
-       **/
-      [key: string]: SubmittableExtrinsicFunction<ApiType>;
-    };
-    vaultRewards: {
       /**
        * Generic tx
        **/
@@ -3330,7 +2776,7 @@ declare module '@polkadot/api-base/types/submittable' {
        * by the network, and if the receiving chain would handle
        * messages correctly.
        **/
-      transfer: AugmentedSubmittable<(currencyId: SpacewalkPrimitivesCurrencyId | { XCM: any } | { Native: any } | { StellarNative: any } | { AlphaNum4: any } | { AlphaNum12: any } | string | Uint8Array, amount: u128 | AnyNumber | Uint8Array, dest: XcmVersionedMultiLocation | { V0: any } | { V1: any } | string | Uint8Array, destWeightLimit: XcmV2WeightLimit | { Unlimited: any } | { Limited: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [SpacewalkPrimitivesCurrencyId, u128, XcmVersionedMultiLocation, XcmV2WeightLimit]>;
+      transfer: AugmentedSubmittable<(currencyId: AmplitudeRuntimeCurrencyCurrencyId | { Native: any } | { XCM: any } | string | Uint8Array, amount: u128 | AnyNumber | Uint8Array, dest: XcmVersionedMultiLocation | { V0: any } | { V1: any } | string | Uint8Array, destWeightLimit: XcmV2WeightLimit | { Unlimited: any } | { Limited: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [AmplitudeRuntimeCurrencyCurrencyId, u128, XcmVersionedMultiLocation, XcmV2WeightLimit]>;
       /**
        * Transfer `MultiAsset`.
        * 
@@ -3405,7 +2851,7 @@ declare module '@polkadot/api-base/types/submittable' {
        * by the network, and if the receiving chain would handle
        * messages correctly.
        **/
-      transferMulticurrencies: AugmentedSubmittable<(currencies: Vec<ITuple<[SpacewalkPrimitivesCurrencyId, u128]>> | ([SpacewalkPrimitivesCurrencyId | { XCM: any } | { Native: any } | { StellarNative: any } | { AlphaNum4: any } | { AlphaNum12: any } | string | Uint8Array, u128 | AnyNumber | Uint8Array])[], feeItem: u32 | AnyNumber | Uint8Array, dest: XcmVersionedMultiLocation | { V0: any } | { V1: any } | string | Uint8Array, destWeightLimit: XcmV2WeightLimit | { Unlimited: any } | { Limited: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [Vec<ITuple<[SpacewalkPrimitivesCurrencyId, u128]>>, u32, XcmVersionedMultiLocation, XcmV2WeightLimit]>;
+      transferMulticurrencies: AugmentedSubmittable<(currencies: Vec<ITuple<[AmplitudeRuntimeCurrencyCurrencyId, u128]>> | ([AmplitudeRuntimeCurrencyCurrencyId | { Native: any } | { XCM: any } | string | Uint8Array, u128 | AnyNumber | Uint8Array])[], feeItem: u32 | AnyNumber | Uint8Array, dest: XcmVersionedMultiLocation | { V0: any } | { V1: any } | string | Uint8Array, destWeightLimit: XcmV2WeightLimit | { Unlimited: any } | { Limited: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [Vec<ITuple<[AmplitudeRuntimeCurrencyCurrencyId, u128]>>, u32, XcmVersionedMultiLocation, XcmV2WeightLimit]>;
       /**
        * Transfer native currencies specifying the fee and amount as
        * separate.
@@ -3429,7 +2875,7 @@ declare module '@polkadot/api-base/types/submittable' {
        * by the network, and if the receiving chain would handle
        * messages correctly.
        **/
-      transferWithFee: AugmentedSubmittable<(currencyId: SpacewalkPrimitivesCurrencyId | { XCM: any } | { Native: any } | { StellarNative: any } | { AlphaNum4: any } | { AlphaNum12: any } | string | Uint8Array, amount: u128 | AnyNumber | Uint8Array, fee: u128 | AnyNumber | Uint8Array, dest: XcmVersionedMultiLocation | { V0: any } | { V1: any } | string | Uint8Array, destWeightLimit: XcmV2WeightLimit | { Unlimited: any } | { Limited: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [SpacewalkPrimitivesCurrencyId, u128, u128, XcmVersionedMultiLocation, XcmV2WeightLimit]>;
+      transferWithFee: AugmentedSubmittable<(currencyId: AmplitudeRuntimeCurrencyCurrencyId | { Native: any } | { XCM: any } | string | Uint8Array, amount: u128 | AnyNumber | Uint8Array, fee: u128 | AnyNumber | Uint8Array, dest: XcmVersionedMultiLocation | { V0: any } | { V1: any } | string | Uint8Array, destWeightLimit: XcmV2WeightLimit | { Unlimited: any } | { Limited: any } | string | Uint8Array) => SubmittableExtrinsic<ApiType>, [AmplitudeRuntimeCurrencyCurrencyId, u128, u128, XcmVersionedMultiLocation, XcmV2WeightLimit]>;
       /**
        * Generic tx
        **/
