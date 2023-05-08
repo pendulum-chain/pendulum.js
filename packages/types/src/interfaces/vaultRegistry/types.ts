@@ -2,7 +2,7 @@
 /* eslint-disable */
 
 import type { AccountId32 } from '@pendulum-chain/types/interfaces/runtime';
-import type { Enum, Struct, U8aFixed } from '@polkadot/types-codec';
+import type { Enum, Struct, U8aFixed, u8 } from '@polkadot/types-codec';
 
 /** @name SpacewalkPrimitivesAsset */
 export interface SpacewalkPrimitivesAsset extends Enum {
@@ -22,35 +22,12 @@ export interface SpacewalkPrimitivesAsset extends Enum {
 
 /** @name SpacewalkPrimitivesCurrencyId */
 export interface SpacewalkPrimitivesCurrencyId extends Enum {
-  readonly isXcm: boolean;
-  readonly asXcm: SpacewalkPrimitivesForeignCurrencyId;
   readonly isNative: boolean;
+  readonly isXcm: boolean;
+  readonly asXcm: u8;
   readonly isStellar: boolean;
   readonly asStellar: SpacewalkPrimitivesAsset;
-  readonly type: 'Xcm' | 'Native' | 'Stellar';
-}
-
-/** @name SpacewalkPrimitivesForeignCurrencyId */
-export interface SpacewalkPrimitivesForeignCurrencyId extends Enum {
-  readonly isKsm: boolean;
-  readonly isKar: boolean;
-  readonly isAusd: boolean;
-  readonly isBnc: boolean;
-  readonly isVsKSM: boolean;
-  readonly isHko: boolean;
-  readonly isMovr: boolean;
-  readonly isSdn: boolean;
-  readonly isKint: boolean;
-  readonly isKbtc: boolean;
-  readonly isGens: boolean;
-  readonly isXor: boolean;
-  readonly isTeer: boolean;
-  readonly isKilt: boolean;
-  readonly isPha: boolean;
-  readonly isZtg: boolean;
-  readonly isUsd: boolean;
-  readonly isDot: boolean;
-  readonly type: 'Ksm' | 'Kar' | 'Ausd' | 'Bnc' | 'VsKSM' | 'Hko' | 'Movr' | 'Sdn' | 'Kint' | 'Kbtc' | 'Gens' | 'Xor' | 'Teer' | 'Kilt' | 'Pha' | 'Ztg' | 'Usd' | 'Dot';
+  readonly type: 'Native' | 'Xcm' | 'Stellar';
 }
 
 /** @name SpacewalkPrimitivesVaultCurrencyPair */

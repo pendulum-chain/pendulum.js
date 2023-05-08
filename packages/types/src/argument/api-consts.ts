@@ -5,7 +5,7 @@
 // this is required to allow for ambient/previous definitions
 import '@polkadot/api-base/types/consts';
 
-import type { Permill, Perquintill } from '@pendulum-chain/types/interfaces/runtime';
+import type { AccountId32, Permill, Perquintill } from '@pendulum-chain/types/interfaces/runtime';
 import type { ApiTypes, AugmentedConst } from '@polkadot/api-base/types';
 import type { Option, bool, u128, u16, u32, u64, u8 } from '@polkadot/types-codec';
 import type { Codec } from '@polkadot/types-codec/types';
@@ -195,10 +195,6 @@ declare module '@polkadot/api-base/types/consts' {
     };
     currency: {
       /**
-       * Native currency e.g. PEN/AMPE
-       **/
-      getNativeCurrencyId: SpacewalkPrimitivesCurrencyId & AugmentedConst<ApiType>;
-      /**
        * Relay chain currency e.g. DOT/KSM
        **/
       getRelayChainCurrencyId: SpacewalkPrimitivesCurrencyId & AugmentedConst<ApiType>;
@@ -268,6 +264,18 @@ declare module '@polkadot/api-base/types/consts' {
        * How often (in blocks) to check for new votes.
        **/
       votingPeriod: u32 & AugmentedConst<ApiType>;
+      /**
+       * Generic const
+       **/
+      [key: string]: Codec;
+    };
+    farming: {
+      /**
+       * ModuleID for creating sub account
+       **/
+      keeper: FrameSupportPalletId & AugmentedConst<ApiType>;
+      rewardIssuer: FrameSupportPalletId & AugmentedConst<ApiType>;
+      treasuryAccount: AccountId32 & AugmentedConst<ApiType>;
       /**
        * Generic const
        **/
@@ -456,6 +464,7 @@ declare module '@polkadot/api-base/types/consts' {
       [key: string]: Codec;
     };
     stellarRelay: {
+      isPublicNetwork: bool & AugmentedConst<ApiType>;
       organizationLimit: u32 & AugmentedConst<ApiType>;
       validatorLimit: u32 & AugmentedConst<ApiType>;
       /**

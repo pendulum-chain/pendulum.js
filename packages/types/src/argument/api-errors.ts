@@ -373,6 +373,8 @@ declare module '@polkadot/api-base/types/errors' {
     currency: {
       AssetConversionError: AugmentedError<ApiType>;
       BalanceConversionError: AugmentedError<ApiType>;
+      CompatibleRoundingFailed: AugmentedError<ApiType>;
+      IncompatibleAmount: AugmentedError<ApiType>;
       InvalidCurrency: AugmentedError<ApiType>;
       TryIntoIntError: AugmentedError<ApiType>;
       /**
@@ -534,6 +536,32 @@ declare module '@polkadot/api-base/types/errors' {
        * The message index given is unknown.
        **/
       Unknown: AugmentedError<ApiType>;
+      /**
+       * Generic error
+       **/
+      [key: string]: AugmentedError<ApiType>;
+    };
+    farming: {
+      CalculationOverflow: AugmentedError<ApiType>;
+      /**
+       * claim_limit_time exceeded
+       **/
+      CanNotClaim: AugmentedError<ApiType>;
+      CanNotDeposit: AugmentedError<ApiType>;
+      GaugeInfoNotExist: AugmentedError<ApiType>;
+      /**
+       * gauge pool max_block exceeded
+       **/
+      GaugeMaxBlockOverflow: AugmentedError<ApiType>;
+      GaugePoolNotExist: AugmentedError<ApiType>;
+      InvalidPoolState: AugmentedError<ApiType>;
+      LastGaugeNotClaim: AugmentedError<ApiType>;
+      PoolDoesNotExist: AugmentedError<ApiType>;
+      ShareInfoNotExists: AugmentedError<ApiType>;
+      /**
+       * withdraw_limit_time exceeded
+       **/
+      WithdrawLimitCountExceeded: AugmentedError<ApiType>;
       /**
        * Generic error
        **/
@@ -1240,7 +1268,10 @@ declare module '@polkadot/api-base/types/errors' {
     stellarRelay: {
       Base64DecodeError: AugmentedError<ApiType>;
       BoundedVecCreationFailed: AugmentedError<ApiType>;
+      DuplicateOrganizationId: AugmentedError<ApiType>;
+      DuplicateValidatorPublicKey: AugmentedError<ApiType>;
       EnvelopeSignedByUnknownValidator: AugmentedError<ApiType>;
+      FailedToComputenonGenericTxSetContentHash: AugmentedError<ApiType>;
       InvalidEnvelopeSignature: AugmentedError<ApiType>;
       InvalidQuorumSetNotEnoughOrganizations: AugmentedError<ApiType>;
       InvalidQuorumSetNotEnoughValidators: AugmentedError<ApiType>;
@@ -1355,10 +1386,6 @@ declare module '@polkadot/api-base/types/errors' {
     };
     tokenAllowance: {
       CurrencyNotLive: AugmentedError<ApiType>;
-      ParachainNotRunning: AugmentedError<ApiType>;
-      /**
-       * Parachain is not running.
-       **/
       Unapproved: AugmentedError<ApiType>;
       /**
        * Generic error

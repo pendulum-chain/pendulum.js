@@ -10,7 +10,7 @@ import type { ApiTypes, AugmentedQuery, QueryableStorageEntry } from '@polkadot/
 import type { Data } from '@polkadot/types';
 import type { BTreeMap, BTreeSet, Bytes, Null, Option, U256, U8aFixed, Vec, bool, i128, u128, u16, u32, u64, u8 } from '@polkadot/types-codec';
 import type { AnyNumber, ITuple } from '@polkadot/types-codec/types';
-import type { CumulusPalletDmpQueueConfigData, CumulusPalletDmpQueuePageIndexData, CumulusPalletParachainSystemRelayStateSnapshotMessagingStateSnapshot, CumulusPalletXcmpQueueInboundChannelDetails, CumulusPalletXcmpQueueOutboundChannelDetails, CumulusPalletXcmpQueueQueueConfigData, DiaOracleDiaAssetId, DiaOracleDiaCoinInfo, FoucocoRuntimeSessionKeys, FrameSupportDispatchPerDispatchClassWeight, FrameSupportPreimagesBounded, FrameSystemAccountInfo, FrameSystemEventRecord, FrameSystemLastRuntimeUpgradeInfo, FrameSystemPhase, OracleVersion, OrmlTokensAccountData, OrmlTokensBalanceLock, OrmlTokensReserveData, PalletAuthorshipUncleEntryItem, PalletBalancesAccountData, PalletBalancesBalanceLock, PalletBalancesReserveData, PalletBountiesBounty, PalletChildBountiesChildBounty, PalletCollectiveVotes, PalletContractsStorageContractInfo, PalletContractsStorageDeletedContract, PalletContractsWasmOwnerInfo, PalletContractsWasmPrefabWasmModule, PalletDemocracyReferendumInfo, PalletDemocracyVoteThreshold, PalletDemocracyVoteVoting, PalletIdentityRegistrarInfo, PalletIdentityRegistration, PalletMultisigMultisig, PalletPreimageRequestStatus, PalletSchedulerScheduled, PalletTransactionPaymentReleases, PalletTreasuryProposal, PalletVestingReleases, PalletVestingVestingInfo, ParachainStakingCandidate, ParachainStakingDelegationCounter, ParachainStakingInflationInflationInfo, ParachainStakingRoundInfo, ParachainStakingSetOrderedSet, ParachainStakingStakeAccountId32, ParachainStakingStakeOption, ParachainStakingTotalStake, PolkadotCorePrimitivesOutboundHrmpMessage, PolkadotPrimitivesV2AbridgedHostConfiguration, PolkadotPrimitivesV2PersistedValidationData, PolkadotPrimitivesV2UpgradeRestriction, SecurityErrorCode, SecurityStatusCode, SpConsensusAuraSr25519AppSr25519Public, SpCoreCryptoKeyTypeId, SpRuntimeDigest, SpTrieStorageProof, SpWeightsWeightV2Weight, SpacewalkPrimitivesCurrencyId, SpacewalkPrimitivesIssueIssueRequest, SpacewalkPrimitivesOracleKey, SpacewalkPrimitivesRedeemRedeemRequest, SpacewalkPrimitivesReplaceReplaceRequest, SpacewalkPrimitivesVaultCurrencyPair, SpacewalkPrimitivesVaultId, StellarRelayOrganization, StellarRelayValidator, VaultRegistrySystemVault, VaultRegistryVault, ZenlinkProtocolPrimitivesAssetId, ZenlinkProtocolPrimitivesPairStatus } from '@polkadot/types/lookup';
+import type { BifrostFarmingGaugeGaugeInfo, BifrostFarmingGaugeGaugePoolInfo, BifrostFarmingRewardsPoolInfo, BifrostFarmingRewardsShareInfo, CumulusPalletDmpQueueConfigData, CumulusPalletDmpQueuePageIndexData, CumulusPalletParachainSystemRelayStateSnapshotMessagingStateSnapshot, CumulusPalletXcmpQueueInboundChannelDetails, CumulusPalletXcmpQueueOutboundChannelDetails, CumulusPalletXcmpQueueQueueConfigData, DiaOracleDiaAssetId, DiaOracleDiaCoinInfo, FoucocoRuntimeSessionKeys, FrameSupportDispatchPerDispatchClassWeight, FrameSupportPreimagesBounded, FrameSystemAccountInfo, FrameSystemEventRecord, FrameSystemLastRuntimeUpgradeInfo, FrameSystemPhase, OracleVersion, OrmlTokensAccountData, OrmlTokensBalanceLock, OrmlTokensReserveData, PalletAuthorshipUncleEntryItem, PalletBalancesAccountData, PalletBalancesBalanceLock, PalletBalancesReserveData, PalletBountiesBounty, PalletChildBountiesChildBounty, PalletCollectiveVotes, PalletContractsStorageContractInfo, PalletContractsStorageDeletedContract, PalletContractsWasmOwnerInfo, PalletContractsWasmPrefabWasmModule, PalletDemocracyReferendumInfo, PalletDemocracyVoteThreshold, PalletDemocracyVoteVoting, PalletIdentityRegistrarInfo, PalletIdentityRegistration, PalletMultisigMultisig, PalletPreimageRequestStatus, PalletSchedulerScheduled, PalletTransactionPaymentReleases, PalletTreasuryProposal, PalletVestingReleases, PalletVestingVestingInfo, ParachainStakingCandidate, ParachainStakingDelegationCounter, ParachainStakingInflationInflationInfo, ParachainStakingRoundInfo, ParachainStakingSetOrderedSet, ParachainStakingStakeAccountId32, ParachainStakingStakeOption, ParachainStakingTotalStake, PolkadotCorePrimitivesOutboundHrmpMessage, PolkadotPrimitivesV2AbridgedHostConfiguration, PolkadotPrimitivesV2PersistedValidationData, PolkadotPrimitivesV2UpgradeRestriction, SecurityErrorCode, SecurityStatusCode, SpConsensusAuraSr25519AppSr25519Public, SpCoreCryptoKeyTypeId, SpRuntimeDigest, SpTrieStorageProof, SpWeightsWeightV2Weight, SpacewalkPrimitivesCurrencyId, SpacewalkPrimitivesIssueIssueRequest, SpacewalkPrimitivesOracleKey, SpacewalkPrimitivesRedeemRedeemRequest, SpacewalkPrimitivesReplaceReplaceRequest, SpacewalkPrimitivesVaultCurrencyPair, SpacewalkPrimitivesVaultId, StellarRelayOrganization, StellarRelayValidator, VaultRegistrySystemVault, VaultRegistryVault, ZenlinkProtocolPrimitivesAssetId, ZenlinkProtocolPrimitivesPairStatus } from '@polkadot/types/lookup';
 import type { Observable } from '@polkadot/types/types';
 
 export type __AugmentedQuery<ApiType extends ApiTypes> = AugmentedQuery<ApiType, () => unknown>;
@@ -356,6 +356,35 @@ declare module '@polkadot/api-base/types/storage' {
        * The queue pages.
        **/
       pages: AugmentedQuery<ApiType, (arg: u32 | AnyNumber | Uint8Array) => Observable<Vec<ITuple<[u32, Bytes]>>>, [u32]> & QueryableStorageEntry<ApiType, [u32]>;
+      /**
+       * Generic query
+       **/
+      [key: string]: QueryableStorageEntry<ApiType>;
+    };
+    farming: {
+      gaugeInfos: AugmentedQuery<ApiType, (arg1: u32 | AnyNumber | Uint8Array, arg2: AccountId32 | string | Uint8Array) => Observable<Option<BifrostFarmingGaugeGaugeInfo>>, [u32, AccountId32]> & QueryableStorageEntry<ApiType, [u32, AccountId32]>;
+      /**
+       * Record gauge farming pool info.
+       * 
+       * map PoolId => GaugePoolInfo
+       **/
+      gaugePoolInfos: AugmentedQuery<ApiType, (arg: u32 | AnyNumber | Uint8Array) => Observable<Option<BifrostFarmingGaugeGaugePoolInfo>>, [u32]> & QueryableStorageEntry<ApiType, [u32]>;
+      gaugePoolNextId: AugmentedQuery<ApiType, () => Observable<u32>, []> & QueryableStorageEntry<ApiType, []>;
+      /**
+       * Record reward pool info.
+       * 
+       * map PoolId => PoolInfo
+       **/
+      poolInfos: AugmentedQuery<ApiType, (arg: u32 | AnyNumber | Uint8Array) => Observable<Option<BifrostFarmingRewardsPoolInfo>>, [u32]> & QueryableStorageEntry<ApiType, [u32]>;
+      poolNextId: AugmentedQuery<ApiType, () => Observable<u32>, []> & QueryableStorageEntry<ApiType, []>;
+      retireLimit: AugmentedQuery<ApiType, () => Observable<u32>, []> & QueryableStorageEntry<ApiType, []>;
+      /**
+       * Record share amount, reward currency and withdrawn reward amount for
+       * specific `AccountId` under `PoolId`.
+       * 
+       * double_map (PoolId, AccountId) => ShareInfo
+       **/
+      sharesAndWithdrawnRewards: AugmentedQuery<ApiType, (arg1: u32 | AnyNumber | Uint8Array, arg2: AccountId32 | string | Uint8Array) => Observable<Option<BifrostFarmingRewardsShareInfo>>, [u32, AccountId32]> & QueryableStorageEntry<ApiType, [u32, AccountId32]>;
       /**
        * Generic query
        **/
@@ -928,7 +957,6 @@ declare module '@polkadot/api-base/types/storage' {
       [key: string]: QueryableStorageEntry<ApiType>;
     };
     stellarRelay: {
-      isPublicNetwork: AugmentedQuery<ApiType, () => Observable<bool>, []> & QueryableStorageEntry<ApiType, []>;
       newValidatorsEnactmentBlockHeight: AugmentedQuery<ApiType, () => Observable<u32>, []> & QueryableStorageEntry<ApiType, []>;
       oldOrganizations: AugmentedQuery<ApiType, () => Observable<Vec<StellarRelayOrganization>>, []> & QueryableStorageEntry<ApiType, []>;
       oldValidators: AugmentedQuery<ApiType, () => Observable<Vec<StellarRelayValidator>>, []> & QueryableStorageEntry<ApiType, []>;
@@ -1083,12 +1111,12 @@ declare module '@polkadot/api-base/types/storage' {
       /**
        * Currencies that can be used in chain extension
        **/
-      allowedCurrencies: AugmentedQuery<ApiType, (arg: SpacewalkPrimitivesCurrencyId | { XCM: any } | { Native: any } | { Stellar: any } | string | Uint8Array) => Observable<Option<Null>>, [SpacewalkPrimitivesCurrencyId]> & QueryableStorageEntry<ApiType, [SpacewalkPrimitivesCurrencyId]>;
+      allowedCurrencies: AugmentedQuery<ApiType, (arg: SpacewalkPrimitivesCurrencyId | { Native: any } | { XCM: any } | { Stellar: any } | string | Uint8Array) => Observable<Option<Null>>, [SpacewalkPrimitivesCurrencyId]> & QueryableStorageEntry<ApiType, [SpacewalkPrimitivesCurrencyId]>;
       /**
        * Approved balance transfers. Balance is the amount approved for transfer.
        * First key is the currency ID, second key is the owner and third key is the delegate.
        **/
-      approvals: AugmentedQuery<ApiType, (arg1: SpacewalkPrimitivesCurrencyId | { XCM: any } | { Native: any } | { Stellar: any } | string | Uint8Array, arg2: AccountId32 | string | Uint8Array, arg3: AccountId32 | string | Uint8Array) => Observable<Option<u128>>, [SpacewalkPrimitivesCurrencyId, AccountId32, AccountId32]> & QueryableStorageEntry<ApiType, [SpacewalkPrimitivesCurrencyId, AccountId32, AccountId32]>;
+      approvals: AugmentedQuery<ApiType, (arg1: SpacewalkPrimitivesCurrencyId | { Native: any } | { XCM: any } | { Stellar: any } | string | Uint8Array, arg2: AccountId32 | string | Uint8Array, arg3: AccountId32 | string | Uint8Array) => Observable<Option<u128>>, [SpacewalkPrimitivesCurrencyId, AccountId32, AccountId32]> & QueryableStorageEntry<ApiType, [SpacewalkPrimitivesCurrencyId, AccountId32, AccountId32]>;
       /**
        * Generic query
        **/
@@ -1103,20 +1131,20 @@ declare module '@polkadot/api-base/types/storage' {
        * NOTE: This is only used in the case that this module is used to store
        * balances.
        **/
-      accounts: AugmentedQuery<ApiType, (arg1: AccountId32 | string | Uint8Array, arg2: SpacewalkPrimitivesCurrencyId | { XCM: any } | { Native: any } | { Stellar: any } | string | Uint8Array) => Observable<OrmlTokensAccountData>, [AccountId32, SpacewalkPrimitivesCurrencyId]> & QueryableStorageEntry<ApiType, [AccountId32, SpacewalkPrimitivesCurrencyId]>;
+      accounts: AugmentedQuery<ApiType, (arg1: AccountId32 | string | Uint8Array, arg2: SpacewalkPrimitivesCurrencyId | { Native: any } | { XCM: any } | { Stellar: any } | string | Uint8Array) => Observable<OrmlTokensAccountData>, [AccountId32, SpacewalkPrimitivesCurrencyId]> & QueryableStorageEntry<ApiType, [AccountId32, SpacewalkPrimitivesCurrencyId]>;
       /**
        * Any liquidity locks of a token type under an account.
        * NOTE: Should only be accessed when setting, changing and freeing a lock.
        **/
-      locks: AugmentedQuery<ApiType, (arg1: AccountId32 | string | Uint8Array, arg2: SpacewalkPrimitivesCurrencyId | { XCM: any } | { Native: any } | { Stellar: any } | string | Uint8Array) => Observable<Vec<OrmlTokensBalanceLock>>, [AccountId32, SpacewalkPrimitivesCurrencyId]> & QueryableStorageEntry<ApiType, [AccountId32, SpacewalkPrimitivesCurrencyId]>;
+      locks: AugmentedQuery<ApiType, (arg1: AccountId32 | string | Uint8Array, arg2: SpacewalkPrimitivesCurrencyId | { Native: any } | { XCM: any } | { Stellar: any } | string | Uint8Array) => Observable<Vec<OrmlTokensBalanceLock>>, [AccountId32, SpacewalkPrimitivesCurrencyId]> & QueryableStorageEntry<ApiType, [AccountId32, SpacewalkPrimitivesCurrencyId]>;
       /**
        * Named reserves on some account balances.
        **/
-      reserves: AugmentedQuery<ApiType, (arg1: AccountId32 | string | Uint8Array, arg2: SpacewalkPrimitivesCurrencyId | { XCM: any } | { Native: any } | { Stellar: any } | string | Uint8Array) => Observable<Vec<OrmlTokensReserveData>>, [AccountId32, SpacewalkPrimitivesCurrencyId]> & QueryableStorageEntry<ApiType, [AccountId32, SpacewalkPrimitivesCurrencyId]>;
+      reserves: AugmentedQuery<ApiType, (arg1: AccountId32 | string | Uint8Array, arg2: SpacewalkPrimitivesCurrencyId | { Native: any } | { XCM: any } | { Stellar: any } | string | Uint8Array) => Observable<Vec<OrmlTokensReserveData>>, [AccountId32, SpacewalkPrimitivesCurrencyId]> & QueryableStorageEntry<ApiType, [AccountId32, SpacewalkPrimitivesCurrencyId]>;
       /**
        * The total issuance of a token type.
        **/
-      totalIssuance: AugmentedQuery<ApiType, (arg: SpacewalkPrimitivesCurrencyId | { XCM: any } | { Native: any } | { Stellar: any } | string | Uint8Array) => Observable<u128>, [SpacewalkPrimitivesCurrencyId]> & QueryableStorageEntry<ApiType, [SpacewalkPrimitivesCurrencyId]>;
+      totalIssuance: AugmentedQuery<ApiType, (arg: SpacewalkPrimitivesCurrencyId | { Native: any } | { XCM: any } | { Stellar: any } | string | Uint8Array) => Observable<u128>, [SpacewalkPrimitivesCurrencyId]> & QueryableStorageEntry<ApiType, [SpacewalkPrimitivesCurrencyId]>;
       /**
        * Generic query
        **/
@@ -1162,7 +1190,7 @@ declare module '@polkadot/api-base/types/storage' {
       /**
        * The minimum collateral (e.g. DOT/KSM) a Vault needs to provide to register.
        **/
-      minimumCollateralVault: AugmentedQuery<ApiType, (arg: SpacewalkPrimitivesCurrencyId | { XCM: any } | { Native: any } | { Stellar: any } | string | Uint8Array) => Observable<u128>, [SpacewalkPrimitivesCurrencyId]> & QueryableStorageEntry<ApiType, [SpacewalkPrimitivesCurrencyId]>;
+      minimumCollateralVault: AugmentedQuery<ApiType, (arg: SpacewalkPrimitivesCurrencyId | { Native: any } | { XCM: any } | { Stellar: any } | string | Uint8Array) => Observable<u128>, [SpacewalkPrimitivesCurrencyId]> & QueryableStorageEntry<ApiType, [SpacewalkPrimitivesCurrencyId]>;
       /**
        * Determines the rate for the collateral rate of Vaults, at which users receive a premium,
        * allocated from the Vault's collateral, when performing a redeem with this Vault. This
@@ -1211,11 +1239,11 @@ declare module '@polkadot/api-base/types/storage' {
       /**
        * Used to compute the rewards for a participant's stake.
        **/
-      rewardPerToken: AugmentedQuery<ApiType, (arg: SpacewalkPrimitivesCurrencyId | { XCM: any } | { Native: any } | { Stellar: any } | string | Uint8Array) => Observable<i128>, [SpacewalkPrimitivesCurrencyId]> & QueryableStorageEntry<ApiType, [SpacewalkPrimitivesCurrencyId]>;
+      rewardPerToken: AugmentedQuery<ApiType, (arg: SpacewalkPrimitivesCurrencyId | { Native: any } | { XCM: any } | { Stellar: any } | string | Uint8Array) => Observable<i128>, [SpacewalkPrimitivesCurrencyId]> & QueryableStorageEntry<ApiType, [SpacewalkPrimitivesCurrencyId]>;
       /**
        * Accounts for previous changes in stake size.
        **/
-      rewardTally: AugmentedQuery<ApiType, (arg1: SpacewalkPrimitivesCurrencyId | { XCM: any } | { Native: any } | { Stellar: any } | string | Uint8Array, arg2: SpacewalkPrimitivesVaultId | { accountId?: any; currencies?: any } | string | Uint8Array) => Observable<i128>, [SpacewalkPrimitivesCurrencyId, SpacewalkPrimitivesVaultId]> & QueryableStorageEntry<ApiType, [SpacewalkPrimitivesCurrencyId, SpacewalkPrimitivesVaultId]>;
+      rewardTally: AugmentedQuery<ApiType, (arg1: SpacewalkPrimitivesCurrencyId | { Native: any } | { XCM: any } | { Stellar: any } | string | Uint8Array, arg2: SpacewalkPrimitivesVaultId | { accountId?: any; currencies?: any } | string | Uint8Array) => Observable<i128>, [SpacewalkPrimitivesCurrencyId, SpacewalkPrimitivesVaultId]> & QueryableStorageEntry<ApiType, [SpacewalkPrimitivesCurrencyId, SpacewalkPrimitivesVaultId]>;
       /**
        * The stake of a participant in this reward pool.
        **/
@@ -1224,7 +1252,7 @@ declare module '@polkadot/api-base/types/storage' {
        * The total unclaimed rewards distributed to this reward pool.
        * NOTE: this is currently only used for integration tests.
        **/
-      totalRewards: AugmentedQuery<ApiType, (arg: SpacewalkPrimitivesCurrencyId | { XCM: any } | { Native: any } | { Stellar: any } | string | Uint8Array) => Observable<i128>, [SpacewalkPrimitivesCurrencyId]> & QueryableStorageEntry<ApiType, [SpacewalkPrimitivesCurrencyId]>;
+      totalRewards: AugmentedQuery<ApiType, (arg: SpacewalkPrimitivesCurrencyId | { Native: any } | { XCM: any } | { Stellar: any } | string | Uint8Array) => Observable<i128>, [SpacewalkPrimitivesCurrencyId]> & QueryableStorageEntry<ApiType, [SpacewalkPrimitivesCurrencyId]>;
       /**
        * The total stake deposited to this reward pool.
        **/
@@ -1243,11 +1271,11 @@ declare module '@polkadot/api-base/types/storage' {
       /**
        * Used to compute the rewards for a participant's stake.
        **/
-      rewardPerToken: AugmentedQuery<ApiType, (arg1: SpacewalkPrimitivesCurrencyId | { XCM: any } | { Native: any } | { Stellar: any } | string | Uint8Array, arg2: ITuple<[u32, SpacewalkPrimitivesVaultId]> | [u32 | AnyNumber | Uint8Array, SpacewalkPrimitivesVaultId | { accountId?: any; currencies?: any } | string | Uint8Array]) => Observable<i128>, [SpacewalkPrimitivesCurrencyId, ITuple<[u32, SpacewalkPrimitivesVaultId]>]> & QueryableStorageEntry<ApiType, [SpacewalkPrimitivesCurrencyId, ITuple<[u32, SpacewalkPrimitivesVaultId]>]>;
+      rewardPerToken: AugmentedQuery<ApiType, (arg1: SpacewalkPrimitivesCurrencyId | { Native: any } | { XCM: any } | { Stellar: any } | string | Uint8Array, arg2: ITuple<[u32, SpacewalkPrimitivesVaultId]> | [u32 | AnyNumber | Uint8Array, SpacewalkPrimitivesVaultId | { accountId?: any; currencies?: any } | string | Uint8Array]) => Observable<i128>, [SpacewalkPrimitivesCurrencyId, ITuple<[u32, SpacewalkPrimitivesVaultId]>]> & QueryableStorageEntry<ApiType, [SpacewalkPrimitivesCurrencyId, ITuple<[u32, SpacewalkPrimitivesVaultId]>]>;
       /**
        * Accounts for previous changes in stake size.
        **/
-      rewardTally: AugmentedQuery<ApiType, (arg1: SpacewalkPrimitivesCurrencyId | { XCM: any } | { Native: any } | { Stellar: any } | string | Uint8Array, arg2: ITuple<[u32, SpacewalkPrimitivesVaultId, AccountId32]> | [u32 | AnyNumber | Uint8Array, SpacewalkPrimitivesVaultId | { accountId?: any; currencies?: any } | string | Uint8Array, AccountId32 | string | Uint8Array]) => Observable<i128>, [SpacewalkPrimitivesCurrencyId, ITuple<[u32, SpacewalkPrimitivesVaultId, AccountId32]>]> & QueryableStorageEntry<ApiType, [SpacewalkPrimitivesCurrencyId, ITuple<[u32, SpacewalkPrimitivesVaultId, AccountId32]>]>;
+      rewardTally: AugmentedQuery<ApiType, (arg1: SpacewalkPrimitivesCurrencyId | { Native: any } | { XCM: any } | { Stellar: any } | string | Uint8Array, arg2: ITuple<[u32, SpacewalkPrimitivesVaultId, AccountId32]> | [u32 | AnyNumber | Uint8Array, SpacewalkPrimitivesVaultId | { accountId?: any; currencies?: any } | string | Uint8Array, AccountId32 | string | Uint8Array]) => Observable<i128>, [SpacewalkPrimitivesCurrencyId, ITuple<[u32, SpacewalkPrimitivesVaultId, AccountId32]>]> & QueryableStorageEntry<ApiType, [SpacewalkPrimitivesCurrencyId, ITuple<[u32, SpacewalkPrimitivesVaultId, AccountId32]>]>;
       /**
        * Used to compute the amount to slash from a participant's stake.
        **/
@@ -1268,7 +1296,7 @@ declare module '@polkadot/api-base/types/storage' {
        * The total unclaimed rewards distributed to this reward pool.
        * NOTE: this is currently only used for integration tests.
        **/
-      totalRewards: AugmentedQuery<ApiType, (arg1: SpacewalkPrimitivesCurrencyId | { XCM: any } | { Native: any } | { Stellar: any } | string | Uint8Array, arg2: ITuple<[u32, SpacewalkPrimitivesVaultId]> | [u32 | AnyNumber | Uint8Array, SpacewalkPrimitivesVaultId | { accountId?: any; currencies?: any } | string | Uint8Array]) => Observable<i128>, [SpacewalkPrimitivesCurrencyId, ITuple<[u32, SpacewalkPrimitivesVaultId]>]> & QueryableStorageEntry<ApiType, [SpacewalkPrimitivesCurrencyId, ITuple<[u32, SpacewalkPrimitivesVaultId]>]>;
+      totalRewards: AugmentedQuery<ApiType, (arg1: SpacewalkPrimitivesCurrencyId | { Native: any } | { XCM: any } | { Stellar: any } | string | Uint8Array, arg2: ITuple<[u32, SpacewalkPrimitivesVaultId]> | [u32 | AnyNumber | Uint8Array, SpacewalkPrimitivesVaultId | { accountId?: any; currencies?: any } | string | Uint8Array]) => Observable<i128>, [SpacewalkPrimitivesCurrencyId, ITuple<[u32, SpacewalkPrimitivesVaultId]>]> & QueryableStorageEntry<ApiType, [SpacewalkPrimitivesCurrencyId, ITuple<[u32, SpacewalkPrimitivesVaultId]>]>;
       /**
        * The total stake - this will increase on deposit and decrease on withdrawal.
        **/

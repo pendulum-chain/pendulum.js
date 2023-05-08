@@ -372,35 +372,10 @@
                         "NumberOrHex": "u128",
                         "SpacewalkPrimitivesCurrencyId": {
                             "_enum": {
-                                "XCM": "SpacewalkPrimitivesForeignCurrencyId",
                                 "Native": "Null",
+                                "XCM": "u8",
                                 "Stellar": "SpacewalkPrimitivesAsset"
                             }
-                        },
-                        "SpacewalkPrimitivesForeignCurrencyId": {
-                            "_enum": [
-                                "KSM",
-                                "KAR",
-                                "AUSD",
-                                "BNC",
-                                "VsKSM",
-                                "HKO",
-                                "MOVR",
-                                "SDN",
-                                "KINT",
-                                "KBTC",
-                                "GENS",
-                                "XOR",
-                                "TEER",
-                                "KILT",
-                                "PHA",
-                                "ZTG",
-                                "USD",
-                                "__Unused17",
-                                "__Unused18",
-                                "__Unused19",
-                                "DOT"
-                            ]
                         },
                         "SpacewalkPrimitivesAsset": {
                             "_enum": {
@@ -800,35 +775,10 @@
                         "NumberOrHex": "u128",
                         "SpacewalkPrimitivesCurrencyId": {
                             "_enum": {
-                                "XCM": "SpacewalkPrimitivesForeignCurrencyId",
                                 "Native": "Null",
+                                "XCM": "u8",
                                 "Stellar": "SpacewalkPrimitivesAsset"
                             }
-                        },
-                        "SpacewalkPrimitivesForeignCurrencyId": {
-                            "_enum": [
-                                "KSM",
-                                "KAR",
-                                "AUSD",
-                                "BNC",
-                                "VsKSM",
-                                "HKO",
-                                "MOVR",
-                                "SDN",
-                                "KINT",
-                                "KBTC",
-                                "GENS",
-                                "XOR",
-                                "TEER",
-                                "KILT",
-                                "PHA",
-                                "ZTG",
-                                "USD",
-                                "__Unused17",
-                                "__Unused18",
-                                "__Unused19",
-                                "DOT"
-                            ]
                         },
                         "SpacewalkPrimitivesAsset": {
                             "_enum": {

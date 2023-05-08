@@ -7,7 +7,7 @@ import '@polkadot/api-base/types/calls';
 
 import type { AccountId, Balance, Block, Header, Index, KeyTypeId, SlotDuration, WeightV2 } from '@pendulum-chain/types/interfaces/runtime';
 import type { ApiTypes, AugmentedCall, DecoratedCallBase } from '@polkadot/api-base/types';
-import type { Bytes, Null, Option, Vec, u32 } from '@polkadot/types-codec';
+import type { Bytes, Null, Option, Raw, Vec, u32 } from '@polkadot/types-codec';
 import type { AnyNumber, ITuple } from '@polkadot/types-codec/types';
 import type { CheckInherentsResult, InherentData } from '@polkadot/types/interfaces/blockbuilder';
 import type { BlockHash } from '@polkadot/types/interfaces/chain';
@@ -126,6 +126,21 @@ declare module '@polkadot/api-base/types/calls' {
        * Starts the off-chain task for given block header.
        **/
       offchainWorker: AugmentedCall<ApiType, (header: Header | { parentHash?: any; number?: any; stateRoot?: any; extrinsicsRoot?: any; digest?: any } | string | Uint8Array) => Observable<Null>>;
+      /**
+       * Generic call
+       **/
+      [key: string]: DecoratedCallBase<ApiType>;
+    };
+    /** 0x6ef953004ba30e59/1 */
+    oracleApi: {
+      /**
+       * Retrieves all values
+       **/
+      getAllValues: AugmentedCall<ApiType, (providerId: Raw | string | Uint8Array) => Observable<Raw>>;
+      /**
+       * Retrieves a single value
+       **/
+      getValue: AugmentedCall<ApiType, (providerId: Raw | string | Uint8Array, key: Raw | string | Uint8Array) => Observable<Option<Raw>>>;
       /**
        * Generic call
        **/
