@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import type { PortableType, SiLookupTypeId, SiPath, SiTypeParameter } from '@polkadot/types/interfaces';
-import { PortableRegistry } from "@polkadot/types";
+import { PortableRegistry } from '@polkadot/types';
 import type { TypeDef } from '@polkadot/types-create/types';
 import type { HexString } from '@polkadot/util/types';
 
