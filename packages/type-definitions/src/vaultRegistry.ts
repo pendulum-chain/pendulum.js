@@ -202,7 +202,7 @@ export default {
         StellarNative: 'Null',
         AlphaNum4: {
           code: '[u8;4]',
-          issuer: '[u8;32]',
+          issuer: '[u8;32]'
         },
         AlphaNum12: {
           code: '[u8;12]',
