@@ -1,9 +1,9 @@
 // Auto-generated via `yarn polkadot-types-from-defs`, do not edit
 /* eslint-disable */
 
-export * from './runtime/types';
-export * from './issue/types';
-export * from './redeem/types';
-export * from './replace/types';
-export * from './vaultRegistry/types';
-export * from './primitives/types';
+export * from './runtime/types.js';
+export * from './issue/types.js';
+export * from './redeem/types.js';
+export * from './replace/types.js';
+export * from './vaultRegistry/types.js';
+export * from './primitives/types.js';
