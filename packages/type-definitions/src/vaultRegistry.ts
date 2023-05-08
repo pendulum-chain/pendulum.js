@@ -189,48 +189,20 @@ export default {
      **/
     SpacewalkPrimitivesCurrencyId: {
       _enum: {
-        XCM: 'SpacewalkPrimitivesForeignCurrencyId',
         Native: 'Null',
+        XCM: 'u8',
         Stellar: 'SpacewalkPrimitivesAsset'
       }
     },
     /**
-     * Lookup105: spacewalk_primitives::ForeignCurrencyId
-     **/
-    SpacewalkPrimitivesForeignCurrencyId: {
-      _enum: [
-        'KSM',
-        'KAR',
-        'AUSD',
-        'BNC',
-        'VsKSM',
-        'HKO',
-        'MOVR',
-        'SDN',
-        'KINT',
-        'KBTC',
-        'GENS',
-        'XOR',
-        'TEER',
-        'KILT',
-        'PHA',
-        'ZTG',
-        'USD',
-        '__Unused17',
-        '__Unused18',
-        '__Unused19',
-        'DOT'
-      ]
-    },
-    /**
-     * Lookup106: spacewalk_primitives::Asset
+     * Lookup105: spacewalk_primitives::Asset
      **/
     SpacewalkPrimitivesAsset: {
       _enum: {
         StellarNative: 'Null',
         AlphaNum4: {
           code: '[u8;4]',
-          issuer: '[u8;32]'
+          issuer: '[u8;32]',
         },
         AlphaNum12: {
           code: '[u8;12]',
