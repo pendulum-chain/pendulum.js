@@ -30,7 +30,7 @@
     "update-version-major": "node scripts/update-version.js major",
     "update-version-minor": "node scripts/update-version.js minor",
     "update-version-patch": "node scripts/update-version.js patch",
-    "publish": "node ./scripts/build-release.js"
+    "publish": "node ./scripts/publish.js"
   },
   "dependencies": {
     "ts-proto": "^1.82.2"
