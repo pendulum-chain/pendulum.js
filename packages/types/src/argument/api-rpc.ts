@@ -429,16 +429,6 @@ declare module '@polkadot/rpc-core/types/jsonrpc' {
     };
     oracle: {
       /**
-       * Retrieves all oracle values.
-       **/
-      getAllValues: AugmentedRpc<(providerId: RpcDataProviderId | string, at?: BlockHash | string | Uint8Array) => Observable<Vec<ITuple<[OracleKey, Option<TimestampedValue>]>>>>;
-      /**
-       * Retrieves the oracle value for a given key.
-       **/
-      getValue: AugmentedRpc<(providerId: RpcDataProviderId | string, key: OracleKey | {  } | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<Option<TimestampedValue>>>;
-    };
-    oracle: {
-      /**
        * Get the USD value of a currency
        **/
       currencyToUsd: AugmentedRpc<(amount: BalanceWrapper | { amount?: any } | string | Uint8Array, currencyId: CurrencyId | {  } | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<BalanceWrapper>>;
