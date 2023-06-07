@@ -157,10 +157,12 @@ function loopFunc(fn) {
       })
       .forEach((dir) => {
         process.chdir(path.join('packages', dir));
+        console.log("about to call fn in loop")
         fn();
         process.chdir('../..');
       });
   } else {
+    console.log("about to call fn in else")
     fn();
   }
 }
