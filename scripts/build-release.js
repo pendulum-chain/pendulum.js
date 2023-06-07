@@ -189,10 +189,10 @@ gitSetup();
 gitBump();
 npmSetup();
 
-runClean();
-runCheck();
-// runTest();
-runBuild();
+// runClean();
+// runCheck();
+// // runTest();
+// runBuild();
 
 gitPush();
 loopFunc(npmPublish);

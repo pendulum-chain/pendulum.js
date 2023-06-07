@@ -12,7 +12,7 @@
     "url": "https://github.com/pendulum-chain/pendulum.js.git"
   },
   "sideEffects": false,
-  "version": "0.3.1",
+  "version": "0.3.2",
   "workspaces": [
     "packages/*",
     "examples/*"
