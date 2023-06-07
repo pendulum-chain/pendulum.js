@@ -3,9 +3,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access */
 import path from 'path';
 import fs from 'fs';
-import { generateTsDef } from '@polkadot/typegen/generate/tsDef';
-import { generateInterfaceTypes } from '@polkadot/typegen/generate/interfaceRegistry';
-import { assertDir, writeFile, HEADER } from '@polkadot/typegen/util';
+import {generateTsDef} from '@polkadot/typegen/generate/tsDef';
+import {generateInterfaceTypes} from '@polkadot/typegen/generate/interfaceRegistry';
+import {assertDir, writeFile, HEADER} from '@polkadot/typegen/util';
 import {
   generateDefaultRuntime,
   generateDefaultConsts,
@@ -16,18 +16,18 @@ import {
   generateDefaultTx
 } from '@polkadot/typegen/generate';
 
-import * as substractDefinitions from '@polkadot/types/interfaces/definitions';
+import * as substrateDefinitions from '@polkadot/types/interfaces/definitions';
 import * as ormlDefinitions from '@open-web3/orml-types/interfaces/definitions';
 
-import * as acalaDefinitions from '../src/interfaces/definitions';
+import * as pendulumDefinitions from '../src/interfaces/definitions';
 import metadata from '../src/metadata/static-latest';
-import { generateDefaultLookup } from './generate/lookup';
+import {generateDefaultLookup} from './generate/lookup';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 // const { runtime, ...substrateDefinitions } = defaultDefinitions;
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const { runtime: _runtime, ...ormlModulesDefinitions } = ormlDefinitions;
+const {runtime: _runtime, ...ormlModulesDefinitions} = ormlDefinitions;
 
 // delete ormlModulesDefinitions.__esModule
 
@@ -45,11 +45,11 @@ export function main() {
   delete ormlModulesDefinitions.__esModule;
 
   const userDefs: Record<string, any> = {
-    ...acalaDefinitions
+    ...pendulumDefinitions
   };
 
   const userKeys = Object.keys(userDefs);
-  const filteredBase = Object.entries(substractDefinitions as Record<string, unknown>)
+  const filteredBase = Object.entries(substrateDefinitions as Record<string, unknown>)
     .filter(([key]) => {
       if (userKeys.includes(key)) {
         console.warn(`Override found for ${key} in user types, ignoring in @polkadot/types`);
@@ -89,11 +89,17 @@ export function main() {
 
   // TODO: should check why import an unused type
   writeFile(path.join(argumentPath, 'api-query.ts'), () => {
-    const content = fs.readFileSync(path.join(argumentPath, 'api-query.ts'), { encoding: 'utf-8' });
+    const content = fs.readFileSync(path.join(argumentPath, 'api-query.ts'), {encoding: 'utf-8'});
     return content.replace('OrmlUtilitiesOrderedSet,', '');
   });
 
-  generateDefaultRpc(path.join(argumentPath, 'api-rpc.ts'), allDefs);
+  // We limit the RPC to the specific types that are available, stripping out the base types because otherwise there is a
+  // mismatch between 'our' oracle and the default oracleAPI
+  const rpcDefs = {
+    [pkg]: userDefs
+  };
+
+  generateDefaultRpc(path.join(argumentPath, 'api-rpc.ts'), rpcDefs);
   generateDefaultTx(path.join(argumentPath, 'api-tx.ts'), metadata, allDefs, false, customLookupDefinitions);
 
   generateDefaultRuntime(path.join(argumentPath, 'api-runtime.ts'), metadata, allDefs, false, customLookupDefinitions);
