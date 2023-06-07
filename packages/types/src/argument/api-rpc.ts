@@ -6,6 +6,7 @@
 import '@polkadot/rpc-core/types/jsonrpc';
 
 import type { RpcDataProviderId, TimestampedValue } from '@open-web3/orml-types/interfaces/oracle';
+import type { BalanceWrapper } from '@pendulum-chain/types/interfaces/oracle';
 import type { CurrencyId, NumberOrHex, OracleKey } from '@pendulum-chain/types/interfaces/primitives';
 import type { AccountId, Balance, BlockNumber, FixedU128, H160, H256, H64, Hash, Header, Index, Justification, KeyValue, SignedBlock, StorageData } from '@pendulum-chain/types/interfaces/runtime';
 import type { SpacewalkPrimitivesVaultId } from '@pendulum-chain/types/interfaces/vaultRegistry';
@@ -435,6 +436,16 @@ declare module '@polkadot/rpc-core/types/jsonrpc' {
        * Retrieves the oracle value for a given key.
        **/
       getValue: AugmentedRpc<(providerId: RpcDataProviderId | string, key: OracleKey | {  } | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<Option<TimestampedValue>>>;
+    };
+    oracle: {
+      /**
+       * Get the USD value of a currency
+       **/
+      currencyToUsd: AugmentedRpc<(amount: BalanceWrapper | { amount?: any } | string | Uint8Array, currencyId: CurrencyId | {  } | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<BalanceWrapper>>;
+      /**
+       * Get the currency value of a USD amount
+       **/
+      usdToCurrency: AugmentedRpc<(amount: BalanceWrapper | { amount?: any } | string | Uint8Array, currencyId: CurrencyId | {  } | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<BalanceWrapper>>;
     };
     payment: {
       /**

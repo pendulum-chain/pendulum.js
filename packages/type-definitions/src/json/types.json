@@ -2,6 +2,9 @@
     "OracleKey": {},
     "CurrencyId": {},
     "NumberOrHex": "u128",
+    "BalanceWrapper": {
+        "amount": "Balance"
+    },
     "SpacewalkPrimitivesCurrencyId": {
         "_enum": {
             "Native": "Null",

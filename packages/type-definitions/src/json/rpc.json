@@ -125,6 +125,56 @@
             "section": "replace"
         }
     },
+    "oracle": {
+        "currencyToUsd": {
+            "description": "Get the USD value of a currency",
+            "params": [
+                {
+                    "name": "amount",
+                    "type": "BalanceWrapper"
+                },
+                {
+                    "name": "currencyId",
+                    "type": "CurrencyId"
+                },
+                {
+                    "name": "at",
+                    "type": "BlockHash",
+                    "isHistoric": true,
+                    "isOptional": true
+                }
+            ],
+            "type": "BalanceWrapper",
+            "isSubscription": false,
+            "jsonrpc": "oracle_currencyToUsd",
+            "method": "currencyToUsd",
+            "section": "oracle"
+        },
+        "usdToCurrency": {
+            "description": "Get the currency value of a USD amount",
+            "params": [
+                {
+                    "name": "amount",
+                    "type": "BalanceWrapper"
+                },
+                {
+                    "name": "currencyId",
+                    "type": "CurrencyId"
+                },
+                {
+                    "name": "at",
+                    "type": "BlockHash",
+                    "isHistoric": true,
+                    "isOptional": true
+                }
+            ],
+            "type": "BalanceWrapper",
+            "isSubscription": false,
+            "jsonrpc": "oracle_usdToCurrency",
+            "method": "usdToCurrency",
+            "section": "oracle"
+        }
+    },
     "vaultRegistry": {
         "getVaultCollateral": {
             "description": "Get the vault's collateral (excluding nomination)",
