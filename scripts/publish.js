@@ -142,7 +142,9 @@ function gitPush() {
 }
 
 function loopFunc(fn) {
+  console.log("in loop function")
   if (fs.existsSync('packages')) {
+    console.log("in exists")
     fs.readdirSync('packages')
       .filter((dir) => {
         const pkgDir = path.join(process.cwd(), 'packages', dir);
