@@ -5,10 +5,8 @@
 // this is required to allow for ambient/previous definitions
 import '@polkadot/rpc-core/types/jsonrpc';
 
-import type { RpcDataProviderId, TimestampedValue } from '@open-web3/orml-types/interfaces/oracle';
 import type { BalanceWrapper } from '@pendulum-chain/types/interfaces/oracle';
-import type { CurrencyId, NumberOrHex, OracleKey } from '@pendulum-chain/types/interfaces/primitives';
-import type { AccountId, Balance, BlockNumber, FixedU128, H160, H256, H64, Hash, Header, Index, Justification, KeyValue, SignedBlock, StorageData } from '@pendulum-chain/types/interfaces/runtime';
+import type { CurrencyId } from '@pendulum-chain/types/interfaces/primitives';
 import type { SpacewalkPrimitivesVaultId } from '@pendulum-chain/types/interfaces/vaultRegistry';
 import type { AugmentedRpc } from '@polkadot/rpc-core/types';
 import type { Metadata, StorageKey } from '@polkadot/types';
@@ -30,6 +28,7 @@ import type { MmrHash, MmrLeafBatchProof } from '@polkadot/types/interfaces/mmr'
 import type { StorageKind } from '@polkadot/types/interfaces/offchain';
 import type { FeeDetails, RuntimeDispatchInfoV1 } from '@polkadot/types/interfaces/payment';
 import type { RpcMethods } from '@polkadot/types/interfaces/rpc';
+import type { AccountId, Balance, BlockNumber, FixedU128, H160, H256, H64, Hash, Header, Index, Justification, KeyValue, SignedBlock, StorageData } from '@polkadot/types/interfaces/runtime';
 import type { MigrationStatusResult, ReadProof, RuntimeVersion, TraceBlockResponse } from '@polkadot/types/interfaces/state';
 import type { ApplyExtrinsicResult, ChainProperties, ChainType, Health, NetworkState, NodeRole, PeerInfo, SyncState } from '@polkadot/types/interfaces/system';
 import type { IExtrinsic, Observable } from '@polkadot/types/types';
@@ -646,12 +645,6 @@ declare module '@polkadot/rpc-core/types/jsonrpc' {
        * Retrieves the version of the node
        **/
       version: AugmentedRpc<() => Observable<Text>>;
-    };
-    tokens: {
-      /**
-       * Query Existential Deposit for a given currency.
-       **/
-      queryExistentialDeposit: AugmentedRpc<(currencyId: CurrencyId | {  } | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<NumberOrHex>>;
     };
     vaultRegistry: {
       /**

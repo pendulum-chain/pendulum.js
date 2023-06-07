@@ -132,6 +132,20 @@ declare module '@polkadot/api-base/types/calls' {
       [key: string]: DecoratedCallBase<ApiType>;
     };
     /** 0x6ef953004ba30e59/1 */
+    oracleApi: {
+      /**
+       * Retrieves all values
+       **/
+      getAllValues: AugmentedCall<ApiType, (providerId: Raw | string | Uint8Array) => Observable<Raw>>;
+      /**
+       * Retrieves a single value
+       **/
+      getValue: AugmentedCall<ApiType, (providerId: Raw | string | Uint8Array, key: Raw | string | Uint8Array) => Observable<Option<Raw>>>;
+      /**
+       * Generic call
+       **/
+      [key: string]: DecoratedCallBase<ApiType>;
+    };
     /** 0xab3c0572291feb8b/1 */
     sessionKeys: {
       /**
