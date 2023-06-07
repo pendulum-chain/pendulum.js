@@ -4,8 +4,9 @@ import { jsonrpcFromDefs, typesAliasFromDefs, typesFromDefs } from '@open-web3/o
 import issue from './issue';
 import redeem from './redeem';
 import replace from './replace';
-import vaultRegistry from './vaultRegistry';
+import oracle from './oracle';
 import primitives from './primitives';
+import vaultRegistry from './vaultRegistry';
 
 import pendulumVersioned from './specs/pendulum';
 import amplitudeVersioned from './specs/amplitude';
@@ -17,6 +18,7 @@ const pendulumDefs = {
   issue,
   redeem,
   replace,
+  oracle,
   vaultRegistry
 };
 
