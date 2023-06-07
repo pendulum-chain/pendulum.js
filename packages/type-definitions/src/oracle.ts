@@ -5,44 +5,45 @@ export default {
       params: [
         {
           name: 'amount',
-          type: 'BalanceWrapper',
+          type: 'BalanceWrapper'
         },
         {
           name: 'currencyId',
-          type: 'CurrencyId',
+          type: 'CurrencyId'
         },
         {
           name: 'at',
           type: 'BlockHash',
           isHistoric: true,
           isOptional: true
-        }],
-      type: "BalanceWrapper"
+        }
+      ],
+      type: 'BalanceWrapper'
     },
     usdToCurrency: {
       description: 'Get the currency value of a USD amount',
       params: [
         {
           name: 'amount',
-          type: 'BalanceWrapper',
+          type: 'BalanceWrapper'
         },
         {
           name: 'currencyId',
-          type: 'CurrencyId',
+          type: 'CurrencyId'
         },
         {
           name: 'at',
           type: 'BlockHash',
           isHistoric: true,
           isOptional: true
-        }],
-      type: "BalanceWrapper"
-    },
-
+        }
+      ],
+      type: 'BalanceWrapper'
+    }
   },
   types: {
     BalanceWrapper: {
-      amount: "Balance",
+      amount: 'Balance'
     }
   },
   typesAlias: {}
