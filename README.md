@@ -87,6 +87,12 @@ and then run the following command to build the type definitions based on that m
 yarn build
 ```
 
+**Note**: When you encounter compilation issues while building, you sometimes have to re-add the custom type definitions
+in `packages/type-definitions/src/vaultRegistry.ts`.
+To do so, just find the latest type definitions in `packages/types/src/lookup/pendulum.ts` (after building, since some
+files will already be re-built) and copy-paste them into the `types` key
+in `packages/type-definitions/src/vaultRegistry.ts`.
+
 ## Publishing package updates to npm
 
 This project uses yarn for package management. To publish a new version of the package, you can follow these steps.
