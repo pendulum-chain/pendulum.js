@@ -39,5 +39,7 @@ export default {
       type: 'Vec<(CurrencyId, Balance)>'
     }
   },
-  types: {}
+  types: {
+    PoolId: 'u32',
+  }
 };
