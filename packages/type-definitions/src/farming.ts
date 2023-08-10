@@ -40,6 +40,6 @@ export default {
     }
   },
   types: {
-    PoolId: 'u32',
+    PoolId: 'u32'
   }
 };
