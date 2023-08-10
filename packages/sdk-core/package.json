@@ -1,6 +1,6 @@
 {
   "name": "@pendulum-chain/sdk-core",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "the core for pendulum SDK",
   "main": "index.js",
   "author": "Pendulum",
