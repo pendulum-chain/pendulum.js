@@ -7,6 +7,7 @@ import replace from './replace';
 import oracle from './oracle';
 import primitives from './primitives';
 import vaultRegistry from './vaultRegistry';
+import farming from './farming';
 
 import pendulumVersioned from './specs/pendulum';
 import amplitudeVersioned from './specs/amplitude';
@@ -19,7 +20,8 @@ const pendulumDefs = {
   redeem,
   replace,
   oracle,
-  vaultRegistry
+  vaultRegistry,
+  farming
 };
 
 export const types = {
