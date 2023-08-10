@@ -138,7 +138,7 @@
                             },
                             {
                                 "name": "currencyId",
-                                "type": "CurrencyId"
+                                "type": "SpacewalkPrimitivesCurrencyId"
                             },
                             {
                                 "name": "at",
@@ -162,7 +162,7 @@
                             },
                             {
                                 "name": "currencyId",
-                                "type": "CurrencyId"
+                                "type": "SpacewalkPrimitivesCurrencyId"
                             },
                             {
                                 "name": "at",
@@ -368,7 +368,7 @@
                             },
                             {
                                 "name": "currencyId",
-                                "type": "CurrencyId"
+                                "type": "SpacewalkPrimitivesCurrencyId"
                             },
                             {
                                 "name": "at",
@@ -422,7 +422,7 @@
                                 "isOptional": true
                             }
                         ],
-                        "type": "Vec<(CurrencyId, Balance)>",
+                        "type": "Vec<(SpacewalkPrimitivesCurrencyId, Balance)>",
                         "isSubscription": false,
                         "jsonrpc": "farming_getFarmingRewards",
                         "method": "getFarmingRewards",
@@ -445,7 +445,7 @@
                                 "isOptional": true
                             }
                         ],
-                        "type": "Vec<(CurrencyId, Balance)>",
+                        "type": "Vec<(SpacewalkPrimitivesCurrencyId, Balance)>",
                         "isSubscription": false,
                         "jsonrpc": "farming_getGaugeRewards",
                         "method": "getGaugeRewards",
@@ -644,7 +644,7 @@
                             },
                             {
                                 "name": "currencyId",
-                                "type": "CurrencyId"
+                                "type": "SpacewalkPrimitivesCurrencyId"
                             },
                             {
                                 "name": "at",
@@ -668,7 +668,7 @@
                             },
                             {
                                 "name": "currencyId",
-                                "type": "CurrencyId"
+                                "type": "SpacewalkPrimitivesCurrencyId"
                             },
                             {
                                 "name": "at",
@@ -874,7 +874,7 @@
                             },
                             {
                                 "name": "currencyId",
-                                "type": "CurrencyId"
+                                "type": "SpacewalkPrimitivesCurrencyId"
                             },
                             {
                                 "name": "at",
@@ -928,7 +928,7 @@
                                 "isOptional": true
                             }
                         ],
-                        "type": "Vec<(CurrencyId, Balance)>",
+                        "type": "Vec<(SpacewalkPrimitivesCurrencyId, Balance)>",
                         "isSubscription": false,
                         "jsonrpc": "farming_getFarmingRewards",
                         "method": "getFarmingRewards",
@@ -951,7 +951,7 @@
                                 "isOptional": true
                             }
                         ],
-                        "type": "Vec<(CurrencyId, Balance)>",
+                        "type": "Vec<(SpacewalkPrimitivesCurrencyId, Balance)>",
                         "isSubscription": false,
                         "jsonrpc": "farming_getGaugeRewards",
                         "method": "getGaugeRewards",

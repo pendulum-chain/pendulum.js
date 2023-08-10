@@ -9,7 +9,7 @@ export default {
         },
         {
           name: 'currencyId',
-          type: 'CurrencyId'
+          type: 'SpacewalkPrimitivesCurrencyId'
         },
         {
           name: 'at',
@@ -29,7 +29,7 @@ export default {
         },
         {
           name: 'currencyId',
-          type: 'CurrencyId'
+          type: 'SpacewalkPrimitivesCurrencyId'
         },
         {
           name: 'at',

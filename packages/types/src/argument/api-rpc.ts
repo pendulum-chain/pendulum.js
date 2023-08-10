@@ -7,8 +7,7 @@ import '@polkadot/rpc-core/types/jsonrpc';
 
 import type { PoolId } from '@pendulum-chain/types/interfaces/farming';
 import type { BalanceWrapper } from '@pendulum-chain/types/interfaces/oracle';
-import type { CurrencyId } from '@pendulum-chain/types/interfaces/primitives';
-import type { SpacewalkPrimitivesVaultId } from '@pendulum-chain/types/interfaces/vaultRegistry';
+import type { SpacewalkPrimitivesCurrencyId, SpacewalkPrimitivesVaultId } from '@pendulum-chain/types/interfaces/vaultRegistry';
 import type { AugmentedRpc } from '@polkadot/rpc-core/types';
 import type { Metadata, StorageKey } from '@polkadot/types';
 import type { Bytes, HashMap, Json, Null, Option, Text, U256, U64, Vec, bool, f64, u32, u64 } from '@polkadot/types-codec';
@@ -365,11 +364,11 @@ declare module '@polkadot/rpc-core/types/jsonrpc' {
       /**
        * Get farming rewards
        **/
-      getFarmingRewards: AugmentedRpc<(who: AccountId | string | Uint8Array, pid: PoolId | AnyNumber | Uint8Array, at?: Hash | string | Uint8Array) => Observable<Vec<ITuple<[CurrencyId, Balance]>>>>;
+      getFarmingRewards: AugmentedRpc<(who: AccountId | string | Uint8Array, pid: PoolId | AnyNumber | Uint8Array, at?: Hash | string | Uint8Array) => Observable<Vec<ITuple<[SpacewalkPrimitivesCurrencyId, Balance]>>>>;
       /**
        * Get gauge rewards
        **/
-      getGaugeRewards: AugmentedRpc<(who: AccountId | string | Uint8Array, pid: PoolId | AnyNumber | Uint8Array, at?: Hash | string | Uint8Array) => Observable<Vec<ITuple<[CurrencyId, Balance]>>>>;
+      getGaugeRewards: AugmentedRpc<(who: AccountId | string | Uint8Array, pid: PoolId | AnyNumber | Uint8Array, at?: Hash | string | Uint8Array) => Observable<Vec<ITuple<[SpacewalkPrimitivesCurrencyId, Balance]>>>>;
     };
     grandpa: {
       /**
@@ -441,11 +440,11 @@ declare module '@polkadot/rpc-core/types/jsonrpc' {
       /**
        * Get the USD value of a currency
        **/
-      currencyToUsd: AugmentedRpc<(amount: BalanceWrapper | { amount?: any } | string | Uint8Array, currencyId: CurrencyId | {  } | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<BalanceWrapper>>;
+      currencyToUsd: AugmentedRpc<(amount: BalanceWrapper | { amount?: any } | string | Uint8Array, currencyId: SpacewalkPrimitivesCurrencyId | { Native: any } | { XCM: any } | { Stellar: any } | { ZenlinkLPToken: any } | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<BalanceWrapper>>;
       /**
        * Get the currency value of a USD amount
        **/
-      usdToCurrency: AugmentedRpc<(amount: BalanceWrapper | { amount?: any } | string | Uint8Array, currencyId: CurrencyId | {  } | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<BalanceWrapper>>;
+      usdToCurrency: AugmentedRpc<(amount: BalanceWrapper | { amount?: any } | string | Uint8Array, currencyId: SpacewalkPrimitivesCurrencyId | { Native: any } | { XCM: any } | { Stellar: any } | { ZenlinkLPToken: any } | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<BalanceWrapper>>;
     };
     payment: {
       /**
@@ -681,7 +680,7 @@ declare module '@polkadot/rpc-core/types/jsonrpc' {
       /**
        * Get the minimum amount of collateral required for the given amount of token with the current threshold and exchange rate
        **/
-      getRequiredCollateralForWrapped: AugmentedRpc<(amount: Balance | AnyNumber | Uint8Array, currencyId: CurrencyId | {  } | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<Balance>>;
+      getRequiredCollateralForWrapped: AugmentedRpc<(amount: Balance | AnyNumber | Uint8Array, currencyId: SpacewalkPrimitivesCurrencyId | { Native: any } | { XCM: any } | { Stellar: any } | { ZenlinkLPToken: any } | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<Balance>>;
       /**
        * Get the vault's collateral (excluding nomination)
        **/

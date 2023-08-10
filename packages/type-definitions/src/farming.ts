@@ -17,7 +17,7 @@ export default {
           isOptional: true
         }
       ],
-      type: 'Vec<(CurrencyId, Balance)>'
+      type: 'Vec<(SpacewalkPrimitivesCurrencyId, Balance)>'
     },
     getGaugeRewards: {
       description: 'Get gauge rewards',
@@ -36,10 +36,11 @@ export default {
           isOptional: true
         }
       ],
-      type: 'Vec<(CurrencyId, Balance)>'
+      type: 'Vec<(SpacewalkPrimitivesCurrencyId, Balance)>'
     }
   },
   types: {
     PoolId: 'u32'
-  }
+  },
+  typesAlias: {}
 };
