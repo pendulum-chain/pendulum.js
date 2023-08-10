@@ -8,3 +8,4 @@ export * from './redeem/types.js';
 export * from './replace/types.js';
 export * from './vaultRegistry/types.js';
 export * from './primitives/types.js';
+export * from './farming/types.js';

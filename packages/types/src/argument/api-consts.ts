@@ -9,24 +9,12 @@ import type { AccountId32, Permill, Perquintill } from '@pendulum-chain/types/in
 import type { ApiTypes, AugmentedConst } from '@polkadot/api-base/types';
 import type { Option, bool, u128, u16, u32, u64, u8 } from '@polkadot/types-codec';
 import type { Codec } from '@polkadot/types-codec/types';
-import type { FrameSupportPalletId, FrameSystemLimitsBlockLength, FrameSystemLimitsBlockWeights, PalletContractsSchedule, SpVersionRuntimeVersion, SpWeightsRuntimeDbWeight, SpWeightsWeightV2Weight, SpacewalkPrimitivesCurrencyId, XcmV1MultiLocation } from '@polkadot/types/lookup';
+import type { FrameSupportPalletId, FrameSystemLimitsBlockLength, FrameSystemLimitsBlockWeights, PalletContractsSchedule, SpVersionRuntimeVersion, SpWeightsRuntimeDbWeight, SpWeightsWeightV2Weight, SpacewalkPrimitivesCurrencyId, XcmV3MultiLocation } from '@polkadot/types/lookup';
 
 export type __AugmentedConst<ApiType extends ApiTypes> = AugmentedConst<ApiType>;
 
 declare module '@polkadot/api-base/types/consts' {
   interface AugmentedConsts<ApiType extends ApiTypes> {
-    authorship: {
-      /**
-       * The number of blocks back we should accept uncles.
-       * This means that we will deal with uncle-parents that are
-       * `UncleGenerations + 1` before `now`.
-       **/
-      uncleGenerations: u32 & AugmentedConst<ApiType>;
-      /**
-       * Generic const
-       **/
-      [key: string]: Codec;
-    };
     balances: {
       /**
        * The minimum amount required to keep an account open.
@@ -155,6 +143,10 @@ declare module '@polkadot/api-base/types/consts' {
        * The maximum length of a contract code in bytes. This limit applies to the instrumented
        * version of the code. Therefore `instantiate_with_code` can fail even when supplying
        * a wasm binary below this maximum size.
+       * 
+       * The value should be chosen carefully taking into the account the overall memory limit
+       * your runtime has, as well as the [maximum allowed callstack
+       * depth](#associatedtype.CallStack). Look into the `integrity_test()` for some insights.
        **/
       maxCodeLen: u32 & AugmentedConst<ApiType>;
       /**
@@ -653,11 +645,11 @@ declare module '@polkadot/api-base/types/consts' {
        * The actually weight for an XCM message is `T::BaseXcmWeight +
        * T::Weigher::weight(&msg)`.
        **/
-      baseXcmWeight: u64 & AugmentedConst<ApiType>;
+      baseXcmWeight: SpWeightsWeightV2Weight & AugmentedConst<ApiType>;
       /**
        * Self chain location.
        **/
-      selfLocation: XcmV1MultiLocation & AugmentedConst<ApiType>;
+      selfLocation: XcmV3MultiLocation & AugmentedConst<ApiType>;
       /**
        * Generic const
        **/

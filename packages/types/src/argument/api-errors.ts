@@ -11,40 +11,6 @@ export type __AugmentedError<ApiType extends ApiTypes> = AugmentedError<ApiType>
 
 declare module '@polkadot/api-base/types/errors' {
   interface AugmentedErrors<ApiType extends ApiTypes> {
-    authorship: {
-      /**
-       * The uncle is genesis.
-       **/
-      GenesisUncle: AugmentedError<ApiType>;
-      /**
-       * The uncle parent not in the chain.
-       **/
-      InvalidUncleParent: AugmentedError<ApiType>;
-      /**
-       * The uncle isn't recent enough to be included.
-       **/
-      OldUncle: AugmentedError<ApiType>;
-      /**
-       * The uncle is too high in chain.
-       **/
-      TooHighUncle: AugmentedError<ApiType>;
-      /**
-       * Too many uncles.
-       **/
-      TooManyUncles: AugmentedError<ApiType>;
-      /**
-       * The uncle is already included.
-       **/
-      UncleAlreadyIncluded: AugmentedError<ApiType>;
-      /**
-       * Uncles already set in the block.
-       **/
-      UnclesAlreadySet: AugmentedError<ApiType>;
-      /**
-       * Generic error
-       **/
-      [key: string]: AugmentedError<ApiType>;
-    };
     balances: {
       /**
        * Beneficiary account must pre-exist
@@ -193,10 +159,6 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       ContractTrapped: AugmentedError<ApiType>;
       /**
-       * The debug message specified to `seal_debug_message` does contain invalid UTF-8.
-       **/
-      DebugMessageInvalidUTF8: AugmentedError<ApiType>;
-      /**
        * Input passed to a contract API function failed to decode as expected type.
        **/
       DecodingFailed: AugmentedError<ApiType>;
@@ -212,10 +174,6 @@ declare module '@polkadot/api-base/types/errors' {
        * A contract with the same AccountId already exists.
        **/
       DuplicateContract: AugmentedError<ApiType>;
-      /**
-       * The topics passed to `seal_deposit_events` contains at least one duplicate.
-       **/
-      DuplicateTopics: AugmentedError<ApiType>;
       /**
        * An indetermistic code was used in a context where this is not permitted.
        **/
@@ -261,6 +219,9 @@ declare module '@polkadot/api-base/types/errors' {
       RandomSubjectTooLong: AugmentedError<ApiType>;
       /**
        * A call tried to invoke a contract that is flagged as non-reentrant.
+       * The only other cause is that a call from a contract into the runtime tried to call back
+       * into `pallet-contracts`. This would make the whole pallet reentrant with regard to
+       * contract code execution which is not supported.
        **/
       ReentranceDenied: AugmentedError<ApiType>;
       /**
@@ -443,6 +404,10 @@ declare module '@polkadot/api-base/types/errors' {
        * The given account did not vote on the referendum.
        **/
       NotVoter: AugmentedError<ApiType>;
+      /**
+       * The preimage does not exist.
+       **/
+      PreimageNotExist: AugmentedError<ApiType>;
       /**
        * Proposal still blacklisted
        **/
@@ -971,7 +936,7 @@ declare module '@polkadot/api-base/types/errors' {
     };
     parachainSystem: {
       /**
-       * The inherent which supplies the host configuration did not run this block
+       * The inherent which supplies the host configuration did not run this block.
        **/
       HostConfigurationNotAvailable: AugmentedError<ApiType>;
       /**
@@ -983,16 +948,16 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       NotScheduled: AugmentedError<ApiType>;
       /**
-       * Attempt to upgrade validation function while existing upgrade pending
+       * Attempt to upgrade validation function while existing upgrade pending.
        **/
       OverlappingUpgrades: AugmentedError<ApiType>;
       /**
-       * Polkadot currently prohibits this parachain from upgrading its validation function
+       * Polkadot currently prohibits this parachain from upgrading its validation function.
        **/
       ProhibitedByPolkadot: AugmentedError<ApiType>;
       /**
        * The supplied validation function has compiled into a blob larger than Polkadot is
-       * willing to run
+       * willing to run.
        **/
       TooBig: AugmentedError<ApiType>;
       /**
@@ -1000,7 +965,7 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       Unauthorized: AugmentedError<ApiType>;
       /**
-       * The inherent which supplies the validation data did not run this block
+       * The inherent which supplies the validation data did not run this block.
        **/
       ValidationDataNotAvailable: AugmentedError<ApiType>;
       /**
@@ -1009,6 +974,10 @@ declare module '@polkadot/api-base/types/errors' {
       [key: string]: AugmentedError<ApiType>;
     };
     polkadotXcm: {
+      /**
+       * The given account is not an identifiable sovereign account for any location.
+       **/
+      AccountNotSovereign: AugmentedError<ApiType>;
       /**
        * The location is invalid since it already has a subscription from us.
        **/
@@ -1035,13 +1004,33 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       Empty: AugmentedError<ApiType>;
       /**
+       * The operation required fees to be paid which the initiator could not meet.
+       **/
+      FeesNotMet: AugmentedError<ApiType>;
+      /**
        * The message execution fails the filter.
        **/
       Filtered: AugmentedError<ApiType>;
       /**
+       * The unlock operation cannot succeed because there are still users of the lock.
+       **/
+      InUse: AugmentedError<ApiType>;
+      /**
+       * Invalid asset for the operation.
+       **/
+      InvalidAsset: AugmentedError<ApiType>;
+      /**
        * Origin is invalid for sending.
        **/
       InvalidOrigin: AugmentedError<ApiType>;
+      /**
+       * A remote lock with the corresponding data could not be found.
+       **/
+      LockNotFound: AugmentedError<ApiType>;
+      /**
+       * The owner does not own (all) of the asset that they wish to do the operation on.
+       **/
+      LowBalance: AugmentedError<ApiType>;
       /**
        * The referenced subscription could not be found.
        **/
@@ -1055,6 +1044,10 @@ declare module '@polkadot/api-base/types/errors' {
        * Too many assets have been attempted for transfer.
        **/
       TooManyAssets: AugmentedError<ApiType>;
+      /**
+       * The asset owner has too many locks on the asset.
+       **/
+      TooManyLocks: AugmentedError<ApiType>;
       /**
        * The desired destination was unreachable, generally because there is a no way of routing
        * to it.
@@ -1270,8 +1263,13 @@ declare module '@polkadot/api-base/types/errors' {
       BoundedVecCreationFailed: AugmentedError<ApiType>;
       DuplicateOrganizationId: AugmentedError<ApiType>;
       DuplicateValidatorPublicKey: AugmentedError<ApiType>;
+      EmptyEnvelopeSet: AugmentedError<ApiType>;
       EnvelopeSignedByUnknownValidator: AugmentedError<ApiType>;
-      FailedToComputenonGenericTxSetContentHash: AugmentedError<ApiType>;
+      EnvelopeSlotIndexMismatch: AugmentedError<ApiType>;
+      ExternalizedNHMismatch: AugmentedError<ApiType>;
+      ExternalizedValueMismatch: AugmentedError<ApiType>;
+      ExternalizedValueNotFound: AugmentedError<ApiType>;
+      FailedToComputeNonGenericTxSetContentHash: AugmentedError<ApiType>;
       InvalidEnvelopeSignature: AugmentedError<ApiType>;
       InvalidQuorumSetNotEnoughOrganizations: AugmentedError<ApiType>;
       InvalidQuorumSetNotEnoughValidators: AugmentedError<ApiType>;
@@ -1279,11 +1277,13 @@ declare module '@polkadot/api-base/types/errors' {
       InvalidTransactionSet: AugmentedError<ApiType>;
       InvalidTransactionXDR: AugmentedError<ApiType>;
       InvalidXDR: AugmentedError<ApiType>;
+      MissingExternalizedMessage: AugmentedError<ApiType>;
       NoOrganizationsRegistered: AugmentedError<ApiType>;
       NoOrganizationsRegisteredForNetwork: AugmentedError<ApiType>;
       NoValidatorsRegistered: AugmentedError<ApiType>;
       NoValidatorsRegisteredForNetwork: AugmentedError<ApiType>;
       OrganizationLimitExceeded: AugmentedError<ApiType>;
+      SlotIndexIsNone: AugmentedError<ApiType>;
       TransactionMemoDoesNotMatch: AugmentedError<ApiType>;
       TransactionNotInTransactionSet: AugmentedError<ApiType>;
       TransactionSetHashCreationFailed: AugmentedError<ApiType>;

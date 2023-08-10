@@ -9,7 +9,8 @@
         "_enum": {
             "Native": "Null",
             "XCM": "u8",
-            "Stellar": "SpacewalkPrimitivesAsset"
+            "Stellar": "SpacewalkPrimitivesAsset",
+            "ZenlinkLPToken": "(u8,u8,u8,u8)"
         }
     },
     "SpacewalkPrimitivesAsset": {
@@ -32,5 +33,6 @@
     "SpacewalkPrimitivesVaultCurrencyPair": {
         "collateral": "SpacewalkPrimitivesCurrencyId",
         "wrapped": "SpacewalkPrimitivesCurrencyId"
-    }
+    },
+    "PoolId": "u32"
 }

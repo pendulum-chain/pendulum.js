@@ -5,7 +5,7 @@
 // this is required to allow for ambient/previous definitions
 import '@polkadot/api-base/types/calls';
 
-import type { AccountId, Balance, Block, Header, Index, KeyTypeId, SlotDuration, WeightV2 } from '@pendulum-chain/types/interfaces/runtime';
+import type { AccountId, Balance, Block, Header, Index, KeyTypeId, SlotDuration, Weight, WeightV2 } from '@pendulum-chain/types/interfaces/runtime';
 import type { ApiTypes, AugmentedCall, DecoratedCallBase } from '@polkadot/api-base/types';
 import type { Bytes, Null, Option, Raw, Vec, u32 } from '@polkadot/types-codec';
 import type { AnyNumber, ITuple } from '@polkadot/types-codec/types';
@@ -172,7 +172,7 @@ declare module '@polkadot/api-base/types/calls' {
        **/
       [key: string]: DecoratedCallBase<ApiType>;
     };
-    /** 0x37c8bb1350a9a2a8/2 */
+    /** 0x37c8bb1350a9a2a8/3 */
     transactionPaymentApi: {
       /**
        * The transaction fee details
@@ -182,6 +182,14 @@ declare module '@polkadot/api-base/types/calls' {
        * The transaction info
        **/
       queryInfo: AugmentedCall<ApiType, (uxt: Extrinsic | IExtrinsic | string | Uint8Array, len: u32 | AnyNumber | Uint8Array) => Observable<RuntimeDispatchInfo>>;
+      /**
+       * Query the output of the current LengthToFee given some input
+       **/
+      queryLengthToFee: AugmentedCall<ApiType, (length: u32 | AnyNumber | Uint8Array) => Observable<Balance>>;
+      /**
+       * Query the output of the current WeightToFee given some input
+       **/
+      queryWeightToFee: AugmentedCall<ApiType, (weight: Weight | { refTime?: any; proofSize?: any } | string | Uint8Array) => Observable<Balance>>;
       /**
        * Generic call
        **/

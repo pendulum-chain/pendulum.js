@@ -5,6 +5,7 @@
 // this is required to allow for ambient/previous definitions
 import '@polkadot/rpc-core/types/jsonrpc';
 
+import type { PoolId } from '@pendulum-chain/types/interfaces/farming';
 import type { BalanceWrapper } from '@pendulum-chain/types/interfaces/oracle';
 import type { CurrencyId } from '@pendulum-chain/types/interfaces/primitives';
 import type { SpacewalkPrimitivesVaultId } from '@pendulum-chain/types/interfaces/vaultRegistry';
@@ -359,6 +360,16 @@ declare module '@polkadot/rpc-core/types/jsonrpc' {
        * Uninstalls filter.
        **/
       uninstallFilter: AugmentedRpc<(index: U256 | AnyNumber | Uint8Array) => Observable<bool>>;
+    };
+    farming: {
+      /**
+       * Get farming rewards
+       **/
+      getFarmingRewards: AugmentedRpc<(who: AccountId | string | Uint8Array, pid: PoolId | AnyNumber | Uint8Array, at?: Hash | string | Uint8Array) => Observable<Vec<ITuple<[CurrencyId, Balance]>>>>;
+      /**
+       * Get gauge rewards
+       **/
+      getGaugeRewards: AugmentedRpc<(who: AccountId | string | Uint8Array, pid: PoolId | AnyNumber | Uint8Array, at?: Hash | string | Uint8Array) => Observable<Vec<ITuple<[CurrencyId, Balance]>>>>;
     };
     grandpa: {
       /**
