@@ -14,7 +14,7 @@ export default {
           isOptional: true
         }
       ],
-      type: 'Balance'
+      type: 'BalanceWrapper'
     },
     getVaultsByAccountId: {
       description: "Get all the vaultIds registered by a vault's accountId",
@@ -46,7 +46,7 @@ export default {
           isOptional: true
         }
       ],
-      type: 'Balance'
+      type: 'BalanceWrapper'
     },
     getPremiumRedeemVaults: {
       description: 'Get all vaults below the premium redeem threshold, ordered in descending order of this amount',
@@ -58,7 +58,7 @@ export default {
           isOptional: true
         }
       ],
-      type: 'Vec<(SpacewalkPrimitivesVaultId, Balance)>'
+      type: 'Vec<(SpacewalkPrimitivesVaultId, BalanceWrapper)>'
     },
     getVaultsWithIssuableTokens: {
       description: 'Get all vaults with non-zero issuable tokens, ordered in descending order of this amount',
@@ -70,7 +70,7 @@ export default {
           isOptional: true
         }
       ],
-      type: 'Vec<(SpacewalkPrimitivesVaultId, Balance)>'
+      type: 'Vec<(SpacewalkPrimitivesVaultId, BalanceWrapper)>'
     },
     getVaultsWithRedeemableTokens: {
       description: 'Get all vaults with non-zero redeemable tokens, ordered in descending order of this amount',
@@ -82,7 +82,7 @@ export default {
           isOptional: true
         }
       ],
-      type: 'Vec<(SpacewalkPrimitivesVaultId, Balance)>'
+      type: 'Vec<(SpacewalkPrimitivesVaultId, BalanceWrapper)>'
     },
     getIssueableTokensFromVault: {
       description: 'Get the amount of tokens a vault can issue',
@@ -98,7 +98,7 @@ export default {
           isOptional: true
         }
       ],
-      type: 'Balance'
+      type: 'BalanceWrapper'
     },
     getCollateralizationFromVault: {
       description: 'Get the collateralization rate of a vault',
@@ -129,7 +129,7 @@ export default {
         },
         {
           name: 'collateral',
-          type: 'Balance'
+          type: 'BalanceWrapper'
         },
         {
           name: 'onlyIssued',
@@ -150,7 +150,7 @@ export default {
       params: [
         {
           name: 'amount',
-          type: 'Balance'
+          type: 'BalanceWrapper'
         },
         {
           name: 'currencyId',
@@ -163,7 +163,7 @@ export default {
           isOptional: true
         }
       ],
-      type: 'Balance'
+      type: 'BalanceWrapper'
     },
     getRequiredCollateralForVault: {
       description:
@@ -180,7 +180,7 @@ export default {
           isOptional: true
         }
       ],
-      type: 'Balance'
+      type: 'BalanceWrapper'
     }
   },
   types: {
