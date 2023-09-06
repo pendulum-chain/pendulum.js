@@ -107,7 +107,7 @@
                         "method": "getOldVaultReplaceRequests",
                         "section": "replace"
                     },
-                    "getNewVaultRedeemRequests": {
+                    "getNewVaultReplaceRequests": {
                         "description": "Get all replace requests to a particular vault",
                         "params": [
                             {
@@ -123,8 +123,8 @@
                         ],
                         "type": "Vec<H256>",
                         "isSubscription": false,
-                        "jsonrpc": "replace_getNewVaultRedeemRequests",
-                        "method": "getNewVaultRedeemRequests",
+                        "jsonrpc": "replace_getNewVaultReplaceRequests",
+                        "method": "getNewVaultReplaceRequests",
                         "section": "replace"
                     }
                 },
@@ -287,7 +287,7 @@
                         "method": "getVaultsWithRedeemableTokens",
                         "section": "vaultRegistry"
                     },
-                    "getIssuableTokensFromVault": {
+                    "getIssueableTokensFromVault": {
                         "description": "Get the amount of tokens a vault can issue",
                         "params": [
                             {
@@ -303,8 +303,8 @@
                         ],
                         "type": "Balance",
                         "isSubscription": false,
-                        "jsonrpc": "vaultRegistry_getIssuableTokensFromVault",
-                        "method": "getIssuableTokensFromVault",
+                        "jsonrpc": "vaultRegistry_getIssueableTokensFromVault",
+                        "method": "getIssueableTokensFromVault",
                         "section": "vaultRegistry"
                     },
                     "getCollateralizationFromVault": {
@@ -613,7 +613,7 @@
                         "method": "getOldVaultReplaceRequests",
                         "section": "replace"
                     },
-                    "getNewVaultRedeemRequests": {
+                    "getNewVaultReplaceRequests": {
                         "description": "Get all replace requests to a particular vault",
                         "params": [
                             {
@@ -629,8 +629,8 @@
                         ],
                         "type": "Vec<H256>",
                         "isSubscription": false,
-                        "jsonrpc": "replace_getNewVaultRedeemRequests",
-                        "method": "getNewVaultRedeemRequests",
+                        "jsonrpc": "replace_getNewVaultReplaceRequests",
+                        "method": "getNewVaultReplaceRequests",
                         "section": "replace"
                     }
                 },
@@ -793,7 +793,7 @@
                         "method": "getVaultsWithRedeemableTokens",
                         "section": "vaultRegistry"
                     },
-                    "getIssuableTokensFromVault": {
+                    "getIssueableTokensFromVault": {
                         "description": "Get the amount of tokens a vault can issue",
                         "params": [
                             {
@@ -809,8 +809,8 @@
                         ],
                         "type": "Balance",
                         "isSubscription": false,
-                        "jsonrpc": "vaultRegistry_getIssuableTokensFromVault",
-                        "method": "getIssuableTokensFromVault",
+                        "jsonrpc": "vaultRegistry_getIssueableTokensFromVault",
+                        "method": "getIssueableTokensFromVault",
                         "section": "vaultRegistry"
                     },
                     "getCollateralizationFromVault": {

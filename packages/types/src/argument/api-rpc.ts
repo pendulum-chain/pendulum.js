@@ -472,7 +472,7 @@ declare module '@polkadot/rpc-core/types/jsonrpc' {
       /**
        * Get all replace requests to a particular vault
        **/
-      getNewVaultRedeemRequests: AugmentedRpc<(vaultId: AccountId | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<Vec<H256>>>;
+      getNewVaultReplaceRequests: AugmentedRpc<(vaultId: AccountId | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<Vec<H256>>>;
       /**
        * Get all replace requests from a particular vault
        **/
@@ -668,7 +668,7 @@ declare module '@polkadot/rpc-core/types/jsonrpc' {
       /**
        * Get the amount of tokens a vault can issue
        **/
-      getIssuableTokensFromVault: AugmentedRpc<(vaultId: SpacewalkPrimitivesVaultId | { accountId?: any; currencies?: any } | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<Balance>>;
+      getIssueableTokensFromVault: AugmentedRpc<(vaultId: SpacewalkPrimitivesVaultId | { accountId?: any; currencies?: any } | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<Balance>>;
       /**
        * Get all vaults below the premium redeem threshold, ordered in descending order of this amount
        **/
