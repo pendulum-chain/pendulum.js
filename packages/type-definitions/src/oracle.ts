@@ -43,7 +43,7 @@ export default {
   },
   types: {
     BalanceWrapper: {
-      amount: 'Balance'
+      amount: 'String'
     }
   },
   typesAlias: {}

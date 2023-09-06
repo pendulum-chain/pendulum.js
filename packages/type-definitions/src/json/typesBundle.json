@@ -469,7 +469,7 @@
                         "CurrencyId": {},
                         "NumberOrHex": "u128",
                         "BalanceWrapper": {
-                            "amount": "Balance"
+                            "amount": "String"
                         },
                         "SpacewalkPrimitivesCurrencyId": {
                             "_enum": {
@@ -975,7 +975,7 @@
                         "CurrencyId": {},
                         "NumberOrHex": "u128",
                         "BalanceWrapper": {
-                            "amount": "Balance"
+                            "amount": "String"
                         },
                         "SpacewalkPrimitivesCurrencyId": {
                             "_enum": {
