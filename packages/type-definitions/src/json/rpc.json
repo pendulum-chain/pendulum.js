@@ -190,7 +190,7 @@
                     "isOptional": true
                 }
             ],
-            "type": "Balance",
+            "type": "BalanceWrapper",
             "isSubscription": false,
             "jsonrpc": "vaultRegistry_getVaultCollateral",
             "method": "getVaultCollateral",
@@ -230,7 +230,7 @@
                     "isOptional": true
                 }
             ],
-            "type": "Balance",
+            "type": "BalanceWrapper",
             "isSubscription": false,
             "jsonrpc": "vaultRegistry_getVaultTotalCollateral",
             "method": "getVaultTotalCollateral",
@@ -246,7 +246,7 @@
                     "isOptional": true
                 }
             ],
-            "type": "Vec<(SpacewalkPrimitivesVaultId, Balance)>",
+            "type": "Vec<(SpacewalkPrimitivesVaultId, BalanceWrapper)>",
             "isSubscription": false,
             "jsonrpc": "vaultRegistry_getPremiumRedeemVaults",
             "method": "getPremiumRedeemVaults",
@@ -262,7 +262,7 @@
                     "isOptional": true
                 }
             ],
-            "type": "Vec<(SpacewalkPrimitivesVaultId, Balance)>",
+            "type": "Vec<(SpacewalkPrimitivesVaultId, BalanceWrapper)>",
             "isSubscription": false,
             "jsonrpc": "vaultRegistry_getVaultsWithIssuableTokens",
             "method": "getVaultsWithIssuableTokens",
@@ -278,7 +278,7 @@
                     "isOptional": true
                 }
             ],
-            "type": "Vec<(SpacewalkPrimitivesVaultId, Balance)>",
+            "type": "Vec<(SpacewalkPrimitivesVaultId, BalanceWrapper)>",
             "isSubscription": false,
             "jsonrpc": "vaultRegistry_getVaultsWithRedeemableTokens",
             "method": "getVaultsWithRedeemableTokens",
@@ -298,7 +298,7 @@
                     "isOptional": true
                 }
             ],
-            "type": "Balance",
+            "type": "BalanceWrapper",
             "isSubscription": false,
             "jsonrpc": "vaultRegistry_getIssueableTokensFromVault",
             "method": "getIssueableTokensFromVault",
@@ -337,7 +337,7 @@
                 },
                 {
                     "name": "collateral",
-                    "type": "Balance"
+                    "type": "BalanceWrapper"
                 },
                 {
                     "name": "onlyIssued",
@@ -361,7 +361,7 @@
             "params": [
                 {
                     "name": "amount",
-                    "type": "Balance"
+                    "type": "BalanceWrapper"
                 },
                 {
                     "name": "currencyId",
@@ -374,7 +374,7 @@
                     "isOptional": true
                 }
             ],
-            "type": "Balance",
+            "type": "BalanceWrapper",
             "isSubscription": false,
             "jsonrpc": "vaultRegistry_getRequiredCollateralForWrapped",
             "method": "getRequiredCollateralForWrapped",
@@ -394,7 +394,7 @@
                     "isOptional": true
                 }
             ],
-            "type": "Balance",
+            "type": "BalanceWrapper",
             "isSubscription": false,
             "jsonrpc": "vaultRegistry_getRequiredCollateralForVault",
             "method": "getRequiredCollateralForVault",

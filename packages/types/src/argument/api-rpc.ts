@@ -664,31 +664,31 @@ declare module '@polkadot/rpc-core/types/jsonrpc' {
       /**
        * Get the collateralization rate of a vault and collateral
        **/
-      getCollateralizationFromVaultAndCollateral: AugmentedRpc<(vaultId: SpacewalkPrimitivesVaultId | { accountId?: any; currencies?: any } | string | Uint8Array, collateral: Balance | AnyNumber | Uint8Array, onlyIssued: bool | boolean | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<FixedU128>>;
+      getCollateralizationFromVaultAndCollateral: AugmentedRpc<(vaultId: SpacewalkPrimitivesVaultId | { accountId?: any; currencies?: any } | string | Uint8Array, collateral: BalanceWrapper | { amount?: any } | string | Uint8Array, onlyIssued: bool | boolean | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<FixedU128>>;
       /**
        * Get the amount of tokens a vault can issue
        **/
-      getIssueableTokensFromVault: AugmentedRpc<(vaultId: SpacewalkPrimitivesVaultId | { accountId?: any; currencies?: any } | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<Balance>>;
+      getIssueableTokensFromVault: AugmentedRpc<(vaultId: SpacewalkPrimitivesVaultId | { accountId?: any; currencies?: any } | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<BalanceWrapper>>;
       /**
        * Get all vaults below the premium redeem threshold, ordered in descending order of this amount
        **/
-      getPremiumRedeemVaults: AugmentedRpc<(at?: BlockHash | string | Uint8Array) => Observable<Vec<ITuple<[SpacewalkPrimitivesVaultId, Balance]>>>>;
+      getPremiumRedeemVaults: AugmentedRpc<(at?: BlockHash | string | Uint8Array) => Observable<Vec<ITuple<[SpacewalkPrimitivesVaultId, BalanceWrapper]>>>>;
       /**
        * Get the amount of collateral required for the given vault to be at the current SecureCollateralThreshold with the current exchange rate
        **/
-      getRequiredCollateralForVault: AugmentedRpc<(vaultId: SpacewalkPrimitivesVaultId | { accountId?: any; currencies?: any } | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<Balance>>;
+      getRequiredCollateralForVault: AugmentedRpc<(vaultId: SpacewalkPrimitivesVaultId | { accountId?: any; currencies?: any } | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<BalanceWrapper>>;
       /**
        * Get the minimum amount of collateral required for the given amount of token with the current threshold and exchange rate
        **/
-      getRequiredCollateralForWrapped: AugmentedRpc<(amount: Balance | AnyNumber | Uint8Array, currencyId: SpacewalkPrimitivesCurrencyId | { Native: any } | { XCM: any } | { Stellar: any } | { ZenlinkLPToken: any } | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<Balance>>;
+      getRequiredCollateralForWrapped: AugmentedRpc<(amount: BalanceWrapper | { amount?: any } | string | Uint8Array, currencyId: SpacewalkPrimitivesCurrencyId | { Native: any } | { XCM: any } | { Stellar: any } | { ZenlinkLPToken: any } | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<BalanceWrapper>>;
       /**
        * Get the vault's collateral (excluding nomination)
        **/
-      getVaultCollateral: AugmentedRpc<(vaultId: SpacewalkPrimitivesVaultId | { accountId?: any; currencies?: any } | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<Balance>>;
+      getVaultCollateral: AugmentedRpc<(vaultId: SpacewalkPrimitivesVaultId | { accountId?: any; currencies?: any } | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<BalanceWrapper>>;
       /**
        * Get the vault's collateral (including nomination)
        **/
-      getVaultTotalCollateral: AugmentedRpc<(vaultId: SpacewalkPrimitivesVaultId | { accountId?: any; currencies?: any } | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<Balance>>;
+      getVaultTotalCollateral: AugmentedRpc<(vaultId: SpacewalkPrimitivesVaultId | { accountId?: any; currencies?: any } | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<BalanceWrapper>>;
       /**
        * Get all the vaultIds registered by a vault's accountId
        **/
@@ -696,11 +696,11 @@ declare module '@polkadot/rpc-core/types/jsonrpc' {
       /**
        * Get all vaults with non-zero issuable tokens, ordered in descending order of this amount
        **/
-      getVaultsWithIssuableTokens: AugmentedRpc<(at?: BlockHash | string | Uint8Array) => Observable<Vec<ITuple<[SpacewalkPrimitivesVaultId, Balance]>>>>;
+      getVaultsWithIssuableTokens: AugmentedRpc<(at?: BlockHash | string | Uint8Array) => Observable<Vec<ITuple<[SpacewalkPrimitivesVaultId, BalanceWrapper]>>>>;
       /**
        * Get all vaults with non-zero redeemable tokens, ordered in descending order of this amount
        **/
-      getVaultsWithRedeemableTokens: AugmentedRpc<(at?: BlockHash | string | Uint8Array) => Observable<Vec<ITuple<[SpacewalkPrimitivesVaultId, Balance]>>>>;
+      getVaultsWithRedeemableTokens: AugmentedRpc<(at?: BlockHash | string | Uint8Array) => Observable<Vec<ITuple<[SpacewalkPrimitivesVaultId, BalanceWrapper]>>>>;
     };
     web3: {
       /**
