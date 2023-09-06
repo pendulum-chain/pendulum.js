@@ -16,7 +16,7 @@ export default {
       ],
       type: 'Vec<H256>'
     },
-    getNewVaultRedeemRequests: {
+    getNewVaultReplaceRequests: {
       description: 'Get all replace requests to a particular vault',
       params: [
         {

@@ -84,7 +84,7 @@ export default {
       ],
       type: 'Vec<(SpacewalkPrimitivesVaultId, Balance)>'
     },
-    getIssuableTokensFromVault: {
+    getIssueableTokensFromVault: {
       description: 'Get the amount of tokens a vault can issue',
       params: [
         {
