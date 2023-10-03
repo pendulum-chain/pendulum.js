@@ -5,6 +5,7 @@
     "BalanceWrapper": {
         "amount": "String"
     },
+    "UnsignedFixedPoint": "u128",
     "SpacewalkPrimitivesCurrencyId": {
         "_enum": {
             "Native": "Null",

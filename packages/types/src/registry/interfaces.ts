@@ -13,7 +13,7 @@ import type { OrmlAccountData, OrmlBalanceLock } from '@open-web3/orml-types/int
 import type { AuctionInfo, DelayedDispatchTime, DispatchId, Price } from '@open-web3/orml-types/interfaces/traits';
 import type { OrmlVestingSchedule, VestingScheduleOf } from '@open-web3/orml-types/interfaces/vesting';
 import type { PoolId } from '@pendulum-chain/types/interfaces/farming';
-import type { BalanceWrapper } from '@pendulum-chain/types/interfaces/oracle';
+import type { BalanceWrapper, UnsignedFixedPoint } from '@pendulum-chain/types/interfaces/oracle';
 import type { CurrencyId, NumberOrHex, OracleKey } from '@pendulum-chain/types/interfaces/primitives';
 import type { AccountId, AccountId20, AccountId32, AccountId33, AccountIdOf, AccountIndex, Address, AssetId, Balance, BalanceOf, Block, BlockNumber, BlockNumberFor, BlockNumberOf, Call, CallHash, CallHashOf, ChangesTrieConfiguration, ChangesTrieSignal, CodecHash, Consensus, ConsensusEngineId, CrateVersion, Digest, DigestItem, EncodedJustification, ExtrinsicsWeight, Fixed128, Fixed64, FixedI128, FixedI64, FixedU128, FixedU64, H1024, H128, H160, H2048, H256, H32, H512, H64, Hash, Header, HeaderPartial, I32F32, Index, IndicesLookupSource, Justification, Justifications, KeyTypeId, KeyValue, LockIdentifier, LookupSource, LookupTarget, ModuleId, Moment, MultiAddress, MultiSigner, OpaqueCall, Origin, OriginCaller, PalletId, PalletVersion, PalletsOrigin, Pays, PerU16, Perbill, Percent, Permill, Perquintill, Phantom, PhantomData, PreRuntime, Releases, RuntimeCall, RuntimeDbWeight, RuntimeEvent, Seal, SealV0, SignedBlock, SignedBlockWithJustification, SignedBlockWithJustifications, Slot, SlotDuration, StorageData, StorageInfo, StorageProof, TransactionInfo, TransactionLongevity, TransactionPriority, TransactionStorageProof, TransactionTag, U32F32, ValidatorId, ValidatorIdOf, Weight, WeightMultiplier, WeightV0, WeightV1, WeightV2 } from '@pendulum-chain/types/interfaces/runtime';
 import type { SpacewalkPrimitivesAsset, SpacewalkPrimitivesCurrencyId, SpacewalkPrimitivesVaultCurrencyPair, SpacewalkPrimitivesVaultId } from '@pendulum-chain/types/interfaces/vaultRegistry';
@@ -1167,6 +1167,7 @@ declare module '@polkadot/types/types/registry' {
     UnlockChunk: UnlockChunk;
     UnrewardedRelayer: UnrewardedRelayer;
     UnrewardedRelayersState: UnrewardedRelayersState;
+    UnsignedFixedPoint: UnsignedFixedPoint;
     UpgradeGoAhead: UpgradeGoAhead;
     UpgradeRestriction: UpgradeRestriction;
     UpwardMessage: UpwardMessage;

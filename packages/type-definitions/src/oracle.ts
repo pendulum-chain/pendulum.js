@@ -39,12 +39,29 @@ export default {
         }
       ],
       type: 'BalanceWrapper'
+    },
+    getExchangeRate: {
+      description: 'Get the exchange rate of the given currencyId to USD',
+      params: [
+        {
+          name: 'currencyId',
+          type: 'SpacewalkPrimitivesCurrencyId'
+        },
+        {
+          name: 'at',
+          type: 'BlockHash',
+          isHistoric: true,
+          isOptional: true
+        }
+      ],
+      type: 'UnsignedFixedPoint'
     }
   },
   types: {
     BalanceWrapper: {
       amount: 'String'
-    }
+    },
+    UnsignedFixedPoint: 'u128'
   },
   typesAlias: {}
 };
