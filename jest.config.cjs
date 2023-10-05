@@ -1,4 +1,4 @@
-const config = require('@polkadot/dev/config/jest.cjs');
+const config = require('@polkadot/dev-test/env/jest');
 
 module.exports = {
   ...config,
