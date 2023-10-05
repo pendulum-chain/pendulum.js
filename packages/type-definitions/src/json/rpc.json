@@ -173,6 +173,26 @@
             "jsonrpc": "oracle_usdToCurrency",
             "method": "usdToCurrency",
             "section": "oracle"
+        },
+        "getExchangeRate": {
+            "description": "Get the exchange rate of the given currencyId to USD",
+            "params": [
+                {
+                    "name": "currencyId",
+                    "type": "SpacewalkPrimitivesCurrencyId"
+                },
+                {
+                    "name": "at",
+                    "type": "BlockHash",
+                    "isHistoric": true,
+                    "isOptional": true
+                }
+            ],
+            "type": "UnsignedFixedPoint",
+            "isSubscription": false,
+            "jsonrpc": "oracle_getExchangeRate",
+            "method": "getExchangeRate",
+            "section": "oracle"
         }
     },
     "vaultRegistry": {

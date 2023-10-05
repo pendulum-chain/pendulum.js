@@ -6,7 +6,7 @@
 import '@polkadot/rpc-core/types/jsonrpc';
 
 import type { PoolId } from '@pendulum-chain/types/interfaces/farming';
-import type { BalanceWrapper } from '@pendulum-chain/types/interfaces/oracle';
+import type { BalanceWrapper, UnsignedFixedPoint } from '@pendulum-chain/types/interfaces/oracle';
 import type { SpacewalkPrimitivesCurrencyId, SpacewalkPrimitivesVaultId } from '@pendulum-chain/types/interfaces/vaultRegistry';
 import type { AugmentedRpc } from '@polkadot/rpc-core/types';
 import type { Metadata, StorageKey } from '@polkadot/types';
@@ -441,6 +441,10 @@ declare module '@polkadot/rpc-core/types/jsonrpc' {
        * Get the USD value of a currency
        **/
       currencyToUsd: AugmentedRpc<(amount: BalanceWrapper | { amount?: any } | string | Uint8Array, currencyId: SpacewalkPrimitivesCurrencyId | { Native: any } | { XCM: any } | { Stellar: any } | { ZenlinkLPToken: any } | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<BalanceWrapper>>;
+      /**
+       * Get the exchange rate of the given currencyId to USD
+       **/
+      getExchangeRate: AugmentedRpc<(currencyId: SpacewalkPrimitivesCurrencyId | { Native: any } | { XCM: any } | { Stellar: any } | { ZenlinkLPToken: any } | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<UnsignedFixedPoint>>;
       /**
        * Get the currency value of a USD amount
        **/
