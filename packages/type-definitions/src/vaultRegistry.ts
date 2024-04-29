@@ -185,25 +185,26 @@ export default {
   },
   types: {
     /**
-     * Lookup120: spacewalk_primitives::CurrencyId
+     * Lookup124: spacewalk_primitives::CurrencyId
      **/
     SpacewalkPrimitivesCurrencyId: {
       _enum: {
         Native: 'Null',
         XCM: 'u8',
         Stellar: 'SpacewalkPrimitivesAsset',
-        ZenlinkLPToken: '(u8,u8,u8,u8)'
+        ZenlinkLPToken: '(u8,u8,u8,u8)',
+        Token: 'u64'
       }
     },
     /**
-     * Lookup121: spacewalk_primitives::Asset
+     * Lookup125: spacewalk_primitives::Asset
      **/
     SpacewalkPrimitivesAsset: {
       _enum: {
         StellarNative: 'Null',
         AlphaNum4: {
           code: '[u8;4]',
-          issuer: '[u8;32]'
+          issuer: '[u8;32]',
         },
         AlphaNum12: {
           code: '[u8;12]',
@@ -212,14 +213,14 @@ export default {
       }
     },
     /**
-     * Lookup138: spacewalk_primitives::VaultId<sp_core::crypto::AccountId32, spacewalk_primitives::CurrencyId>
+     * Lookup142: spacewalk_primitives::VaultId<sp_core::crypto::AccountId32, spacewalk_primitives::CurrencyId>
      **/
     SpacewalkPrimitivesVaultId: {
       accountId: 'AccountId32',
       currencies: 'SpacewalkPrimitivesVaultCurrencyPair'
     },
     /**
-     * Lookup139: spacewalk_primitives::VaultCurrencyPair<spacewalk_primitives::CurrencyId>
+     * Lookup143: spacewalk_primitives::VaultCurrencyPair<spacewalk_primitives::CurrencyId>
      **/
     SpacewalkPrimitivesVaultCurrencyPair: {
       collateral: 'SpacewalkPrimitivesCurrencyId',
