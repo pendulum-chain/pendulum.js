@@ -7,9 +7,10 @@
   "license": "Apache-2.0",
   "packageManager": "yarn@3.1.1",
   "private": true,
+  "name": "pendulum.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pendulum-chain/pendulum.js.git"
+    "url": "git+https://github.com/pendulum-chain/pendulum.js.git"
   },
   "sideEffects": false,
   "version": "1.0.1",
