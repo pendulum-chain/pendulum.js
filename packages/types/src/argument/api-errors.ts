@@ -11,37 +11,72 @@ export type __AugmentedError<ApiType extends ApiTypes> = AugmentedError<ApiType>
 
 declare module '@polkadot/api-base/types/errors' {
   interface AugmentedErrors<ApiType extends ApiTypes> {
+    assetRegistry: {
+      /**
+       * Asset was not found.
+       **/
+      AssetNotFound: AugmentedError<ApiType>;
+      /**
+       * The version of the `VersionedMultiLocation` value used is not able
+       * to be interpreted.
+       **/
+      BadVersion: AugmentedError<ApiType>;
+      /**
+       * Another asset was already register with this asset id.
+       **/
+      ConflictingAssetId: AugmentedError<ApiType>;
+      /**
+       * Another asset was already register with this location.
+       **/
+      ConflictingLocation: AugmentedError<ApiType>;
+      /**
+       * The asset id is invalid.
+       **/
+      InvalidAssetId: AugmentedError<ApiType>;
+      /**
+       * Generic error
+       **/
+      [key: string]: AugmentedError<ApiType>;
+    };
     balances: {
       /**
-       * Beneficiary account must pre-exist
+       * Beneficiary account must pre-exist.
        **/
       DeadAccount: AugmentedError<ApiType>;
       /**
-       * Value too low to create account due to existential deposit
+       * Value too low to create account due to existential deposit.
        **/
       ExistentialDeposit: AugmentedError<ApiType>;
       /**
-       * A vesting schedule already exists for this account
+       * A vesting schedule already exists for this account.
        **/
       ExistingVestingSchedule: AugmentedError<ApiType>;
+      /**
+       * Transfer/payment would kill account.
+       **/
+      Expendability: AugmentedError<ApiType>;
       /**
        * Balance too low to send value.
        **/
       InsufficientBalance: AugmentedError<ApiType>;
       /**
-       * Transfer/payment would kill account
-       **/
-      KeepAlive: AugmentedError<ApiType>;
-      /**
-       * Account liquidity restrictions prevent withdrawal
+       * Account liquidity restrictions prevent withdrawal.
        **/
       LiquidityRestrictions: AugmentedError<ApiType>;
       /**
-       * Number of named reserves exceed MaxReserves
+       * Number of freezes exceed `MaxFreezes`.
+       **/
+      TooManyFreezes: AugmentedError<ApiType>;
+      /**
+       * Number of holds exceed `MaxHolds`.
+       **/
+      TooManyHolds: AugmentedError<ApiType>;
+      /**
+       * Number of named reserves exceed `MaxReserves`.
        **/
       TooManyReserves: AugmentedError<ApiType>;
       /**
-       * Vesting balance too high to send value
+       * Vesting balance too high to send value.
        **/
       VestingBalance: AugmentedError<ApiType>;
       /**
@@ -118,6 +153,14 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       [key: string]: AugmentedError<ApiType>;
     };
+    clientsInfo: {
+      ThisAccountIdIsNotAuthorized: AugmentedError<ApiType>;
+      UserUnableToDeauthorizeThemself: AugmentedError<ApiType>;
+      /**
+       * Generic error
+       **/
+      [key: string]: AugmentedError<ApiType>;
+    };
     contracts: {
       /**
        * Code removal was denied because the code is still in use by at least one contract.
@@ -131,7 +174,7 @@ declare module '@polkadot/api-base/types/errors' {
        * The contract's code was found to be invalid during validation or instrumentation.
        * 
        * The most likely cause of this is that an API was used which is not supported by the
-       * node. This hapens if an older node is used with a new version of ink!. Try updating
+       * node. This happens if an older node is used with a new version of ink!. Try updating
        * your node to the newest available version.
        * 
        * A more detailed error can be found on the node console if debug messages are enabled
@@ -162,14 +205,6 @@ declare module '@polkadot/api-base/types/errors' {
        * Input passed to a contract API function failed to decode as expected type.
        **/
       DecodingFailed: AugmentedError<ApiType>;
-      /**
-       * Removal of a contract failed because the deletion queue is full.
-       * 
-       * This can happen when calling `seal_terminate`.
-       * The queue is filled by deleting contracts and emptied by a fixed amount each block.
-       * Trying again during another block is the only way to resolve this issue.
-       **/
-      DeletionQueueFull: AugmentedError<ApiType>;
       /**
        * A contract with the same AccountId already exists.
        **/
@@ -507,7 +542,6 @@ declare module '@polkadot/api-base/types/errors' {
       [key: string]: AugmentedError<ApiType>;
     };
     farming: {
-      CalculationOverflow: AugmentedError<ApiType>;
       /**
        * claim_limit_time exceeded
        **/
@@ -521,8 +555,17 @@ declare module '@polkadot/api-base/types/errors' {
       GaugePoolNotExist: AugmentedError<ApiType>;
       InvalidPoolState: AugmentedError<ApiType>;
       LastGaugeNotClaim: AugmentedError<ApiType>;
+      NobodyVoting: AugmentedError<ApiType>;
+      NotInWhitelist: AugmentedError<ApiType>;
+      NotNullable: AugmentedError<ApiType>;
+      PercentOverflow: AugmentedError<ApiType>;
       PoolDoesNotExist: AugmentedError<ApiType>;
+      PoolNotCleared: AugmentedError<ApiType>;
+      RoundLengthNotSet: AugmentedError<ApiType>;
+      RoundNotOver: AugmentedError<ApiType>;
       ShareInfoNotExists: AugmentedError<ApiType>;
+      WhitelistEmpty: AugmentedError<ApiType>;
+      WhitelistLimitExceeded: AugmentedError<ApiType>;
       /**
        * withdraw_limit_time exceeded
        **/
@@ -537,6 +580,7 @@ declare module '@polkadot/api-base/types/errors' {
        * Value exceeds the expected upper bound for storage fields in this pallet.
        **/
       AboveMaxExpectedValue: AugmentedError<ApiType>;
+      Overflow: AugmentedError<ApiType>;
       /**
        * Unable to convert value.
        **/
@@ -771,6 +815,32 @@ declare module '@polkadot/api-base/types/errors' {
        * Unable to convert value
        **/
       TryIntoIntError: AugmentedError<ApiType>;
+      /**
+       * Generic error
+       **/
+      [key: string]: AugmentedError<ApiType>;
+    };
+    ormlExtension: {
+      /**
+       * Trying to register a new currency when id is in use
+       **/
+      AlreadyCreated: AugmentedError<ApiType>;
+      /**
+       * Insuficient balance to make the creation deposit
+       **/
+      InsufficientBalance: AugmentedError<ApiType>;
+      /**
+       * No permission to call the operation
+       **/
+      NoPermission: AugmentedError<ApiType>;
+      /**
+       * Currency has not been created
+       **/
+      NotCreated: AugmentedError<ApiType>;
+      /**
+       * Trying to register a currency variant that is not ownable
+       **/
+      NotOwnableCurrency: AugmentedError<ApiType>;
       /**
        * Generic error
        **/
@@ -1062,6 +1132,28 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       [key: string]: AugmentedError<ApiType>;
     };
+    pooledVaultRewards: {
+      /**
+       * Balance not sufficient to withdraw stake.
+       **/
+      InsufficientFunds: AugmentedError<ApiType>;
+      /**
+       * Maximum rewards currencies reached.
+       **/
+      MaxRewardCurrencies: AugmentedError<ApiType>;
+      /**
+       * Unable to convert value.
+       **/
+      TryIntoIntError: AugmentedError<ApiType>;
+      /**
+       * Cannot distribute rewards without stake.
+       **/
+      ZeroTotalStake: AugmentedError<ApiType>;
+      /**
+       * Generic error
+       **/
+      [key: string]: AugmentedError<ApiType>;
+    };
     preimage: {
       /**
        * Preimage has already been noted on-chain.
@@ -1092,6 +1184,44 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       [key: string]: AugmentedError<ApiType>;
     };
+    proxy: {
+      /**
+       * Account is already a proxy.
+       **/
+      Duplicate: AugmentedError<ApiType>;
+      /**
+       * Call may not be made by proxy because it may escalate its privileges.
+       **/
+      NoPermission: AugmentedError<ApiType>;
+      /**
+       * Cannot add self as proxy.
+       **/
+      NoSelfProxy: AugmentedError<ApiType>;
+      /**
+       * Proxy registration not found.
+       **/
+      NotFound: AugmentedError<ApiType>;
+      /**
+       * Sender is not a proxy of the account to be proxied.
+       **/
+      NotProxy: AugmentedError<ApiType>;
+      /**
+       * There are too many proxies registered or too many announcements pending.
+       **/
+      TooMany: AugmentedError<ApiType>;
+      /**
+       * Announcement, if made at all, was made too recently.
+       **/
+      Unannounced: AugmentedError<ApiType>;
+      /**
+       * A call which is incompatible with the proxy type's filter was attempted.
+       **/
+      Unproxyable: AugmentedError<ApiType>;
+      /**
+       * Generic error
+       **/
+      [key: string]: AugmentedError<ApiType>;
+    };
     redeem: {
       /**
        * Redeem amount is too small.
@@ -1102,9 +1232,9 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       AmountExceedsUserBalance: AugmentedError<ApiType>;
       /**
-       * Exceeds the volume limit for an issue request.
+       * Exceeds the volume limit for a redeem request.
        **/
-      ExceedLimitVolumeForIssueRequest: AugmentedError<ApiType>;
+      ExceedLimitVolumeForRedeemRequest: AugmentedError<ApiType>;
       /**
        * Invalid payment amount
        **/
@@ -1196,6 +1326,37 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       [key: string]: AugmentedError<ApiType>;
     };
+    rewardDistribution: {
+      /**
+       * If the amount to collect is less than existential deposit
+       **/
+      CollectAmountTooSmall: AugmentedError<ApiType>;
+      /**
+       * If distribution logic reaches an inconsistency with the amount of currencies in the
+       * system
+       **/
+      InconsistentRewardCurrencies: AugmentedError<ApiType>;
+      /**
+       * Origin attempt to withdraw with 0 rewards
+       **/
+      NoRewardsForAccount: AugmentedError<ApiType>;
+      /**
+       * Amount to be minted is more than total rewarded
+       **/
+      NotEnoughRewardsRegistered: AugmentedError<ApiType>;
+      /**
+       * Overflow
+       **/
+      Overflow: AugmentedError<ApiType>;
+      /**
+       * Underflow
+       **/
+      Underflow: AugmentedError<ApiType>;
+      /**
+       * Generic error
+       **/
+      [key: string]: AugmentedError<ApiType>;
+    };
     scheduler: {
       /**
        * Failed to schedule a call
@@ -1268,20 +1429,16 @@ declare module '@polkadot/api-base/types/errors' {
       EnvelopeSlotIndexMismatch: AugmentedError<ApiType>;
       ExternalizedNHMismatch: AugmentedError<ApiType>;
       ExternalizedValueMismatch: AugmentedError<ApiType>;
-      ExternalizedValueNotFound: AugmentedError<ApiType>;
       FailedToComputeNonGenericTxSetContentHash: AugmentedError<ApiType>;
       InvalidEnvelopeSignature: AugmentedError<ApiType>;
       InvalidQuorumSetNotEnoughOrganizations: AugmentedError<ApiType>;
       InvalidQuorumSetNotEnoughValidators: AugmentedError<ApiType>;
       InvalidScpPledge: AugmentedError<ApiType>;
-      InvalidTransactionSet: AugmentedError<ApiType>;
-      InvalidTransactionXDR: AugmentedError<ApiType>;
+      InvalidTransactionSetPrefix: AugmentedError<ApiType>;
       InvalidXDR: AugmentedError<ApiType>;
       MissingExternalizedMessage: AugmentedError<ApiType>;
       NoOrganizationsRegistered: AugmentedError<ApiType>;
-      NoOrganizationsRegisteredForNetwork: AugmentedError<ApiType>;
       NoValidatorsRegistered: AugmentedError<ApiType>;
-      NoValidatorsRegisteredForNetwork: AugmentedError<ApiType>;
       OrganizationLimitExceeded: AugmentedError<ApiType>;
       SlotIndexIsNone: AugmentedError<ApiType>;
       TransactionMemoDoesNotMatch: AugmentedError<ApiType>;
@@ -1386,6 +1543,7 @@ declare module '@polkadot/api-base/types/errors' {
     };
     tokenAllowance: {
       CurrencyNotLive: AugmentedError<ApiType>;
+      ExceedsNumberOfAllowedCurrencies: AugmentedError<ApiType>;
       Unapproved: AugmentedError<ApiType>;
       /**
        * Generic error
@@ -1449,6 +1607,56 @@ declare module '@polkadot/api-base/types/errors' {
        * Too many approvals in the queue.
        **/
       TooManyApprovals: AugmentedError<ApiType>;
+      /**
+       * Generic error
+       **/
+      [key: string]: AugmentedError<ApiType>;
+    };
+    treasuryBuyoutExtension: {
+      /**
+       * Buyout limit exceeded for the current period
+       **/
+      BuyoutLimitExceeded: AugmentedError<ApiType>;
+      /**
+       * Attempt to use treasury account for buyout
+       **/
+      BuyoutWithTreasuryAccount: AugmentedError<ApiType>;
+      /**
+       * Exceeds number of allowed currencies for buyout
+       **/
+      ExceedsNumberOfAllowedCurrencies: AugmentedError<ApiType>;
+      /**
+       * Exchange failed
+       **/
+      ExchangeFailure: AugmentedError<ApiType>;
+      /**
+       * The account balance is too low for an operation
+       **/
+      InsufficientAccountBalance: AugmentedError<ApiType>;
+      /**
+       * The treasury balance is too low for an operation
+       **/
+      InsufficientTreasuryBalance: AugmentedError<ApiType>;
+      /**
+       * Less than minimum amoount allowed for buyout
+       **/
+      LessThanMinBuyoutAmount: AugmentedError<ApiType>;
+      /**
+       * Attempt to add native token to allowed assets
+       **/
+      NativeTokenNotAllowed: AugmentedError<ApiType>;
+      /**
+       * One of transacted currencies is missing price information
+       **/
+      NoPrice: AugmentedError<ApiType>;
+      /**
+       * Storage clearing of `AllowedCurrencies` failed
+       **/
+      StorageClearingFailure: AugmentedError<ApiType>;
+      /**
+       * Attempt to exchange native token to native token
+       **/
+      WrongAssetToBuyout: AugmentedError<ApiType>;
       /**
        * Generic error
        **/
@@ -1574,29 +1782,15 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       [key: string]: AugmentedError<ApiType>;
     };
-    vaultRewards: {
-      /**
-       * Balance not sufficient to withdraw stake.
-       **/
-      InsufficientFunds: AugmentedError<ApiType>;
-      /**
-       * Unable to convert value.
-       **/
-      TryIntoIntError: AugmentedError<ApiType>;
-      /**
-       * Cannot distribute rewards without stake.
-       **/
-      ZeroTotalStake: AugmentedError<ApiType>;
-      /**
-       * Generic error
-       **/
-      [key: string]: AugmentedError<ApiType>;
-    };
     vaultStaking: {
       /**
        * Balance not sufficient to withdraw stake.
        **/
       InsufficientFunds: AugmentedError<ApiType>;
+      /**
+       * Max rewards currencies threshold
+       **/
+      MaxRewardCurrencies: AugmentedError<ApiType>;
       /**
        * Cannot slash zero total stake.
        **/

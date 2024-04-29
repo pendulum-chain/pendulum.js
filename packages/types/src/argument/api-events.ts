@@ -5,21 +5,33 @@
 // this is required to allow for ambient/previous definitions
 import '@polkadot/api-base/types/events';
 
-import type { AccountId32, H256, Perquintill } from '@pendulum-chain/types/interfaces/runtime';
+import type { AccountId32, H256, Percent, Perquintill } from '@pendulum-chain/types/interfaces/runtime';
 import type { ApiTypes, AugmentedEvent } from '@polkadot/api-base/types';
-import type { Bytes, Null, Option, Result, U8aFixed, Vec, bool, i128, u128, u32, u64, u8 } from '@polkadot/types-codec';
+import type { Bytes, Null, Option, Result, U8aFixed, Vec, bool, i128, u128, u16, u32, u64, u8 } from '@polkadot/types-codec';
 import type { ITuple } from '@polkadot/types-codec/types';
-import type { DiaOracleDiaCoinInfo, FrameSupportDispatchDispatchInfo, FrameSupportTokensMiscBalanceStatus, PalletDemocracyMetadataOwner, PalletDemocracyVoteAccountVote, PalletDemocracyVoteThreshold, PalletMultisigTimepoint, SecurityErrorCode, SecurityStatusCode, SpRuntimeDispatchError, SpWeightsWeightV2Weight, SpacewalkPrimitivesCurrencyId, SpacewalkPrimitivesOracleKey, SpacewalkPrimitivesRedeemRedeemRequestStatus, SpacewalkPrimitivesVaultCurrencyPair, SpacewalkPrimitivesVaultId, VaultRegistryVaultStatus, XcmV3MultiAsset, XcmV3MultiLocation, XcmV3MultiassetMultiAssets, XcmV3Response, XcmV3TraitsError, XcmV3TraitsOutcome, XcmV3Xcm, XcmVersionedMultiAssets, XcmVersionedMultiLocation, ZenlinkProtocolPrimitivesAssetId } from '@polkadot/types/lookup';
+import type { ClientsInfoClientRelease, DiaOracleDiaCoinInfo, FrameSupportDispatchDispatchInfo, FrameSupportTokensMiscBalanceStatus, OrmlTraitsAssetRegistryAssetMetadata, PalletDemocracyMetadataOwner, PalletDemocracyVoteAccountVote, PalletDemocracyVoteThreshold, PalletMultisigTimepoint, RuntimeCommonProxyType, SecurityErrorCode, SecurityStatusCode, SpRuntimeDispatchError, SpWeightsWeightV2Weight, SpacewalkPrimitivesCurrencyId, SpacewalkPrimitivesOracleKey, SpacewalkPrimitivesRedeemRedeemRequestStatus, SpacewalkPrimitivesVaultCurrencyPair, SpacewalkPrimitivesVaultId, VaultRegistryVaultStatus, XcmV3MultiAsset, XcmV3MultiLocation, XcmV3MultiassetMultiAssets, XcmV3Response, XcmV3TraitsError, XcmV3TraitsOutcome, XcmV3Xcm, XcmVersionedMultiAssets, XcmVersionedMultiLocation, ZenlinkProtocolPrimitivesAssetId } from '@polkadot/types/lookup';
 
 export type __AugmentedEvent<ApiType extends ApiTypes> = AugmentedEvent<ApiType>;
 
 declare module '@polkadot/api-base/types/events' {
   interface AugmentedEvents<ApiType extends ApiTypes> {
+    assetRegistry: {
+      RegisteredAsset: AugmentedEvent<ApiType, [assetId: SpacewalkPrimitivesCurrencyId, metadata: OrmlTraitsAssetRegistryAssetMetadata], { assetId: SpacewalkPrimitivesCurrencyId, metadata: OrmlTraitsAssetRegistryAssetMetadata }>;
+      UpdatedAsset: AugmentedEvent<ApiType, [assetId: SpacewalkPrimitivesCurrencyId, metadata: OrmlTraitsAssetRegistryAssetMetadata], { assetId: SpacewalkPrimitivesCurrencyId, metadata: OrmlTraitsAssetRegistryAssetMetadata }>;
+      /**
+       * Generic event
+       **/
+      [key: string]: AugmentedEvent<ApiType>;
+    };
     balances: {
       /**
        * A balance was set by root.
        **/
-      BalanceSet: AugmentedEvent<ApiType, [who: AccountId32, free: u128, reserved: u128], { who: AccountId32, free: u128, reserved: u128 }>;
+      BalanceSet: AugmentedEvent<ApiType, [who: AccountId32, free: u128], { who: AccountId32, free: u128 }>;
+      /**
+       * Some amount was burned from an account.
+       **/
+      Burned: AugmentedEvent<ApiType, [who: AccountId32, amount: u128], { who: AccountId32, amount: u128 }>;
       /**
        * Some amount was deposited (e.g. for transaction fees).
        **/
@@ -34,6 +46,26 @@ declare module '@polkadot/api-base/types/events' {
        **/
       Endowed: AugmentedEvent<ApiType, [account: AccountId32, freeBalance: u128], { account: AccountId32, freeBalance: u128 }>;
       /**
+       * Some balance was frozen.
+       **/
+      Frozen: AugmentedEvent<ApiType, [who: AccountId32, amount: u128], { who: AccountId32, amount: u128 }>;
+      /**
+       * Total issuance was increased by `amount`, creating a credit to be balanced.
+       **/
+      Issued: AugmentedEvent<ApiType, [amount: u128], { amount: u128 }>;
+      /**
+       * Some balance was locked.
+       **/
+      Locked: AugmentedEvent<ApiType, [who: AccountId32, amount: u128], { who: AccountId32, amount: u128 }>;
+      /**
+       * Some amount was minted into an account.
+       **/
+      Minted: AugmentedEvent<ApiType, [who: AccountId32, amount: u128], { who: AccountId32, amount: u128 }>;
+      /**
+       * Total issuance was decreased by `amount`, creating a debt to be balanced.
+       **/
+      Rescinded: AugmentedEvent<ApiType, [amount: u128], { amount: u128 }>;
+      /**
        * Some balance was reserved (moved from free to reserved).
        **/
       Reserved: AugmentedEvent<ApiType, [who: AccountId32, amount: u128], { who: AccountId32, amount: u128 }>;
@@ -43,17 +75,37 @@ declare module '@polkadot/api-base/types/events' {
        **/
       ReserveRepatriated: AugmentedEvent<ApiType, [from: AccountId32, to: AccountId32, amount: u128, destinationStatus: FrameSupportTokensMiscBalanceStatus], { from: AccountId32, to: AccountId32, amount: u128, destinationStatus: FrameSupportTokensMiscBalanceStatus }>;
       /**
+       * Some amount was restored into an account.
+       **/
+      Restored: AugmentedEvent<ApiType, [who: AccountId32, amount: u128], { who: AccountId32, amount: u128 }>;
+      /**
        * Some amount was removed from the account (e.g. for misbehavior).
        **/
       Slashed: AugmentedEvent<ApiType, [who: AccountId32, amount: u128], { who: AccountId32, amount: u128 }>;
+      /**
+       * Some amount was suspended from an account (it can be restored later).
+       **/
+      Suspended: AugmentedEvent<ApiType, [who: AccountId32, amount: u128], { who: AccountId32, amount: u128 }>;
+      /**
+       * Some balance was thawed.
+       **/
+      Thawed: AugmentedEvent<ApiType, [who: AccountId32, amount: u128], { who: AccountId32, amount: u128 }>;
       /**
        * Transfer succeeded.
        **/
       Transfer: AugmentedEvent<ApiType, [from: AccountId32, to: AccountId32, amount: u128], { from: AccountId32, to: AccountId32, amount: u128 }>;
       /**
+       * Some balance was unlocked.
+       **/
+      Unlocked: AugmentedEvent<ApiType, [who: AccountId32, amount: u128], { who: AccountId32, amount: u128 }>;
+      /**
        * Some balance was unreserved (moved from reserved to free).
        **/
       Unreserved: AugmentedEvent<ApiType, [who: AccountId32, amount: u128], { who: AccountId32, amount: u128 }>;
+      /**
+       * An account was upgraded.
+       **/
+      Upgraded: AugmentedEvent<ApiType, [who: AccountId32], { who: AccountId32 }>;
       /**
        * Some amount was withdrawn from the account (e.g. for transaction fees).
        **/
@@ -114,6 +166,16 @@ declare module '@polkadot/api-base/types/events' {
        * A child-bounty is claimed by beneficiary.
        **/
       Claimed: AugmentedEvent<ApiType, [index: u32, childIndex: u32, payout: u128, beneficiary: AccountId32], { index: u32, childIndex: u32, payout: u128, beneficiary: AccountId32 }>;
+      /**
+       * Generic event
+       **/
+      [key: string]: AugmentedEvent<ApiType>;
+    };
+    clientsInfo: {
+      AccountIdAuthorized: AugmentedEvent<ApiType, [AccountId32]>;
+      AccountIdDeauthorized: AugmentedEvent<ApiType, [AccountId32]>;
+      ApplyClientRelease: AugmentedEvent<ApiType, [release: ClientsInfoClientRelease], { release: ClientsInfoClientRelease }>;
+      NotifyClientRelease: AugmentedEvent<ApiType, [release: ClientsInfoClientRelease], { release: ClientsInfoClientRelease }>;
       /**
        * Generic event
        **/
@@ -372,6 +434,7 @@ declare module '@polkadot/api-base/types/events' {
     farming: {
       AllForceGaugeClaimed: AugmentedEvent<ApiType, [gid: u32], { gid: u32 }>;
       AllRetired: AugmentedEvent<ApiType, [pid: u32], { pid: u32 }>;
+      BoostCharged: AugmentedEvent<ApiType, [who: AccountId32, rewards: Vec<ITuple<[SpacewalkPrimitivesCurrencyId, u128]>>], { who: AccountId32, rewards: Vec<ITuple<[SpacewalkPrimitivesCurrencyId, u128]>> }>;
       Charged: AugmentedEvent<ApiType, [who: AccountId32, pid: u32, rewards: Vec<ITuple<[SpacewalkPrimitivesCurrencyId, u128]>>], { who: AccountId32, pid: u32, rewards: Vec<ITuple<[SpacewalkPrimitivesCurrencyId, u128]>> }>;
       Claimed: AugmentedEvent<ApiType, [who: AccountId32, pid: u32], { who: AccountId32, pid: u32 }>;
       Deposited: AugmentedEvent<ApiType, [who: AccountId32, pid: u32, addValue: u128, gaugeInfo: Option<ITuple<[u128, u32]>>], { who: AccountId32, pid: u32, addValue: u128, gaugeInfo: Option<ITuple<[u128, u32]>> }>;
@@ -384,6 +447,10 @@ declare module '@polkadot/api-base/types/events' {
       PartiallyForceGaugeClaimed: AugmentedEvent<ApiType, [gid: u32], { gid: u32 }>;
       PartiallyRetired: AugmentedEvent<ApiType, [pid: u32], { pid: u32 }>;
       RetireLimitSet: AugmentedEvent<ApiType, [limit: u32], { limit: u32 }>;
+      RoundEnd: AugmentedEvent<ApiType, [totalVotes: u128, startRound: u32, endRound: u32], { totalVotes: u128, startRound: u32, endRound: u32 }>;
+      RoundStart: AugmentedEvent<ApiType, [roundLength: u32], { roundLength: u32 }>;
+      RoundStartError: AugmentedEvent<ApiType, [info: SpRuntimeDispatchError], { info: SpRuntimeDispatchError }>;
+      Voted: AugmentedEvent<ApiType, [who: AccountId32, voteList: Vec<ITuple<[u32, Percent]>>], { who: AccountId32, voteList: Vec<ITuple<[u32, Percent]>> }>;
       WithdrawClaimed: AugmentedEvent<ApiType, [who: AccountId32, pid: u32], { who: AccountId32, pid: u32 }>;
       Withdrawn: AugmentedEvent<ApiType, [who: AccountId32, pid: u32, removeValue: Option<u128>], { who: AccountId32, pid: u32, removeValue: Option<u128> }>;
       /**
@@ -487,6 +554,32 @@ declare module '@polkadot/api-base/types/events' {
       AggregateUpdated: AugmentedEvent<ApiType, [values: Vec<ITuple<[SpacewalkPrimitivesOracleKey, u128]>>], { values: Vec<ITuple<[SpacewalkPrimitivesOracleKey, u128]>> }>;
       MaxDelayUpdated: AugmentedEvent<ApiType, [maxDelay: u64], { maxDelay: u64 }>;
       OracleKeysUpdated: AugmentedEvent<ApiType, [oracleKeys: Vec<SpacewalkPrimitivesOracleKey>], { oracleKeys: Vec<SpacewalkPrimitivesOracleKey> }>;
+      /**
+       * Generic event
+       **/
+      [key: string]: AugmentedEvent<ApiType>;
+    };
+    ormlExtension: {
+      /**
+       * Some currency was burned.
+       **/
+      Burned: AugmentedEvent<ApiType, [currencyId: SpacewalkPrimitivesCurrencyId, from: AccountId32, amount: u128], { currencyId: SpacewalkPrimitivesCurrencyId, from: AccountId32, amount: u128 }>;
+      /**
+       * Some currency class was created.
+       **/
+      Created: AugmentedEvent<ApiType, [currencyId: SpacewalkPrimitivesCurrencyId, creator: AccountId32, owner: AccountId32], { currencyId: SpacewalkPrimitivesCurrencyId, creator: AccountId32, owner: AccountId32 }>;
+      /**
+       * Issuer and admin changed
+       **/
+      ManagersChanged: AugmentedEvent<ApiType, [currencyId: SpacewalkPrimitivesCurrencyId, newAdmin: AccountId32, newIssuer: AccountId32], { currencyId: SpacewalkPrimitivesCurrencyId, newAdmin: AccountId32, newIssuer: AccountId32 }>;
+      /**
+       * Some currency was issued.
+       **/
+      Mint: AugmentedEvent<ApiType, [currencyId: SpacewalkPrimitivesCurrencyId, to: AccountId32, amount: u128], { currencyId: SpacewalkPrimitivesCurrencyId, to: AccountId32, amount: u128 }>;
+      /**
+       * Change of ownership
+       **/
+      OwnershipChanged: AugmentedEvent<ApiType, [currencyId: SpacewalkPrimitivesCurrencyId, newOwner: AccountId32], { currencyId: SpacewalkPrimitivesCurrencyId, newOwner: AccountId32 }>;
       /**
        * Generic event
        **/
@@ -825,6 +918,16 @@ declare module '@polkadot/api-base/types/events' {
        **/
       [key: string]: AugmentedEvent<ApiType>;
     };
+    pooledVaultRewards: {
+      DepositStake: AugmentedEvent<ApiType, [poolId: SpacewalkPrimitivesCurrencyId, stakeId: SpacewalkPrimitivesVaultId, amount: i128], { poolId: SpacewalkPrimitivesCurrencyId, stakeId: SpacewalkPrimitivesVaultId, amount: i128 }>;
+      DistributeReward: AugmentedEvent<ApiType, [currencyId: SpacewalkPrimitivesCurrencyId, amount: i128], { currencyId: SpacewalkPrimitivesCurrencyId, amount: i128 }>;
+      WithdrawReward: AugmentedEvent<ApiType, [poolId: SpacewalkPrimitivesCurrencyId, stakeId: SpacewalkPrimitivesVaultId, currencyId: SpacewalkPrimitivesCurrencyId, amount: i128], { poolId: SpacewalkPrimitivesCurrencyId, stakeId: SpacewalkPrimitivesVaultId, currencyId: SpacewalkPrimitivesCurrencyId, amount: i128 }>;
+      WithdrawStake: AugmentedEvent<ApiType, [poolId: SpacewalkPrimitivesCurrencyId, stakeId: SpacewalkPrimitivesVaultId, amount: i128], { poolId: SpacewalkPrimitivesCurrencyId, stakeId: SpacewalkPrimitivesVaultId, amount: i128 }>;
+      /**
+       * Generic event
+       **/
+      [key: string]: AugmentedEvent<ApiType>;
+    };
     preimage: {
       /**
        * A preimage has ben cleared.
@@ -838,6 +941,33 @@ declare module '@polkadot/api-base/types/events' {
        * A preimage has been requested.
        **/
       Requested: AugmentedEvent<ApiType, [hash_: H256], { hash_: H256 }>;
+      /**
+       * Generic event
+       **/
+      [key: string]: AugmentedEvent<ApiType>;
+    };
+    proxy: {
+      /**
+       * An announcement was placed to make a call in the future.
+       **/
+      Announced: AugmentedEvent<ApiType, [real: AccountId32, proxy: AccountId32, callHash: H256], { real: AccountId32, proxy: AccountId32, callHash: H256 }>;
+      /**
+       * A proxy was added.
+       **/
+      ProxyAdded: AugmentedEvent<ApiType, [delegator: AccountId32, delegatee: AccountId32, proxyType: RuntimeCommonProxyType, delay: u32], { delegator: AccountId32, delegatee: AccountId32, proxyType: RuntimeCommonProxyType, delay: u32 }>;
+      /**
+       * A proxy was executed correctly, with the given.
+       **/
+      ProxyExecuted: AugmentedEvent<ApiType, [result: Result<Null, SpRuntimeDispatchError>], { result: Result<Null, SpRuntimeDispatchError> }>;
+      /**
+       * A proxy was removed.
+       **/
+      ProxyRemoved: AugmentedEvent<ApiType, [delegator: AccountId32, delegatee: AccountId32, proxyType: RuntimeCommonProxyType, delay: u32], { delegator: AccountId32, delegatee: AccountId32, proxyType: RuntimeCommonProxyType, delay: u32 }>;
+      /**
+       * A pure account has been created by new proxy with given
+       * disambiguation index and proxy type.
+       **/
+      PureCreated: AugmentedEvent<ApiType, [pure: AccountId32, who: AccountId32, proxyType: RuntimeCommonProxyType, disambiguationIndex: u16], { pure: AccountId32, who: AccountId32, proxyType: RuntimeCommonProxyType, disambiguationIndex: u16 }>;
       /**
        * Generic event
        **/
@@ -866,6 +996,16 @@ declare module '@polkadot/api-base/types/events' {
       ReplacePeriodChange: AugmentedEvent<ApiType, [period: u32], { period: u32 }>;
       RequestReplace: AugmentedEvent<ApiType, [oldVaultId: SpacewalkPrimitivesVaultId, amount: u128, asset: SpacewalkPrimitivesCurrencyId, griefingCollateral: u128], { oldVaultId: SpacewalkPrimitivesVaultId, amount: u128, asset: SpacewalkPrimitivesCurrencyId, griefingCollateral: u128 }>;
       WithdrawReplace: AugmentedEvent<ApiType, [oldVaultId: SpacewalkPrimitivesVaultId, withdrawnTokens: u128, asset: SpacewalkPrimitivesCurrencyId, withdrawnGriefingCollateral: u128], { oldVaultId: SpacewalkPrimitivesVaultId, withdrawnTokens: u128, asset: SpacewalkPrimitivesCurrencyId, withdrawnGriefingCollateral: u128 }>;
+      /**
+       * Generic event
+       **/
+      [key: string]: AugmentedEvent<ApiType>;
+    };
+    rewardDistribution: {
+      /**
+       * A new RewardPerBlock value has been set.
+       **/
+      RewardPerBlockAdapted: AugmentedEvent<ApiType, [u128]>;
       /**
        * Generic event
        **/
@@ -1144,6 +1284,24 @@ declare module '@polkadot/api-base/types/events' {
        **/
       [key: string]: AugmentedEvent<ApiType>;
     };
+    treasuryBuyoutExtension: {
+      /**
+       * Updated allowed assets for buyout event
+       **/
+      AllowedAssetsForBuyoutUpdated: AugmentedEvent<ApiType, [allowedAssets: Vec<SpacewalkPrimitivesCurrencyId>], { allowedAssets: Vec<SpacewalkPrimitivesCurrencyId> }>;
+      /**
+       * Buyout event
+       **/
+      Buyout: AugmentedEvent<ApiType, [who: AccountId32, buyoutAmount: u128, asset: SpacewalkPrimitivesCurrencyId, exchangeAmount: u128], { who: AccountId32, buyoutAmount: u128, asset: SpacewalkPrimitivesCurrencyId, exchangeAmount: u128 }>;
+      /**
+       * Buyout limit updated event
+       **/
+      BuyoutLimitUpdated: AugmentedEvent<ApiType, [limit: Option<u128>], { limit: Option<u128> }>;
+      /**
+       * Generic event
+       **/
+      [key: string]: AugmentedEvent<ApiType>;
+    };
     utility: {
       /**
        * Batch of dispatches completed fully with no error.
@@ -1198,16 +1356,6 @@ declare module '@polkadot/api-base/types/events' {
       ReplaceTokens: AugmentedEvent<ApiType, [oldVaultId: SpacewalkPrimitivesVaultId, newVaultId: SpacewalkPrimitivesVaultId, amount: u128, additionalCollateral: u128], { oldVaultId: SpacewalkPrimitivesVaultId, newVaultId: SpacewalkPrimitivesVaultId, amount: u128, additionalCollateral: u128 }>;
       UpdatePublicKey: AugmentedEvent<ApiType, [accountId: AccountId32, publicKey: U8aFixed], { accountId: AccountId32, publicKey: U8aFixed }>;
       WithdrawCollateral: AugmentedEvent<ApiType, [vaultId: SpacewalkPrimitivesVaultId, withdrawnAmount: u128, totalCollateral: u128], { vaultId: SpacewalkPrimitivesVaultId, withdrawnAmount: u128, totalCollateral: u128 }>;
-      /**
-       * Generic event
-       **/
-      [key: string]: AugmentedEvent<ApiType>;
-    };
-    vaultRewards: {
-      DepositStake: AugmentedEvent<ApiType, [rewardId: SpacewalkPrimitivesVaultId, amount: i128], { rewardId: SpacewalkPrimitivesVaultId, amount: i128 }>;
-      DistributeReward: AugmentedEvent<ApiType, [currencyId: SpacewalkPrimitivesCurrencyId, amount: i128], { currencyId: SpacewalkPrimitivesCurrencyId, amount: i128 }>;
-      WithdrawReward: AugmentedEvent<ApiType, [rewardId: SpacewalkPrimitivesVaultId, currencyId: SpacewalkPrimitivesCurrencyId, amount: i128], { rewardId: SpacewalkPrimitivesVaultId, currencyId: SpacewalkPrimitivesCurrencyId, amount: i128 }>;
-      WithdrawStake: AugmentedEvent<ApiType, [rewardId: SpacewalkPrimitivesVaultId, amount: i128], { rewardId: SpacewalkPrimitivesVaultId, amount: i128 }>;
       /**
        * Generic event
        **/

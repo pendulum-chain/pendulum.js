@@ -5,10 +5,12 @@
 // this is required to allow for ambient/previous definitions
 import '@polkadot/types/types/registry';
 
-import type { BifrostFarmingCall, BifrostFarmingError, BifrostFarmingEvent, BifrostFarmingGaugeGaugeInfo, BifrostFarmingGaugeGaugePoolInfo, BifrostFarmingGaugeGaugeState, BifrostFarmingRewardsPoolInfo, BifrostFarmingRewardsPoolState, BifrostFarmingRewardsShareInfo, CumulusPalletDmpQueueCall, CumulusPalletDmpQueueConfigData, CumulusPalletDmpQueueError, CumulusPalletDmpQueueEvent, CumulusPalletDmpQueuePageIndexData, CumulusPalletParachainSystemCall, CumulusPalletParachainSystemCodeUpgradeAuthorization, CumulusPalletParachainSystemError, CumulusPalletParachainSystemEvent, CumulusPalletParachainSystemRelayStateSnapshotMessagingStateSnapshot, CumulusPalletXcmError, CumulusPalletXcmEvent, CumulusPalletXcmOrigin, CumulusPalletXcmpQueueCall, CumulusPalletXcmpQueueError, CumulusPalletXcmpQueueEvent, CumulusPalletXcmpQueueInboundChannelDetails, CumulusPalletXcmpQueueInboundState, CumulusPalletXcmpQueueOutboundChannelDetails, CumulusPalletXcmpQueueOutboundState, CumulusPalletXcmpQueueQueueConfigData, CumulusPrimitivesParachainInherentParachainInherentData, CurrencyError, DiaOracleCall, DiaOracleDiaAssetId, DiaOracleDiaCoinInfo, DiaOracleError, DiaOracleEvent, FeeCall, FeeError, FoucocoRuntimeOriginCaller, FoucocoRuntimeRuntime, FoucocoRuntimeSessionKeys, FrameSupportDispatchDispatchClass, FrameSupportDispatchDispatchInfo, FrameSupportDispatchPays, FrameSupportDispatchPerDispatchClassU32, FrameSupportDispatchPerDispatchClassWeight, FrameSupportDispatchPerDispatchClassWeightsPerClass, FrameSupportDispatchRawOrigin, FrameSupportPalletId, FrameSupportPreimagesBounded, FrameSupportTokensMiscBalanceStatus, FrameSystemAccountInfo, FrameSystemCall, FrameSystemError, FrameSystemEvent, FrameSystemEventRecord, FrameSystemExtensionsCheckGenesis, FrameSystemExtensionsCheckNonZeroSender, FrameSystemExtensionsCheckNonce, FrameSystemExtensionsCheckSpecVersion, FrameSystemExtensionsCheckTxVersion, FrameSystemExtensionsCheckWeight, FrameSystemLastRuntimeUpgradeInfo, FrameSystemLimitsBlockLength, FrameSystemLimitsBlockWeights, FrameSystemLimitsWeightsPerClass, FrameSystemPhase, IssueCall, IssueError, IssueEvent, NominationCall, NominationError, NominationEvent, OracleCall, OracleError, OracleEvent, OracleVersion, OrmlCurrenciesAllowanceExtensionCall, OrmlCurrenciesAllowanceExtensionError, OrmlCurrenciesAllowanceExtensionEvent, OrmlCurrenciesModuleCall, OrmlCurrenciesModuleError, OrmlTokensAccountData, OrmlTokensBalanceLock, OrmlTokensModuleCall, OrmlTokensModuleError, OrmlTokensModuleEvent, OrmlTokensReserveData, OrmlXtokensModuleCall, OrmlXtokensModuleError, OrmlXtokensModuleEvent, PalletBalancesAccountData, PalletBalancesBalanceLock, PalletBalancesCall, PalletBalancesError, PalletBalancesEvent, PalletBalancesReasons, PalletBalancesReserveData, PalletBountiesBounty, PalletBountiesBountyStatus, PalletBountiesCall, PalletBountiesError, PalletBountiesEvent, PalletChildBountiesCall, PalletChildBountiesChildBounty, PalletChildBountiesChildBountyStatus, PalletChildBountiesError, PalletChildBountiesEvent, PalletCollectiveCall, PalletCollectiveError, PalletCollectiveEvent, PalletCollectiveRawOrigin, PalletCollectiveVotes, PalletContractsCall, PalletContractsError, PalletContractsEvent, PalletContractsSchedule, PalletContractsScheduleHostFnWeights, PalletContractsScheduleInstructionWeights, PalletContractsScheduleLimits, PalletContractsStorageContractInfo, PalletContractsStorageDeletedContract, PalletContractsWasmDeterminism, PalletContractsWasmOwnerInfo, PalletContractsWasmPrefabWasmModule, PalletDemocracyCall, PalletDemocracyConviction, PalletDemocracyDelegations, PalletDemocracyError, PalletDemocracyEvent, PalletDemocracyMetadataOwner, PalletDemocracyReferendumInfo, PalletDemocracyReferendumStatus, PalletDemocracyTally, PalletDemocracyVoteAccountVote, PalletDemocracyVotePriorLock, PalletDemocracyVoteThreshold, PalletDemocracyVoteVoting, PalletIdentityBitFlags, PalletIdentityCall, PalletIdentityError, PalletIdentityEvent, PalletIdentityIdentityField, PalletIdentityIdentityInfo, PalletIdentityJudgement, PalletIdentityRegistrarInfo, PalletIdentityRegistration, PalletMultisigCall, PalletMultisigError, PalletMultisigEvent, PalletMultisigMultisig, PalletMultisigTimepoint, PalletPreimageCall, PalletPreimageError, PalletPreimageEvent, PalletPreimageRequestStatus, PalletSchedulerCall, PalletSchedulerError, PalletSchedulerEvent, PalletSchedulerScheduled, PalletSessionCall, PalletSessionError, PalletSessionEvent, PalletSudoCall, PalletSudoError, PalletSudoEvent, PalletTimestampCall, PalletTransactionPaymentChargeTransactionPayment, PalletTransactionPaymentEvent, PalletTransactionPaymentReleases, PalletTreasuryCall, PalletTreasuryError, PalletTreasuryEvent, PalletTreasuryProposal, PalletUtilityCall, PalletUtilityError, PalletUtilityEvent, PalletVestingCall, PalletVestingError, PalletVestingEvent, PalletVestingReleases, PalletVestingVestingInfo, PalletXcmCall, PalletXcmError, PalletXcmEvent, PalletXcmOrigin, ParachainStakingCall, ParachainStakingCandidate, ParachainStakingCandidateStatus, ParachainStakingDelegationCounter, ParachainStakingError, ParachainStakingEvent, ParachainStakingInflationInflationInfo, ParachainStakingInflationRewardRate, ParachainStakingInflationStakingInfo, ParachainStakingRoundInfo, ParachainStakingSetOrderedSet, ParachainStakingStakeAccountId32, ParachainStakingStakeOption, ParachainStakingTotalStake, PolkadotCorePrimitivesInboundDownwardMessage, PolkadotCorePrimitivesInboundHrmpMessage, PolkadotCorePrimitivesOutboundHrmpMessage, PolkadotParachainPrimitivesXcmpMessageFormat, PolkadotPrimitivesV2AbridgedHostConfiguration, PolkadotPrimitivesV2AbridgedHrmpChannel, PolkadotPrimitivesV2PersistedValidationData, PolkadotPrimitivesV2UpgradeRestriction, RedeemCall, RedeemError, RedeemEvent, ReplaceCall, ReplaceError, ReplaceEvent, RewardCall, RewardError, RewardEvent, SecurityCall, SecurityError, SecurityErrorCode, SecurityEvent, SecurityStatusCode, SpArithmeticArithmeticError, SpConsensusAuraSr25519AppSr25519Public, SpCoreCryptoKeyTypeId, SpCoreEcdsaSignature, SpCoreEd25519Signature, SpCoreSr25519Public, SpCoreSr25519Signature, SpCoreVoid, SpRuntimeDigest, SpRuntimeDigestDigestItem, SpRuntimeDispatchError, SpRuntimeModuleError, SpRuntimeMultiSignature, SpRuntimeTokenError, SpRuntimeTransactionalError, SpTrieStorageProof, SpVersionRuntimeVersion, SpWeightsRuntimeDbWeight, SpWeightsWeightV2Weight, SpacewalkPrimitivesAsset, SpacewalkPrimitivesCurrencyId, SpacewalkPrimitivesIssueIssueRequest, SpacewalkPrimitivesIssueIssueRequestStatus, SpacewalkPrimitivesOracleKey, SpacewalkPrimitivesRedeemRedeemRequest, SpacewalkPrimitivesRedeemRedeemRequestStatus, SpacewalkPrimitivesReplaceReplaceRequest, SpacewalkPrimitivesReplaceReplaceRequestStatus, SpacewalkPrimitivesVaultCurrencyPair, SpacewalkPrimitivesVaultId, StakingError, StakingEvent, StellarRelayCall, StellarRelayError, StellarRelayEvent, StellarRelayOrganization, StellarRelayValidator, VaultRegistryCall, VaultRegistryError, VaultRegistryEvent, VaultRegistrySystemVault, VaultRegistryVault, VaultRegistryVaultStatus, XcmDoubleEncoded, XcmV2BodyId, XcmV2BodyPart, XcmV2Instruction, XcmV2Junction, XcmV2MultiAsset, XcmV2MultiLocation, XcmV2MultiassetAssetId, XcmV2MultiassetAssetInstance, XcmV2MultiassetFungibility, XcmV2MultiassetMultiAssetFilter, XcmV2MultiassetMultiAssets, XcmV2MultiassetWildFungibility, XcmV2MultiassetWildMultiAsset, XcmV2MultilocationJunctions, XcmV2NetworkId, XcmV2OriginKind, XcmV2Response, XcmV2TraitsError, XcmV2WeightLimit, XcmV2Xcm, XcmV3Instruction, XcmV3Junction, XcmV3JunctionBodyId, XcmV3JunctionBodyPart, XcmV3JunctionNetworkId, XcmV3Junctions, XcmV3MaybeErrorCode, XcmV3MultiAsset, XcmV3MultiLocation, XcmV3MultiassetAssetId, XcmV3MultiassetAssetInstance, XcmV3MultiassetFungibility, XcmV3MultiassetMultiAssetFilter, XcmV3MultiassetMultiAssets, XcmV3MultiassetWildFungibility, XcmV3MultiassetWildMultiAsset, XcmV3PalletInfo, XcmV3QueryResponseInfo, XcmV3Response, XcmV3TraitsError, XcmV3TraitsOutcome, XcmV3WeightLimit, XcmV3Xcm, XcmVersionedMultiAsset, XcmVersionedMultiAssets, XcmVersionedMultiLocation, XcmVersionedXcm, ZenlinkProtocolCall, ZenlinkProtocolError, ZenlinkProtocolEvent, ZenlinkProtocolPrimitivesAssetId, ZenlinkProtocolPrimitivesBootstrapParameter, ZenlinkProtocolPrimitivesPairMetadata, ZenlinkProtocolPrimitivesPairStatus } from '@polkadot/types/lookup';
+import type { BifrostFarmingBoostBoostPoolInfo, BifrostFarmingBoostUserBoostInfo, BifrostFarmingCall, BifrostFarmingError, BifrostFarmingEvent, BifrostFarmingGaugeGaugeInfo, BifrostFarmingGaugeGaugePoolInfo, BifrostFarmingGaugeGaugeState, BifrostFarmingRewardsPoolInfo, BifrostFarmingRewardsPoolState, BifrostFarmingRewardsShareInfo, ClientsInfoCall, ClientsInfoClientRelease, ClientsInfoError, ClientsInfoEvent, CumulusPalletDmpQueueCall, CumulusPalletDmpQueueConfigData, CumulusPalletDmpQueueError, CumulusPalletDmpQueueEvent, CumulusPalletDmpQueuePageIndexData, CumulusPalletParachainSystemCall, CumulusPalletParachainSystemCodeUpgradeAuthorization, CumulusPalletParachainSystemError, CumulusPalletParachainSystemEvent, CumulusPalletParachainSystemRelayStateSnapshotMessagingStateSnapshot, CumulusPalletXcmError, CumulusPalletXcmEvent, CumulusPalletXcmOrigin, CumulusPalletXcmpQueueCall, CumulusPalletXcmpQueueError, CumulusPalletXcmpQueueEvent, CumulusPalletXcmpQueueInboundChannelDetails, CumulusPalletXcmpQueueInboundState, CumulusPalletXcmpQueueOutboundChannelDetails, CumulusPalletXcmpQueueOutboundState, CumulusPalletXcmpQueueQueueConfigData, CumulusPrimitivesParachainInherentParachainInherentData, CurrencyError, DiaOracleCall, DiaOracleDiaAssetId, DiaOracleDiaCoinInfo, DiaOracleError, DiaOracleEvent, FeeCall, FeeError, FoucocoRuntimeOriginCaller, FoucocoRuntimeRuntime, FoucocoRuntimeRuntimeHoldReason, FoucocoRuntimeSessionKeys, FrameSupportDispatchDispatchClass, FrameSupportDispatchDispatchInfo, FrameSupportDispatchPays, FrameSupportDispatchPerDispatchClassU32, FrameSupportDispatchPerDispatchClassWeight, FrameSupportDispatchPerDispatchClassWeightsPerClass, FrameSupportDispatchRawOrigin, FrameSupportPalletId, FrameSupportPreimagesBounded, FrameSupportTokensMiscBalanceStatus, FrameSystemAccountInfo, FrameSystemCall, FrameSystemError, FrameSystemEvent, FrameSystemEventRecord, FrameSystemExtensionsCheckGenesis, FrameSystemExtensionsCheckNonZeroSender, FrameSystemExtensionsCheckNonce, FrameSystemExtensionsCheckSpecVersion, FrameSystemExtensionsCheckTxVersion, FrameSystemExtensionsCheckWeight, FrameSystemLastRuntimeUpgradeInfo, FrameSystemLimitsBlockLength, FrameSystemLimitsBlockWeights, FrameSystemLimitsWeightsPerClass, FrameSystemPhase, IssueCall, IssueError, IssueEvent, NominationCall, NominationError, NominationEvent, OracleCall, OracleError, OracleEvent, OracleVersion, OrmlAssetRegistryModuleCall, OrmlAssetRegistryModuleError, OrmlAssetRegistryModuleEvent, OrmlCurrenciesAllowanceExtensionCall, OrmlCurrenciesAllowanceExtensionError, OrmlCurrenciesAllowanceExtensionEvent, OrmlCurrenciesModuleCall, OrmlCurrenciesModuleError, OrmlTokensAccountData, OrmlTokensBalanceLock, OrmlTokensManagementExtensionCall, OrmlTokensManagementExtensionCurrencyDetails, OrmlTokensManagementExtensionError, OrmlTokensManagementExtensionEvent, OrmlTokensModuleCall, OrmlTokensModuleError, OrmlTokensModuleEvent, OrmlTokensReserveData, OrmlTraitsAssetRegistryAssetMetadata, OrmlXtokensModuleCall, OrmlXtokensModuleError, OrmlXtokensModuleEvent, PalletBalancesAccountData, PalletBalancesBalanceLock, PalletBalancesCall, PalletBalancesError, PalletBalancesEvent, PalletBalancesIdAmount, PalletBalancesReasons, PalletBalancesReserveData, PalletBountiesBounty, PalletBountiesBountyStatus, PalletBountiesCall, PalletBountiesError, PalletBountiesEvent, PalletChildBountiesCall, PalletChildBountiesChildBounty, PalletChildBountiesChildBountyStatus, PalletChildBountiesError, PalletChildBountiesEvent, PalletCollectiveCall, PalletCollectiveError, PalletCollectiveEvent, PalletCollectiveRawOrigin, PalletCollectiveVotes, PalletContractsCall, PalletContractsError, PalletContractsEvent, PalletContractsSchedule, PalletContractsScheduleHostFnWeights, PalletContractsScheduleInstructionWeights, PalletContractsScheduleLimits, PalletContractsStorageContractInfo, PalletContractsStorageDeletionQueueManager, PalletContractsWasmDeterminism, PalletContractsWasmOwnerInfo, PalletContractsWasmPrefabWasmModule, PalletDemocracyCall, PalletDemocracyConviction, PalletDemocracyDelegations, PalletDemocracyError, PalletDemocracyEvent, PalletDemocracyMetadataOwner, PalletDemocracyReferendumInfo, PalletDemocracyReferendumStatus, PalletDemocracyTally, PalletDemocracyVoteAccountVote, PalletDemocracyVotePriorLock, PalletDemocracyVoteThreshold, PalletDemocracyVoteVoting, PalletIdentityBitFlags, PalletIdentityCall, PalletIdentityError, PalletIdentityEvent, PalletIdentityIdentityField, PalletIdentityIdentityInfo, PalletIdentityJudgement, PalletIdentityRegistrarInfo, PalletIdentityRegistration, PalletMultisigCall, PalletMultisigError, PalletMultisigEvent, PalletMultisigMultisig, PalletMultisigTimepoint, PalletPreimageCall, PalletPreimageError, PalletPreimageEvent, PalletPreimageRequestStatus, PalletProxyAnnouncement, PalletProxyCall, PalletProxyError, PalletProxyEvent, PalletProxyProxyDefinition, PalletSchedulerCall, PalletSchedulerError, PalletSchedulerEvent, PalletSchedulerScheduled, PalletSessionCall, PalletSessionError, PalletSessionEvent, PalletSudoCall, PalletSudoError, PalletSudoEvent, PalletTimestampCall, PalletTransactionPaymentChargeTransactionPayment, PalletTransactionPaymentEvent, PalletTransactionPaymentReleases, PalletTreasuryCall, PalletTreasuryError, PalletTreasuryEvent, PalletTreasuryProposal, PalletUtilityCall, PalletUtilityError, PalletUtilityEvent, PalletVestingCall, PalletVestingError, PalletVestingEvent, PalletVestingReleases, PalletVestingVestingInfo, PalletXcmCall, PalletXcmError, PalletXcmEvent, PalletXcmOrigin, ParachainStakingCall, ParachainStakingCandidate, ParachainStakingCandidateStatus, ParachainStakingDelegationCounter, ParachainStakingError, ParachainStakingEvent, ParachainStakingInflationInflationInfo, ParachainStakingInflationRewardRate, ParachainStakingInflationStakingInfo, ParachainStakingRoundInfo, ParachainStakingSetOrderedSet, ParachainStakingStakeAccountId32, ParachainStakingStakeOption, ParachainStakingTotalStake, PolkadotCorePrimitivesInboundDownwardMessage, PolkadotCorePrimitivesInboundHrmpMessage, PolkadotCorePrimitivesOutboundHrmpMessage, PolkadotParachainPrimitivesXcmpMessageFormat, PolkadotPrimitivesV4AbridgedHostConfiguration, PolkadotPrimitivesV4AbridgedHrmpChannel, PolkadotPrimitivesV4PersistedValidationData, PolkadotPrimitivesV4UpgradeRestriction, PooledRewardsCall, PooledRewardsError, PooledRewardsEvent, RedeemCall, RedeemError, RedeemEvent, ReplaceCall, ReplaceError, ReplaceEvent, RewardDistributionCall, RewardDistributionError, RewardDistributionEvent, RuntimeCommonAssetRegistryCustomMetadata, RuntimeCommonAssetRegistryDiaKeys, RuntimeCommonAssetRegistryStringLimit, RuntimeCommonProxyType, SecurityCall, SecurityError, SecurityErrorCode, SecurityEvent, SecurityStatusCode, SpArithmeticArithmeticError, SpConsensusAuraSr25519AppSr25519Public, SpCoreCryptoKeyTypeId, SpCoreEcdsaSignature, SpCoreEd25519Signature, SpCoreSr25519Public, SpCoreSr25519Signature, SpCoreVoid, SpRuntimeDigest, SpRuntimeDigestDigestItem, SpRuntimeDispatchError, SpRuntimeModuleError, SpRuntimeMultiSignature, SpRuntimeTokenError, SpRuntimeTransactionalError, SpTrieStorageProof, SpVersionRuntimeVersion, SpWeightsRuntimeDbWeight, SpWeightsWeightV2Weight, SpacewalkPrimitivesAsset, SpacewalkPrimitivesCurrencyId, SpacewalkPrimitivesIssueIssueRequest, SpacewalkPrimitivesIssueIssueRequestStatus, SpacewalkPrimitivesOracleKey, SpacewalkPrimitivesRedeemRedeemRequest, SpacewalkPrimitivesRedeemRedeemRequestStatus, SpacewalkPrimitivesReplaceReplaceRequest, SpacewalkPrimitivesReplaceReplaceRequestStatus, SpacewalkPrimitivesVaultCurrencyPair, SpacewalkPrimitivesVaultId, StakingError, StakingEvent, StellarRelayCall, StellarRelayError, StellarRelayEvent, StellarRelayOrganization, StellarRelayValidator, TreasuryBuyoutExtensionAmount, TreasuryBuyoutExtensionCall, TreasuryBuyoutExtensionCheckBuyout, TreasuryBuyoutExtensionError, TreasuryBuyoutExtensionEvent, VaultRegistryCall, VaultRegistryError, VaultRegistryEvent, VaultRegistrySystemVault, VaultRegistryVault, VaultRegistryVaultStatus, XcmDoubleEncoded, XcmV2BodyId, XcmV2BodyPart, XcmV2Instruction, XcmV2Junction, XcmV2MultiAsset, XcmV2MultiLocation, XcmV2MultiassetAssetId, XcmV2MultiassetAssetInstance, XcmV2MultiassetFungibility, XcmV2MultiassetMultiAssetFilter, XcmV2MultiassetMultiAssets, XcmV2MultiassetWildFungibility, XcmV2MultiassetWildMultiAsset, XcmV2MultilocationJunctions, XcmV2NetworkId, XcmV2OriginKind, XcmV2Response, XcmV2TraitsError, XcmV2WeightLimit, XcmV2Xcm, XcmV3Instruction, XcmV3Junction, XcmV3JunctionBodyId, XcmV3JunctionBodyPart, XcmV3JunctionNetworkId, XcmV3Junctions, XcmV3MaybeErrorCode, XcmV3MultiAsset, XcmV3MultiLocation, XcmV3MultiassetAssetId, XcmV3MultiassetAssetInstance, XcmV3MultiassetFungibility, XcmV3MultiassetMultiAssetFilter, XcmV3MultiassetMultiAssets, XcmV3MultiassetWildFungibility, XcmV3MultiassetWildMultiAsset, XcmV3PalletInfo, XcmV3QueryResponseInfo, XcmV3Response, XcmV3TraitsError, XcmV3TraitsOutcome, XcmV3WeightLimit, XcmV3Xcm, XcmVersionedMultiAsset, XcmVersionedMultiAssets, XcmVersionedMultiLocation, XcmVersionedXcm, ZenlinkProtocolCall, ZenlinkProtocolError, ZenlinkProtocolEvent, ZenlinkProtocolPrimitivesAssetId, ZenlinkProtocolPrimitivesBootstrapParameter, ZenlinkProtocolPrimitivesPairMetadata, ZenlinkProtocolPrimitivesPairStatus } from '@polkadot/types/lookup';
 
 declare module '@polkadot/types/types/registry' {
   interface InterfaceTypes {
+    BifrostFarmingBoostBoostPoolInfo: BifrostFarmingBoostBoostPoolInfo;
+    BifrostFarmingBoostUserBoostInfo: BifrostFarmingBoostUserBoostInfo;
     BifrostFarmingCall: BifrostFarmingCall;
     BifrostFarmingError: BifrostFarmingError;
     BifrostFarmingEvent: BifrostFarmingEvent;
@@ -18,6 +20,10 @@ declare module '@polkadot/types/types/registry' {
     BifrostFarmingRewardsPoolInfo: BifrostFarmingRewardsPoolInfo;
     BifrostFarmingRewardsPoolState: BifrostFarmingRewardsPoolState;
     BifrostFarmingRewardsShareInfo: BifrostFarmingRewardsShareInfo;
+    ClientsInfoCall: ClientsInfoCall;
+    ClientsInfoClientRelease: ClientsInfoClientRelease;
+    ClientsInfoError: ClientsInfoError;
+    ClientsInfoEvent: ClientsInfoEvent;
     CumulusPalletDmpQueueCall: CumulusPalletDmpQueueCall;
     CumulusPalletDmpQueueConfigData: CumulusPalletDmpQueueConfigData;
     CumulusPalletDmpQueueError: CumulusPalletDmpQueueError;
@@ -50,6 +56,7 @@ declare module '@polkadot/types/types/registry' {
     FeeError: FeeError;
     FoucocoRuntimeOriginCaller: FoucocoRuntimeOriginCaller;
     FoucocoRuntimeRuntime: FoucocoRuntimeRuntime;
+    FoucocoRuntimeRuntimeHoldReason: FoucocoRuntimeRuntimeHoldReason;
     FoucocoRuntimeSessionKeys: FoucocoRuntimeSessionKeys;
     FrameSupportDispatchDispatchClass: FrameSupportDispatchDispatchClass;
     FrameSupportDispatchDispatchInfo: FrameSupportDispatchDispatchInfo;
@@ -87,6 +94,9 @@ declare module '@polkadot/types/types/registry' {
     OracleError: OracleError;
     OracleEvent: OracleEvent;
     OracleVersion: OracleVersion;
+    OrmlAssetRegistryModuleCall: OrmlAssetRegistryModuleCall;
+    OrmlAssetRegistryModuleError: OrmlAssetRegistryModuleError;
+    OrmlAssetRegistryModuleEvent: OrmlAssetRegistryModuleEvent;
     OrmlCurrenciesAllowanceExtensionCall: OrmlCurrenciesAllowanceExtensionCall;
     OrmlCurrenciesAllowanceExtensionError: OrmlCurrenciesAllowanceExtensionError;
     OrmlCurrenciesAllowanceExtensionEvent: OrmlCurrenciesAllowanceExtensionEvent;
@@ -94,10 +104,15 @@ declare module '@polkadot/types/types/registry' {
     OrmlCurrenciesModuleError: OrmlCurrenciesModuleError;
     OrmlTokensAccountData: OrmlTokensAccountData;
     OrmlTokensBalanceLock: OrmlTokensBalanceLock;
+    OrmlTokensManagementExtensionCall: OrmlTokensManagementExtensionCall;
+    OrmlTokensManagementExtensionCurrencyDetails: OrmlTokensManagementExtensionCurrencyDetails;
+    OrmlTokensManagementExtensionError: OrmlTokensManagementExtensionError;
+    OrmlTokensManagementExtensionEvent: OrmlTokensManagementExtensionEvent;
     OrmlTokensModuleCall: OrmlTokensModuleCall;
     OrmlTokensModuleError: OrmlTokensModuleError;
     OrmlTokensModuleEvent: OrmlTokensModuleEvent;
     OrmlTokensReserveData: OrmlTokensReserveData;
+    OrmlTraitsAssetRegistryAssetMetadata: OrmlTraitsAssetRegistryAssetMetadata;
     OrmlXtokensModuleCall: OrmlXtokensModuleCall;
     OrmlXtokensModuleError: OrmlXtokensModuleError;
     OrmlXtokensModuleEvent: OrmlXtokensModuleEvent;
@@ -106,6 +121,7 @@ declare module '@polkadot/types/types/registry' {
     PalletBalancesCall: PalletBalancesCall;
     PalletBalancesError: PalletBalancesError;
     PalletBalancesEvent: PalletBalancesEvent;
+    PalletBalancesIdAmount: PalletBalancesIdAmount;
     PalletBalancesReasons: PalletBalancesReasons;
     PalletBalancesReserveData: PalletBalancesReserveData;
     PalletBountiesBounty: PalletBountiesBounty;
@@ -131,7 +147,7 @@ declare module '@polkadot/types/types/registry' {
     PalletContractsScheduleInstructionWeights: PalletContractsScheduleInstructionWeights;
     PalletContractsScheduleLimits: PalletContractsScheduleLimits;
     PalletContractsStorageContractInfo: PalletContractsStorageContractInfo;
-    PalletContractsStorageDeletedContract: PalletContractsStorageDeletedContract;
+    PalletContractsStorageDeletionQueueManager: PalletContractsStorageDeletionQueueManager;
     PalletContractsWasmDeterminism: PalletContractsWasmDeterminism;
     PalletContractsWasmOwnerInfo: PalletContractsWasmOwnerInfo;
     PalletContractsWasmPrefabWasmModule: PalletContractsWasmPrefabWasmModule;
@@ -166,6 +182,11 @@ declare module '@polkadot/types/types/registry' {
     PalletPreimageError: PalletPreimageError;
     PalletPreimageEvent: PalletPreimageEvent;
     PalletPreimageRequestStatus: PalletPreimageRequestStatus;
+    PalletProxyAnnouncement: PalletProxyAnnouncement;
+    PalletProxyCall: PalletProxyCall;
+    PalletProxyError: PalletProxyError;
+    PalletProxyEvent: PalletProxyEvent;
+    PalletProxyProxyDefinition: PalletProxyProxyDefinition;
     PalletSchedulerCall: PalletSchedulerCall;
     PalletSchedulerError: PalletSchedulerError;
     PalletSchedulerEvent: PalletSchedulerEvent;
@@ -214,19 +235,26 @@ declare module '@polkadot/types/types/registry' {
     PolkadotCorePrimitivesInboundHrmpMessage: PolkadotCorePrimitivesInboundHrmpMessage;
     PolkadotCorePrimitivesOutboundHrmpMessage: PolkadotCorePrimitivesOutboundHrmpMessage;
     PolkadotParachainPrimitivesXcmpMessageFormat: PolkadotParachainPrimitivesXcmpMessageFormat;
-    PolkadotPrimitivesV2AbridgedHostConfiguration: PolkadotPrimitivesV2AbridgedHostConfiguration;
-    PolkadotPrimitivesV2AbridgedHrmpChannel: PolkadotPrimitivesV2AbridgedHrmpChannel;
-    PolkadotPrimitivesV2PersistedValidationData: PolkadotPrimitivesV2PersistedValidationData;
-    PolkadotPrimitivesV2UpgradeRestriction: PolkadotPrimitivesV2UpgradeRestriction;
+    PolkadotPrimitivesV4AbridgedHostConfiguration: PolkadotPrimitivesV4AbridgedHostConfiguration;
+    PolkadotPrimitivesV4AbridgedHrmpChannel: PolkadotPrimitivesV4AbridgedHrmpChannel;
+    PolkadotPrimitivesV4PersistedValidationData: PolkadotPrimitivesV4PersistedValidationData;
+    PolkadotPrimitivesV4UpgradeRestriction: PolkadotPrimitivesV4UpgradeRestriction;
+    PooledRewardsCall: PooledRewardsCall;
+    PooledRewardsError: PooledRewardsError;
+    PooledRewardsEvent: PooledRewardsEvent;
     RedeemCall: RedeemCall;
     RedeemError: RedeemError;
     RedeemEvent: RedeemEvent;
     ReplaceCall: ReplaceCall;
     ReplaceError: ReplaceError;
     ReplaceEvent: ReplaceEvent;
-    RewardCall: RewardCall;
-    RewardError: RewardError;
-    RewardEvent: RewardEvent;
+    RewardDistributionCall: RewardDistributionCall;
+    RewardDistributionError: RewardDistributionError;
+    RewardDistributionEvent: RewardDistributionEvent;
+    RuntimeCommonAssetRegistryCustomMetadata: RuntimeCommonAssetRegistryCustomMetadata;
+    RuntimeCommonAssetRegistryDiaKeys: RuntimeCommonAssetRegistryDiaKeys;
+    RuntimeCommonAssetRegistryStringLimit: RuntimeCommonAssetRegistryStringLimit;
+    RuntimeCommonProxyType: RuntimeCommonProxyType;
     SecurityCall: SecurityCall;
     SecurityError: SecurityError;
     SecurityErrorCode: SecurityErrorCode;
@@ -269,6 +297,11 @@ declare module '@polkadot/types/types/registry' {
     StellarRelayEvent: StellarRelayEvent;
     StellarRelayOrganization: StellarRelayOrganization;
     StellarRelayValidator: StellarRelayValidator;
+    TreasuryBuyoutExtensionAmount: TreasuryBuyoutExtensionAmount;
+    TreasuryBuyoutExtensionCall: TreasuryBuyoutExtensionCall;
+    TreasuryBuyoutExtensionCheckBuyout: TreasuryBuyoutExtensionCheckBuyout;
+    TreasuryBuyoutExtensionError: TreasuryBuyoutExtensionError;
+    TreasuryBuyoutExtensionEvent: TreasuryBuyoutExtensionEvent;
     VaultRegistryCall: VaultRegistryCall;
     VaultRegistryError: VaultRegistryError;
     VaultRegistryEvent: VaultRegistryEvent;
