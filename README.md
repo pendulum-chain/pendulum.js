@@ -70,6 +70,14 @@ console.log(data.toHuman())
 yarn up @polkadot/api @polkadot/api-augment @polkadot/api-derive @polkadot/rpc-core @polkadot/types @polkadot/types-codec
 ```
 
+or manually replace all `@polkadot` dependencies in the `package.json` files with the latest version.
+
+Afterward, run the following command to get rid of any duplicate dependencies:
+
+```shell
+yarn dedupe
+```
+
 ### Update the type definitions of this package
 
 To update the type definitions of this package, you need to first fetch the metadata from your target chain:
@@ -85,8 +93,6 @@ and then run the following command to build the type definitions based on that m
 
 ```shell
 yarn build
-# (optional) to get rid of conflicting cjs warnings
-yarn dedupe
 ```
 
 **Note**: When you encounter compilation issues while building, you sometimes have to re-add the custom type definitions
@@ -94,8 +100,6 @@ in `packages/type-definitions/src/vaultRegistry.ts`.
 To do so, just find the latest type definitions in `packages/types/src/lookup/pendulum.ts` (after building, since some
 files will already be re-built) and copy-paste them into the `types` key
 in `packages/type-definitions/src/vaultRegistry.ts`.
-
-
 
 ## Publishing package updates to npm
 
