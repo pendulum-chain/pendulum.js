@@ -11,7 +11,8 @@
             "Native": "Null",
             "XCM": "u8",
             "Stellar": "SpacewalkPrimitivesAsset",
-            "ZenlinkLPToken": "(u8,u8,u8,u8)"
+            "ZenlinkLPToken": "(u8,u8,u8,u8)",
+            "Token": "u64"
         }
     },
     "SpacewalkPrimitivesAsset": {

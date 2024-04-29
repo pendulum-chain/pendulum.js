@@ -14,7 +14,7 @@ import type { Bytes, HashMap, Json, Null, Option, Text, U256, U64, Vec, bool, f6
 import type { AnyNumber, Codec, ITuple } from '@polkadot/types-codec/types';
 import type { ExtrinsicOrHash, ExtrinsicStatus } from '@polkadot/types/interfaces/author';
 import type { EpochAuthorship } from '@polkadot/types/interfaces/babe';
-import type { BeefySignedCommitment } from '@polkadot/types/interfaces/beefy';
+import type { BeefyVersionedFinalityProof } from '@polkadot/types/interfaces/beefy';
 import type { BlockHash } from '@polkadot/types/interfaces/chain';
 import type { PrefixedStorageKey } from '@polkadot/types/interfaces/childstate';
 import type { AuthorityId } from '@polkadot/types/interfaces/consensus';
@@ -83,9 +83,9 @@ declare module '@polkadot/rpc-core/types/jsonrpc' {
        **/
       getFinalizedHead: AugmentedRpc<() => Observable<H256>>;
       /**
-       * Returns the block most recently finalized by BEEFY, alongside side its justification.
+       * Returns the block most recently finalized by BEEFY, alongside its justification.
        **/
-      subscribeJustifications: AugmentedRpc<() => Observable<BeefySignedCommitment>>;
+      subscribeJustifications: AugmentedRpc<() => Observable<BeefyVersionedFinalityProof>>;
     };
     chain: {
       /**
@@ -440,15 +440,15 @@ declare module '@polkadot/rpc-core/types/jsonrpc' {
       /**
        * Get the USD value of a currency
        **/
-      currencyToUsd: AugmentedRpc<(amount: BalanceWrapper | { amount?: any } | string | Uint8Array, currencyId: SpacewalkPrimitivesCurrencyId | { Native: any } | { XCM: any } | { Stellar: any } | { ZenlinkLPToken: any } | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<BalanceWrapper>>;
+      currencyToUsd: AugmentedRpc<(amount: BalanceWrapper | { amount?: any } | string | Uint8Array, currencyId: SpacewalkPrimitivesCurrencyId | { Native: any } | { XCM: any } | { Stellar: any } | { ZenlinkLPToken: any } | { Token: any } | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<BalanceWrapper>>;
       /**
        * Get the exchange rate of the given currencyId to USD
        **/
-      getExchangeRate: AugmentedRpc<(currencyId: SpacewalkPrimitivesCurrencyId | { Native: any } | { XCM: any } | { Stellar: any } | { ZenlinkLPToken: any } | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<UnsignedFixedPoint>>;
+      getExchangeRate: AugmentedRpc<(currencyId: SpacewalkPrimitivesCurrencyId | { Native: any } | { XCM: any } | { Stellar: any } | { ZenlinkLPToken: any } | { Token: any } | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<UnsignedFixedPoint>>;
       /**
        * Get the currency value of a USD amount
        **/
-      usdToCurrency: AugmentedRpc<(amount: BalanceWrapper | { amount?: any } | string | Uint8Array, currencyId: SpacewalkPrimitivesCurrencyId | { Native: any } | { XCM: any } | { Stellar: any } | { ZenlinkLPToken: any } | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<BalanceWrapper>>;
+      usdToCurrency: AugmentedRpc<(amount: BalanceWrapper | { amount?: any } | string | Uint8Array, currencyId: SpacewalkPrimitivesCurrencyId | { Native: any } | { XCM: any } | { Stellar: any } | { ZenlinkLPToken: any } | { Token: any } | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<BalanceWrapper>>;
     };
     payment: {
       /**
@@ -684,7 +684,7 @@ declare module '@polkadot/rpc-core/types/jsonrpc' {
       /**
        * Get the minimum amount of collateral required for the given amount of token with the current threshold and exchange rate
        **/
-      getRequiredCollateralForWrapped: AugmentedRpc<(amount: BalanceWrapper | { amount?: any } | string | Uint8Array, currencyId: SpacewalkPrimitivesCurrencyId | { Native: any } | { XCM: any } | { Stellar: any } | { ZenlinkLPToken: any } | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<BalanceWrapper>>;
+      getRequiredCollateralForWrapped: AugmentedRpc<(amount: BalanceWrapper | { amount?: any } | string | Uint8Array, currencyId: SpacewalkPrimitivesCurrencyId | { Native: any } | { XCM: any } | { Stellar: any } | { ZenlinkLPToken: any } | { Token: any } | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<BalanceWrapper>>;
       /**
        * Get the vault's collateral (excluding nomination)
        **/

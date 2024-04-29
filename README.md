@@ -70,6 +70,14 @@ console.log(data.toHuman())
 yarn up @polkadot/api @polkadot/api-augment @polkadot/api-derive @polkadot/rpc-core @polkadot/types @polkadot/types-codec
 ```
 
+or manually replace all `@polkadot` dependencies in the `package.json` files with the latest version.
+
+Afterward, run the following command to get rid of any duplicate dependencies:
+
+```shell
+yarn dedupe
+```
+
 ### Update the type definitions of this package
 
 To update the type definitions of this package, you need to first fetch the metadata from your target chain:

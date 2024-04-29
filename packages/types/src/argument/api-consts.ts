@@ -17,9 +17,24 @@ declare module '@polkadot/api-base/types/consts' {
   interface AugmentedConsts<ApiType extends ApiTypes> {
     balances: {
       /**
-       * The minimum amount required to keep an account open.
+       * The minimum amount required to keep an account open. MUST BE GREATER THAN ZERO!
+       * 
+       * If you *really* need it to be zero, you can enable the feature `insecure_zero_ed` for
+       * this pallet. However, you do so at your own risk: this will open up a major DoS vector.
+       * In case you have multiple sources of provider references, you may also get unexpected
+       * behaviour if you set this to zero.
+       * 
+       * Bottom line: Do yourself a favour and make it at least one!
        **/
       existentialDeposit: u128 & AugmentedConst<ApiType>;
+      /**
+       * The maximum number of individual freeze locks that can exist on an account at any time.
+       **/
+      maxFreezes: u32 & AugmentedConst<ApiType>;
+      /**
+       * The maximum number of holds that can exist on an account at any time.
+       **/
+      maxHolds: u32 & AugmentedConst<ApiType>;
       /**
        * The maximum number of locks that should exist on an account.
        * Not strictly enforced, but used for weight estimation.
@@ -95,34 +110,25 @@ declare module '@polkadot/api-base/types/consts' {
        **/
       [key: string]: Codec;
     };
+    clientsInfo: {
+      /**
+       * The maximum length of a client name.
+       **/
+      maxNameLength: u32 & AugmentedConst<ApiType>;
+      /**
+       * The maximum length of a client URI.
+       **/
+      maxUriLength: u32 & AugmentedConst<ApiType>;
+      /**
+       * Generic const
+       **/
+      [key: string]: Codec;
+    };
     contracts: {
       /**
-       * The maximum number of contracts that can be pending for deletion.
-       * 
-       * When a contract is deleted by calling `seal_terminate` it becomes inaccessible
-       * immediately, but the deletion of the storage items it has accumulated is performed
-       * later. The contract is put into the deletion queue. This defines how many
-       * contracts can be queued up at the same time. If that limit is reached `seal_terminate`
-       * will fail. The action must be retried in a later block in that case.
-       * 
-       * The reasons for limiting the queue depth are:
-       * 
-       * 1. The queue is in storage in order to be persistent between blocks. We want to limit
-       * the amount of storage that can be consumed.
-       * 2. The queue is stored in a vector and needs to be decoded as a whole when reading
-       * it at the end of each block. Longer queues take more weight to decode and hence
-       * limit the amount of items that can be deleted per block.
+       * Fallback value to limit the storage deposit if it's not being set by the caller.
        **/
-      deletionQueueDepth: u32 & AugmentedConst<ApiType>;
-      /**
-       * The maximum amount of weight that can be consumed per block for lazy trie removal.
-       * 
-       * The amount of weight that is dedicated per block to work on the deletion queue. Larger
-       * values allow more trie keys to be deleted in each block but reduce the amount of
-       * weight that is left for transactions. See [`Self::DeletionQueueDepth`] for more
-       * information about the deletion queue.
-       **/
-      deletionWeightLimit: SpWeightsWeightV2Weight & AugmentedConst<ApiType>;
+      defaultDepositLimit: u128 & AugmentedConst<ApiType>;
       /**
        * The amount of balance a caller has to pay for each byte of storage.
        * 
@@ -173,6 +179,16 @@ declare module '@polkadot/api-base/types/consts' {
        * Do **not** set to `true` on productions chains.
        **/
       unsafeUnstableInterface: bool & AugmentedConst<ApiType>;
+      /**
+       * Generic const
+       **/
+      [key: string]: Codec;
+    };
+    council: {
+      /**
+       * The maximum weight of a dispatch call that can be proposed and executed.
+       **/
+      maxProposalWeight: SpWeightsWeightV2Weight & AugmentedConst<ApiType>;
       /**
        * Generic const
        **/
@@ -262,12 +278,14 @@ declare module '@polkadot/api-base/types/consts' {
       [key: string]: Codec;
     };
     farming: {
+      farmingBoost: FrameSupportPalletId & AugmentedConst<ApiType>;
       /**
        * ModuleID for creating sub account
        **/
       keeper: FrameSupportPalletId & AugmentedConst<ApiType>;
       rewardIssuer: FrameSupportPalletId & AugmentedConst<ApiType>;
       treasuryAccount: AccountId32 & AugmentedConst<ApiType>;
+      whitelistMaximumLimit: u32 & AugmentedConst<ApiType>;
       /**
        * Generic const
        **/
@@ -341,6 +359,20 @@ declare module '@polkadot/api-base/types/consts' {
        * The maximum amount of signatories allowed in the multisig.
        **/
       maxSignatories: u32 & AugmentedConst<ApiType>;
+      /**
+       * Generic const
+       **/
+      [key: string]: Codec;
+    };
+    ormlExtension: {
+      /**
+       * The deposit amount required to take a currency
+       **/
+      assetDeposit: u128 & AugmentedConst<ApiType>;
+      /**
+       * The deposit currency
+       **/
+      depositCurrency: SpacewalkPrimitivesCurrencyId & AugmentedConst<ApiType>;
       /**
        * Generic const
        **/
@@ -441,6 +473,73 @@ declare module '@polkadot/api-base/types/consts' {
        **/
       [key: string]: Codec;
     };
+    pooledVaultRewards: {
+      /**
+       * The maximum number of reward currencies.
+       **/
+      maxRewardCurrencies: u32 & AugmentedConst<ApiType>;
+      /**
+       * Generic const
+       **/
+      [key: string]: Codec;
+    };
+    proxy: {
+      /**
+       * The base amount of currency needed to reserve for creating an announcement.
+       * 
+       * This is held when a new storage item holding a `Balance` is created (typically 16
+       * bytes).
+       **/
+      announcementDepositBase: u128 & AugmentedConst<ApiType>;
+      /**
+       * The amount of currency needed per announcement made.
+       * 
+       * This is held for adding an `AccountId`, `Hash` and `BlockNumber` (typically 68 bytes)
+       * into a pre-existing storage value.
+       **/
+      announcementDepositFactor: u128 & AugmentedConst<ApiType>;
+      /**
+       * The maximum amount of time-delayed announcements that are allowed to be pending.
+       **/
+      maxPending: u32 & AugmentedConst<ApiType>;
+      /**
+       * The maximum amount of proxies allowed for a single account.
+       **/
+      maxProxies: u32 & AugmentedConst<ApiType>;
+      /**
+       * The base amount of currency needed to reserve for creating a proxy.
+       * 
+       * This is held for an additional storage item whose value size is
+       * `sizeof(Balance)` bytes and whose key size is `sizeof(AccountId)` bytes.
+       **/
+      proxyDepositBase: u128 & AugmentedConst<ApiType>;
+      /**
+       * The amount of currency needed per proxy added.
+       * 
+       * This is held for adding 32 bytes plus an instance of `ProxyType` more into a
+       * pre-existing storage value. Thus, when configuring `ProxyDepositFactor` one should take
+       * into account `32 + proxy_type.encode().len()` bytes of data.
+       **/
+      proxyDepositFactor: u128 & AugmentedConst<ApiType>;
+      /**
+       * Generic const
+       **/
+      [key: string]: Codec;
+    };
+    rewardDistribution: {
+      /**
+       * Defines the interval (in number of blocks) at which the reward per block decays.
+       **/
+      decayInterval: u32 & AugmentedConst<ApiType>;
+      /**
+       * Defines the rate at which the reward per block decays.
+       **/
+      decayRate: Perquintill & AugmentedConst<ApiType>;
+      /**
+       * Generic const
+       **/
+      [key: string]: Codec;
+    };
     scheduler: {
       /**
        * The maximum weight that may be scheduled per block for any dispatchables.
@@ -448,6 +547,10 @@ declare module '@polkadot/api-base/types/consts' {
       maximumWeight: SpWeightsWeightV2Weight & AugmentedConst<ApiType>;
       /**
        * The maximum number of scheduled calls in the queue for a single block.
+       * 
+       * NOTE:
+       * + Dependent pallets' benchmarks might require a higher limit for the setting. Set a
+       * higher limit under `runtime-benchmarks` feature.
        **/
       maxScheduledPerBlock: u32 & AugmentedConst<ApiType>;
       /**
@@ -498,6 +601,16 @@ declare module '@polkadot/api-base/types/consts' {
        **/
       [key: string]: Codec;
     };
+    technicalCommittee: {
+      /**
+       * The maximum weight of a dispatch call that can be proposed and executed.
+       **/
+      maxProposalWeight: SpWeightsWeightV2Weight & AugmentedConst<ApiType>;
+      /**
+       * Generic const
+       **/
+      [key: string]: Codec;
+    };
     timestamp: {
       /**
        * The minimum period between blocks. Beware that this is different to the *expected*
@@ -506,6 +619,16 @@ declare module '@polkadot/api-base/types/consts' {
        * double this period on default settings.
        **/
       minimumPeriod: u64 & AugmentedConst<ApiType>;
+      /**
+       * Generic const
+       **/
+      [key: string]: Codec;
+    };
+    tokenAllowance: {
+      /**
+       * The maximum number of allowed currencies.
+       **/
+      maxAllowedCurrencies: u32 & AugmentedConst<ApiType>;
       /**
        * Generic const
        **/
@@ -589,6 +712,33 @@ declare module '@polkadot/api-base/types/consts' {
        **/
       [key: string]: Codec;
     };
+    treasuryBuyoutExtension: {
+      /**
+       * Buyout period in blocks in which a caller can buyout up to the amount limit stored in `BuyoutLimit`
+       * When attempting to buyout after this period, the buyout limit is reset for the caller
+       **/
+      buyoutPeriod: u32 & AugmentedConst<ApiType>;
+      /**
+       * Maximum number of allowed currencies for buyout
+       **/
+      maxAllowedBuyoutCurrencies: u32 & AugmentedConst<ApiType>;
+      /**
+       * Min amount of native token to buyout
+       **/
+      minAmountToBuyout: u128 & AugmentedConst<ApiType>;
+      /**
+       * Fee from the native asset buyouts
+       **/
+      sellFee: Permill & AugmentedConst<ApiType>;
+      /**
+       * Used for getting the treasury account
+       **/
+      treasuryAccount: AccountId32 & AugmentedConst<ApiType>;
+      /**
+       * Generic const
+       **/
+      [key: string]: Codec;
+    };
     utility: {
       /**
        * The limit on the number of batched calls.
@@ -608,13 +758,6 @@ declare module '@polkadot/api-base/types/consts' {
        * The vault module id, used for deriving its sovereign account ID.
        **/
       palletId: FrameSupportPalletId & AugmentedConst<ApiType>;
-      /**
-       * Generic const
-       **/
-      [key: string]: Codec;
-    };
-    vaultRewards: {
-      getNativeCurrencyId: SpacewalkPrimitivesCurrencyId & AugmentedConst<ApiType>;
       /**
        * Generic const
        **/
