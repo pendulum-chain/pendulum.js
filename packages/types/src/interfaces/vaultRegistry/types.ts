@@ -2,7 +2,7 @@
 /* eslint-disable */
 
 import type { AccountId32 } from '@pendulum-chain/types/interfaces/runtime';
-import type { Enum, Struct, U8aFixed, u8 } from '@polkadot/types-codec';
+import type { Enum, Struct, U8aFixed, u64, u8 } from '@polkadot/types-codec';
 import type { ITuple } from '@polkadot/types-codec/types';
 
 /** @name SpacewalkPrimitivesAsset */
@@ -30,7 +30,9 @@ export interface SpacewalkPrimitivesCurrencyId extends Enum {
   readonly asStellar: SpacewalkPrimitivesAsset;
   readonly isZenlinkLPToken: boolean;
   readonly asZenlinkLPToken: ITuple<[u8, u8, u8, u8]>;
-  readonly type: 'Native' | 'Xcm' | 'Stellar' | 'ZenlinkLPToken';
+  readonly isToken: boolean;
+  readonly asToken: u64;
+  readonly type: 'Native' | 'Xcm' | 'Stellar' | 'ZenlinkLPToken' | 'Token';
 }
 
 /** @name SpacewalkPrimitivesVaultCurrencyPair */

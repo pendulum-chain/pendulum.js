@@ -440,15 +440,15 @@ declare module '@polkadot/rpc-core/types/jsonrpc' {
       /**
        * Get the USD value of a currency
        **/
-      currencyToUsd: AugmentedRpc<(amount: BalanceWrapper | { amount?: any } | string | Uint8Array, currencyId: SpacewalkPrimitivesCurrencyId | { Native: any } | { XCM: any } | { Stellar: any } | { ZenlinkLPToken: any } | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<BalanceWrapper>>;
+      currencyToUsd: AugmentedRpc<(amount: BalanceWrapper | { amount?: any } | string | Uint8Array, currencyId: SpacewalkPrimitivesCurrencyId | { Native: any } | { XCM: any } | { Stellar: any } | { ZenlinkLPToken: any } | { Token: any } | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<BalanceWrapper>>;
       /**
        * Get the exchange rate of the given currencyId to USD
        **/
-      getExchangeRate: AugmentedRpc<(currencyId: SpacewalkPrimitivesCurrencyId | { Native: any } | { XCM: any } | { Stellar: any } | { ZenlinkLPToken: any } | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<UnsignedFixedPoint>>;
+      getExchangeRate: AugmentedRpc<(currencyId: SpacewalkPrimitivesCurrencyId | { Native: any } | { XCM: any } | { Stellar: any } | { ZenlinkLPToken: any } | { Token: any } | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<UnsignedFixedPoint>>;
       /**
        * Get the currency value of a USD amount
        **/
-      usdToCurrency: AugmentedRpc<(amount: BalanceWrapper | { amount?: any } | string | Uint8Array, currencyId: SpacewalkPrimitivesCurrencyId | { Native: any } | { XCM: any } | { Stellar: any } | { ZenlinkLPToken: any } | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<BalanceWrapper>>;
+      usdToCurrency: AugmentedRpc<(amount: BalanceWrapper | { amount?: any } | string | Uint8Array, currencyId: SpacewalkPrimitivesCurrencyId | { Native: any } | { XCM: any } | { Stellar: any } | { ZenlinkLPToken: any } | { Token: any } | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<BalanceWrapper>>;
     };
     payment: {
       /**
@@ -684,7 +684,7 @@ declare module '@polkadot/rpc-core/types/jsonrpc' {
       /**
        * Get the minimum amount of collateral required for the given amount of token with the current threshold and exchange rate
        **/
-      getRequiredCollateralForWrapped: AugmentedRpc<(amount: BalanceWrapper | { amount?: any } | string | Uint8Array, currencyId: SpacewalkPrimitivesCurrencyId | { Native: any } | { XCM: any } | { Stellar: any } | { ZenlinkLPToken: any } | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<BalanceWrapper>>;
+      getRequiredCollateralForWrapped: AugmentedRpc<(amount: BalanceWrapper | { amount?: any } | string | Uint8Array, currencyId: SpacewalkPrimitivesCurrencyId | { Native: any } | { XCM: any } | { Stellar: any } | { ZenlinkLPToken: any } | { Token: any } | string | Uint8Array, at?: BlockHash | string | Uint8Array) => Observable<BalanceWrapper>>;
       /**
        * Get the vault's collateral (excluding nomination)
        **/
