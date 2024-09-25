@@ -5,16 +5,26 @@
 // this is required to allow for ambient/previous definitions
 import '@polkadot/api-base/types/consts';
 
-import type { AccountId32, Permill, Perquintill } from '@pendulum-chain/types/interfaces/runtime';
+import type { AccountId32, Perbill, Permill, Perquintill } from '@pendulum-chain/types/interfaces/runtime';
 import type { ApiTypes, AugmentedConst } from '@polkadot/api-base/types';
 import type { Option, bool, u128, u16, u32, u64, u8 } from '@polkadot/types-codec';
 import type { Codec } from '@polkadot/types-codec/types';
-import type { FrameSupportPalletId, FrameSystemLimitsBlockLength, FrameSystemLimitsBlockWeights, PalletContractsSchedule, SpVersionRuntimeVersion, SpWeightsRuntimeDbWeight, SpWeightsWeightV2Weight, SpacewalkPrimitivesCurrencyId, XcmV3MultiLocation } from '@polkadot/types/lookup';
+import type { FrameSupportPalletId, FrameSystemLimitsBlockLength, FrameSystemLimitsBlockWeights, PalletContractsEnvironment, PalletContractsSchedule, SpVersionRuntimeVersion, SpWeightsRuntimeDbWeight, SpWeightsWeightV2Weight, SpacewalkPrimitivesCurrencyId, StagingXcmV3MultiLocation } from '@polkadot/types/lookup';
 
 export type __AugmentedConst<ApiType extends ApiTypes> = AugmentedConst<ApiType>;
 
 declare module '@polkadot/api-base/types/consts' {
   interface AugmentedConsts<ApiType extends ApiTypes> {
+    assetRegistry: {
+      /**
+       * The maximum length of a name or symbol.
+       **/
+      stringLimit: u32 & AugmentedConst<ApiType>;
+      /**
+       * Generic const
+       **/
+      [key: string]: Codec;
+    };
     balances: {
       /**
        * The minimum amount required to keep an account open. MUST BE GREATER THAN ZERO!
@@ -126,6 +136,13 @@ declare module '@polkadot/api-base/types/consts' {
     };
     contracts: {
       /**
+       * The percentage of the storage deposit that should be held for using a code hash.
+       * Instantiating a contract, or calling [`chain_extension::Ext::add_delegate_dependency`]
+       * protects the code from being removed. In order to prevent abuse these actions are
+       * protected with a percentage of the code deposit.
+       **/
+      codeHashLockupDepositPercent: Perbill & AugmentedConst<ApiType>;
+      /**
        * Fallback value to limit the storage deposit if it's not being set by the caller.
        **/
       defaultDepositLimit: u128 & AugmentedConst<ApiType>;
@@ -146,9 +163,14 @@ declare module '@polkadot/api-base/types/consts' {
        **/
       depositPerItem: u128 & AugmentedConst<ApiType>;
       /**
-       * The maximum length of a contract code in bytes. This limit applies to the instrumented
-       * version of the code. Therefore `instantiate_with_code` can fail even when supplying
-       * a wasm binary below this maximum size.
+       * Type that bundles together all the runtime configurable interface types.
+       * 
+       * This is not a real config. We just mention the type here as constant so that
+       * its type appears in the metadata. Only valid value is `()`.
+       **/
+      environment: PalletContractsEnvironment & AugmentedConst<ApiType>;
+      /**
+       * The maximum length of a contract code in bytes.
        * 
        * The value should be chosen carefully taking into the account the overall memory limit
        * your runtime has, as well as the [maximum allowed callstack
@@ -159,6 +181,11 @@ declare module '@polkadot/api-base/types/consts' {
        * The maximum length of the debug buffer in bytes.
        **/
       maxDebugBufferLen: u32 & AugmentedConst<ApiType>;
+      /**
+       * The maximum number of delegate_dependencies that a contract can lock with
+       * [`chain_extension::Ext::add_delegate_dependency`].
+       **/
+      maxDelegateDependencies: u32 & AugmentedConst<ApiType>;
       /**
        * The maximum allowable length in bytes for storage keys.
        **/
@@ -792,7 +819,7 @@ declare module '@polkadot/api-base/types/consts' {
       /**
        * Self chain location.
        **/
-      selfLocation: XcmV3MultiLocation & AugmentedConst<ApiType>;
+      selfLocation: StagingXcmV3MultiLocation & AugmentedConst<ApiType>;
       /**
        * Generic const
        **/

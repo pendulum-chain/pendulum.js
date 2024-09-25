@@ -34,6 +34,10 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       InvalidAssetId: AugmentedError<ApiType>;
       /**
+       * Name or symbol is too long.
+       **/
+      InvalidAssetString: AugmentedError<ApiType>;
+      /**
        * Generic error
        **/
       [key: string]: AugmentedError<ApiType>;
@@ -163,6 +167,14 @@ declare module '@polkadot/api-base/types/errors' {
     };
     contracts: {
       /**
+       * Can not add a delegate dependency to the code hash of the contract itself.
+       **/
+      CannotAddSelfAsDelegateDependency: AugmentedError<ApiType>;
+      /**
+       * No code info could be found at the supplied code hash.
+       **/
+      CodeInfoNotFound: AugmentedError<ApiType>;
+      /**
        * Code removal was denied because the code is still in use by at least one contract.
        **/
       CodeInUse: AugmentedError<ApiType>;
@@ -171,7 +183,7 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       CodeNotFound: AugmentedError<ApiType>;
       /**
-       * The contract's code was found to be invalid during validation or instrumentation.
+       * The contract's code was found to be invalid during validation.
        * 
        * The most likely cause of this is that an API was used which is not supported by the
        * node. This happens if an older node is used with a new version of ink!. Try updating
@@ -206,6 +218,14 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       DecodingFailed: AugmentedError<ApiType>;
       /**
+       * The contract already depends on the given delegate dependency.
+       **/
+      DelegateDependencyAlreadyExists: AugmentedError<ApiType>;
+      /**
+       * The dependency was not found in the contract's delegate dependencies.
+       **/
+      DelegateDependencyNotFound: AugmentedError<ApiType>;
+      /**
        * A contract with the same AccountId already exists.
        **/
       DuplicateContract: AugmentedError<ApiType>;
@@ -222,20 +242,32 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       InvalidCallFlags: AugmentedError<ApiType>;
       /**
-       * A new schedule must have a greater version than the current one.
+       * Invalid schedule supplied, e.g. with zero weight of a basic operation.
        **/
-      InvalidScheduleVersion: AugmentedError<ApiType>;
+      InvalidSchedule: AugmentedError<ApiType>;
       /**
        * Performing a call was denied because the calling depth reached the limit
        * of what is specified in the schedule.
        **/
       MaxCallDepthReached: AugmentedError<ApiType>;
       /**
+       * The contract has reached its maximum number of delegate dependencies.
+       **/
+      MaxDelegateDependenciesReached: AugmentedError<ApiType>;
+      /**
+       * A pending migration needs to complete before the extrinsic can be called.
+       **/
+      MigrationInProgress: AugmentedError<ApiType>;
+      /**
        * The chain does not provide a chain extension. Calling the chain extension results
        * in this error. Note that this usually  shouldn't happen as deploying such contracts
        * is rejected.
        **/
       NoChainExtension: AugmentedError<ApiType>;
+      /**
+       * Migrate dispatch call was attempted but no migration was performed.
+       **/
+      NoMigrationPerformed: AugmentedError<ApiType>;
       /**
        * A buffer outside of sandbox memory was passed to a contract API function.
        **/
@@ -313,6 +345,10 @@ declare module '@polkadot/api-base/types/errors' {
        * Account is not a member
        **/
       NotMember: AugmentedError<ApiType>;
+      /**
+       * Prime account is not a member
+       **/
+      PrimeAccountNotMember: AugmentedError<ApiType>;
       /**
        * Proposal must exist
        **/
@@ -1082,7 +1118,7 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       Filtered: AugmentedError<ApiType>;
       /**
-       * The unlock operation cannot succeed because there are still users of the lock.
+       * The unlock operation cannot succeed because there are still consumers of the lock.
        **/
       InUse: AugmentedError<ApiType>;
       /**
@@ -1106,8 +1142,8 @@ declare module '@polkadot/api-base/types/errors' {
        **/
       NoSubscription: AugmentedError<ApiType>;
       /**
-       * There was some other issue (i.e. not to do with routing) in sending the message. Perhaps
-       * a lack of space for buffering the message.
+       * There was some other issue (i.e. not to do with routing) in sending the message.
+       * Perhaps a lack of space for buffering the message.
        **/
       SendFailure: AugmentedError<ApiType>;
       /**
@@ -1425,7 +1461,6 @@ declare module '@polkadot/api-base/types/errors' {
       DuplicateOrganizationId: AugmentedError<ApiType>;
       DuplicateValidatorPublicKey: AugmentedError<ApiType>;
       EmptyEnvelopeSet: AugmentedError<ApiType>;
-      EnvelopeSignedByUnknownValidator: AugmentedError<ApiType>;
       EnvelopeSlotIndexMismatch: AugmentedError<ApiType>;
       ExternalizedNHMismatch: AugmentedError<ApiType>;
       ExternalizedValueMismatch: AugmentedError<ApiType>;
@@ -1512,6 +1547,10 @@ declare module '@polkadot/api-base/types/errors' {
        * Account is not a member
        **/
       NotMember: AugmentedError<ApiType>;
+      /**
+       * Prime account is not a member
+       **/
+      PrimeAccountNotMember: AugmentedError<ApiType>;
       /**
        * Proposal must exist
        **/
@@ -1621,6 +1660,10 @@ declare module '@polkadot/api-base/types/errors' {
        * Attempt to use treasury account for buyout
        **/
       BuyoutWithTreasuryAccount: AugmentedError<ApiType>;
+      /**
+       * Decimals conversion error
+       **/
+      DecimalsConversionError: AugmentedError<ApiType>;
       /**
        * Exceeds number of allowed currencies for buyout
        **/
