@@ -25,9 +25,9 @@
     "@pendulum-chain/type-definitions": "1.0.1"
   },
   "devDependencies": {
-    "@polkadot/api": "^11.0.2",
-    "@polkadot/typegen": "^11.0.2",
-    "@polkadot/types": "^11.0.2",
+    "@polkadot/api": "^13.2.1",
+    "@polkadot/typegen": "^13.2.1",
+    "@polkadot/types": "^13.2.1",
     "@types/websocket": "^1.0.0",
     "websocket": "^1.0.31"
   },

@@ -23,7 +23,7 @@
     "@open-web3/orml-api-derive": "^1.1.4",
     "@pendulum-chain/api-derive": "1.0.1",
     "@pendulum-chain/types": "^1.0.1",
-    "@polkadot/api": "^11.0.2"
+    "@polkadot/api": "^13.2.1"
   },
   "peerDependencies": {
     "@polkadot/api": ">=9",

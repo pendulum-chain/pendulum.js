@@ -22,6 +22,6 @@
     "@babel/runtime": "^7.10.2",
     "@open-web3/orml-types": "^1.1.4",
     "@pendulum-chain/types": "1.0.1",
-    "@polkadot/api-derive": "^11.0.2"
+    "@polkadot/api-derive": "^13.2.1"
   }
 }
