@@ -3428,14 +3428,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@scure/base@npm:^1.1.1, @scure/base@npm:^1.1.5":
-  version: 1.1.6
-  resolution: "@scure/base@npm:1.1.6"
-  checksum: d6deaae91deba99e87939af9e55d80edba302674983f32bba57f942e22b1726a83c62dc50d8f4370a5d5d35a212dda167fb169f4b0d0c297488d8604608fc3d3
-  languageName: node
-  linkType: hard
-
-"@scure/base@npm:^1.1.7":
+"@scure/base@npm:^1.1.1, @scure/base@npm:^1.1.5, @scure/base@npm:^1.1.7":
   version: 1.1.9
   resolution: "@scure/base@npm:1.1.9"
   checksum: 120820a37dfe9dfe4cab2b7b7460552d08e67dee8057ed5354eb68d8e3440890ae983ce3bee957d2b45684950b454a2b6d71d5ee77c1fd3fddc022e2a510337f
@@ -3519,14 +3512,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@substrate/ss58-registry@npm:^1.44.0":
-  version: 1.47.0
-  resolution: "@substrate/ss58-registry@npm:1.47.0"
-  checksum: 6e76299cea5c5a10aecd43079dc3e83468ce8a7f367843186d6daed6e27be38f2ba717e0467a314806ea5d29856f8a44025e1cb68af02b584a9b674696f470fa
-  languageName: node
-  linkType: hard
-
-"@substrate/ss58-registry@npm:^1.50.0":
+"@substrate/ss58-registry@npm:^1.44.0, @substrate/ss58-registry@npm:^1.50.0":
   version: 1.50.0
   resolution: "@substrate/ss58-registry@npm:1.50.0"
   checksum: d19d933fadf9bfbebd1c4a62c750620de34bd920ca6beb3ad8d66147c6d672e0773b57fce8394ec52a36c60d0564a92b7961ed1eac8508bca0248e23f62b8460
@@ -13263,14 +13249,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:^2.1.0, tslib@npm:^2.6.2":
-  version: 2.6.2
-  resolution: "tslib@npm:2.6.2"
-  checksum: 329ea56123005922f39642318e3d1f0f8265d1e7fcb92c633e0809521da75eeaca28d2cf96d7248229deb40e5c19adf408259f4b9640afd20d13aecc1430f3ad
-  languageName: node
-  linkType: hard
-
-"tslib@npm:^2.7.0":
+"tslib@npm:^2.1.0, tslib@npm:^2.6.2, tslib@npm:^2.7.0":
   version: 2.7.0
   resolution: "tslib@npm:2.7.0"
   checksum: 1606d5c89f88d466889def78653f3aab0f88692e80bb2066d090ca6112ae250ec1cfa9dbfaab0d17b60da15a4186e8ec4d893801c67896b277c17374e36e1d28
@@ -14104,22 +14083,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ws@npm:^8.13.0, ws@npm:^8.8.1":
-  version: 8.17.0
-  resolution: "ws@npm:8.17.0"
-  peerDependencies:
-    bufferutil: ^4.0.1
-    utf-8-validate: ">=5.0.2"
-  peerDependenciesMeta:
-    bufferutil:
-      optional: true
-    utf-8-validate:
-      optional: true
-  checksum: 147ef9eab0251364e1d2c55338ad0efb15e6913923ccbfdf20f7a8a6cb8f88432bcd7f4d8f66977135bfad35575644f9983201c1a361019594a4e53977bf6d4e
-  languageName: node
-  linkType: hard
-
-"ws@npm:^8.16.0":
+"ws@npm:^8.13.0, ws@npm:^8.16.0, ws@npm:^8.8.1":
   version: 8.18.0
   resolution: "ws@npm:8.18.0"
   peerDependencies:
